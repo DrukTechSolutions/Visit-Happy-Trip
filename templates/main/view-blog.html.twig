@@ -1,0 +1,44 @@
+{% extends "base.html.twig" %}
+{% block stylesheets %}
+<link href="{{ asset('/css/swiffy-slider.min.css')}}" rel="stylesheet" />
+<style>
+    #blog-view-img {
+        background-image: url('{{ asset("/uploads/tour-images/"~ blog.image.imageName)}}');
+        height: 450px;
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+        background-attachment: fixed;
+        width: 100%;
+        position: relative;
+    }
+
+    #blog-view-header {
+        position: absolute;
+        background-color: rgba(0, 0, 0, 0.5);
+        height: 100%;
+        width: 100%;
+    }
+
+    #blog-view-header div div h2 {
+        color: white;
+    }
+</style>
+{% endblock %}
+{% block body %}
+<div id="blog-view-img">
+    <div id="blog-view-header">
+        <div class="d-flex align-items-center  h-100">
+            <div class="container">
+                <h4 class="d-inline-flex bg-black text-warning p-2">{{ blog.blogTitle|upper}}</h4>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container mt-5">
+    {{ blog.blogDescription|raw}}
+</div>
+{% endblock %}
+
+{% block javascripts %}
+{% endblock %}

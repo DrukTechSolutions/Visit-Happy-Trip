@@ -1,0 +1,619 @@
+{% extends "base.html.twig" %}
+{% block stylesheets %}
+<style>
+    #travel-visa-img {
+        background-image: url('{{ asset("/images/image-static/airlines.jpg")}}');
+        height: 450px;
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+        background-attachment: fixed;
+        width: 100%;
+        position: relative;
+    }
+
+    #travel-visa-header {
+        position: absolute;
+        background-color: rgba(0, 0, 0, 0.5);
+        height: 100%;
+        width: 100%;
+    }
+
+    #travel-visa-header div div h2 {
+        color: white;
+    }
+
+    .travel-and-visa {
+        background-image: url('{{ asset("/images/image-static/paro-airport-bhutan-interior.jpg")}}');
+        background-attachment: fixed;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+</style>
+{% endblock %}
+{% block body %}
+<div id="travel-visa-img">
+    <div id="travel-visa-header">
+        <div class="d-flex align-items-center h-100">
+            <div class="container">
+                <h2 class="d-inline-flex bg-black text-warning p-2">TRAVEL & VISA</h2>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container mt-5">
+    <div class="card bg-grey">
+        <div class="card-body">
+            <p class="text-center">
+                Obtaining a visa to visit Bhutan is easier than you think. Did you know that it is the least you have to
+                worry about to enter Bhutan? We will get it done on your behalf. Once you have finalized your trip and
+                payment has been made, we will process your visa with the government. Visitors must have a visa prior to
+                arriving in the kingdom. No foreign mission or embassy abroad grants Bhutan tourist visas. Should you
+                wish
+                to extend your stay in the country beyond your pre-planned duration, Bridge To Bhutan will help
+                facilitate
+                and guarantee your stay extension.
+            </p>
+        </div>
+    </div>
+</div>
+<div class="mt-5 travel-and-visa">
+    <div style="background-color: rgba(255, 69, 0, 0.6);">
+        <div class="container text-white pt-5 pb-5" style="z-index: 1;">
+            <div class="card" style="background-color: rgba(0, 0, 0, 0.6) !important;">
+                <div class="card-body text-white">
+                    <ul>
+                        <li>All information required in the Visa Application form must reach us at least three weeks
+                            before the intended arrival date to enable processing with the concerned authorities.</li>
+                        <li>Alternatively, a copy of visa application form can be filled out by tourists and
+                            mailed/faxed/e-mailed to us.</li>
+                        <li>The actual visa is stamped on arrival in Bhutan but it must be cleared in advance and a visa
+                            clearance number issued.</li>
+                        <li>For all travelers entering Bhutan by Drukair, the visa clearance is forwarded to the
+                            concerned overseas Drukair stations. Without a visa clearance number, passengers are not
+                            allowed to board the flight.</li>
+                        <li>Visa fee is US $40 per person for a 14 day visa which can be further extended without
+                            additional fees.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container mt-5">
+    <div class="card bg-grey">
+        <div class="card-body text-center">
+            <h4>VISA NOTE</h4>
+            <p>
+                Please use your full name exactly as it appears on your passport. Regardless of your name change, it is
+                absolutely imperative that your Drukair ticket have the same name as your passport and your visa! We
+                must use your complete passport name to process your visa and to book your tickets with Drukair.</p>
+        </div>
+    </div>
+    <div class="accordion mt-5" id="accordionExample">
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="headingOne">
+                <button data-mdb-collapse-init class="accordion-button" type="button" data-mdb-target="#collapseOne"
+                    aria-expanded="true" aria-controls="collapseOne">
+                    RESERVATION
+                </button>
+            </h2>
+            <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne"
+                data-mdb-parent="#accordionExample">
+                <div class="accordion-body">
+                    <ul>
+                        <li>For all Cultural Tours, the booking must be completed at least 4 weeks in advance, but for
+                            tours during festival periods, 12 weeks advance reservation is required. Spring and autumn
+                            festivals, during the peak seasons, require early flight and hotel reservations in order to
+                            get confirmations. Bhutan has only two airline with four mid-sized Airbus planes.</li>
+                        <li>For trekking groups, it is important to book at least 8 weeks in advance, as these require a
+                            lot of detailed planning.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="headingTwo">
+                <button data-mdb-collapse-init class="accordion-button collapsed" type="button"
+                    data-mdb-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                    ENTRY POINTS (via air)
+                </button>
+            </h2>
+            <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
+                data-mdb-parent="#accordionExample">
+                <div class="accordion-body">
+                    <ul>
+                        <li>The best way to enter Bhutan is by Drukair (‘Druk’ means Dragon), the national air carrier.
+                            The flight into Paro International Airport, Bhutan’s only airport is one of the most
+                            spectacular flights in the world. Drukair has two flight schedules – a summer and winter
+                            flight schedule. They differ in timings though the days of operation remain the same. Bridge
+                            To Bhutan can arrange to purchase the Drukair tickets for you and shall not be liable for
+                            unforeseen costs due to airfare changes.</li>
+                        <li>Drukair has flights from/to India (New Delhi, Kolkatta and Gaya), Thailand (Bangkok), Nepal
+                            (Kathmandu) and Bangladesh (Dhaka). Drukair is the only airline operating in Bhutan. The
+                            airline operates two Airbus A319. For current flight schedules and fares, please check <a
+                                href=" https://drukair.com.bt/" target="_blank">Drukair’s website</a>.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="headingThree">
+                <button data-mdb-collapse-init class="accordion-button collapsed" type="button"
+                    data-mdb-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                    CUSTOMS
+                </button>
+            </h2>
+            <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree"
+                data-mdb-parent="#accordionExample">
+                <div class="accordion-body">
+                    <b>Visitors are required to complete the Customs Form and hand it over on arrival. The following
+                        articles are exempted from duty:</b>
+                    <ul>
+                        <li>Personal effects and articles for day to day use by the visitor.</li>
+                        <li>
+                            2 liters of alcohol, 400 cigarettes, 150 gms. of pipe tobacco.</li>
+                        <li>
+                            Instruments, apparatus or appliances for professional use.</li>
+                        <li>
+                            Photographic equipment, video cameras and other electronic goods for personal use.</li>
+                        <li>
+                            The articles mentioned under 3 and 4 must be declared on the Customs Form. If such items are
+                            disposed of in Bhutan, by sale or gift, they are liable for customs duty.
+                        </li>
+                    </ul>
+                    <b>The Import and Export of the following goods are strictly prohibited:</b>
+                    <ul>
+                        <li>Arms, ammunition, explosives and military stores.</li>
+                        <li>All narcotics and drugs, except medically prescribed drugs.</li>
+                        <li>Wildlife products, especially those of endangered species.
+                        <li>Antiques.</li>
+                    </ul>
+                    All visitors are advised to be cautious in purchasing old and used items. Custom authorities will
+                    not allow any old/used items to be taken out of the country if they have not been certified as
+                    non-antique. The import of plants, soil etc. is subject to quarantine regulations. These items must
+                    be cleared on arrival.
+                </div>
+            </div>
+        </div>
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="headingFour">
+                <button data-mdb-collapse-init class="accordion-button" type="button" data-mdb-target="#collapseFour"
+                    aria-expanded="true" aria-controls="collapseFour">
+                    MONEY
+                </button>
+            </h2>
+            <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour"
+                data-mdb-parent="#accordionExample">
+                <div class="accordion-body">
+                    <p>The Bhutanese unit of currency is the Ngultrum (Nu.), with 100 Chetrum = 1 Ngultrum. The Ngultrum
+                        is at par with the value of Indian rupee. Visitors are advised to carry their money in the form
+                        of travelers’ cheques, with a little cash (US dollars) which might be needed for incidental
+                        expenses.</p>
+                </div>
+            </div>
+        </div>
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="headingFive">
+                <button data-mdb-collapse-init class="accordion-button" type="button" data-mdb-target="#collapseFive"
+                    aria-expanded="true" aria-controls="collapseFive">
+                    LANGUAGE
+                </button>
+            </h2>
+            <div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive"
+                data-mdb-parent="#accordionExample">
+                <div class="accordion-body">
+                    <p>“Dzongkha” (‘D’ is silent), ‘the language of the ‘Dzongs’, is Bhutan’s national language. English
+                        is commonly spoken in the main towns and it is also one medium of education in schools
+                        throughout the Kingdom. All correspondences and business affairs within government and private
+                        sector is conducted in English.</p>
+                </div>
+            </div>
+        </div>
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="headingSix">
+                <button data-mdb-collapse-init class="accordion-button" type="button" data-mdb-target="#collapseSix"
+                    aria-expanded="true" aria-controls="collapseSix">
+                    ACCOMMODATION
+                </button>
+            </h2>
+            <div id="collapseSix" class="accordion-collapse collapse" aria-labelledby="headingSix"
+                data-mdb-parent="#accordionExample">
+                <div class="accordion-body">
+                    <p>There are comfortable hotels, lodges and guest houses at all tourist destinations. Western Bhutan
+                        has better hotels, while in the central and eastern parts of the country, accommodation
+                        establishments are simpler and offer minimum facilities. There is no star categorization of
+                        hotels, and five star luxury is not available. Having said that, however, in the last few years,
+                        a few boutique hotels and resorts have opened. We can make bookings for you in these resorts.
+                        Bridge to Bhutan has carefully selected accommodation units with the best location, and
+                        possesses the essential Bhutanese character. Away from the towns and villages there are
+                        purpose-built huts on some of the principal trekking routes. Otherwise, there is nothing like
+                        camping out under the clearest night skies that you have ever seen. Wherever you spend the
+                        night, the warm Bhutanese hospitality will make you feel welcome. PLEASE COME WITH AN OPEN MIND.
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="headingSeven">
+                <button data-mdb-collapse-init class="accordion-button collapsed" type="button"
+                    data-mdb-target="#collapseSeven" aria-expanded="false" aria-controls="collapseSeven">
+                    TOUR ESCORTS
+                </button>
+            </h2>
+            <div id="collapseSeven" class="accordion-collapse collapse" aria-labelledby="headingSeven"
+                data-mdb-parent="#accordionExample">
+                <div class="accordion-body">
+                    <p>All Visit Happy Trip tours are escorted by well trained, English speaking, knowledgeable tour
+                        leaders and guides, certified by the Department of Tourism, Royal Government of Bhutan. We don’t
+                        compromise on the quality of your trip leader in Bhutan as we know that the choice of these so
+                        called Ambassadors can make or break the trip.</p>
+                </div>
+            </div>
+        </div>
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="headingEight">
+                <button data-mdb-collapse-init class="accordion-button collapsed" type="button"
+                    data-mdb-target="#collapseEight" aria-expanded="false" aria-controls="collapseEight">
+                    FOOD
+                </button>
+            </h2>
+            <div id="collapseEight" class="accordion-collapse collapse" aria-labelledby="headingEight"
+                data-mdb-parent="#accordionExample">
+                <div class="accordion-body">
+                    <p>Bhutanese delicacies are rich with spicy chilies and cheese. The hotels and lodges on Bridge To
+                        Bhutan’s selected list offer delicious Chinese, Continental, Indian and Bhutanese cuisine. Even
+                        on treks, our cooks prepare dishes of all kinds suitable for western tastes. Most meals are
+                        buffet style but we can also order by the menu depending on the group size and the time
+                        availability.</p>
+                </div>
+            </div>
+        </div>
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="headingNine">
+                <button data-mdb-collapse-init class="accordion-button" type="button" data-mdb-target="#collapseNine"
+                    aria-expanded="true" aria-controls="collapseNine">
+                    CLIMATE
+                </button>
+            </h2>
+            <div id="collapseNine" class="accordion-collapse collapse" aria-labelledby="headingNine"
+                data-mdb-parent="#accordionExample">
+                <div class="accordion-body">
+                    <p>The southern part of Bhutan is tropical, and in general the east of Bhutan is warmer than the
+                        west. The central valleys of Punakha, Wangduephodrang, Mongar, Trashigang and Lhuntse enjoy a
+                        semi tropical climate with very cool winters, whilst Thimphu, Paro, Haa, Trongsa and Bumthang
+                        have a much harsher climate, with heavy monsoon rains in the summer and heavy snow-falls in the
+                        winter, which often block the passes leading into the central valleys. Winter in Bhutan is from
+                        mid-November until mid-March, and at this time of the year the climate is dry, with day time
+                        temperatures falling below zero. The monsoon usually arrives in mid-June, with the rain falling
+                        mainly in the afternoons and evenings. At the end of September, after the last of the big rains,
+                        autumn suddenly arrives, and ushers in a magnificent season for trekking until mid-November.</p>
+                </div>
+            </div>
+        </div>
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="headingTen">
+                <button data-mdb-collapse-init class="accordion-button" type="button" data-mdb-target="#collapseTen"
+                    aria-expanded="true" aria-controls="collapseTen">
+                    CLOTHING
+                </button>
+            </h2>
+            <div id="collapseTen" class="accordion-collapse collapse" aria-labelledby="headingTen"
+                data-mdb-parent="#accordionExample">
+                <div class="accordion-body">
+                    <p>Due to the wide range of temperature and climatic conditions, it is advisable to bring an
+                        assortment of appropriate clothing. For protection against the cold, layered clothing is better
+                        than a few thick items, so choose your clothes accordingly. Clothes should preferably be made
+                        from natural materials, which allow the body to breathe. You will offend people if you walk
+                        around in skimpy or tight fitting clothes. Although there are normally opportunities to wear
+                        shorts, we would advise women to wear skirts or loose trousers. In general, visitors should wear
+                        decent casual clothes (a collared shirt/coat with long trousers/skirts and no hats) while
+                        visiting Dzongs and temples.</p>
+                </div>
+            </div>
+        </div>
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="headingEleven">
+                <button data-mdb-collapse-init class="accordion-button" type="button" data-mdb-target="#collapseEleven"
+                    aria-expanded="true" aria-controls="collapseEleven">
+                    WHAT TO PACK
+                </button>
+            </h2>
+            <div id="collapseEleven" class="accordion-collapse collapse" aria-labelledby="headingEleven"
+                data-mdb-parent="#accordionExample">
+                <div class="accordion-body">
+                    <p>The following is a fairly exhaustive list of what you should pack for your trip: clothes as per
+                        the season, sunglasses/spare glasses or contact lenses, a pair of casual shoes, washing kit,
+                        shaving kit, towel, hat, umbrella/poncho, walking poles (for hikes and treks),camera, film and
+                        accessories, books, maps, insect repellent, hand cream, small sewing kit and safety pins, torch
+                        or flash light with spare batteries, mirror, nail clippers, scissors, sun cream, lip salve,
+                        soluble aspirin, antiseptic cream, dramamine, anti-histamine cream, anti-diarrhea pills, and a
+                        preparation for the relief of sunburn. It doesn’t hurt to bring some nutrition bars, small hand
+                        sanitizers and several pairs of socks.</p>
+                </div>
+            </div>
+        </div>
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="headingTwelve">
+                <button data-mdb-collapse-init class="accordion-button collapsed" type="button"
+                    data-mdb-target="#collapseTwelve" aria-expanded="false" aria-controls="collapseTwelve">
+                    PHOTOGRAPHY
+                </button>
+            </h2>
+            <div id="collapseTwelve" class="accordion-collapse collapse" aria-labelledby="headingTwelve"
+                data-mdb-parent="#accordionExample">
+                <div class="accordion-body">
+                    <p>There are comfortable hotels, lodges and guest houses at all tourist destinations. Western Bhutan
+                        has better hotels, while in the central and eastern parts of the country, accommodation
+                        establishments are simpler and offer minimum facilities. There is no star categorization of
+                        hotels, and five star luxury is not available. Having said that, however, in the last few years,
+                        a few boutique hotels and resorts have opened. We can make bookings for you in these resorts.
+                        Visit Happy Trip has carefully selected accommodation units with the best location, and
+                        possesses the essential Bhutanese character. Away from the towns and villages there are
+                        purpose-built huts on some of the principal trekking routes. Otherwise, there is nothing like
+                        camping out under the clearest night skies that you have ever seen. Wherever you spend the
+                        night, the warm Bhutanese hospitality will make you feel welcome. PLEASE COME WITH AN OPEN MIND.
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="headingThirteen">
+                <button data-mdb-collapse-init class="accordion-button collapsed" type="button"
+                    data-mdb-target="#collapseThirteen" aria-expanded="false" aria-controls="collapseThirteen">
+                    HEALTH AND MEDICAL INFORMATION
+                </button>
+            </h2>
+            <div id="collapseThirteen" class="accordion-collapse collapse" aria-labelledby="headingThirteen"
+                data-mdb-parent="#accordionExample">
+                <div class="accordion-body">
+                    <p>No vaccinations are currently required for traveling to Bhutan. However, if you are arriving from
+                        an area infected with yellow fever, you are required to have a yellow fever vaccination and it
+                        must be administered at least 10 days before your arrival into Bhutan. Also if arriving from
+                        cholera infected areas, the vaccination is strongly recommended. Anti-malarial medication is
+                        also strongly recommended for all travelers who are visiting rural areas in the districts that
+                        border India. For more information, <a
+                            href="https://wwwnc.cdc.gov/travel/destinations/traveler/none/bhutan" target="_blank">click
+                            here</a>.</p>
+                </div>
+            </div>
+        </div>
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="headingFourteen">
+                <button data-mdb-collapse-init class="accordion-button" type="button"
+                    data-mdb-target="#collapseFourteen" aria-expanded="true" aria-controls="collapseFourteen">
+                    SHOPPING
+                </button>
+            </h2>
+            <div id="collapseFourteen" class="accordion-collapse collapse" aria-labelledby="headingFourteen"
+                data-mdb-parent="#accordionExample">
+                <div class="accordion-body">
+                    <p>The country’s exquisite postage stamps, lovely hand woven fabrics, carved masks, woven baskets,
+                        wooden bowls, handmade papers, finely crafted metal objects and thangka paintings are the items
+                        mostly purchased by travelers in Bhutan. The buying and selling of antiques is strictly
+                        forbidden in the kingdom.</p>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="headingFifteen">
+                    <button data-mdb-collapse-init class="accordion-button" type="button"
+                        data-mdb-target="#collapseFifteen" aria-expanded="true" aria-controls="collapseFifteen">
+                        GRATUITIES
+                    </button>
+                </h2>
+                <div id="collapseFifteen" class="accordion-collapse collapse" aria-labelledby="headingFifteen"
+                    data-mdb-parent="#accordionExample">
+                    <div class="accordion-body">
+                        <p>Tipping is neither compulsory nor is there any fixed amount, but it is normally expected and
+                            greatly appreciated – the bottom line in determining whether and how much to tip is to ask
+                            yourself how much the individual concerned added to the value of your travel experience. On
+                            an average, we suggest a gratuity of $10 per person per day.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="headingSixteen">
+                    <button data-mdb-collapse-init class="accordion-button" type="button"
+                        data-mdb-target="#collapseSixteen" aria-expanded="true" aria-controls="collapseSixteen">
+                        ELECTRICITY
+                    </button>
+                </h2>
+                <div id="collapseSixteen" class="accordion-collapse collapse" aria-labelledby="headingSixteen"
+                    data-mdb-parent="#accordionExample">
+                    <div class="accordion-body">
+                        <p>In Bhutan, electricity runs at 220/240 volts, 50 Hz. If you do bring electrical appliances,
+                            bring along an international converter kit complete with a set of adapter plugs.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="headingSeventeen">
+                    <button data-mdb-collapse-init class="accordion-button collapsed" type="button"
+                        data-mdb-target="#collapseSeventeen" aria-expanded="false" aria-controls="collapseSeventeen">
+                        TIME
+                    </button>
+                </h2>
+                <div id="collapseSeventeen" class="accordion-collapse collapse" aria-labelledby="headingSeventeen"
+                    data-mdb-parent="#accordionExample">
+                    <div class="accordion-body">
+                        <p>Bhutan is 6 hours ahead of GMT and there is only one time zone throughout the country.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="headingEighteen">
+                    <button data-mdb-collapse-init class="accordion-button collapsed" type="button"
+                        data-mdb-target="#collapseEighteen" aria-expanded="false" aria-controls="collapseEighteen">
+                        INTERNATIONAL TOURIST TARIFF
+                    </button>
+                </h2>
+                <div id="collapseEighteen" class="accordion-collapse collapse" aria-labelledby="headingEighteen"
+                    data-mdb-parent="#accordionExample">
+                    <div class="accordion-body">
+                        <p>Refer our FAQ page</p>
+                    </div>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="headingNineteen">
+                    <button data-mdb-collapse-init class="accordion-button" type="button"
+                        data-mdb-target="#collapseNineteen" aria-expanded="true" aria-controls="collapseNineteen">
+                        TARIFF FOR INDIVIDUAL AND SMALL GROUPS(FIT)
+                    </button>
+                </h2>
+                <div id="collapseNineteen" class="accordion-collapse collapse" aria-labelledby="headingNineteen"
+                    data-mdb-parent="#accordionExample">
+                    <div class="accordion-body">
+                        <p>Individual tourists and smaller groups of less than three persons shall be subject to a
+                            surcharge, as follows:
+                            Single individuals: US $ 40 per night.<br>
+                            Group of 2 persons: US $ 30 per person per night.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="headingTwenty">
+                    <button data-mdb-collapse-init class="accordion-button" type="button"
+                        data-mdb-target="#collapseTwenty" aria-expanded="true" aria-controls="collapseTwenty">
+                        ELIGIBILITY FOR DISCOUNTS FROM THE TOURIST TARIFF
+                    </button>
+                </h2>
+                <div id="collapseTwenty" class="accordion-collapse collapse" aria-labelledby="headingTwenty"
+                    data-mdb-parent="#accordionExample">
+                    <div class="accordion-body">
+                        <ul>
+                            <li>There shall be no charge for children up to the age of 5 years. However, those between
+                                the ages of 6-12 years accompanied by the elders/guardians shall be given 50% discount
+                                on daily basis.</li>
+                            <li>Full time students below the age of 25 years holding valid identity cards from their
+                                academic institutions shall also be given 25% discount on a daily basis.</li>
+                            <li>A discount of 50% on daily rates shall be given to one person in a group of 11 to 15
+                                people. 100% discount shall be given to one member in a group exceeding 16 persons.</li>
+                            <li>A discount of 10% on the daily rates shall be provided for stays between 11 to 20 nights
+                                and 20% discount on stays beyond 21 nights.</li>
+                            <li>Visitors availing discount under Sections 1, 2 and 3 shall not be eligible for discount
+                                under 4.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="headingTwentyone">
+                    <button data-mdb-collapse-init class="accordion-button" type="button"
+                        data-mdb-target="#collapseTwentyone" aria-expanded="true" aria-controls="collapseTwentyone">
+                        TRIP CANCELLATION POLICIY
+                    </button>
+                </h2>
+                <div id="collapseTwentyone" class="accordion-collapse collapse" aria-labelledby="headingTwentyone"
+                    data-mdb-parent="#accordionExample">
+                    <div class="accordion-body">
+                        <b>Cancellation of a trip should be notified in writing directly to Visit Happy Trip. Tour
+                            programs booked and subsequently cancelled shall be subject to cancellation charges as
+                            follows:</b>
+                        <ul>
+                            <li>45 days or more prior to start of the tour – Full refund</li>
+                            <li>30-45 days or more prior to start of the tour – 20% of the rate</li>
+                            <li>22-29 days prior to start of tour – 30% of the rate</li>
+                            <li>15-21 days prior to start of tour – 50% of the rate</li>
+                            <li>Less than 15 days prior to start of tour- 100%</li>
+                            <li>After arrival in Bhutan, or cancellation without notice – 100%</li>
+                        </ul>
+
+                        A separate administration fee of $75 will be applicable for all cancelled tours.<br>
+
+                        Your flight tickets, if bought, are governed by a separate Druk Air cancellation policy. Druk
+                        Air tickets are valid for one year from the date of issue and are subject to the following
+                        cancellation and refund rules:
+                        <ul>
+                            <li>Full refund (minus administration charges) for tickets cancelled more than 45 days prior
+                                to arrival date in Bhutan</li>
+                            <li>50% refund for tickets cancelled between 30 and 45 days prior to arrival date</li>
+                            <li>No refund for tickets cancelled within 30 days of arrival date in Bhutan</li>
+                            <li>An administration fee of $25 per ticket will be applicable for all cancelled tickets
+                            </li>
+                            <li>Passengers who fail to show up for a flight will not be eligible for a refund</li>
+                            <li>Flights can be rescheduled for a $30 re-booking fee; however, once rescheduled, tickets
+                                are non-refundable and non-reroutable</li>
+                            <li>Lost tickets are non-refundable</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="headingTwentytwo">
+                    <button data-mdb-collapse-init class="accordion-button collapsed" type="button"
+                        data-mdb-target="#collapseTwentytwo" aria-expanded="false" aria-controls="collapseTwentytwo">
+                        DELAYED ARRIVAL / DEPARTURE
+                    </button>
+                </h2>
+                <div id="collapseTwentytwo" class="accordion-collapse collapse" aria-labelledby="headingTwentytwo"
+                    data-mdb-parent="#accordionExample">
+                    <div class="accordion-body">
+                        <p>Tour payment must be settled at least two months prior to the date of arrival in Bhutan.
+                            Visas will be cleared by the government subject to full payment only.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="headingTwentythree">
+                    <button data-mdb-collapse-init class="accordion-button collapsed" type="button"
+                        data-mdb-target="#collapseTwentythree" aria-expanded="false"
+                        aria-controls="collapseTwentythree">
+                        SINGLE ROOM SUPPLEMENTS
+                    </button>
+                </h2>
+                <div id="collapseTwentythree" class="accordion-collapse collapse" aria-labelledby="headingTwentythree"
+                    data-mdb-parent="#accordionExample">
+                    <div class="accordion-body">
+                        <p>The quoted package rates are valid for accommodation on a twin sharing basis and the
+                            following supplements will be applicable in case of single room accommodation:<br>
+                            For high season: US$ 50 per single room per night<br>
+                            For low season: US$ 25 per single room per night</p>
+                    </div>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="headingTwentyfour">
+                    <button data-mdb-collapse-init class="accordion-button" type="button"
+                        data-mdb-target="#collapseTwentyfour" aria-expanded="true" aria-controls="collapseTwentyfour">
+                        REMITTANCE OF TOUR PAYMENTS
+                    </button>
+                </h2>
+                <div id="collapseTwentyfour" class="accordion-collapse collapse" aria-labelledby="headingTwentyfour"
+                    data-mdb-parent="#accordionExample">
+                    <div class="accordion-body">
+                        <p>Tour payment must be settled at least two months prior to the date of arrival in Bhutan.
+                            Visas will be cleared by the government subject to full payment only.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="headingTwentyfive">
+                    <button data-mdb-collapse-init class="accordion-button" type="button"
+                        data-mdb-target="#collapseTwentyfive" aria-expanded="true" aria-controls="collapseTwentyfive">
+                        OTHER INFORMATION
+                    </button>
+                </h2>
+                <div id="collapseTwentyfive" class="accordion-collapse collapse" aria-labelledby="headingTwentyfive"
+                    data-mdb-parent="#accordionExample">
+                    <div class="accordion-body">
+                        <p>Tourism has been strictly limited in Bhutan in order to preserve and nurture the traditional
+                            culture. The Bhutanese are spiritual people and therefore it is important to show respect
+                            and understanding for local customs, especially while visiting religious institutions. The
+                            tourism industry in Bhutan is founded on the principle of sustainability, meaning that
+                            tourism must be environmentally and ecologically friendly, socially and culturally
+                            acceptable and economically viable. For these reasons, the number of tourists visiting
+                            Bhutan is kept to an environmentally manageable level by setting a high minimum tariff.
+                        </p>
+                        <p>
+                            Minimum Tariff is set by the Department of Tourism, Royal Government of Bhutan.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endblock %}
+
+    {% block javascripts %}
+    {% endblock %}

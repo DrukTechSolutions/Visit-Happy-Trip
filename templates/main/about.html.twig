@@ -1,0 +1,47 @@
+{% extends "base.html.twig" %}
+{% block stylesheets %}
+<style>
+    #about-us-img {
+        background-image: url('{{ asset("/images/image-static/thimpu-festival.jpg")}}');
+        height: 450px;
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+        background-attachment: fixed;
+        width: 100%;
+        position: relative;
+    }
+
+    #about-us-header {
+        position: absolute;
+        background-color: rgba(0, 0, 0, 0.5);
+        height: 100%;
+        width: 100%;
+    }
+
+    #about-us-header div div h2 {
+        color: white;
+    }
+</style>
+{% endblock %}
+{% block body %}
+<div id="about-us-img">
+    <div id="about-us-header">
+        <div class="d-flex align-items-center h-100">
+            <div class="container">
+                <h2 class="d-inline-flex bg-black text-warning p-2">ABOUT US</h2>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container mt-5">
+    <h2>Know more about Visit Happy Trip</h2>
+    <p><b>“Visit Happy Trip”</b> is a Bhutan-based tour operator committed to offering immersive and authentic travel experiences. We specialize in personalized itineraries that showcase the beauty of Bhutan’s culture, landscapes, and traditions, taking you beyond the typical tourist trails. Our team of local experts ensures every journey is deeply rooted in sustainability, supporting the environment and local communities. Whether you’re seeking adventure, spiritual retreat, or cultural exploration, we tailor each trip to your interests. At “Visit Happy Trip,” we strive to make every moment of your Bhutan experience meaningful, memorable, and filled with happiness.</p>
+    
+    <p><b>Discover the Hidden Gem of the Himalayas with Visit Happy Trip</b>
+        Tucked away in the majestic Himalayas, Bhutan is a paradise waiting to be explored. At Visit Happy Trip, we invite you to experience the unspoiled beauty, rich culture, and warm hospitality of this enchanting kingdom. Our expertly curated tours and travel packages are designed to take you on a journey of a lifetime, showcasing Bhutan’s stunning landscapes, ancient monasteries, vibrant festivals, and breathtaking architecture. From the iconic Paro Taktsang (Tiger’s Nest) to the tranquil Punakha Valley, our knowledgeable guides will ensure that you immerse yourself in the very essence of Bhutanese tradition and natural splendor.</p>
+     
+   <p><b>Explore, Experience, and Enchant with Visit Happy Trip</b>
+    Whether you’re seeking adventure, relaxation, or spiritual rejuvenation, Visit Happy Trip has something for everyone. Our personalized itineraries cater to your interests, budget, and preferences, ensuring a seamless and unforgettable travel experience. Join us for a trek through the majestic Himalayas, a bike ride through picturesque valleys, or a rejuvenating wellness retreat amidst nature’s serenity. At Visit Happy Trip, we promise to deliver exceptional service, authentic experiences, and lifelong memories. Come, let us guide you on a happy trip to the Last Shangri-La, and discover why Bhutan is truly a destination like no other. Contact us today to plan your dream trip to Bhutan!</p>
+</div>
+{% endblock %}

@@ -1,0 +1,35 @@
+{% extends "admin.html.twig" %}
+
+{% block body %}
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/admin">Home</a></li>
+        <li class="breadcrumb-item">Blogs</li>
+        <li class="breadcrumb-item active" aria-current="page">Add Blog</li>
+    </ol>
+</nav>
+<div class="mt-2">
+    {{ form_start(form)}}
+    <div class="card rounded-0">
+        <div class="card-header bg-danger text-white rounded-0"><b>Add Blog</b></div>
+        <div class="card-body">
+            <div class="mt-2">
+                {{ form_label(form.blog_image)}}
+                {{ form_widget(form.blog_image,{'attr':{'class': 'form-control'}})}}
+            </div>
+            <div class="mt-2">
+                {{ form_label(form.blog_title)}}
+                {{ form_widget(form.blog_title,{'attr':{'class': 'ht-input'}})}}
+            </div>
+            <div class="mt-2">
+                {{ form_label(form.blog_description)}}
+                {{ form_widget(form.blog_description)}}
+            </div>
+            <div class="mt-2">
+                <button type="submit" class="btn btn-danger">Save</button>
+            </div>
+        </div>
+    </div>
+    {{ form_start(form)}}
+</div>
+{% endblock %}

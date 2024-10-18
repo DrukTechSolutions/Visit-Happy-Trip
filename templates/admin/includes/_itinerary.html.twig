@@ -1,0 +1,24 @@
+<div class="copy-form-section mt-3" id="copy-form-section" data-count="{{ itinerary_count }}">
+    <div class="card rounded-0">
+        <div class="card-header">
+            <div class="row">
+                <div class="col">
+                    <b>Day <span class="day-counter">{{ itinerary_count }}</span> Itinerary</b>
+                </div>
+                <div class="col d-flex justify-content-end">
+                    <a class="remove-btn btn btn-outline-danger btn-floating" ><i class="fa-solid fa-xmark"></i></a> 
+                </div>
+            </div>
+        </div>
+        <div class="card-body">
+            <div class="mb-3">
+                {{ form_label(form.title)}}
+                {{ form_widget(form.title,{'attr':{'class':'ht-input mt-1'}})}}
+            </div>
+            <div>
+                {{ form_label(form.itinerary_description)}}
+                {{ form_widget(form.itinerary_description,{'attr':{'class':'mt-1'}})}}
+            </div>
+        </div>
+    </div>
+</div>

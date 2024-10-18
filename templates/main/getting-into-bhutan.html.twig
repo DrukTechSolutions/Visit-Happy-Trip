@@ -1,0 +1,149 @@
+{% extends "base.html.twig" %}
+{% block stylesheets %}
+<style>
+    #getting-into-bhutan-img {
+        background-image: url('{{ asset("/images/image-static/dragon-nest.jpg")}}');
+        height: 450px;
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+        background-attachment: fixed;
+        width: 100%;
+        position: relative;
+    }
+
+    #getting-into-bhutan-header {
+        position: absolute;
+        background-color: rgba(0, 0, 0, 0.5);
+        height: 100%;
+        width: 100%;
+    }
+
+    #getting-into-bhutan-header div div h2 {
+        color: white;
+    }
+</style>
+{% endblock %}
+{% block body %}
+<div id="getting-into-bhutan-img">
+    <div id="getting-into-bhutan-header">
+        <div class="d-flex align-items-center h-100">
+            <div class="container">
+                <h2 class="d-inline-flex bg-black text-warning p-2">GETTING INTO BHUTAN</h2>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container mt-5">
+    <div class="text-center">
+        <p>Until the early 1960s, Bhutan was largely isolated from the outside world, accessible only by foot via two
+            challenging routes: the Northern route through Tibet, which was blocked by high mountain passes during
+            winter, and the Southern route through the dense jungles of Assam and West Bengal. However, meticulously
+            planned economic development has since transformed Bhutan’s accessibility, with a network of roads and
+            multiple airports now connecting it to the world. Today, the main entry points are through Phuentsholing in
+            the south, linking to West Bengal, and the border towns of Gelephu, Samdrup Jongkhar, and others,
+            facilitating travel to and from Assam.</p>
+    </div>
+    <div class="row mt-5">
+        <div class="col-md-6">
+            <div class="card h-100 rounded-0 border border-dark getting-into-bhutan-card">
+                <div class="card-body">
+                    <h4 class="text-orange">TRAVEL BY AIRLINE</h4>
+                    <p>
+                        There are flights to destinations that include Bangkok, Delhi, Kolkata, Bag Dogra, Bodh Gaya,
+                        Dhaka,
+                        Kathmandu, Guwahati, Singapore, and Mumbai.
+                    </p>
+                    <p>Paro is situated at a height of 2,225 m (7300 ft.) above sea level and is surrounded by mountains
+                        as
+                        high as 4,876 m (16,000 ft.). At present two carriers operate to Bhutan, Drukair and Bhutan
+                        Airlines.
+                        There are also domestic airports in Yonphula in eastern Bhutan, Bumthang in central Bhutan, and
+                        Gelephu
+                        in south-central Bhutan.
+                    </p>
+                    <p>
+                        Flying into Bhutan’s Paro International Airport is typically an exciting experience as the
+                        descent into
+                        Paro valley brings you closer to the mountain tops than most other flights in the world. The
+                        flight
+                        between Paro and Kathmandu is one of the most exciting ones as the aircraft passes over four of
+                        the five
+                        highest mountains in the world. In fine weather, as you soar higher up, you can enjoy the
+                        spectacular
+                        view of Mt. Everest, Lhotse, Makalu and Kangchenjunga at their best.
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <img src="{{ asset("/images/image-static/airlines.jpg")|imagine_filter('thumbnail_get_into_bhutan_air') }}"
+                class="img-fluid w-100">
+        </div>
+    </div>
+    <div class="row mt-5">
+        <div class="col-md-6">
+            <img src="{{ asset("/images/image-static/road.jpg")|imagine_filter('thumbnail_get_into_bhutan_road') }}"
+                class="img-fluid w-100">
+        </div>
+        <div class="col-md-6">
+            <div class="card h-100 rounded-0 border border-dark getting-into-bhutan-card">
+                <div class="card-body">
+                    <h4 class="text-orange">TRAVEL BY AIRLINE</h4>
+                    <p>Phuentsholing, Gelephu and Samdrup Jongkhar are the only land border areas open to tourists.
+
+                    <p>The town of Phuentsholing in south-west is located approximately 170 km east of the Indian
+                        national airport at Bagdogra. After crossing Phuentsholing, you begin your journey to Thimphu,
+                        the capital city with travel time of about six hours for the 170 km stretch.</p>
+
+                    <p>Gelephu, in south-central Bhutan, is another entry point to Bhutan. It is approximately 250
+                        kilometers from Thimphu and the journey will take you through the sub-tropical areas of Bhutan
+                        before entering the alpine zone and then finally into Thimphu. One will have to traverse across
+                        three districts and the travel time will be about ten hours.</p>
+
+                    <p>The district of Samdrup Jongkhar in south-east Bhutan borders the Indian district of Darranga,
+                        Assam and is approximately 150 kilometers away from Guwahati, the capital city of Assam. The
+                        journey from Guwahati is about three hours. Tourists entering Bhutan through Samdrup Jongkhar
+                        will take you to Trashigang, and from there over the lateral route to Mongar, Bumthang, Trongsa,
+                        Wangdue Phodrang and then finally into the capital, Thimphu. The distance is about 700
+                        kilometers and will take you a minimum of three days to reach Thimphu.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="mt-5 text-center">
+        <h4 class="text-orange">BEST TIME TO VISIT BHUTAN</h4>
+        <p><b>March, April & May</b> are among the most popular time to travel as temperatures are pleasant and the valleys are
+            abundant in nature; especially as all the flowers start to bloom. Early April witnesses the Paro Tsechu, one
+            of
+            the most popular festivals in Bhutan. Temperatures increase in May, bringing humidity, as well as clouds
+            over
+            the mountains. The rhododendrons should also still be in bloom; ideal for photographs and nature lovers.</p>
+
+        <p><b>June to August (and sometimes in September)</b> monsoon is monsoon season in Bhutan. However, fewer visitors and
+            lower prices can make it a perfectly viable time to visit. Although shows can occur at night without
+            spoiling
+            day time explorations, conditions are not ideal for trekking. Sightseeing is still possible; just be
+            prepared
+            with a raincoat. Views are best in the mornings following nighttime downpours.</p>
+
+        <p><b>September, October and November</b> are ideal for hiking, seeing festivals (particularly the popular Thimphu
+            Tsechu), and enjoying stunning views and pleasant temperatures. Expect around 25°C in the sun, but there
+            will be
+            cooler temperatures in the evenings and at higher altitudes. Black-necked canes migrate from the Tibetan
+            Plateau
+            to the protected Phobjikha Valley each year. They remain in the region from late October to early February.
+            In
+            Gangtey, a special festival is held every November to celebrate the arrival of the birds.</p>
+
+        <p><b>December, January and February</b> are the coldest months in Bhutan, especially in the mountains, but lower
+            prices
+            and clear skies reward those who brave low temperatures. The valleys are warmer and sunny with clear views
+            of
+            the Himalayas. Due to the low temperatures, visitors are fewer.</p>
+    </div>
+</div>
+{% endblock %}
+
+{% block javascripts %}
+{% endblock %}

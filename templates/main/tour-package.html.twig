@@ -1,0 +1,59 @@
+{% extends "base.html.twig" %}
+
+{% block stylesheets %}
+<style>
+    #tour-view-img {
+        background-image: url('{{ asset("/images/image-static/"~ image_name)}}');
+        height: 450px;
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+        background-attachment: fixed;
+        width: 100%;
+        position: relative;
+    }
+
+    #tour-view-header {
+        position: absolute;
+        background-color: rgba(0, 0, 0, 0.5);
+        height: 100%;
+        width: 100%;
+    }
+
+    #tour-view-header div div h2 {
+        color: white;
+    }
+</style>
+{% endblock %}
+{% block body %}
+<div id="tour-view-img">
+    <div id="tour-view-header">
+        <div class="d-flex align-items-center  h-100">
+            <div class="container">
+                <h2 class="d-inline-flex bg-black text-warning p-2">{{ tour_category|tour_category }}</h2>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container mt-5">
+    <div class="row">
+        {% for tour_package in tours %}
+        <div class="col-md-3">
+            <div class="card border border-dark rounded-0">
+                <img src="{{ asset('uploads/tour-images/'~ tour_package.images[0].imageName )|imagine_filter('thumbnail')}}"
+                    class="card-img-top rounded-0" alt="Fissure in Sandstone" />
+                <div class="card-body">
+                    <h5 class="card-title">{{ tour_package.tourCategory|tour_category }}</h5>
+                    <p class="card-text text-orange">12 days/ 12 nights</p>
+                    <p class="font-roboto font-size-22"><strong>From : {{ tour_package.price}}</strong></p>
+                    <a href="{{ path('view-tours',{'id': tour_package.id })}}"
+                        class="btn-orange ps-3 pe-3 pt-2 pb-2 nav-link text-white text-center"
+                        data-mdb-ripple-init>Explore
+                        more <i class="fa-solid fa-caret-right"></i></a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

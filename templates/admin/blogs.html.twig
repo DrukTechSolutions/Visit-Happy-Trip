@@ -1,0 +1,40 @@
+{% extends 'admin.html.twig' %}
+
+{% block body %}
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/admin">Home</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Blogs</li>
+    </ol>
+</nav>
+<div>
+    <a href="{{ path('add-blog')}}" class="btn btn-primary"><i class="fa-solid fa-plus"></i> Add Blog</a>
+    <table class="table align-middle mb-0 bg-white mt-3">
+        <thead class="bg-light">
+            <tr>
+                <th>Sl. No</th>
+                <th>Image</th>
+                <th>Blog Title</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for blog in blogs %}
+            <tr>
+                <td>{{ loop.index }}</td>
+                <td><img src="{{ asset('uploads/tour-images/'~ blog.image.imageName)}}" class="img-fluid" style="height: 50px;"></td>
+                <td>{{ blog.blogTitle }}</td>
+                <td>
+                   <a type="button" href="{{ path('update-blog',{'id': blog.id })}}" class="btn btn-primary btn-sm btn-rounded">
+                        Update
+                    </a> {# 
+                    <a type="button" href="{{ path('update-tour-package',{'id': blog.id })}}" class="btn btn-danger btn-sm btn-rounded">
+                        Delete
+                    </a> #}
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

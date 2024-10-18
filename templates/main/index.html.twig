@@ -1,0 +1,438 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Visit Happy Trip &#8211; Happiness Matters{% endblock %}
+
+{% block stylesheets %}
+<link href="{{ asset('/css/swiffy-slider.min.css')}}" rel="stylesheet" />
+<style>
+    /* Carousel styling */
+    #introCarousel,
+    .carousel-inner,
+    .carousel-item,
+    .carousel-item.active {
+        height: 110vh;
+    }
+
+    .carousel-item:nth-child(1) {
+        background-image: url('{{ asset("/images/image-static/dance.jpg")}}');
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center center;
+    }
+
+    .carousel-item:nth-child(2) {
+        background-image: url('{{ asset("/images/image-static/gumba.jpg")}}');
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center center;
+    }
+
+    .carousel-item:nth-child(3) {
+        background-image: url('{{ asset("/images/image-static/dragon-nest.jpg")}}');
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center center;
+    }
+
+    .why-choose-us {
+        background-image: url('{{ asset("/images/image-static/dragon-nest.jpg")}}');
+        background-attachment: fixed;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+
+    /* Height for devices larger than 576px */
+    @media (min-width: 992px) {
+        /* #introCarousel {
+            margin-top: -58.59px;
+        } */
+    }
+</style>
+{% endblock %}
+
+{% block body %}
+
+
+<!-- Carousel wrapper -->
+<div id="introCarousel" class="carousel slide" data-mdb-ride="carousel" data-mdb-carousel-init>
+    <!-- Indicators -->
+    <div class="carousel-indicators">
+        <li data-mdb-target="#introCarousel" data-mdb-slide-to="0" class="active"></li>
+        <li data-mdb-target="#introCarousel" data-mdb-slide-to="1"></li>
+        <li data-mdb-target="#introCarousel" data-mdb-slide-to="2"></li>
+    </div>
+
+    <!-- Inner -->
+    <div class="carousel-inner">
+        <!-- Single item -->
+        <div class="carousel-item active" data-mdb-interval="3000">
+            <div class="mask" style="background-color: rgba(0, 0, 0, 0.6);">
+                <div class="d-flex justify-content-center align-items-center h-100">
+                    <div class="text-white text-center" data-mdb-theme="dark">
+                        <h1 class="mb-3"><b>DISCOVER <span class="bhutan-gradient">BHUTAN</span></b></h1>
+                        <h5 class="mb-4">WITH VISIT HAPPY TRIP</h5>
+                        <p class="font-size-22"><b>Bhutan: A Journey to the Last Shangri-La</b><br>
+                            Come and experience the magic of Bhutan, a country that will leave you enchanted and
+                            inspired!</p>
+                        <a class="btn-orange text-white rounded-2 pt-3 pb-3 ps-5 pe-5 " data-mdb-ripple-init
+                            href="https://mdbootstrap.com/docs/standard/" target="_blank" role="button">EXPLORE MORE</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Single item -->
+        <div class="carousel-item" data-mdb-interval="3000">
+            <div class="mask" style="background-color: rgba(0, 0, 0, 0.6);">
+                <div class="d-flex justify-content-center align-items-center h-100">
+                    <div class="text-white text-center" data-mdb-theme="dark">
+                        <h1 class="mb-3"><b>DISCOVER <span class="bhutan-gradient">BHUTAN</span></b></h1>
+                        <h5 class="mb-4">WITH VISIT HAPPY TRIP</h5>
+                        <p class="font-size-22"><b>Bhutan: A Journey to the Last Shangri-La</b><br>
+                            Come and experience the magic of Bhutan, a country that will leave you enchanted and
+                            inspired!</p>
+                        <a class="btn-orange text-white rounded-2 pt-3 pb-3 ps-5 pe-5 " data-mdb-ripple-init
+                            href="https://mdbootstrap.com/docs/standard/" target="_blank" role="button">ABOUT BHUTAN</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Single item -->
+        <div class="carousel-item" data-mdb-interval="3000">
+            <div class="mask" style="background-color: rgba(0, 0, 0, 0.6);">
+                <div class="d-flex justify-content-center align-items-center h-100">
+                    <div class="text-white text-center" data-mdb-theme="dark">
+                        <h1 class="mb-3"><b>DISCOVER <span class="bhutan-gradient">BHUTAN</span></b></h1>
+                        <h5 class="mb-4">WITH VISIT HAPPY TRIP</h5>
+                        <p class="font-size-22"><b>Bhutan: A Journey to the Last Shangri-La</b><br>
+                            Come and experience the magic of Bhutan, a country that will leave you enchanted and
+                            inspired!</p>
+                        <a class="btn-orange text-white rounded-2 pt-3 pb-3 ps-5 pe-5" data-mdb-ripple-init
+                            href="https://mdbootstrap.com/docs/standard/" target="_blank" role="button">INQUIRY NOW</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Inner -->
+
+    <!-- Controls -->
+    {# <a class="carousel-control-prev" href="#introCarousel" role="button" data-mdb-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+    </a>
+    <a class="carousel-control-next" href="#introCarousel" role="button" data-mdb-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+    </a> #}
+</div>
+<div class="container-xxl mt-5">
+    <div class="text-center">
+        <p class="text-orange">OUR BEST TOUR PACKAGES</p>
+        <h4 class="font-weight-bold">OUR BEST SELLING PACKAGES</h4>
+    </div>
+    <div class="container mt-5">
+        <div class="row">
+            {% for tour_package in tour_packages %}
+            <div class="col-md-3">
+                <div class="card border border-dark rounded-0">
+                    <img src="{{ asset('uploads/tour-images/'~ tour_package.images[0].imageName )|imagine_filter('thumbnail')}}"
+                        class="card-img-top rounded-0" alt="Fissure in Sandstone" />
+                    <div class="card-body">
+                        <h5 class="card-title">{{ tour_package.tourCategory|tour_category }}</h5>
+                        <p class="card-text text-orange">12 days/ 12 nights</p>
+                        <p class="font-roboto font-size-22"><strong>From : {{ tour_package.price}}</strong></p>
+                        <a href="{{ path('view-tours',{'id': tour_package.id })}}"
+                            class="btn-orange ps-3 pe-3 pt-2 pb-2 nav-link text-white text-center"
+                            data-mdb-ripple-init>Explore more <i class="fa-solid fa-caret-right"></i></a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+<div class="mt-5 why-choose-us">
+    <div style="background-color: rgba(0, 0, 0, 0.6);">
+        <div class="container text-white pt-5 pb-5" style="z-index: 1;">
+            <h4 class="text-center">WHY YOU CHOOSE US?</h4>
+            <div class="row mt-5">
+                <div class="col-md-6">
+                    <div class="card rounded-0 h-100 bg-bhutan-gradient text-white">
+                        <div class="card-body text-center">
+                            <i class="fa-solid fa-dharmachakra fa-3x"></i>
+                            <div class="mt-4">
+                                <h4>FLEXIBILITY</h4>
+                                <p>We understand that every traveler is unique, so we offer flexible tour options to
+                                    accommodate your schedule, interests, and budget.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="card rounded-0 h-100 bg-bhutan-gradient text-white">
+                        <div class="card-body text-center">
+                            <i class="fa-solid fa-users fa-3x"></i>
+                            <div class="mt-4">
+                                <h4>EXPERT KNOWLEDGE</h4>
+                                <p>We understand that every traveler is unique, so we offer flexible tour options to
+                                    accommodate your schedule, interests, and budget.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 mt-4">
+                    <div class="card rounded-0 h-100 bg-bhutan-gradient text-white">
+                        <div class="card-body text-center">
+                            <i class="fa-brands fa-servicestack fa-3x"></i>
+                            <div class="mt-4">
+                                <h4>UNPARALLELED SERVICE</h4>
+                                <p>We understand that every traveler is unique, so we offer flexible tour options to
+                                    accommodate your schedule, interests, and budget.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 mt-4">
+                    <div class="card rounded-0 h-100 bg-bhutan-gradient text-white">
+                        <div class="card-body text-center">
+                            <i class="fa-solid fa-signs-post fa-3x"></i>
+                            <div class="mt-4">
+                                <h4>CUSTOMIZED TOURS</h4>
+                                <p>We don't believe in cookie-cutter experiences. Our tours are carefully crafted to
+                                    ensure that every moment is memorable and tailored to your tastes.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container text-center mt-5">
+    <p class="text-orange">WHAT WE PROVIDE</p>
+    <h4 class="font-weight-bold">OUR BEST SELLING PACKAGES</h4>
+    <div class="row mt-5">
+        <div class="col-md-3">
+            <div class="card rounded-0 border border-dark h-100">
+                <img src="{{ asset('images/image-static/culture.jpg')}}" class="card-img-top rounded-0"
+                    alt="Visit Happy Trip Cultural" />
+                <div class="card-body">
+                    <h4>CULTURAL TOURS</h4>
+                    <p>Cultural tours offer a unique opportunity to immerse oneself in the rich tapestry of
+                        Bhutanese heritage and culture.</p>
+                    <p><i class="fa-solid fa-map-location-dot"></i> 3 Tours</p>
+                    <a class="btn btn-outline-danger">EXPLORE NOW <i class="fa-solid fa-caret-right"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card rounded-0 border border-dark h-100">
+                <img src="{{ asset('images/image-static/dance.jpg')}}" class="card-img-top rounded-0"
+                    alt="Visit Happy Trip Festival" />
+                <div class="card-body">
+                    <h4>FESTIVAL TOURS</h4>
+                    <p>Tshechus are lively festivals that pay tribute to Guru Rinpoche, who brought Buddhism to Bhutan
+                        in the 8th century.</p>
+                    <p><i class="fa-solid fa-map-location-dot"></i> 3 Tours</p>
+                    <a class="btn btn-outline-danger">EXPLORE NOW <i class="fa-solid fa-caret-right"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card rounded-0 border border-dark h-100">
+                <img src="{{ asset('images/image-static/rafting.jpg')}}" class="card-img-top rounded-0"
+                    alt="Visit Happy Trip Adventure" />
+                <div class="card-body">
+                    <h4>ADVENTURE TOURS</h4>
+                    <p>River rafting in Bhutan provides an exciting opportunity to navigate its stunning landscapes and
+                        crystal-clear rivers, offering a variety of experiences.</p>
+                    <p><i class="fa-solid fa-map-location-dot"></i> 3 Tours</p>
+                    <a class="btn btn-outline-danger">EXPLORE NOW <i class="fa-solid fa-caret-right"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card rounded-0 border border-dark h-100">
+                <img src="{{ asset('images/image-static/trekking.png')}}" class="card-img-top rounded-0"
+                    alt="Visit Happy Trip Trekking" />
+                <div class="card-body">
+                    <h4>TREKKING TOURS</h4>
+                    <p>Trekking in Bhutan is an experience like no other. It’s a mix of physical challenge, spiritual
+                        awakening, and an immersion in untouched natural beauty.</p>
+                    <p><i class="fa-solid fa-map-location-dot"></i> 3 Tours</p>
+                    <a class="btn btn-outline-danger">EXPLORE NOW <i class="fa-solid fa-caret-right"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container text-center mt-5">
+    <div class="row">
+        <div class="col-md-6">
+            <img src="{{ asset('images/image-static/plane.gif')}}" height="100" />
+            <h4 class="text-orange">GETTING INTO BHUTAN</h4>
+            <p>Despite once being largely cut off from the world due to its challenging geography and limited access
+                routes, Bhutan has become more accessible through carefully planned economic development, now featuring
+                a network of roads and airports that connect it to neighboring regions, with main entry points through
+                Phuentsholing, Gelephu, and Samdrup Jongkhar.</p>
+            <a href="/getting-into-bhutan" class="btn-orange text-white pt-2 pb-2 ps-3 pe-3 rounded-4">READ MORE <i
+                    class="fa-solid fa-caret-right"></i></a>
+        </div>
+        <div class="col-md-6">
+            <img src="{{ asset('images/image-static/paro-airport-bhutan-interior.jpg')}}" class="img-fluid">
+        </div>
+    </div>
+</div>
+<div class="container mt-5">
+    <div class="text-center">
+        <p class="text-orange">TRAVEL & EXPLORE</p>
+        <h4 class="font-weight-bold">OUR TOP DESTINATIONS</h4>
+    </div>
+    <div class="slider-wrapper mt-5">
+        <div
+            class="swiffy-slider slider-item-show3 slider-nav-round slider-nav-page slider-nav-autoplay slider-nav-autopause">
+            <ul class="slider-container">
+                <li>
+                    <div class="card border-0">
+                        <div class="ratio ratio-1x1">
+                            <img src="https://mdbcdn.b-cdn.net/img/new/standard/nature/184.webp" class="card-img-top"
+                                loading="lazy" alt="...">
+                        </div>
+                        <div class="card-body p-0 pt-4">
+                            <p><b>PARO TAKTSHANG</b></p>
+                            <a href="" class="nav-link text-orange">Read more..</a>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="card border-0">
+                        <div class="ratio ratio-1x1">
+                            <img src="https://mdbcdn.b-cdn.net/img/new/standard/nature/184.webp" class="card-img-top"
+                                loading="lazy" alt="...">
+                        </div>
+                        <div class="card-body p-0 pt-4">
+                            <p><b>PARO TAKTSHANG</b></p>
+                            <a href="" class="nav-link text-orange">Read more..</a>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="card border-0">
+                        <div class="ratio ratio-1x1">
+                            <img src="https://mdbcdn.b-cdn.net/img/new/standard/nature/184.webp" class="card-img-top"
+                                loading="lazy" alt="...">
+                        </div>
+                        <div class="card-body p-0 pt-4">
+                            <p><b>PARO TAKTSHANG</b></p>
+                            <a href="" class="nav-link text-orange">Read more..</a>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="card border-0">
+                        <div class="ratio ratio-1x1">
+                            <img src="https://mdbcdn.b-cdn.net/img/new/standard/nature/184.webp" class="card-img-top"
+                                loading="lazy" alt="...">
+                        </div>
+                        <div class="card-body p-0 pt-4">
+                            <p><b>PARO TAKTSHANG</b></p>
+                            <a href="" class="nav-link text-orange">Read more..</a>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="card border-0">
+                        <div class="ratio ratio-1x1">
+                            <img src="https://mdbcdn.b-cdn.net/img/new/standard/nature/184.webp" class="card-img-top"
+                                loading="lazy" alt="...">
+                        </div>
+                        <div class="card-body p-0 pt-4">
+                            <p><b>PARO TAKTSHANG</b></p>
+                            <a href="" class="nav-link text-orange">Read more..</a>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="card border-0">
+                        <div class="ratio ratio-1x1">
+                            <img src="https://mdbcdn.b-cdn.net/img/new/standard/nature/184.webp" class="card-img-top"
+                                loading="lazy" alt="...">
+                        </div>
+                        <div class="card-body p-0 pt-4">
+                            <p><b>PARO TAKTSHANG</b></p>
+                            <a href="" class="nav-link text-orange">Read more..</a>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+
+            <button type="button" class="slider-nav" aria-label="Go left"></button>
+            <button type="button" class="slider-nav slider-nav-next" aria-label="Go left"></button>
+        </div>
+    </div>
+</div>
+
+<div class="mt-5 bg-secondary bg-opacity-10 p-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <h4 class="text-orange">Explore Hotels in Bhutan</h4>
+                <p class="text-justify">We offer customized accommodation solutions, catering to diverse customer
+                    preferences, ranging from 3-star to
+                    5-star hotels, ensuring an exceptional stay experience marked by outstanding hospitality and
+                    tailored to
+                    meet individual needs.</p>
+                <a href="" class="btn-orange ps-3 pe-3 pt-1 pb-1 text-white rounded-pill">Explore More <i
+                        class="fa-solid fa-caret-right"></i></a>
+            </div>
+            <div class="col-md-6">
+                <div
+                    class="swiffy-slider slider-item-show3 slider-nav-sm slider-nav-page slider-item-snapstart slider-item-nogap slider-nav-chevron slider-indicators-sm slider-indicators-outside  slider-indicators-dark slider-nav-animation slider-nav-animation-slideup ">
+                    <div class="slider-container">
+                        <div class="ratio ratio-1x1">
+                            <img src="{{ asset('images/hotels/city-hotel.jpg')}}" class="img-fluid">
+                        </div>
+                        <div class="ratio ratio-1x1">
+                            <img src="{{ asset('images/hotels/city-hotel-3.jpg')}}" class="img-fluid">
+                        </div>
+                        <div class="ratio ratio-1x1 slide-visible">
+                            <img src="{{ asset('images/hotels/hotel-930x620.jpg')}}" class="img-fluid">
+                        </div>
+                        <div class="ratio ratio-1x1 slide-visible">
+                            <img src="{{ asset('images/hotels/hotel-druk.jpg')}}" class="img-fluid">
+                        </div>
+                        <div class="ratio ratio-1x1">
+                            <img src="{{ asset('images/hotels/hotel-phuntsho-pelri-1.jpg')}}" class="img-fluid">
+                        </div>
+                        <div class="ratio ratio-1x1">
+                            <img src="{{ asset('images/hotels/le-meridian.jpg')}}" class="img-fluid">
+                        </div>
+                        <div class="ratio ratio-1x1">
+                            <img src="{{ asset('images/hotels/taj-tashi-930x620.jpg')}}" class="img-fluid">
+                        </div>
+                    </div>
+
+                    <button type="button" class="slider-nav" aria-label="Go left"></button>
+                    <button type="button" class="slider-nav slider-nav-next" aria-label="Go left"></button>
+
+                    <div class="slider-indicators">
+                        <button class="" aria-label="Go to slide"></button>
+                        <button aria-label="Go to slide"></button>
+                        <button aria-label="Go to slide"></button>
+                        <button aria-label="Go to slide" class="active"></button>
+                        <button aria-label="Go to slide"></button>
+                        <button aria-label="Go to slide"></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block javascripts %}
+<script src="{{ asset('/js/swiffy-slider.min.js')}}"></script>
+{% endblock %}

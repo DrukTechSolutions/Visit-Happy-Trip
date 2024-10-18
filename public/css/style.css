@@ -1,0 +1,128 @@
+body {
+  font-family: "Jost", sans-serif;
+  font-weight: 400;
+}
+
+/* Homepage */
+.logo {
+  height: 80px;
+}
+
+.navbar {
+  z-index: 1 !important;
+}
+
+.home-carousel {
+  z-index: 0 !important;
+}
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+}
+.dropdown-content a {
+  padding: 5px 12px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+}
+.dropdown-content a:hover {
+  background-color: #f1f1f1;
+}
+.menu-dropdown:hover .dropdown-content {
+  display: block;
+}
+.carousel-item p {
+  margin-bottom: 50px;
+}
+.carousel-item .btn-orange:hover {
+  background-color: white;
+  color: #f85907 !important;
+}
+.associated-brand-logo {
+  -webkit-filter: grayscale(100%);
+  filter: grayscale(100%);
+}
+.home-menu-link:hover {
+  color: #f85907 !important;
+}
+.bhutan-gradient {
+  background: linear-gradient(yellow, red);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.bg-bhutan-gradient {
+  background-color: red;
+  background-image: linear-gradient(to right, yellow, red);
+}
+
+/* End Homepage */
+
+/* About Bhutan */
+
+.about-bhutan-tab-wrapper div p {
+  text-align: justify !important;
+}
+
+/* End Bhutan */
+
+/* Getting into Bhutan */
+.getting-into-bhutan-card div p{
+  text-align: justify;
+}
+/* End Getting into Bhutan */
+
+/* Tour over view*/
+
+.bg-tour-over-view {
+  border: 1px solid #f85907;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  text-align: center;
+  color: #f85907;
+}
+.bg-tour-over-view:hover {
+  background-color: #f85907;
+  color: white;
+}
+
+/* End Tour over view */
+
+/* Global */
+
+.btn-orange {
+  background-color: #f85907;
+}
+.bg-orange {
+  background-color: #f85907;
+}
+.font-size-16 {
+  font-size: 16px !important;
+}
+.font-size-18 {
+  font-size: 18px !important;
+}
+.font-size-20 {
+  font-size: 20px !important;
+}
+.font-size-22 {
+  font-size: 22px !important;
+}
+.text-orange {
+  color: #f85907 !important;
+}
+.font-roboto {
+  font-family: "Roboto", system-ui;
+}
+.justify-text {
+  text-align: justify;
+}
+
+.bg-grey {
+  background-color: #e6e6e6;
+}
+/* End Global */

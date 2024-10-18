@@ -1,0 +1,456 @@
+{% extends "base.html.twig" %}
+{% block stylesheets %}
+<style>
+    #faqs-raqs-img {
+        background-image: url('{{ asset("/images/image-static/kyichu-lhakhang.jpg")}}');
+        height: 450px;
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+        background-attachment: fixed;
+        width: 100%;
+        position: relative;
+    }
+
+    #faqs-raqs-header {
+        position: absolute;
+        background-color: rgba(0, 0, 0, 0.5);
+        height: 100%;
+        width: 100%;
+    }
+
+    #faqs-raqs-header div div h2 {
+        color: white;
+    }
+</style>
+{% endblock %}
+{% block body %}
+<div id="faqs-raqs-img">
+    <div id="faqs-raqs-header">
+        <div class="d-flex align-items-center h-100">
+            <div class="container">
+                <h2 class="d-inline-flex bg-black text-warning p-2">FAQS & RAQS</h2>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container mt-5">
+    <div class="accordion mt-5" id="accordionExample">
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="headingOne">
+                <button data-mdb-collapse-init class="accordion-button" type="button" data-mdb-target="#collapseOne"
+                    aria-expanded="true" aria-controls="collapseOne">
+                    WHY SHOULD I CHOOSE VISIT HAPPY TRIP ?
+                </button>
+            </h2>
+            <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne"
+                data-mdb-parent="#accordionExample">
+                <div class="accordion-body">
+                    <p>Our guests are accommodated in comfortable hotels/guest houses approved by the government. To
+                        better understand the Bhutanese way of life, you will also have an option of living with
+                        families in rural homes and farm houses. Visit Happy Trip is equipped with quality trekking
+                        gear, backed by knowledgeable guides and cooks, who can create various kinds of palatable
+                        cuisine. For those who wouldn’t want to miss the experience, yet yearn for luxury accommodation,
+                        we arrange Boutique Travel as well. We work with several luxury resorts/hotels namely, Aman, Six
+                        Senses, Uma, Taj Tashi, Zhiwaling, and Le Meridien. Write to us for details.
+                        <br>
+                        But we take it even further. Under our program, Visit Happy Trip Cares, we let you connect with
+                        people and issues that matter to you. We welcome you to be part of the solution…together we can
+                        make a difference!
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="headingTwo">
+                <button data-mdb-collapse-init class="accordion-button collapsed" type="button"
+                    data-mdb-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                    HOW CAN I BOOK A PACKAGE TOUR TO BHUTAN?
+                </button>
+            </h2>
+            <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
+                data-mdb-parent="#accordionExample">
+                <div class="accordion-body">
+                    There are two ways you can book a Visit Happy Trip package tour:
+                    <ul>
+                        <li>Choose any of the tour programs and send us your passport details</li>
+                        <li>Consult with us to create a customized trip and then send us your passport details</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="headingThree">
+                <button data-mdb-collapse-init class="accordion-button collapsed" type="button"
+                    data-mdb-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                    WHAT IS THE TARIFF FOR VISIT HAPPY TRIP TOURS/TREKS?
+                </button>
+            </h2>
+            <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree"
+                data-mdb-parent="#accordionExample">
+                <div class="accordion-body">
+                    <p>In keeping with the <i>“high value-low impact/volume”</i> sustainable tourism policy of our
+                        country, the
+                        government imposes a mandatory Sustainable Development Fee <b>“SDF”</b> of US <b>$100</b> per
+                        person per night
+                        (Kids 6-12 years US$50 per night) which goes towards health, education, and environmental
+                        conservation projects.</p>
+                    <p>Bridge To Bhutan | Adventures In Bhutan offers the best value for your money.</p>
+
+                    <uL>
+                        <li>The hassle free and all inclusive base tariff for a group of 2 or more members is:
+                            <ul>
+                                <li>Base tariff: US$295 per person per night</li>
+                                <li>For solo traveller and single occupancy: $380 per night</li>
+                                <li>Surcharge applicable for treks (as in camping) and hotel upgrades</li>
+                            </ul>
+                        </li>
+
+                        <li>
+                            The daily package rate INCLUDES the following:
+                            <ul>
+                                <li>Private tour</li>
+                                <li>All accommodations on twin sharing basis in clean standard hotels with attached
+                                    bathroom or at homestays</li>
+                                <li>All meals at the hotel and local restaurants</li>
+                                <li>Visa fee to the government</li>
+                                <li>Sustainable Development Fee “SDF” to the government</li>
+                                <li>Services of an accompanying trip leader/tour guide</li>
+                                <li>All transfers and sightseeing within Bhutan</li>
+                                <li>Fees for museums and permits to enter temples & monuments</li>
+                            </ul>
+                        </li>
+                        <li>The daily package rate EXCLUDES the following:
+                            <ul>
+                                <li>Airfare</li>
+                                <li>Travel insurance</li>
+                                <li>Beverages</li>
+                                <li>Small offerings at temples</li>
+                                <li>Gratuity to tour guide and driver</li>
+                                <li>Personal expenses such as laundry, phone calls, Spa.</li>
+                            </ul>
+                        </li>
+                        <li>The rates given above are applicable per guest per night in Bhutan.</li>
+                        <li>The above rates apply uniformly irrespective of location and the type of accommodation
+                            provided/requested. All accommodation establishments are approved and monitored by the
+                            government.</li>
+                    </uL>
+                </div>
+            </div>
+        </div>
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="headingFour">
+                <button data-mdb-collapse-init class="accordion-button" type="button" data-mdb-target="#collapseFour"
+                    aria-expanded="true" aria-controls="collapseFour">
+                    CAN I TRAVEL AS A FREE INDIVIDUAL IN BHUTAN?
+                </button>
+            </h2>
+            <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour"
+                data-mdb-parent="#accordionExample">
+                <div class="accordion-body">
+                    <p>Tourists are not permitted to travel freely without a tour guide in Bhutan. While all tours in
+                        Bhutan are pre-arranged, our itineraries offer ample flexibility. Tours to most parts of Bhutan
+                        can be arranged for an individual tourist and small groups of less than three persons in
+                        accordance with the travelers’ interests and desires. Such tours are subject to a surcharge,
+                        over and above the minimum daily rates applicable, as follows:
+                        Single individual – US$ 40 per night: Group of two – US $30 per person per night.</p>
+                </div>
+            </div>
+        </div>
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="headingFive">
+                <button data-mdb-collapse-init class="accordion-button" type="button" data-mdb-target="#collapseFive"
+                    aria-expanded="true" aria-controls="collapseFive">
+                    ARE THERE ANY DISCOUNTS?
+                </button>
+            </h2>
+            <div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive"
+                data-mdb-parent="#accordionExample">
+                <div class="accordion-body">
+                    Yes, we are glad to extend you the following maximum discounts allowed on the nightly SDF:
+                    <ul>
+                        <li>There will be no charge for CHILDREN up to the age of 5 years, while those between the ages
+                            of 6 and 12 years, accompanied by elders/guardians, will be given 50% discount on daily
+                            rates.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="headingSix">
+                <button data-mdb-collapse-init class="accordion-button" type="button" data-mdb-target="#collapseSix"
+                    aria-expanded="true" aria-controls="collapseSix">
+                    HOW CAN I PROCESS MY VISA FOR BHUTAN?
+                </button>
+            </h2>
+            <div id="collapseSix" class="accordion-collapse collapse" aria-labelledby="headingSix"
+                data-mdb-parent="#accordionExample">
+                <div class="accordion-body">
+                    <p>Upon confirmation that the full payment for your trip’s been received, your visa application will
+                        be processed by the government. You will need to fill out our Visa Application Form and email it
+                        to us along with a COLOR COPY of your passport. Bridge To Bhutan will apply on your behalf, and
+                        after approval, your “Visa Approval Letter” will be emailed to you. This process confirms your
+                        visa for Bhutan. Remember to PRINT and save a copy of this approval letter with your passport
+                        and NOT pack with your check-in luggage. The actual visa will stamped on your passport on
+                        arrival at the Paro International Airport.
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="headingSeven">
+                <button data-mdb-collapse-init class="accordion-button collapsed" type="button"
+                    data-mdb-target="#collapseSeven" aria-expanded="false" aria-controls="collapseSeven">
+                    WHY IS THERE A FIXED COST FOR TRAVEL TO BHUTAN? AND WHY IS IT RELATIVELY MORE EXPENSIVE THAN
+                    NEIGHBORING DESTINATIONS?
+                </button>
+            </h2>
+            <div id="collapseSeven" class="accordion-collapse collapse" aria-labelledby="headingSeven"
+                data-mdb-parent="#accordionExample">
+                <div class="accordion-body">
+                    <p>The tour cost that you pay is not just a fee for entry to Bhutan. This cost is a package that
+                        covers all your accommodation, meals, land transportation, guides, sightseeing, inland permits
+                        and fees and not to forget the service rendered by Visit Happy Trip to make your holiday a
+                        memorable one. If you are trekking, this sum covers all expenses for the treks, such as the cost
+                        of transport animals carrying your equipment and material, camping equipment, meals and
+                        transport.
+                    </p>
+                    <p>
+                        Working directly with Visit Happy Trip will provide the greatest flexibility without
+                        compromising comfort and authenticity. The only way to visit Bhutan is by purchasing a package
+                        tour from a reliable and licensed tour operator at these rates. For the last 20 years, Bhutan
+                        has marvelously preserved its age-old traditions, sacred monasteries and temples. The pristine
+                        air and environment, without large cities and slums, add more value to Bhutan as a tourist
+                        destination. For many visitors, Bhutan is refreshing; since they find here something that many
+                        other countries lost years ago, and will probably not be able to retrieve again. Therefore, it
+                        would be best if you support our government’s noble goal of sustainable high-value, low volume
+                        tourism, which all of our visitors enjoy when they come to Bhutan. We just can’t afford to be
+                        like any other tourist destination. You will know once you arrive in Bhutan.</p>
+                </div>
+            </div>
+        </div>
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="headingEight">
+                <button data-mdb-collapse-init class="accordion-button collapsed" type="button"
+                    data-mdb-target="#collapseEight" aria-expanded="false" aria-controls="collapseEight">
+                    CAN I FIND CHEAPER RATES FOR TRAVEL TO BHUTAN?
+                </button>
+            </h2>
+            <div id="collapseEight" class="accordion-collapse collapse" aria-labelledby="headingEight"
+                data-mdb-parent="#accordionExample">
+                <div class="accordion-body">
+                    <p>Yes, it may be possible. In any case, cheaper rates would inevitably lead to poorer customer
+                        service, as tour operators or touts would herd as many guests as possible in large groups, put
+                        them up in sub-standard hotels to cut expenses, and hire unqualified guides to haul their
+                        visitors around.
+                    </p>
+                    <p>
+                        It is also in tandem with our mission to be both socially and economically responsible. Unlike
+                        most travel destinations around the world, Bhutan offers a unique opportunity for travelers to
+                        contribute significantly in sustaining the values of the destination that we all hold dear; in
+                        Bhutan’s case, they are Bhutan’s age-old tradition and culture, and its pristine environment.
+                        The moment you commit to visiting Bhutan, you become a proponent of responsible travel. In
+                        Bhutan, tourism is a major source of revenue, second only to hydro-electricity. It thus plays a
+                        major role in nation building. Add to that our personalized services, including our
+                        knowledgeable, government certified guides, and refreshing itineraries. Now that’s priceless!
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="headingNine">
+                <button data-mdb-collapse-init class="accordion-button" type="button" data-mdb-target="#collapseNine"
+                    aria-expanded="true" aria-controls="collapseNine">
+                    WHEN DO I MAKE THE TOUR PAYMENT?
+                </button>
+            </h2>
+            <div id="collapseNine" class="accordion-collapse collapse" aria-labelledby="headingNine"
+                data-mdb-parent="#accordionExample">
+                <div class="accordion-body">
+                    <p>Our payments must be made at least two months before the start of a tour. The visa process will
+                        begin only after receipt of the full tour payment, as mandated by the government.</p>
+                </div>
+            </div>
+        </div>
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="headingTen">
+                <button data-mdb-collapse-init class="accordion-button" type="button" data-mdb-target="#collapseTen"
+                    aria-expanded="true" aria-controls="collapseTen">
+                    HOW DO I CANCEL MY TRIP?
+                </button>
+            </h2>
+            <div id="collapseTen" class="accordion-collapse collapse" aria-labelledby="headingTen"
+                data-mdb-parent="#accordionExample">
+                <div class="accordion-body">
+                    <p>Cancellation of a trip should be notified in writing directly to Visit Happy Trip<br>
+                        Tour programs booked and subsequently cancelled shall be subject to cancellation charges as
+                        follows:</p>
+                    <ul>
+                        <li>45 days or more prior to start of the tour – Full refund</li>
+                        <li>30-45 days or more prior to start of the tour – 20% of the rate</li>
+                        <li>22-29 days prior to start of tour – 30% of the rate</li>
+                        <li>15-21 days prior to start of tour – 50% of the rate</li>
+                        <li>Less than 15 days prior to start of tour- 100%</li>
+                        <Li>After arrival in Bhutan, or cancellation without notice – 100%</Li>
+                    </ul>
+
+                    <p> A separate administration fee of $75 will be applicable for all cancelled tours.<br>
+
+                        Your flight tickets, if bought, are governed by a separate Drukair cancellation policy. Drukair
+                        tickets are valid for one year from the date of issue and are subject to the following
+                        cancellation and refund rules:</p>
+                    <ul>
+                        <li>Full refund (minus administration charges) for tickets cancelled more than 45 days prior to
+                            arrival date in Bhutan</li>
+                        <li>50% refund for tickets cancelled between 30 and 45 days prior to arrival date</li>
+                        <li>No refund for tickets cancelled within 30 days of arrival date in Bhutan</li>
+                        <li>An administration fee of $25 per ticket will be applicable for all cancelled tickets</li>
+                        <li>Passengers who fail to show up for a flight will not be eligible for a refund</li>
+                        <li>Flights can be rescheduled for a $30 re-booking fee; however, once rescheduled, tickets are
+                            non-refundable and non-reroutable</li>
+                        <li>Lost tickets are non-refundable</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="headingEleven">
+                <button data-mdb-collapse-init class="accordion-button" type="button" data-mdb-target="#collapseEleven"
+                    aria-expanded="true" aria-controls="collapseEleven">
+                    WHAT HAPPENS IN THE CASE OF DELAYED ARRIVAL/DEPERATURE?
+                </button>
+            </h2>
+            <div id="collapseEleven" class="accordion-collapse collapse" aria-labelledby="headingEleven"
+                data-mdb-parent="#accordionExample">
+                <div class="accordion-body">
+                    <p>There shall be no SDF charge for the number of days of delay in the departure of visitors due to
+                        bad weather conditions, Drukair problems or road blocks. However, you will be charged any actual
+                        expenses for accommodation, food, transportation and any other services required.</p>
+                </div>
+            </div>
+        </div>
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="headingTwelve">
+                <button data-mdb-collapse-init class="accordion-button collapsed" type="button"
+                    data-mdb-target="#collapseTwelve" aria-expanded="false" aria-controls="collapseTwelve">
+                    WHAT KIND OF VEHICLES ARE USED FOR TOURS?
+                </button>
+            </h2>
+            <div id="collapseTwelve" class="accordion-collapse collapse" aria-labelledby="headingTwelve"
+                data-mdb-parent="#accordionExample">
+                <div class="accordion-body">
+                    <p>For individual travelers and a group of less than three persons, we use Toyota and Hyundai cars
+                        and SUVs. For groups of 3-6 persons, we have Toyota Hiace buses. For larger groups, we use
+                        Deluxe Toyota Coaster buses.
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="headingThirteen">
+                <button data-mdb-collapse-init class="accordion-button collapsed" type="button"
+                    data-mdb-target="#collapseThirteen" aria-expanded="false" aria-controls="collapseThirteen">
+                    WHAT KIND OF HOTELS WE WILL STAY?
+                </button>
+            </h2>
+            <div id="collapseThirteen" class="accordion-collapse collapse" aria-labelledby="headingThirteen"
+                data-mdb-parent="#accordionExample">
+                <div class="accordion-body">
+                    <p>We arrange the best available accommodation in each valley for our guests. These may not be
+                        comparable with multi-star hotels in developed countries, but will be clean and comfortable,
+                        with proper bathroom facilities and a good range of food. They are selected for their character
+                        and accessibility to interesting experiences. Bhutan’s tourism infrastructure is in its infancy,
+                        which is one of the country’s greatest draws, but it doesn’t make for the most luxurious
+                        accommodation. Expect traditional Bhutanese style lodges with private bath, but without air
+                        conditioning or central heating. As a Bridge To Bhutan guest, you will also get to stay in farm
+                        houses/home stays, experiencing rural Bhutan and its rustic lifestyle. Farmhouses are very basic
+                        with no attached bathrooms. Nevertheless, they can be a fun experience and a great insight into
+                        traditional Bhutanese lifestyle. Of course, upon extra payment above the minimum tariff, you
+                        also have an option to stay in the few boutique hotels/luxury resorts in Bhutan. Please indicate
+                        your interest while communicating with us.</p>
+                </div>
+            </div>
+        </div>
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="headingFourteen">
+                <button data-mdb-collapse-init class="accordion-button" type="button"
+                    data-mdb-target="#collapseFourteen" aria-expanded="true" aria-controls="collapseFourteen">
+                    WHEN IS THE BEST TIME TO BE IN BHUTAN
+                </button>
+            </h2>
+            <div id="collapseFourteen" class="accordion-collapse collapse" aria-labelledby="headingFourteen"
+                data-mdb-parent="#accordionExample">
+                <div class="accordion-body">
+                    <p>Spring and fall are usually the best times in Bhutan as far as weather is concerned. You will get
+                        spectacular views of the mountains with clear blue skies in winter and the best diversity of
+                        fauna and flora in the spring. In July and August there is more precipitation due to the famous
+                        monsoons. Nonetheless, these months are ideal if you like to be alone and you don’t want to get
+                        bumped into other tourists. You will still enjoy fabulous scenery and above all experience
+                        greater flexibility, be it the guide, accommodations or the type of vehicle used.</p>
+                </div>
+            </div>
+        </div>
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="headingFifteen">
+                <button data-mdb-collapse-init class="accordion-button" type="button" data-mdb-target="#collapseFifteen"
+                    aria-expanded="true" aria-controls="collapseFifteen">
+                    HOW DO I GET INTO BHUTAN AND IS THERE A DIRECT FLIGHT INTO BHUTAN?
+                </button>
+            </h2>
+            <div id="collapseFifteen" class="accordion-collapse collapse" aria-labelledby="headingFifteen"
+                data-mdb-parent="#accordionExample">
+                <div class="accordion-body">
+                    <p>There are no direct long-haul flights to Bhutan. The best way to enter and exit Bhutan is by:
+                    </p>
+
+                    <ul>
+                        Drukair, the national air carrier, which links Bhutan’s only airport at Paro Valley with:
+                        <li>Thailand – Bangkok</li>
+                        <li>India – New Delhi, Kolkata, Gaya, Bagdogra, and Guwahati</li>
+                        <li>Nepal – Kathmandu</li>
+                        <li>Singapore</li>
+                        <li>Bangladesh – Dhaka</li>
+
+                    </ul>
+                    <ul>
+                        Bhutan Airlines, which links Paro airport with:
+                        <li>Thailand – Bangkok</li>
+                        <li>India – New Delhi, Kolkata, Gaya, Bagdogra, and Guwahati</li>
+                        <li>Nepal – Kathmandu</li>
+                        <li>Bangladesh – Dhaka</li>
+                    </ul>
+
+                    <p>You will have to buy international plane ticket and book hotel room in any of the above
+                        gateway cities that you choose to connect to Drukair.</p>
+                </div>
+            </div>
+        </div>
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="headingSixteen">
+                <button data-mdb-collapse-init class="accordion-button" type="button" data-mdb-target="#collapseSixteen"
+                    aria-expanded="true" aria-controls="collapseSixteen">
+                    WHAT IS THE BEST WAY TO CARRY MY MONEY
+                </button>
+            </h2>
+            <div id="collapseSixteen" class="accordion-collapse collapse" aria-labelledby="headingSixteen"
+                data-mdb-parent="#accordionExample">
+                <div class="accordion-body">
+                    <p>Travelers checks are a safe way to carry your funds although they can sometimes be more
+                        difficult to change than
+                        cash. VISA and MasterCard are now acceptable in selected ATM’s and POS terminals. It is a
+                        good idea to always have a back-up of cash. We therefore recommend that you bring as much
+                        cash as you feel comfortable carrying. You may want the extra cash for incidental costs like
+                        shopping, drinking, tipping, etc.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="mt-3">
+        <b>Didn't find the question or answer you were looking for?</b> <a class="btn btn-danger btn-rounded">CONTACT
+            US</a>
+    </div>
+</div>
+{% endblock %}
+
+{% block javascripts %}
+{% endblock %}

@@ -1,0 +1,106 @@
+{% extends 'admin.html.twig' %}
+{% block stylesheets %}
+<style>
+    .add-image-wrapper {
+        border: 2px #056bbe dashed !important;
+        border-radius: 10px;
+    }
+
+    .add-image-wrapper:hover {
+        cursor: pointer;
+    }
+</style>
+{% endblock %}
+{% block body %}
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/admin">Home</a></li>
+        <li class="breadcrumb-item">Tour Packages</li>
+        <li class="breadcrumb-item active" aria-current="page">{{ form_status }} Tour</li>
+    </ol>
+</nav>
+<div class="mt-2">
+    {{ form_start(form)}}
+    <div class="card rounded-0">
+        <div class="card-header bg-danger text-white rounded-0"><b>Tour Package</b></div>
+        <div class="card-body">
+            <div class="row mb-4">
+                <label class="mb-1">Upload Images(3 Max)</label>
+                <div class="col-md-4">
+                    <div class="image-upload-file-wrapper">
+                        {{
+                        form_widget(form.images.vars.prototype.tour_image_1,{'attr':{'class':'image-upload-file form-control'}})
+                        }}
+                        <div class="mt-2 img-preview-wrapper">
+                            <img src="{{ asset( form_status == 'Update' ? 'uploads/tour-images/'~ tourPackageImages[0] : 'images/image-static/img_preview.jpg')| imagine_filter('thumbnail_admin_tour')}}" class="img-fluid img-preview">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="image-upload-file-wrapper">
+                        {{
+                        form_widget(form.images.vars.prototype.tour_image_2,{'attr':{'class':'image-upload-file form-control'}})
+                        }}
+                        <div class="mt-2 img-preview-wrapper">
+                            <img src="{{ asset( form_status == 'Update' ? 'uploads/tour-images/'~ tourPackageImages[1] : 'images/image-static/img_preview.jpg')| imagine_filter('thumbnail_admin_tour')}}" class="img-fluid img-preview">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="image-upload-file-wrapper">
+                        {{
+                        form_widget(form.images.vars.prototype.tour_image_3,{'attr':{'class':'image-upload-file form-control'}})
+                        }}
+                        <div class="mt-2 img-preview-wrapper">
+                            <img src="{{ asset( form_status == 'Save' ? 'images/image-static/img_preview.jpg' : 'uploads/tour-images/'~ tourPackageImages[2])| imagine_filter('thumbnail_admin_tour')}}" class="img-fluid img-preview">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row mb-4">
+                <div class="col">
+                    {{ form_label(form.tour_category)}}
+                    {{ form_widget(form.tour_category,{'attr':{'class':'ht-select'}})}}
+                </div>
+                <div class="col">
+                    {{ form_label(form.price)}}
+                    {{ form_widget(form.price,{'attr':{'class':'ht-input'}})}}
+                </div>
+            </div>
+            <div>
+                {{ form_label(form.tour_overview)}}
+                {{ form_widget(form.tour_overview)}}
+            </div>
+        </div>
+    </div>
+    <div class="mt-3">
+        <div class="card">
+            <div class="card-body bg-danger rounded-0 text-white">Itineraries</div>
+        </div>
+        {% set itinerary_count = 0 %}
+        <div class="itinerary" data-index="{{ form.itinerary|length > 0 ? form.itinerary|last.vars.name + 1 : 0 }}"
+            data-prototype="{{ include("admin/includes/_itinerary.html.twig", {form:
+            form.itinerary.vars.prototype})|e("html_attr") }}">
+            {% for itn in form.itinerary %}
+            {% set itinerary_count = itinerary_count + 1 %}
+            {{ include('admin/includes/_itinerary.html.twig', {form: itn}) }}
+            {% endfor %}
+        </div>
+        <a href="#" class="add-item-btn btn btn-primary btn-sm mt-2 mb-2">+ Add Itinerary</a>
+    </div>
+    <div class="mt-3">
+        <button class="btn btn-danger">{{ form_status }} Tour Package</button>
+    </div>
+    {{ form_end(form)}}
+</div>
+
+{% endblock %}
+
+{% block javascripts %}
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"
+    integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+<script src="{{ asset('js/itinerary.js')}}"></script>
+<script src="{{ asset('js/img-preview.js')}}"></script>
+<script src="{{ asset('js/tour-images.js')}}"></script>
+</script>
+{% endblock %}

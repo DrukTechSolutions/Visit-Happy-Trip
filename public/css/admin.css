@@ -1,0 +1,7 @@
+/* Form Inputs */
+.ht-input, .ht-select {
+  width: 100%;
+  padding: 5px;
+  background-color: #E6EBF0;
+  border: none;
+}

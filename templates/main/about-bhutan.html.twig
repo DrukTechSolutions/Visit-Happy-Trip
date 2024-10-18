@@ -1,0 +1,726 @@
+{% extends "base.html.twig" %}
+{% block stylesheets %}
+<style>
+    #about-bhutan-img {
+        background-image: url('{{ asset("/images/image-static/dragon-nest.jpg")}}');
+        height: 450px;
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+        background-attachment: fixed;
+        width: 100%;
+        position: relative;
+    }
+
+    #about-bhutan-header {
+        position: absolute;
+        background-color: rgba(0, 0, 0, 0.5);
+        height: 100%;
+        width: 100%;
+    }
+
+    #about-bhutan-header div div h2 {
+        color: white;
+    }
+</style>
+{% endblock %}
+{% block body %}
+<div id="about-bhutan-img">
+    <div id="about-bhutan-header">
+        <div class="d-flex align-items-center h-100">
+            <div class="container">
+                <h2 class="d-inline-flex bg-black text-warning p-2">ABOUT BHUTAN</h2>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container mt-5">
+    <ul class="nav nav-tabs nav-justified mb-3" id="ex1" role="tablist">
+        <li class="nav-item" role="presentation">
+            <a data-mdb-tab-init class="nav-link active" id="about-bhutan-tab-1" href="#about-bhutan-tabs-1" role="tab"
+                aria-controls="about-bhutan-tabs-1" aria-selected="true">Bhutan</a>
+        </li>
+        <li class="nav-item" role="presentation">
+            <a data-mdb-tab-init class="nav-link" id="about-bhutan-tab-2" href="#about-bhutan-tabs-2" role="tab"
+                aria-controls="about-bhutan-tabs-2" aria-selected="false">Travel Advice</a>
+        </li>
+        <li class="nav-item" role="presentation">
+            <a data-mdb-tab-init class="nav-link" id="about-bhutan-tab-3" href="#about-bhutan-tabs-3" role="tab"
+                aria-controls="about-bhutan-tabs-3" aria-selected="false">History</a>
+        </li>
+        <li class="nav-item" role="presentation">
+            <a data-mdb-tab-init class="nav-link" id="about-bhutan-tab-4" href="#about-bhutan-tabs-4" role="tab"
+                aria-controls="about-bhutan-tabs-4" aria-selected="true">Religion</a>
+        </li>
+        <li class="nav-item" role="presentation">
+            <a data-mdb-tab-init class="nav-link" id="about-bhutan-tab-5" href="#about-bhutan-tabs-5" role="tab"
+                aria-controls="about-bhutan-tabs-5" aria-selected="false">Architecture</a>
+        </li>
+        <li class="nav-item" role="presentation">
+            <a data-mdb-tab-init class="nav-link" id="about-bhutan-tab-6" href="#about-bhutan-tabs-6" role="tab"
+                aria-controls="about-bhutan-tabs-6" aria-selected="false">Arts & Crafts</a>
+        </li>
+        <li class="nav-item" role="presentation">
+            <a data-mdb-tab-init class="nav-link" id="about-bhutan-tab-7" href="#about-bhutan-tabs-7" role="tab"
+                aria-controls="about-bhutan-tabs-7" aria-selected="true">Festivals</a>
+        </li>
+        <li class="nav-item" role="presentation">
+            <a data-mdb-tab-init class="nav-link" id="about-bhutan-tab-8" href="#about-bhutan-tabs-8" role="tab"
+                aria-controls="about-bhutan-tabs-8" aria-selected="false">Flora & Fauna</a>
+        </li>
+        <li class="nav-item" role="presentation">
+            <a data-mdb-tab-init class="nav-link" id="about-bhutan-tab-9" href="#about-bhutan-tabs-9" role="tab"
+                aria-controls="about-bhutan-tabs-9" aria-selected="false">GNH-Gross National Happiness</a>
+        </li>
+    </ul>
+
+    <div class="tab-content about-bhutan-tab-wrapper" id="ex2-content">
+        <div class="tab-pane fade show active" id="about-bhutan-tabs-1" role="tabpanel"
+            aria-labelledby="about-bhutan-tab-1">
+            <p>Bhutan has rich and diverse flora and fauna with over 70 percent forest coverage and wide range of
+                altitude and climate. Forest types include Fir forests, mixed conifer forest blue pine, Chirpine forest,
+                and broad leaf mixed with conifer, upland hardwood forest, lowland hardwood and tropical lowland
+                forests. Bhutan can be divided into three ecological zones:</p>
+
+            <p>The southern foothills, which is situated in Subtropical Zone (150m to 2000m) with Tropical or
+                Subtropical vegetation. The Temperate Zone (2000 to 4000m) with conifer or broadleaf forests covers most
+                parts of the country; and The Alpine Zone (4000m and above) with no forest cover, at the northern
+                Himalayan regions.</p>
+
+            <p>Over 60 percent of the common plant species of the Eastern Himalayas are found in Bhutan. The forest
+                type consists of mixed conifer forest, fir forest chirpine forest, blue pine forest, broadleaf mixed
+                with conifers, tropical lowland forests, lowland hardwood forest and upland hardwood forest. Bhutan has
+                a very rich species of flora ranging from altitudes as low as 200m to as high as 4000m. Over 5500
+                species of vascular plants have been recorded till date including 46 species of Rhododendrons and 369
+                species of Orchids. The Bhutan Himalayas is also important source of valuable medicinal plants used in
+                ayurvedic medicine so much so that a National Institute of Traditional Medicine has been established at
+                Thimphu. High altitude in Bhutan is home to animals like Snow leopard, blue sheep, red panda, tiger,
+                takin, marmot and musk deer. Temperate zone fauna include Tiger, leopard, goral, gray langur, Himalayan
+                black beer, red panda, sambur, wild pig, and barking deer. The tropical forests in the south have tiger,
+                clouded leopard, elephants, one horned Rhinoceros, water buffalo, golden langur, gaur, swamp deer, hog
+                deer horn bills etc. Black necked crane, Green-backed tit, Plumbeous water Redstart and Oriental Turtle
+                Dove are some of the popular birds found in Bhutan.</p>
+        </div>
+        <div class="tab-pane fade" id="about-bhutan-tabs-2" role="tabpanel" aria-labelledby="about-bhutan-tab-2">
+            <b>Climate</b>
+            <p>The three relief zones (the foothills, the central Himalayan valleys and the High Himalayas) also define
+                three climatic regions: tropical, temperate with monsoon and alpine with monsoon. The southern part of
+                Bhutan is tropical and the east of Bhutan is warmer than the west. The central valleys of Punakha,
+                Wangdiphodrang, Monggar, Trashigang and lhuntse enjoy a semi-tropical climate with very cool winter
+                while
+                Thimphu, Trongsa and Bumthang have a much harsher climate with heavy monsoon rains in the summer and
+                heavy
+                snowfall in the winter. Winter in Bhutan starts from (mid-November till mid-March), the climate is dry
+                with
+                the daytime temperature falling between 16-18C (60-65F) and night temperature falling below zero. The
+                spring
+                season (mid March to mid June) offers warmer temperatures falling between 27-29C (80-84F). Monsoon
+                usually
+                arrives in mid-June, with light rain falling mainly in the afternoons and evenings. The best season for
+                trekking is in autumn which arrives at the end of September which will then last until mid-November.</p>
+            <b>Temperature chart of major towns in Bhutan in Celcius(°C)</b>
+            <div class="table-responsive">
+                <table class="table text-center">
+                    <thead>
+                        <tr>
+                            <th>MONTH</th>
+                            <th colspan="2">JAN</th>
+                            <th colspan="2">FEB</th>
+                            <th colspan="2">MARCH</th>
+                            <th colspan="2">APRIL</th>
+                            <th colspan="2">MAY</th>
+                            <th colspan="2">JUNE</th>
+                            <th colspan="2">JULY</th>
+                            <th colspan="2">AUG</th>
+                            <th colspan="2">SEPT</th>
+                            <th colspan="2">OCT</th>
+                            <th colspan="2">NOV</th>
+                            <th colspan="2">DEC</th>
+                        </tr>
+                        <tr>
+                            <th scope="row">PLACE</th>
+                            <th>MAX</th>
+                            <th>MIN</th>
+                            <th>MAX</th>
+                            <th>MIN</th>
+                            <th>MAX</th>
+                            <th>MIN</th>
+                            <th>MAX</th>
+                            <th>MIN</th>
+                            <th>MAX</th>
+                            <th>MIN</th>
+                            <th>MAX</th>
+                            <th>MIN</th>
+                            <th>MAX</th>
+                            <th>MIN</th>
+                            <th>MAX</th>
+                            <th>MIN</th>
+                            <th>MAX</th>
+                            <th>MIN</th>
+                            <th>MAX</th>
+                            <th>MIN</th>
+                            <th>MAX</th>
+                            <th>MIN</th>
+                            <th>MAX</th>
+                            <th>MIN</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th scope="row">Paro</th>
+                            <td>7</td>
+                            <td>-6</td> <!-- Jan -->
+                            <td>9</td>
+                            <td>-4</td> <!-- Feb -->
+                            <td>12</td>
+                            <td>0</td> <!-- Mar -->
+                            <td>16</td>
+                            <td>5</td> <!-- Apr -->
+                            <td>17</td>
+                            <td>7</td> <!-- May -->
+                            <td>18</td>
+                            <td>12</td> <!-- Jun -->
+                            <td>18</td>
+                            <td>13</td> <!-- Jul -->
+                            <td>18</td>
+                            <td>13</td> <!-- Aug -->
+                            <td>17</td>
+                            <td>10</td> <!-- Sep -->
+                            <td>15</td>
+                            <td>7</td> <!-- Oct -->
+                            <td>12</td>
+                            <td>2</td> <!-- Nov -->
+                            <td>9</td>
+                            <td>-1</td> <!-- Dec -->
+                        </tr>
+
+                        <tr>
+                            <th scope="row">Thimphu</th>
+                            <td>14.8</td>
+                            <td>-2.2</td> <!-- Jan -->
+                            <td>16.6</td>
+                            <td>0.3</td> <!-- Feb -->
+                            <td>19.3</td>
+                            <td>3.8</td> <!-- Mar -->
+                            <td>22.4</td>
+                            <td>7.9</td> <!-- Apr -->
+                            <td>24.8</td>
+                            <td>11.6</td> <!-- May -->
+                            <td>26.7</td>
+                            <td>15.3</td> <!-- Jun -->
+                            <td>27</td>
+                            <td>16.5</td> <!-- Jul -->
+                            <td>27.3</td>
+                            <td>16.1</td> <!-- Aug -->
+                            <td>26</td>
+                            <td>14.6</td> <!-- Sep -->
+                            <td>23.7</td>
+                            <td>9</td> <!-- Oct -->
+                            <td>19.7</td>
+                            <td>3.2</td> <!-- Nov -->
+                            <td>16.6</td>
+                            <td>-0.8</td> <!-- Dec -->
+                        </tr>
+
+                        <tr>
+                            <th scope="row">Punakha</th>
+                            <td>18.7</td>
+                            <td>5.8</td> <!-- Jan -->
+                            <td>20.6</td>
+                            <td>7.9</td> <!-- Feb -->
+                            <td>23.8</td>
+                            <td>11.1</td> <!-- Mar -->
+                            <td>26.8</td>
+                            <td>14.5</td> <!-- Apr -->
+                            <td>28.8</td>
+                            <td>17.5</td> <!-- May -->
+                            <td>30.5</td>
+                            <td>19.9</td> <!-- Jun -->
+                            <td>30.7</td>
+                            <td>20.7</td> <!-- Jul -->
+                            <td>30.4</td>
+                            <td>20.4</td> <!-- Aug -->
+                            <td>29.4</td>
+                            <td>19.1</td> <!-- Sep -->
+                            <td>27.5</td>
+                            <td>16.4</td> <!-- Oct -->
+                            <td>23.8</td>
+                            <td>11</td> <!-- Nov -->
+                            <td>20.1</td>
+                            <td>7.4</td> <!-- Dec -->
+                        </tr>
+
+                        <tr>
+                            <th scope="row">Wangdue</th>
+                            <td>17</td>
+                            <td>6</td> <!-- Jan -->
+                            <td>19</td>
+                            <td>7</td> <!-- Feb -->
+                            <td>23</td>
+                            <td>11</td> <!-- Mar -->
+                            <td>26</td>
+                            <td>14</td> <!-- Apr -->
+                            <td>28</td>
+                            <td>17</td> <!-- May -->
+                            <td>30</td>
+                            <td>19</td> <!-- Jun -->
+                            <td>31</td>
+                            <td>20</td> <!-- Jul -->
+                            <td>30</td>
+                            <td>19</td> <!-- Aug -->
+                            <td>28</td>
+                            <td>17</td> <!-- Sep -->
+                            <td>25</td>
+                            <td>14</td> <!-- Oct -->
+                            <td>22</td>
+                            <td>9</td> <!-- Nov -->
+                            <td>19</td>
+                            <td>7</td> <!-- Dec -->
+                        </tr>
+
+                        <tr>
+                            <th scope="row">Trongsa</th>
+                            <td>13</td>
+                            <td>2</td> <!-- Jan -->
+                            <td>15</td>
+                            <td>4</td> <!-- Feb -->
+                            <td>18</td>
+                            <td>7</td> <!-- Mar -->
+                            <td>21</td>
+                            <td>10</td> <!-- Apr -->
+                            <td>23</td>
+                            <td>13</td> <!-- May -->
+                            <td>24</td>
+                            <td>16</td> <!-- Jun -->
+                            <td>24</td>
+                            <td>17</td> <!-- Jul -->
+                            <td>24</td>
+                            <td>17</td> <!-- Aug -->
+                            <td>23</td>
+                            <td>16</td> <!-- Sep -->
+                            <td>22</td>
+                            <td>14</td> <!-- Oct -->
+                            <td>19</td>
+                            <td>8</td> <!-- Nov -->
+                            <td>16</td>
+                            <td>4</td> <!-- Dec -->
+                        </tr>
+
+                        <tr>
+                            <th scope="row">Bumthang</th>
+                            <td>9</td>
+                            <td>-5</td> <!-- Jan -->
+                            <td>11</td>
+                            <td>-3</td> <!-- Feb -->
+                            <td>14</td>
+                            <td>1</td> <!-- Mar -->
+                            <td>17</td>
+                            <td>4</td> <!-- Apr -->
+                            <td>20</td>
+                            <td>7</td> <!-- May -->
+                            <td>21</td>
+                            <td>11</td> <!-- Jun -->
+                            <td>22</td>
+                            <td>12</td> <!-- Jul -->
+                            <td>22</td>
+                            <td>12</td> <!-- Aug -->
+                            <td>21</td>
+                            <td>11</td> <!-- Sep -->
+                            <td>19</td>
+                            <td>9</td> <!-- Oct -->
+                            <td>14</td>
+                            <td>1</td> <!-- Nov -->
+                            <td>11</td>
+                            <td>-2</td> <!-- Dec -->
+                        </tr>
+
+                        <tr>
+                            <th scope="row">Mongar</th>
+                            <td>15</td>
+                            <td>7</td> <!-- Jan -->
+                            <td>17</td>
+                            <td>9</td> <!-- Feb -->
+                            <td>20</td>
+                            <td>12</td> <!-- Mar -->
+                            <td>23</td>
+                            <td>15</td> <!-- Apr -->
+                            <td>25</td>
+                            <td>17</td> <!-- May -->
+                            <td>26</td>
+                            <td>19</td> <!-- Jun -->
+                            <td>26</td>
+                            <td>20</td> <!-- Jul -->
+                            <td>26</td>
+                            <td>20</td> <!-- Aug -->
+                            <td>25</td>
+                            <td>19</td> <!-- Sep -->
+                            <td>23</td>
+                            <td>17</td> <!-- Oct -->
+                            <td>20</td>
+                            <td>12</td> <!-- Nov -->
+                            <td>17</td>
+                            <td>9</td> <!-- Dec -->
+                        </tr>
+
+                        <tr>
+                            <th scope="row">Trashigang</th>
+                            <td>18</td>
+                            <td>9</td> <!-- Jan -->
+                            <td>20</td>
+                            <td>11</td> <!-- Feb -->
+                            <td>23</td>
+                            <td>14</td> <!-- Mar -->
+                            <td>25</td>
+                            <td>17</td> <!-- Apr -->
+                            <td>27</td>
+                            <td>19</td> <!-- May -->
+                            <td>28</td>
+                            <td>21</td> <!-- Jun -->
+                            <td>28</td>
+                            <td>22</td> <!-- Jul -->
+                            <td>28</td>
+                            <td>22</td> <!-- Aug -->
+                            <td>27</td>
+                            <td>21</td> <!-- Sep -->
+                            <td>25</td>
+                            <td>19</td> <!-- Oct -->
+                            <td>23</td>
+                            <td>14</td> <!-- Nov -->
+                            <td>20</td>
+                            <td>11</td> <!-- Dec -->
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="mt-3">
+                <b>Mode of Travel</b>
+                <p>The only mode of travel within the country is by road. The roads are single lane paved highways that
+                    connects Bhutan from east to west and north to south.</p>
+                <b>Distances and Travel Times within Bhutan</b>
+            </div>
+            <table class="table mt-3">
+                <thead>
+                    <tr>
+                        <th scope="col"><strong>From / To</strong></th>
+                        <th scope="col"><strong>Distance</strong></th>
+                        <th scope="col"><strong>Travel Time</strong></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td scope="row">Thimphu – Paro</td>
+                        <td>54 km</td>
+                        <td>1 hr</td>
+                    </tr>
+                    <tr>
+                        <td scope="row">Thimphu – Phuntsholing</td>
+                        <td>176 km</td>
+                        <td>6 hrs</td>
+                    </tr>
+                    <tr>
+                        <td scope="row">Phuntsholing – Bagdogra (India)</td>
+                        <td>170 km</td>
+                        <td>4 hrs</td>
+                    </tr>
+                    <tr>
+                        <td scope="row">Thimphu – Ha</td>
+                        <td>115 km</td>
+                        <td>3 hrs 30 min</td>
+                    </tr>
+                    <tr>
+                        <td scope="row">Ha – Paro</td>
+                        <td>60 km</td>
+                        <td>2 hrs 30 min</td>
+                    </tr>
+                    <tr>
+                        <td scope="row">Thimphu – Wangdue Phodrang</td>
+                        <td>70 km</td>
+                        <td>2 hrs</td>
+                    </tr>
+                    <tr>
+                        <td scope="row">Thimphu – Punakha</td>
+                        <td>77 km</td>
+                        <td>2 hrs 15 min</td>
+                    </tr>
+                    <tr>
+                        <td scope="row">Punakha – Wangdue Phodrang</td>
+                        <td>21 km</td>
+                        <td>30 min</td>
+                    </tr>
+                    <tr>
+                        <td scope="row">Wangdue Phodrang – Trongsa</td>
+                        <td>129 km</td>
+                        <td>4 hrs</td>
+                    </tr>
+                    <tr>
+                        <td scope="row">Trongsa – Bumthang</td>
+                        <td>68 km</td>
+                        <td>2 hrs 30 min</td>
+                    </tr>
+                    <tr>
+                        <td scope="row">Bumthang – Mongar</td>
+                        <td>129 km</td>
+                        <td>4 hrs</td>
+                    </tr>
+                    <tr>
+                        <td scope="row">Mongar – Trashigang</td>
+                        <td>90 km</td>
+                        <td>3 hrs</td>
+                    </tr>
+                    <tr>
+                        <td scope="row">Trashigang – Trashi Yangtse</td>
+                        <td>55 km</td>
+                        <td>2 hrs</td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="mt-3">
+                <b>Food</b><br>
+                <p>Traditional Bhutanese food is hot and spicy. However to suite your needs, Chinese, Indian, and
+                    Continental dishes are also available. The more adventurous can try the local delicacies like the
+                    tasty and fiery national dish of Bhutan, Emma Datshi which is made with chillies and local Bhutanese
+                    cheese. Meals are normally served buffet style in the hotels. Please give some advance notice of any
+                    special dietary requirements so that we can make appropriate arrangements when the catering team
+                    assembles provisions. All meals while you trek or visit in Bhutan are also included in the daily
+                    tour cost.
+                </p>
+                <b>Electricity</b><br>
+                <p>In Bhutan, electricity runs on 220/240 volts, with round hole two-pin and three-pin power outlets. In
+                    Thimphu, electrical appliance shops stock adapter plugs, but they are unlikely to be available
+                    elsewhere.
+                </p>
+                <b>Communications</b><br>
+                <p>Internet cafes are more widespread in western part of Bhutan and IDD calling booths can be found even
+                    in the remote far east of the country. IDD calls may be made and received at most accommodations
+                    used by Tashi Tours & Travels, and internet facilities are readily accessible.
+                </p>
+                <b>Clothing</b><br>
+                <p>Due to the wide range of temperature and climatic conditions it is advisable to dress in layers. For
+                    protection against cold, layered clothing is better than one or two thick garments. Clothing should
+                    preferably be made from natural materials, which allow the body to breathe. You will be offending
+                    people if you walk around in skimpy or tight fitting clothes. Shorts are not welcomed and women are
+                    advised to wear below the knee skirts or fairly loose trousers. Dress modestly and respectfully for
+                    visits to monasteries, dzongs and other religious institutions. Hats, caps etc. should be removed
+                    before entering the premises.
+                </p>
+                <b>Shoes</b><br>
+                <p>Bring comfortable sport shoes for light hikes & sightseeing; hiking boots for treks; semi formal
+                    shoes for dinners/appointments/functions.
+                </p>
+                <b>Trekkers</b><br>
+                <p>We provide clean but used sleeping bags and foam mats, you can bring your own bring sleeping bag and
+                    thermal mats if you prefer ; comfortable trekking boots which have already been broken in and plenty
+                    of pairs of socks, noting that woollen socks dry quicker than cotton ones. Also bring a water bottle
+                    and plastic bags for packing clothing while on trek, as plastic bags are banned in Bhutan. Others:
+                    Sunglasses/spare glasses, knife, hat, umbrella, camera, films and accessories (including spare
+                    camera batteries), insect repellent, hand cream, small sewing kit & safety pins, flash light
+                    (w/spare batteries), mirror, scissors, sun cream, sun burn relief cream, lip salve, soluble aspirin,
+                    antiseptic cream, anti-histamine cream, anti-diarrhoea pills, altitude & car sickness medicine and
+                    any medication you take regularly, or might need to take for a periodically recurring condition,
+                    such as asthma.
+                </p>
+                <b>Photography</b><br>
+                <p>Outdoor photography is usually permitted, but taking photographs inside shrine rooms of Dzongs,
+                    Monasteries and religious institutions is prohibited. Please check with your guide before taking any
+                    photographs. While taking photographs of local people, their houses and shops etc always make sure
+                    you ask by gesture if it is alright to do so.
+                </p>
+                <b>Shopping</b><br>
+                <p>Hand-woven textiles, carved masks, woven baskets, wooden bowls, handmade paper products, finely
+                    crafted metal objects, thangkha paintings and Bhutan’s exquisite postage stamps are the items mostly
+                    purchased by travellers in Bhutan. The buying and selling of antiques is strictly forbidden.
+                    <b>Gratuities</b><br>
+                <p>Tipping is not mandatory rather its a choice you make after you decide . You can always decide how
+                    much to tip by asking yourself how much Tashi Tours & Travels as your travel partner has performed,
+                    to make your travel a memorable and exciting experience.
+                </p>
+                <b>Customs</b>
+                <p>Visitors are required to complete a passenger declaration form for checking by concerned officers on
+                    arrival. The following articles are exempt from duty:
+                </p>
+                <ul>
+                    <li>Personal effects and articles for day to day use by the visitor</li>
+                    <li>1 litre of alcohol (spirits or wine)</li>
+                    <li>200 cigarettes, on payment of import duty of 200%</li>
+                    <li>Instruments, apparatus or appliances for professional use</li>
+                    <li>Photographic equipment, video cameras and other electronic goods for personal use.</li>
+                </ul>
+                <p>The articles mentioned under (d) & (e) must be declared on the declaration form. If any such items
+                    are disposed of in Bhutan by sale or gift, they are liable for customs duty.
+                    <br>
+                    On departure, visitors are required to surrender their forms to the Customs authorities.
+                    Import/export restrictions of the following goods is strictly prohibited
+                </p>
+                <ul>
+                    <li>Arms, ammunitions and explosives</li>
+                    <li>All narcotics and drugs except medically prescribed drugs</li>
+                    <li>Wildlife products, especially those of endangered species</li>
+                    <li>Antiques Imports of plants, soils etc. are subject to quarantine regulations.</li>
+                </ul>
+            </div>
+        </div>
+        <div class="tab-pane fade" id="about-bhutan-tabs-3" role="tabpanel" aria-labelledby="about-bhutan-tab-3">
+            <p>Bhutan’s early history is steeped in mythology and remains obscure. It may have been inhabited as early
+                as 2000 B.C., but not much was known until the introduction of Tibetan Buddhism in the 9th century A.D.
+                when turmoil in Tibet forced many monks to flee to Bhutan. In the 12th century A.D., the Drukpa Kagyupa
+                school was established and remains the dominant form of Buddhism in Bhutan today. The country’s
+                political history is intimately tied to its religious history and the relations among the various
+                monastic schools and monasteries. Bhutan is one of the only countries which has been independent
+                throughout its history, never conquered, occupied, or governed by an outside power. Although there has
+                been speculation that it was under the Kamarupa Kingdom or the Tibetan Empire in the 7th to 9th
+                centuries, firm evidence is lacking.</p>
+
+            <p>From the time historical records are clear, Bhutan has continuously and successfully defended its
+                sovereignty. The consolidation of Bhutan occurred in 1616 when Ngawanag Namgyal, a man (lama) from
+                Tibet, defeated three Tibetan invasions, subjugated rival religious schools, codified an intricate and
+                comprehensive system of law, and established himself as ruler (Shabdrung) over a system of
+                ecclesiastical and civil administrators. After his death, infighting and civil war eroded the power of
+                the shabdrung for the next 200 years when in 1885, Ugyen Wangchuck was able to consolidate power and
+                cultivated closer ties with the British in India. In 1907, Ugyen Wangchuck was elected as the hereditary
+                ruler of Bhutan, crowned on December 17, 1907, and installed as the head of state Druk Gyalpo (Dragon
+                King).</p>
+
+            <p>In 1910, King Ugyen and the British signed the Treaty of Punakha which provided that British India would
+                not interfere in the internal affairs of Bhutan if the country accepted external advice in its external
+                relations. When Ugyen Wangchuck died in 1926, his son Jigme Wangchuck became the next ruler, and when
+                India gained independence in 1947, the new Indian Government recognized Bhutan as an independent
+                country.</p>
+
+            <p>In 1949, India and Bhutan signed the Treaty of Peace and Friendship, which provided that India would not
+                interfere in Bhutan’s internal affairs but would be guided by India in its foreign policy. Succeeded in
+                1952 by his son Jigme Dorji Wangchuck, Bhutan began to slowly emerge from its isolation and began a
+                program of planned development. Bhutan became a member of the United Nations in 1971, and the National
+                Assembly was established and a new code of law, as well as the Royal Bhutanese Army and the High Court.
+            </p>
+
+            <p>In 1972, Jigme Singye Wanchuck ascended the throne at age 16. He emphasized modern education,
+                decentralization of governance, the development of hydroelectricity and tourism and improvements in
+                rural developments. He was perhaps best known internationally for his overarching development philosophy
+                of “Gross National Happiness.” It recognizes that there are many dimensions to development and that
+                economic goals alone are not sufficient. Satisfied with Bhutan’s transitioning democratization process,
+                he abdicated in December 2006 rather than wait until the promulgation of the new constitution in 2008.
+                His son, Jigme Khesar Namgyel Wangchuck, became King upon his abdication.</p>
+        </div>
+        <div class="tab-pane fade" id="about-bhutan-tabs-4" role="tabpanel" aria-labelledby="about-bhutan-tab-4">
+            <p>Bhutan is the only country in the world where Buddhism is the official religion and is endorsed by the
+                government. Buddhism is practiced through out the country. All most all the Bhutanese are Buddhist.
+                Approximately two-thirds to three-quarters of the population practice Drukpa Kagyupa or Ningmapa
+                Buddhism, both of which are disciplines of Mahayana Buddhism. Approximately one-quarter of the
+                population is ethnic Nepalese and practice Hinduism. Christians and non-religious groups comprise less
+                than 1 percent of the population. Before the arrival of Buddhism to Bhutan, various forms of animistic
+                religion such as bonism were followed by people in Bhutan. In some parts of the country, we can still
+                see, these traditions and rituals are still practiced by minority groups. Guru Rinpoche brought Buddhism
+                to Bhutan in 8th century. After this, Bhutan has become home to many sages and saints. Some of the key
+                figures of the Bhutanese Buddhism are Kuenkhen Longchen Ramjam, Phojo Drukgom Zhigpo, Drukpa Kuenley,
+                Zhabdrung Ngwang Namgyel and Gyalse Tenzin Rabgye.</p>
+        </div>
+        <div class="tab-pane fade" id="about-bhutan-tabs-5" role="tabpanel" aria-labelledby="about-bhutan-tab-5">
+            <p>Bhutanese architecture is a unique and exquisite example of the craftsmanship of the people of Bhutan.
+                Jampa Lhakhang in Bumthang valley or Kyichu Lhakhang in Paro valley are build during the period of the
+                Tibetan king Songtsen Gampo are the first recorded buildings in the history of Bhutan. Later on many
+                monasteries were built in between the 13th and 17th centuries. Among the most active temple-builders in
+                the 15th century were Ngawang Choegyal, the great grandfather of Zhabdrung Ngawang Namgyal, and Tertoen
+                Pema Lingpa.</p>
+        </div>
+        <div class="tab-pane fade" id="about-bhutan-tabs-6" role="tabpanel" aria-labelledby="about-bhutan-tab-6">
+            <p>Bhutan’s artistic tradition has its roots in Buddhism with almost all representation in the arts running
+                along the prevailing theme of struggle between good and evil. Bhutanese art is mostly symbolic. It is
+                highly decorative and ornamental. The Buddhist nature of Bhutan’s artistic heritage may be traced to
+                Pema Lingpa, the great 15th Century terton (treasure discoverer), who was an accomplished painter,
+                sculptor, xylographer, and architect. In 1680, Desi Tenzin Rabgye opened the school of Zorig Chusum to
+                teach 13 types of Bhutanese arts and crafts under the instruction of Shabdrung Ngawang Namgyel. Such
+                promotion of traditional Bhutanese art has been preserved through the centuries, with continued
+                patronage provided by the Royal family, nobility and clergy. The common people, who depend on the
+                artisans for a wide variety of metal and wooden objects indispensable to typical Bhutanese households,
+                provide active support to the arts.The artist is often a religious man who creates the work commissioned
+                by a Jinda or patron.</p>
+            <p>Paintings and sculpture are made by groups of artists working in special workshops executed by monks or
+                laymen. The basic preliminary work is done by the disciples, after which the master carries out the
+                finishing touch of fine details.</p>
+            <b>The 13 types of Bhutanese arts and crafts are:</b>
+            <ul>
+                <li>Shing zo (Woodwork)</li>
+                <li>Dho zo (Stonework)</li>
+                <li>Par zo (Carving)</li>
+                <li>Lha zo (Painting)</li>
+                <li>Jim zo (Sculpting)</li>
+                <li>Lug zo (Casting)</li>
+                <li>Shag zo (Wood Turning)</li>
+                <li>Gar zo (Blacksmith)</li>
+                <li>Troe zo (Ornament Making)</li>
+                <li>Tsha zo (Bamboo Work)</li>
+                <li>De zo (Paper Making)</li>
+                <li>Tshem zo (Tailoring, embroidery and applique)</li>
+                <li>Thag zo (Weaving)</li>
+            </ul>
+            <p>The arts and crafts continue to thrive despite a small tourist market. Much of this is due to the
+                government’s support and emphasis on the preservation of culture and tradition.</p>
+        </div>
+        <div class="tab-pane fade" id="about-bhutan-tabs-7" role="tabpanel" aria-labelledby="about-bhutan-tab-7">
+            <p>Festivals in Bhutan are celebrated as religious rituals, they are held on ground which is purified and
+                consecrated by religious heads. All participants of the religious rituals are either monks or laymen. It
+                is said that they perform in a complete state of meditation helping them transform themselves into the
+                deities which they represent in various dances. Bhutanese believe that the performers generate a
+                spiritual power, which cleanses, purifies, enlightens and blesses each and everyone witnessing the
+                ceremony. It should be understood that disrespectful or impolite behaviour is unacceptable to the
+                Bhutanese people while observing festivals within the country. Please note to observe common courtesy in
+                your actions when taking pictures of dances or locals attending the festivals. It is important to note
+                that festivals are not entertainment events and they are not held as tourist attractions. Bhutanese are
+                proud of their festivals and value them with their highest respect for they are genuine manifestations
+                of religious traditions, thousands of years old which outsiders are given the privilege of witnessing.
+                We would appreciate to see that this privilege is respected, without damaging the beauty and sacredness
+                of the rituals.</p>
+        </div>
+        <div class="tab-pane fade" id="about-bhutan-tabs-8" role="tabpanel" aria-labelledby="about-bhutan-tab-8">
+            <p>Bhutan has rich and diverse flora and fauna with over 70 percent forest coverage and wide range of
+                altitude and climate. Forest types include Fir forests, mixed conifer forest blue pine, Chirpine forest,
+                and broad leaf mixed with conifer, upland hardwood forest, lowland hardwood and tropical lowland
+                forests. Bhutan can be divided into three ecological zones:
+            </p>
+            <p>The southern foothills, which is situated in Subtropical Zone (150m to 2000m) with Tropical or
+                Subtropical vegetation. The Temperate Zone (2000 to 4000m) with conifer or broadleaf forests covers most
+                parts of the country; and The Alpine Zone (4000m and above) with no forest cover, at the northern
+                Himalayan regions.
+            </p>
+            <p>Over 60 percent of the common plant species of the Eastern Himalayas are found in Bhutan. The forest type
+                consists of mixed conifer forest, fir forest chirpine forest, blue pine forest, broadleaf mixed with
+                conifers, tropical lowland forests, lowland hardwood forest and upland hardwood forest. Bhutan has a
+                very rich species of flora ranging from altitudes as low as 200m to as high as 4000m. Over 5500 species
+                of vascular plants have been recorded till date including 46 species of Rhododendrons and 369 species of
+                Orchids. The Bhutan Himalayas is also important source of valuable medicinal plants used in ayurvedic
+                medicine so much so that a National Institute of Traditional Medicine has been established at Thimphu.
+                High altitude in Bhutan is home to animals like Snow leopard, blue sheep, red panda, tiger, takin,
+                marmot and musk deer. Temperate zone fauna include Tiger, leopard, goral, gray langur, Himalayan black
+                beer, red panda, sambur, wild pig, and barking deer. The tropical forests in the south have tiger,
+                clouded leopard, elephants, one horned Rhinoceros, water buffalo, golden langur, gaur, swamp deer, hog
+                deer horn bills etc. Black necked crane, Green-backed tit, Plumbeous water Redstart and Oriental Turtle
+                Dove are some of the popular birds found in Bhutan.
+            </p>
+        </div>
+        <div class="tab-pane fade" id="about-bhutan-tabs-9" role="tabpanel" aria-labelledby="about-bhutan-tab-9">
+            <p>Over the years, Bhutan has cultivated a unique approach to development with its national philosophy
+                anchored to the principle of Gross national happiness (GNH) which was coined by the Fourth Druk Gyalpo,
+                His majesty Jigme Singye Wangchuck in 1972. It refers to a set of social and economic interventions that
+                evaluate societal change in terms of the collective happiness of people and that lead to the adoption of
+                policies aimed at that objective. Premised on the belief that all human beings aspire happiness in one
+                way or another, the concept promotes collective happiness of the society as the ultimate goal of
+                development. Bhutan believes that the holistic development of the individual and society can be achieved
+                only through a sustainable balance between the economic, social, emotional, spiritual and cultural needs
+                of the people. Development initiatives based on GNH values are therefore not restricted to the present
+                population of any given society; it includes future generations and other societies, indeed all sentient
+                beings. GNH has been Bhutan’s overarching development philosophy that has guided the country’s
+                development policies and programs. Guided by this policy, the country has made rapid development in a
+                short period of time. Achievements have come with very minimal impact on its culture and environment.
+                The government of Bhutan implemented these policies through strict adherence to the four pillars which
+                includes equitable and sustainable socio-economic development; preservation and promotion of its
+                culture, conservation of environment and promotion of good governance. Courtesy: facts about Bhutan
+                Lily Wangchuck The four pillars of GNH are the promotion of sustainable development, preservation and
+                promotion of cultural values, conservation of the natural environment, and establishment of good
+                governance.</p>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block javascripts %}
+{% endblock %}
