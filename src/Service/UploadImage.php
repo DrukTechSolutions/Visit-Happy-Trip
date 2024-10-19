@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Service;
 
 use Symfony\Component\HttpFoundation\File\UploadedFile;
@@ -6,11 +7,12 @@ use Symfony\Component\String\Slugger\SluggerInterface;
 
 class UploadImage
 {
-    public function __construct( private string $targetDirectory, private SluggerInterface $slug)
+    public function __construct(private string $targetDirectory, private SluggerInterface $slug)
     {
-        
+
     }
-    public function uploadImage(UploadedFile $image) : string {
+    public function uploadImage(UploadedFile $image): string
+    {
 
         $originalImageName = pathinfo($image->getClientOriginalName(), PATHINFO_FILENAME);
         $slugImageName = $this->slug->slug($originalImageName);
@@ -24,7 +26,8 @@ class UploadImage
         return $imageName;
     }
 
-    public function getTargetDirectory() : string {
+    public function getTargetDirectory(): string
+    {
         return $this->targetDirectory;
     }
 }

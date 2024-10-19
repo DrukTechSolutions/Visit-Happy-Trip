@@ -5,13 +5,14 @@ namespace App\Service;
 use Symfony\Bridge\Twig\Mime\TemplatedEmail;
 use Symfony\Component\Mailer\MailerInterface;
 
-class SendEmail 
+class SendEmail
 {
     public function __construct(private MailerInterface $mailer)
     {
-        
+
     }
-    public function sendEmail($form) {
+    public function sendEmail($form)
+    {
         $email = new TemplatedEmail();
         $email->subject('this is some random subject');
         $email->from('iamdemigod123@gmail.com');

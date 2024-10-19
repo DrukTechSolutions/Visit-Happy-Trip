@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use App\Repository\BlogRepository;
+use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: BlogRepository::class)]
@@ -16,7 +17,7 @@ class Blog
     #[ORM\Column(length: 255)]
     private ?string $blog_title = null;
 
-    #[ORM\Column(length: 255)]
+    #[ORM\Column(type: Types::TEXT)]
     private ?string $blog_description = null;
 
     #[ORM\OneToOne(cascade: ['persist', 'remove'])]

@@ -22,6 +22,9 @@ class Images
     #[ORM\ManyToOne(inversedBy: 'images')]
     private ?HotelsInBhutan $hotelsInBhutan = null;
 
+    #[ORM\ManyToOne(inversedBy: 'image')]
+    private ?TopDestination $topDestination = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -59,6 +62,18 @@ class Images
     public function setHotelsInBhutan(?HotelsInBhutan $hotelsInBhutan): static
     {
         $this->hotelsInBhutan = $hotelsInBhutan;
+
+        return $this;
+    }
+
+    public function getTopDestination(): ?TopDestination
+    {
+        return $this->topDestination;
+    }
+
+    public function setTopDestination(?TopDestination $topDestination): static
+    {
+        $this->topDestination = $topDestination;
 
         return $this;
     }

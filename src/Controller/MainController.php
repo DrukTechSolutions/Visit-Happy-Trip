@@ -16,7 +16,7 @@ class MainController extends AbstractController
 {
     public function __construct(private EntityManagerInterface $em)
     {
-        
+
     }
 
     #[Route('/', name: 'app_main')]
@@ -30,7 +30,7 @@ class MainController extends AbstractController
     }
 
     #[Route('/tour/{slug}', name: 'tour-package')]
-    public function tourPackage($slug) 
+    public function tourPackage($slug)
     {
         $tours = $this->em->getRepository(TourPackage::class)->findBy(['tour_category' => $slug]);
 
@@ -40,8 +40,8 @@ class MainController extends AbstractController
             'adventure-tour' => 'rafting.jpg',
             'trekking-tour' => 'trekking.png',
         ];
- 
-        return $this->render('main/tour-package.html.twig',[
+
+        return $this->render('main/tour-package.html.twig', [
             'tours' => $tours,
             'tour_category' => $slug,
             'image_name' => $image_name[$slug]
@@ -62,11 +62,11 @@ class MainController extends AbstractController
     public function blog(): Response
     {
         $blogs = $this->em->getRepository(Blog::class)->findAll();
-   
+
         return $this->render('main/blogs.html.twig', [
             'blogs' => $blogs
         ]);
-    } 
+    }
 
     #[Route('/blog/{id}/{slug}', name: 'view-blog')]
     public function viewblog($id): Response
@@ -75,20 +75,20 @@ class MainController extends AbstractController
         return $this->render('main/view-blog.html.twig', [
             'blog' => $blog
         ]);
-    }   
+    }
 
     #[Route('/about-us', name: 'about-us')]
     public function aboutUs(): Response
     {
         return $this->render('main/about.html.twig');
     }
-    
+
     #[Route('/travel-and-visa', name: 'travel-and-visa')]
     public function travelAndVisa(): Response
     {
         return $this->render('main/travel_and_visa.html.twig');
     }
-    
+
     #[Route('/faqs-and-raqs', name: 'faqs-and-raqs')]
     public function faqsAndRaqs(): Response
     {
@@ -112,9 +112,9 @@ class MainController extends AbstractController
     {
         $form = $this->createForm(ContactType::class, null);
         $form->handleRequest($request);
-        if($form->isSubmitted() && $form->isValid()){
+        if ($form->isSubmitted() && $form->isValid()) {
             $emailService->sendEmail($form->getData());
         }
-        return $this->render('main/contact.html.twig',['form' => $form]);
+        return $this->render('main/contact.html.twig', ['form' => $form]);
     }
 }

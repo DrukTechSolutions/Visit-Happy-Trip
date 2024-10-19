@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Twig;
+
 use Twig\Extension\AbstractExtension;
 use Twig\TwigFilter;
 
@@ -13,7 +14,8 @@ class AppExtension extends AbstractExtension
         ];
     }
 
-    public function tourCategory($category) {
+    public function tourCategory($category)
+    {
 
         $tour_categories = [
             'cultural-tour' => 'Cultural Tour',

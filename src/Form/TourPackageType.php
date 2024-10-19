@@ -16,7 +16,7 @@ class TourPackageType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('tour_category',ChoiceType::class,[
+            ->add('tour_category', ChoiceType::class, [
                 'choices' => [
                     'Cultural Tour' => 'cultural-tour',
                     'Festival Tour' => 'festival-tour',
@@ -25,8 +25,8 @@ class TourPackageType extends AbstractType
                 ]
             ])
             ->add('price')
-            ->add('tour_overview',TinymceType::class)
-            ->add('images',CollectionType::class,[
+            ->add('tour_overview', TinymceType::class)
+            ->add('images', CollectionType::class, [
                 'entry_type' => ImageType::class,
                 'mapped' => false,
                 'allow_add' => true,
@@ -35,7 +35,7 @@ class TourPackageType extends AbstractType
                 'by_reference' => false,
                 'prototype_name' => 'tour_image',
             ])
-            ->add('itinerary',CollectionType::class,[
+            ->add('itinerary', CollectionType::class, [
                 'entry_type' => ItineraryType::class,
                 'allow_add' => true,
                 'allow_delete' => true,

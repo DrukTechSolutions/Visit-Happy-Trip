@@ -16,7 +16,9 @@ use Doctrine\ORM\EntityManagerInterface;
 
 class AdminController extends AbstractController
 {
-    public function __construct(private EntityManagerInterface $em){}
+    public function __construct(private EntityManagerInterface $em)
+    {
+    }
 
     #[Route('/admin', name: 'app_admin')]
     public function index(): Response
@@ -33,7 +35,7 @@ class AdminController extends AbstractController
     public function tourPackages(): Response
     {
         $tours_packages = $this->em->getRepository(TourPackage::class)->findAll();
-        return $this->render('admin/tour_packages.html.twig',['tours_packages' => $tours_packages]);
+        return $this->render('admin/tour_packages.html.twig', ['tours_packages' => $tours_packages]);
     }
 
     #[Route('/admin/add-tour', name: 'add-tour')]
@@ -42,14 +44,14 @@ class AdminController extends AbstractController
         $tourPackage = new TourPackage();
         $form = $this->createForm(TourPackageType::class, $tourPackage);
         $form->handleRequest($request);
-        if($form->isSubmitted() && $form->isValid()){
+        if ($form->isSubmitted() && $form->isValid()) {
             dd($request->files->get('tour_package'));
             $tourPackageImage1 = $request->files->get('tour_package')['images']['tour_image']['tour_image_1'];
             $tourPackageImage2 = $request->files->get('tour_package')['images']['tour_image']['tour_image_2'];
             $tourPackageImage3 = $request->files->get('tour_package')['images']['tour_image']['tour_image_3'];
 
             $tour_images = [$tourPackageImage1, $tourPackageImage2, $tourPackageImage3];
-            foreach($tour_images as $image) {
+            foreach ($tour_images as $image) {
                 $images = new Images();
                 $images->setImageName($uploadImage->uploadImage($image));
                 $tourPackage->addImage($images);
@@ -59,8 +61,8 @@ class AdminController extends AbstractController
 
             return $this->redirectToRoute('tour-packages');
         }
-        return $this->render('admin/add_tour.html.twig',[
-            'form' => $form, 
+        return $this->render('admin/add_tour.html.twig', [
+            'form' => $form,
             'form_status' => 'Save'
         ]);
     }
@@ -75,31 +77,31 @@ class AdminController extends AbstractController
         $form = $this->createForm(TourPackageType::class, $tourPackage);
         $form->handleRequest($request);
 
-        foreach($tourPackage->getImages() as $key => $image) {
+        foreach ($tourPackage->getImages() as $key => $image) {
             $tourPackageImagesId[$key] = $image->getId();
             $tourPackageImages[$key] = $image->getImageName();
         }
 
-        if($form->isSubmitted() && $form->isValid()){
+        if ($form->isSubmitted() && $form->isValid()) {
             $tourPackageImage1 = $request->files->get('tour_package')['images']['tour_image']['tour_image_1'];
             $tourPackageImage2 = $request->files->get('tour_package')['images']['tour_image']['tour_image_2'];
             $tourPackageImage3 = $request->files->get('tour_package')['images']['tour_image']['tour_image_3'];
             $tour_images = [$tourPackageImage1, $tourPackageImage2, $tourPackageImage3];
-            
-                foreach($tour_images as $key => $image) {
-                    if($image){
-                        $image = $this->em->getRepository(Images::class)->find($tourPackageImagesId[$key]);
-                        $image->setImageName($uploadImage->uploadImage($image));
-                        $tourPackage->addImage($image);
-                    }
+
+            foreach ($tour_images as $key => $image) {
+                if ($image) {
+                    $imageObj = $this->em->getRepository(Images::class)->find($tourPackageImagesId[$key]);
+                    $imageObj->setImageName($uploadImage->uploadImage($image));
+                    $tourPackage->addImage($imageObj);
                 }
+            }
             
             $this->em->persist($tourPackage);
             $this->em->flush();
 
             return $this->redirectToRoute('tour-packages');
         }
-        return $this->render('admin/add_tour.html.twig',[
+        return $this->render('admin/add_tour.html.twig', [
             'form' => $form,
             'form_status' => 'Update',
             'tourPackageImages' => $tourPackageImages
@@ -112,7 +114,7 @@ class AdminController extends AbstractController
         $blog = new Blog();
         $form = $this->createForm(BlogType::class, $blog);
         $form->handleRequest($request);
-        if($form->isSubmitted() && $form->isValid()){
+        if ($form->isSubmitted() && $form->isValid()) {
             $blog_image_file = $request->files->get('blog')['blog_image'];
             $image = new Images();
             $image->setImageName($uploadImage->uploadImage($blog_image_file));
@@ -120,7 +122,7 @@ class AdminController extends AbstractController
             $this->em->persist($blog);
             $this->em->flush();
         }
-        return $this->render('admin/add_blog.html.twig',['form' => $form]);
+        return $this->render('admin/add_blog.html.twig', ['form' => $form]);
     }
 
     #[Route('/admin/{id}/update-blog', name: 'update-blog')]
@@ -129,7 +131,7 @@ class AdminController extends AbstractController
         $blog = $this->em->getRepository(Blog::class)->find($id);
         $form = $this->createForm(BlogType::class, $blog);
         $form->handleRequest($request);
-        if($form->isSubmitted() && $form->isValid()){
+        if ($form->isSubmitted() && $form->isValid()) {
             $blog_image_file = $request->files->get('blog')['blog_image'];
             $image = new Images();
             $image->setImageName($uploadImage->uploadImage($blog_image_file));
@@ -137,7 +139,7 @@ class AdminController extends AbstractController
             $this->em->persist($blog);
             $this->em->flush();
         }
-        return $this->render('admin/add_blog.html.twig',['form' => $form]);
+        return $this->render('admin/add_blog.html.twig', ['form' => $form]);
     }
 
 
@@ -145,6 +147,6 @@ class AdminController extends AbstractController
     public function blogs()
     {
         $blogs = $this->em->getRepository(Blog::class)->findAll();
-        return $this->render('admin/blogs.html.twig',['blogs' => $blogs]);
+        return $this->render('admin/blogs.html.twig', ['blogs' => $blogs]);
     }
 }

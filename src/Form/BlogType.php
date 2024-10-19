@@ -17,11 +17,11 @@ class BlogType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('blog_title', TextType::class,[
+            ->add('blog_title', TextType::class, [
                 'label' => 'Blog Title'
             ])
-            ->add('blog_description',TinymceType::class)
-            ->add('blog_image', FileType::class,[
+            ->add('blog_description', TinymceType::class)
+            ->add('blog_image', FileType::class, [
                 'mapped' => false
             ])
         ;

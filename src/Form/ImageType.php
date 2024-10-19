@@ -13,15 +13,15 @@ class ImageType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('tour_image_1', FileType::class,[
+            ->add('tour_image_1', FileType::class, [
                 'mapped' => false,
                 'required' => false
             ])
-            ->add('tour_image_2', FileType::class,[
+            ->add('tour_image_2', FileType::class, [
                 'mapped' => false,
                 'required' => false
             ])
-            ->add('tour_image_3', FileType::class,[
+            ->add('tour_image_3', FileType::class, [
                 'mapped' => false,
                 'required' => false
             ])

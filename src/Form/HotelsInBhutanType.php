@@ -14,7 +14,7 @@ class HotelsInBhutanType extends AbstractType
     {
         $builder
             ->add('hotel_name')
-            ->add('ratings', ChoiceType::class,[
+            ->add('ratings', ChoiceType::class, [
                 'choices' => [
                     '1' => '1',
                     '2' => '2',
