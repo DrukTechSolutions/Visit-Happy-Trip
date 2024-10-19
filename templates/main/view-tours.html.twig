@@ -3,7 +3,7 @@
 <link href="{{ asset('/css/swiffy-slider.min.css')}}" rel="stylesheet" />
 <style>
     #tour-view-img {
-        background-image: url('{{ asset("/uploads/tour-images/"~ tour_packages.images[0].imageName)}}');
+        background-image: url('{{ asset("/uploads/images/"~ tour_packages.images[0].imageName)}}');
         height: 450px;
         background-repeat: no-repeat;
         background-size: cover;
@@ -41,7 +41,7 @@
                 data-slider-nav-autoplay-interval="2000">
                 <div class="slider-container">
                     {% for image in tour_packages.images %}
-                    <img src="{{ asset('uploads/tour-images/'~ image.imageName) | imagine_filter('thumbnail_tour_view')}}"
+                    <img src="{{ asset('uploads/images/'~ image.imageName) | imagine_filter('thumbnail_tour_view')}}"
                         class="img-fluid" />
                     {% endfor %}
                 </div>

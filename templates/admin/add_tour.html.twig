@@ -36,7 +36,7 @@
                         form_widget(form.images.vars.prototype.tour_image_1,{'attr':{'class':'image-upload-file form-control'}})
                         }}
                         <div class="mt-2 img-preview-wrapper">
-                            <img src="{{ asset( form_status == 'Update' ? 'uploads/tour-images/'~ tourPackageImages[0] : 'images/image-static/img_preview.jpg')| imagine_filter('thumbnail_admin_tour')}}" class="img-fluid img-preview">
+                            <img src="{{ asset( form_status == 'Update' ? 'uploads/images/'~ tourPackageImages[0] : 'images/image-static/img_preview.jpg')| imagine_filter('thumbnail_admin_tour')}}" class="img-fluid img-preview">
                         </div>
                     </div>
                 </div>
@@ -46,7 +46,7 @@
                         form_widget(form.images.vars.prototype.tour_image_2,{'attr':{'class':'image-upload-file form-control'}})
                         }}
                         <div class="mt-2 img-preview-wrapper">
-                            <img src="{{ asset( form_status == 'Update' ? 'uploads/tour-images/'~ tourPackageImages[1] : 'images/image-static/img_preview.jpg')| imagine_filter('thumbnail_admin_tour')}}" class="img-fluid img-preview">
+                            <img src="{{ asset( form_status == 'Update' ? 'uploads/images/'~ tourPackageImages[1] : 'images/image-static/img_preview.jpg')| imagine_filter('thumbnail_admin_tour')}}" class="img-fluid img-preview">
                         </div>
                     </div>
                 </div>
@@ -56,7 +56,7 @@
                         form_widget(form.images.vars.prototype.tour_image_3,{'attr':{'class':'image-upload-file form-control'}})
                         }}
                         <div class="mt-2 img-preview-wrapper">
-                            <img src="{{ asset( form_status == 'Save' ? 'images/image-static/img_preview.jpg' : 'uploads/tour-images/'~ tourPackageImages[2])| imagine_filter('thumbnail_admin_tour')}}" class="img-fluid img-preview">
+                            <img src="{{ asset( form_status == 'Save' ? 'images/image-static/img_preview.jpg' : 'uploads/images/'~ tourPackageImages[2])| imagine_filter('thumbnail_admin_tour')}}" class="img-fluid img-preview">
                         </div>
                     </div>
                 </div>

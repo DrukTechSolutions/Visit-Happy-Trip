@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Blog;
+use App\Entity\TopDestination;
 use App\Entity\TourPackage;
 use App\Form\ContactType;
 use App\Service\SendEmail;
@@ -23,9 +24,11 @@ class MainController extends AbstractController
     public function index(): Response
     {
         $tour_packages = $this->em->getRepository(TourPackage::class)->findTourPackages();
+        $top_destinations = $this->em->getRepository(TopDestination::class)->findAll();
 
         return $this->render('main/index.html.twig', [
-            'tour_packages' => $tour_packages
+            'tour_packages' => $tour_packages,
+            'top_destinations' => $top_destinations
         ]);
     }
 
@@ -116,5 +119,12 @@ class MainController extends AbstractController
             $emailService->sendEmail($form->getData());
         }
         return $this->render('main/contact.html.twig', ['form' => $form]);
+    }
+
+    #[Route('/top-destinations' , name: 'top-destinations')]
+    public function topDestination()
+    {
+        $topDestinations = $this->em->getRepository(TopDestination::class)->findAll();
+        return $this->render('main/top-destinations.html.twig',['topDestinations' => $topDestinations ]);
     }
 }

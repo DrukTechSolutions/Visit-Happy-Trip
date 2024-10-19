@@ -4,8 +4,10 @@ namespace App\Controller;
 
 use App\Entity\Blog;
 use App\Entity\Images;
+use App\Entity\TopDestination;
 use App\Entity\TourPackage;
 use App\Form\BlogType;
+use App\Form\TopDestinationType;
 use App\Form\TourPackageType;
 use App\Service\UploadImage;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -95,7 +97,7 @@ class AdminController extends AbstractController
                     $tourPackage->addImage($imageObj);
                 }
             }
-            
+
             $this->em->persist($tourPackage);
             $this->em->flush();
 
@@ -142,11 +144,71 @@ class AdminController extends AbstractController
         return $this->render('admin/add_blog.html.twig', ['form' => $form]);
     }
 
-
     #[Route('/admin/blogs', name: 'blogs')]
     public function blogs()
     {
         $blogs = $this->em->getRepository(Blog::class)->findAll();
         return $this->render('admin/blogs.html.twig', ['blogs' => $blogs]);
+    }
+
+    #[Route('/admin/top-destinations', name: 'top-destinations-all')]
+    public function topDestinations()
+    {
+        $topDestinations = $this->em->getRepository(TopDestination::class)->findAll();
+
+        return $this->render('admin/top-destinations.html.twig', ['topDestinations' => $topDestinations]);
+    }
+
+    #[Route('/admin/add-top-destination', name: 'add-top-destination')]
+    public function addTopDestination(Request $request, UploadImage $uploadImage)
+    {
+        $topDestination = new TopDestination();
+        $form = $this->createForm(TopDestinationType::class, $topDestination);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $destinationImage = $request->files->get('top_destination')['destination_image'];
+            $image = new Images();
+            $image->setImageName($uploadImage->uploadImage($destinationImage));
+            $topDestination->setImage($image);
+            $this->em->persist($topDestination);
+            $this->em->flush();
+
+            $this->addFlash('notice','Added successfully.');
+
+            return $this->redirectToRoute('top-destinations-all');
+        }
+        return $this->render('admin/add-top-destination.html.twig', [
+            'form' => $form,
+            'form_status' => 'Add'
+        ]);
+    }
+
+    #[Route('/admin/{id}/update-top-destination/', name: 'update-top-destination')]
+    public function updateTopDestination(Request $request, $id, UploadImage $uploadImage)
+    {
+        $topDestination = $this->em->getRepository(TopDestination::class)->find($id);
+        $form = $this->createForm(TopDestinationType::class, $topDestination);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $destinationImage = $request->files->get('top_destination')['destination_image'];
+            if ($destinationImage) {
+                $image = new Images();
+                $image->setImageName($uploadImage->uploadImage($destinationImage));
+                $topDestination->setImage($image);
+            }
+            $this->em->persist($topDestination);
+            $this->em->flush();
+
+            $this->addFlash('notice','Updated successfully.');
+
+            return $this->redirectToRoute('top-destinations-all');
+        }
+        return $this->render('admin/add-top-destination.html.twig', [
+            'form' => $form,
+            'form_status' => 'Update',
+            'image_name' => $topDestination->getImage()->getImageName()
+        ]);
     }
 }

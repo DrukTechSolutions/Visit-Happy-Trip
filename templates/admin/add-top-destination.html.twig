@@ -1,0 +1,40 @@
+{% extends "admin.html.twig" %}
+
+{% block body %}
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/admin">Home</a></li>
+        <li class="breadcrumb-item">Top Destinations</li>
+        <li class="breadcrumb-item active" aria-current="page">{{ form_status }} Top Destinations</li>
+    </ol>
+</nav>
+<div class="mt-2">
+    {{ form_start(form)}}
+    <div class="card rounded-0">
+        <div class="card-header bg-danger text-white rounded-0"><b>{{ form_status }} Top Destinations</b></div>
+        <div class="card-body">
+            <div class="mt-2">
+                {{ form_label(form.destination_image)}}
+                {{ form_widget(form.destination_image,{'attr':{'class': 'form-control'}})}}
+                <div class="mt-2">
+                    {% if form_status == 'Update' %}
+                    <img src="{{ asset('uploads/images/'~ image_name )}}" style="height: 100px;">
+                    {% endif %}
+                </div>
+            </div>
+            <div class="mt-2">
+                {{ form_label(form.destination_title)}}
+                {{ form_widget(form.destination_title,{'attr':{'class': 'ht-input'}})}}
+            </div>
+            <div class="mt-2">
+                {{ form_label(form.description)}}
+                {{ form_widget(form.description)}}
+            </div>
+            <div class="mt-2">
+                <button type="submit" class="btn btn-danger">{{ form_status }} Description</button>
+            </div>
+        </div>
+    </div>
+    {{ form_start(form)}}
+</div>
+{% endblock %}

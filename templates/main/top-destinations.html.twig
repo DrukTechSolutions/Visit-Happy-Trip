@@ -1,0 +1,55 @@
+{% extends "base.html.twig" %}
+{% block stylesheets %}
+<style>
+    #top-destinations-img {
+        background-image: url('{{ asset("images/image-static/dragon-nest.jpg")}}');
+        height: 450px;
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+        background-attachment: fixed;
+        width: 100%;
+        position: relative;
+    }
+
+    #top-destinations-header {
+        position: absolute;
+        background-color: rgba(0, 0, 0, 0.5);
+        height: 100%;
+        width: 100%;
+    }
+
+    #top-destinations-header div div h2 {
+        color: white;
+    }
+</style>
+{% endblock %}
+{% block body %}
+<div id="top-destinations-img">
+    <div id="top-destinations-header">
+        <div class="d-flex align-items-center  h-100">
+            <div class="container">
+                <h4 class="d-inline-flex bg-black text-warning p-2">TOP DESTINATIONS</h4>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container mt-5">
+    {% for topDestination in topDestinations %}
+    <div class="row border border-dark pt-2 pb-2 mt-3">
+        <div class="col-md-4">
+            <img src="{{ asset('uploads/images/'~ topDestination.image.imageName )}}" class="img-fluid">
+        </div>
+        <div class="col-md-8 d-flex align-items-center">
+            <div class="">
+                <h4 class="text-orange">{{ topDestination.destinationTitle}} </h4>
+                <p>{{ topDestination.description|raw }}</p>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}
+
+{% block javascripts %}
+{% endblock %}

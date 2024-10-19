@@ -41,7 +41,7 @@
         <div class="col-md-4">
             <a href="{{ path('view-blog',{'id' : blog.id, 'slug' : blog.blogSlug })}}">
                 <div class="card">
-                    <img src="{{ asset(asset('uploads/tour-images/'~ blog.image.imageName)) }}">
+                    <img src="{{ asset(asset('uploads/images/'~ blog.image.imageName)) }}">
                     <div class="card-body">
                         <b>{{ blog.blogTitle}}</b>
                     </div>

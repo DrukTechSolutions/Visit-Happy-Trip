@@ -22,7 +22,7 @@
             {% for blog in blogs %}
             <tr>
                 <td>{{ loop.index }}</td>
-                <td><img src="{{ asset('uploads/tour-images/'~ blog.image.imageName)}}" class="img-fluid" style="height: 50px;"></td>
+                <td><img src="{{ asset('uploads/images/'~ blog.image.imageName)}}" class="img-fluid" style="height: 50px;"></td>
                 <td>{{ blog.blogTitle }}</td>
                 <td>
                    <a type="button" href="{{ path('update-blog',{'id': blog.id })}}" class="btn btn-primary btn-sm btn-rounded">
