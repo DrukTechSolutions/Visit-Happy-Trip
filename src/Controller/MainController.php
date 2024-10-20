@@ -121,10 +121,10 @@ class MainController extends AbstractController
         return $this->render('main/contact.html.twig', ['form' => $form]);
     }
 
-    #[Route('/top-destinations' , name: 'top-destinations')]
+    #[Route('/top-destinations', name: 'top-destinations')]
     public function topDestination()
     {
         $topDestinations = $this->em->getRepository(TopDestination::class)->findAll();
-        return $this->render('main/top-destinations.html.twig',['topDestinations' => $topDestinations ]);
+        return $this->render('main/top-destinations.html.twig', ['topDestinations' => $topDestinations ]);
     }
 }

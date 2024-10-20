@@ -15,6 +15,8 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 use Doctrine\ORM\EntityManagerInterface;
+use Knp\Component\Pager\PaginatorInterface;
+use Symfony\Component\String\Slugger\SluggerInterface;
 
 class AdminController extends AbstractController
 {
@@ -61,6 +63,8 @@ class AdminController extends AbstractController
             $this->em->persist($tourPackage);
             $this->em->flush();
 
+            $this->addFlash('notice', 'Added successfully.');
+
             return $this->redirectToRoute('tour-packages');
         }
         return $this->render('admin/add_tour.html.twig', [
@@ -92,7 +96,7 @@ class AdminController extends AbstractController
 
             foreach ($tour_images as $key => $image) {
                 if ($image) {
-                    $imageObj = $this->em->getRepository(Images::class)->find($tourPackageImagesId[$key]);
+                    $imageObj = array_key_exists($key, $tourPackageImagesId) ? $this->em->getRepository(Images::class)->find($tourPackageImagesId[$key]) : new Images();
                     $imageObj->setImageName($uploadImage->uploadImage($image));
                     $tourPackage->addImage($imageObj);
                 }
@@ -100,6 +104,8 @@ class AdminController extends AbstractController
 
             $this->em->persist($tourPackage);
             $this->em->flush();
+
+            $this->addFlash('notice', 'Updated successfully.');
 
             return $this->redirectToRoute('tour-packages');
         }
@@ -111,7 +117,7 @@ class AdminController extends AbstractController
     }
 
     #[Route('/admin/add-blog', name: 'add-blog')]
-    public function addBlog(Request $request, UploadImage $uploadImage): Response
+    public function addBlog(Request $request, UploadImage $uploadImage, SluggerInterface $slug): Response
     {
         $blog = new Blog();
         $form = $this->createForm(BlogType::class, $blog);
@@ -120,43 +126,73 @@ class AdminController extends AbstractController
             $blog_image_file = $request->files->get('blog')['blog_image'];
             $image = new Images();
             $image->setImageName($uploadImage->uploadImage($blog_image_file));
+            $blog->setBlogSlug($slug->slug($blog->getBlogTitle()));
             $blog->setImage($image);
             $this->em->persist($blog);
             $this->em->flush();
+
+            $this->addFlash('notice', 'Added successfully.');
+
+            return $this->redirectToRoute('blogs');
         }
-        return $this->render('admin/add_blog.html.twig', ['form' => $form]);
+        return $this->render('admin/add_blog.html.twig', [
+            'form' => $form,
+            'form_status' => 'Add'
+        ]);
     }
 
     #[Route('/admin/{id}/update-blog', name: 'update-blog')]
-    public function updateBlog(Request $request, UploadImage $uploadImage, $id): Response
+    public function updateBlog(Request $request, UploadImage $uploadImage, $id, SluggerInterface $slug): Response
     {
         $blog = $this->em->getRepository(Blog::class)->find($id);
         $form = $this->createForm(BlogType::class, $blog);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
             $blog_image_file = $request->files->get('blog')['blog_image'];
-            $image = new Images();
-            $image->setImageName($uploadImage->uploadImage($blog_image_file));
-            $blog->setImage($image);
+            if ($blog_image_file) {
+                $image = new Images();
+                $image->setImageName($uploadImage->uploadImage($blog_image_file));
+                $blog->setImage($image);
+            }
+            $blog->setBlogSlug($slug->slug($blog->getBlogTitle()));
             $this->em->persist($blog);
             $this->em->flush();
+
+            $this->addFlash('notice', 'Updated successfully.');
+
+            return $this->redirectToRoute('blogs');
         }
-        return $this->render('admin/add_blog.html.twig', ['form' => $form]);
+        return $this->render('admin/add_blog.html.twig', [
+            'form' => $form,
+            'form_status' => 'Update',
+            'image_name' => $blog->getImage()->getImageName()
+        ]);
     }
 
     #[Route('/admin/blogs', name: 'blogs')]
-    public function blogs()
+    public function blogs(PaginatorInterface $paginator, Request $request)
     {
         $blogs = $this->em->getRepository(Blog::class)->findAll();
-        return $this->render('admin/blogs.html.twig', ['blogs' => $blogs]);
+        $pagination = $paginator->paginate(
+            $blogs, /* query NOT result */
+            $request->query->getInt('page', 1), /* page number */
+            5 /* limit per page */
+        );
+        return $this->render('admin/blogs.html.twig', ['blogs' => $pagination]);
     }
 
     #[Route('/admin/top-destinations', name: 'top-destinations-all')]
-    public function topDestinations()
+    public function topDestinations(PaginatorInterface $paginator, Request $request)
     {
         $topDestinations = $this->em->getRepository(TopDestination::class)->findAll();
 
-        return $this->render('admin/top-destinations.html.twig', ['topDestinations' => $topDestinations]);
+        $pagination = $paginator->paginate(
+            $topDestinations, /* query NOT result */
+            $request->query->getInt('page', 1), /* page number */
+            5 /* limit per page */
+        );
+
+        return $this->render('admin/top-destinations.html.twig', ['pagination' => $pagination]);
     }
 
     #[Route('/admin/add-top-destination', name: 'add-top-destination')]
@@ -174,7 +210,7 @@ class AdminController extends AbstractController
             $this->em->persist($topDestination);
             $this->em->flush();
 
-            $this->addFlash('notice','Added successfully.');
+            $this->addFlash('notice', 'Added successfully.');
 
             return $this->redirectToRoute('top-destinations-all');
         }
@@ -201,7 +237,7 @@ class AdminController extends AbstractController
             $this->em->persist($topDestination);
             $this->em->flush();
 
-            $this->addFlash('notice','Updated successfully.');
+            $this->addFlash('notice', 'Updated successfully.');
 
             return $this->redirectToRoute('top-destinations-all');
         }

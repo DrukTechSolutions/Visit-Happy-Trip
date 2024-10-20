@@ -2,7 +2,6 @@
 
 namespace App\Form;
 
-use App\Entity\Images;
 use App\Entity\TourPackage;
 use Eckinox\TinymceBundle\Form\Type\TinymceType;
 use Symfony\Component\Form\AbstractType;
@@ -34,6 +33,11 @@ class TourPackageType extends AbstractType
                 'label' => false,
                 'by_reference' => false,
                 'prototype_name' => 'tour_image',
+                'entry_options' => [
+                    'attr' => [
+                        'tour_package_images' => $options['data']->getImages()
+                    ],
+                ],
             ])
             ->add('itinerary', CollectionType::class, [
                 'entry_type' => ItineraryType::class,

@@ -24,6 +24,7 @@
     </ol>
 </nav>
 <div class="mt-2">
+    {% set img_thumbnail = 'images/image-static/img_preview.jpg' %}
     {{ form_start(form)}}
     <div class="card rounded-0">
         <div class="card-header bg-danger text-white rounded-0"><b>Tour Package</b></div>
@@ -35,9 +36,11 @@
                         {{
                         form_widget(form.images.vars.prototype.tour_image_1,{'attr':{'class':'image-upload-file form-control'}})
                         }}
+                        {% if form_status == 'Update'%} 
                         <div class="mt-2 img-preview-wrapper">
-                            <img src="{{ asset( form_status == 'Update' ? 'uploads/images/'~ tourPackageImages[0] : 'images/image-static/img_preview.jpg')| imagine_filter('thumbnail_admin_tour')}}" class="img-fluid img-preview">
+                            <img src="{{ asset(tourPackageImages[0] is defined ? 'uploads/images/'~ tourPackageImages[0] : img_thumbnail)| imagine_filter('thumbnail_admin_tour')}}" class="img-fluid img-preview">
                         </div>
+                        {% endif %}
                     </div>
                 </div>
                 <div class="col-md-4">
@@ -45,9 +48,11 @@
                         {{
                         form_widget(form.images.vars.prototype.tour_image_2,{'attr':{'class':'image-upload-file form-control'}})
                         }}
+                        {% if form_status == 'Update'%} 
                         <div class="mt-2 img-preview-wrapper">
-                            <img src="{{ asset( form_status == 'Update' ? 'uploads/images/'~ tourPackageImages[1] : 'images/image-static/img_preview.jpg')| imagine_filter('thumbnail_admin_tour')}}" class="img-fluid img-preview">
+                            <img src="{{ asset(tourPackageImages[1] is defined ? 'uploads/images/'~ tourPackageImages[1] : img_thumbnail)| imagine_filter('thumbnail_admin_tour')}}" class="img-fluid img-preview">
                         </div>
+                        {% endif %}
                     </div>
                 </div>
                 <div class="col-md-4">
@@ -55,9 +60,11 @@
                         {{
                         form_widget(form.images.vars.prototype.tour_image_3,{'attr':{'class':'image-upload-file form-control'}})
                         }}
+                        {% if form_status == 'Update'%} 
                         <div class="mt-2 img-preview-wrapper">
-                            <img src="{{ asset( form_status == 'Save' ? 'images/image-static/img_preview.jpg' : 'uploads/images/'~ tourPackageImages[2])| imagine_filter('thumbnail_admin_tour')}}" class="img-fluid img-preview">
+                            <img src="{{ asset(tourPackageImages[2] is defined ? 'uploads/images/'~ tourPackageImages[2] : img_thumbnail)| imagine_filter('thumbnail_admin_tour')}}" class="img-fluid img-preview">
                         </div>
+                        {% endif %}
                     </div>
                 </div>
             </div>

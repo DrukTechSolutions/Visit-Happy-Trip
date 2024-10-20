@@ -27,7 +27,7 @@
             </tr>
         </thead>
         <tbody>
-            {% for topDestination in topDestinations %}
+            {% for topDestination in pagination %}
             <tr>
                 <td>{{ loop.index }}</td>
                 <td><img src="{{ asset('uploads/images/'~ topDestination.image.imageName)}}" class="img-fluid"
@@ -47,5 +47,8 @@
             {% endfor %}
         </tbody>
     </table>
+    <div class="navigation">
+        {{ knp_pagination_render(pagination) }}
+    </div>
 </div>
 {% endblock %}
