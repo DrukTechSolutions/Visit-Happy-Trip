@@ -9,10 +9,6 @@
     .add-image-wrapper:hover {
         cursor: pointer;
     }
-    .img-preview-wrapper{
-        height: 196px;
-        overflow: hidden;
-    }
 </style>
 {% endblock %}
 {% block body %}
@@ -34,37 +30,31 @@
                 <div class="col-md-4">
                     <div class="image-upload-file-wrapper">
                         {{
-                        form_widget(form.images.vars.prototype.tour_image_1,{'attr':{'class':'image-upload-file form-control'}})
+                        form_widget(form.images.vars.prototype.image_1,{'attr':{'class':'image-upload-file form-control'}})
                         }}
-                        {% if form_status == 'Update'%} 
                         <div class="mt-2 img-preview-wrapper">
                             <img src="{{ asset(tourPackageImages[0] is defined ? 'uploads/images/'~ tourPackageImages[0] : img_thumbnail)| imagine_filter('thumbnail_admin_tour')}}" class="img-fluid img-preview">
                         </div>
-                        {% endif %}
                     </div>
                 </div>
                 <div class="col-md-4">
                     <div class="image-upload-file-wrapper">
                         {{
-                        form_widget(form.images.vars.prototype.tour_image_2,{'attr':{'class':'image-upload-file form-control'}})
+                        form_widget(form.images.vars.prototype.image_2,{'attr':{'class':'image-upload-file form-control'}})
                         }}
-                        {% if form_status == 'Update'%} 
                         <div class="mt-2 img-preview-wrapper">
                             <img src="{{ asset(tourPackageImages[1] is defined ? 'uploads/images/'~ tourPackageImages[1] : img_thumbnail)| imagine_filter('thumbnail_admin_tour')}}" class="img-fluid img-preview">
                         </div>
-                        {% endif %}
                     </div>
                 </div>
                 <div class="col-md-4">
                     <div class="image-upload-file-wrapper">
                         {{
-                        form_widget(form.images.vars.prototype.tour_image_3,{'attr':{'class':'image-upload-file form-control'}})
+                        form_widget(form.images.vars.prototype.image_3,{'attr':{'class':'image-upload-file form-control'}})
                         }}
-                        {% if form_status == 'Update'%} 
                         <div class="mt-2 img-preview-wrapper">
                             <img src="{{ asset(tourPackageImages[2] is defined ? 'uploads/images/'~ tourPackageImages[2] : img_thumbnail)| imagine_filter('thumbnail_admin_tour')}}" class="img-fluid img-preview">
                         </div>
-                        {% endif %}
                     </div>
                 </div>
             </div>
@@ -108,8 +98,6 @@
 {% endblock %}
 
 {% block javascripts %}
-<script src="https://code.jquery.com/jquery-3.7.1.min.js"
-    integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
 <script src="{{ asset('js/itinerary.js')}}"></script>
 <script src="{{ asset('js/img-preview.js')}}"></script>
 <script src="{{ asset('js/tour-images.js')}}"></script>

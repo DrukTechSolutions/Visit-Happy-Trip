@@ -1,0 +1,118 @@
+{% extends "base.html.twig" %}
+{% block stylesheets %}
+<style>
+    #book-now-img {
+        background-image: url('{{ asset("/images/image-static/thimpu-festival.jpg")}}');
+        height: 450px;
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+        background-attachment: fixed;
+        width: 100%;
+        position: relative;
+    }
+
+    #book-now-header {
+        position: absolute;
+        background-color: rgba(0, 0, 0, 0.5);
+        height: 100%;
+        width: 100%;
+    }
+
+    #book-now-header div div h2 {
+        color: white;
+    }
+
+    .mapswrapper {
+        z-index: 0;
+    }
+</style>
+{% endblock %}
+{% block body %}
+<div id="book-now-img">
+    <div id="book-now-header">
+        <div class="d-flex align-items-center h-100">
+            <div class="container">
+                <h2 class="d-inline-flex bg-black text-warning p-2">BOOK NOW</h2>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-6 offset-md-3">
+            <div class="text-center">
+                <h4 class="text-orange"><b>GET IN TOUCH WITH US(BOOK NOW)</b></h4>
+                <img src="{{ asset("/images/image-static/divider.png")}}" class="img-fluid mt-2 mb-3" style="height: 30px"/>
+            </div>
+            {% for message in app.flashes('notice') %}
+            <div class="flash-success mt-3 mb-3">
+                {{ message }}
+            </div>
+            {% endfor %}
+            {{ form_start(form ,{'attr':{'novalidate': 'novalidate'}})}}
+            <div class="mb-3">
+                {{ form_label(form.name)}}
+                {{ form_widget(form.name,{'attr':{'class': 'ht-input'}})}}
+                <span class="text-danger">{{ form_errors(form.name)}}</span>
+            </div>
+            <div class="mb-3">
+                {{ form_label(form.email)}}
+                {{ form_widget(form.email,{'attr':{'class': 'ht-input'}})}}
+                <span class="text-danger">{{ form_errors(form.email)}}</span>
+            </div>
+            <div class="mb-3">
+                {{ form_label(form.contact_no)}}
+                {{ form_widget(form.contact_no,{'attr':{'class': 'ht-input'}})}}
+                <span class="text-danger">{{ form_errors(form.contact_no)}}</span>
+            </div>
+            <div class="mb-3">
+                {{ form_label(form.country)}}
+                {{ form_widget(form.country,{'attr':{'class': 'ht-input'}})}}
+            </div>
+            <div class="mb-3 row">
+                <div class="col-md-6">
+                    {{ form_label(form.date_of_arrival)}}
+                    {{ form_widget(form.date_of_arrival,{'attr':{'class': ''}})}}
+                </div>
+                <div class="col-md-6">
+                    {{ form_label(form.date_of_departure)}}
+                    {{ form_widget(form.date_of_departure,{'attr':{'class': ''}})}}
+                </div>
+            </div>
+            <div class="mb-3 row">
+                <div class="col-md-6">
+                    {{ form_label(form.no_of_adults)}}
+                    {{ form_widget(form.no_of_adults,{'attr':{'class': 'ht-input'}})}}
+                </div>
+                <div class="col-md-6">
+                    {{ form_label(form.no_of_child)}}
+                    {{ form_widget(form.no_of_child,{'attr':{'class': 'ht-input'}})}}
+                </div>
+            </div>
+            <div class="mb-3 row">
+                <div class="col-md-6">
+                    {{ form_label(form.tour_type)}}
+                    {{ form_widget(form.tour_type,{'attr':{'class': 'ht-select'}})}}
+                </div>
+                <div class="col-md-6">
+                    {{ form_label(form.tour_packages)}}
+                    {{ form_widget(form.tour_packages,{'attr':{'class': 'ht-select'}})}}
+                </div>
+            </div>
+            <div class="mb-3">
+                {{ form_label(form.message)}}
+                {{ form_widget(form.message,{'attr':{'class': 'ht-select'}})}}
+                <span class="text-danger">{{ form_errors(form.message)}}</span>
+            </div>
+            <div>
+                <button type="submit" class="btn-orange p-2 w-100 text-center text-white"><b>BOOK NOW</b></button>
+            </div>
+            {{ form_end(form)}}
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block javascripts %}
+{% endblock %}

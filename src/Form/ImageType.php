@@ -12,27 +12,22 @@ class ImageType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
-        $tour_images = [];
-        foreach ($options['attr']['tour_package_images'] as $key => $images) {
-            $tour_images[$key] = $images->getId();
-        }
-
-        $req_tour_image_1 = $options['attr']['tour_package_images'][0] == null ? true : false;
-        $req_tour_image_2 = $options['attr']['tour_package_images'][1] == null ? true : false;
-        $req_tour_image_3 = $options['attr']['tour_package_images'][2] == null ? true : false;
+        $req_image_1 = $options['attr']['image'][0] == null ? true : false;
+        $req_image_2 = $options['attr']['image'][1] == null ? true : false;
+        $req_image_3 = $options['attr']['image'][2] == null ? true : false;
 
         $builder
-            ->add('tour_image_1', FileType::class, [
+            ->add('image_1', FileType::class, [
                 'mapped' => false,
-                'required' => $req_tour_image_1
+                'required' => $req_image_1
             ])
-            ->add('tour_image_2', FileType::class, [
+            ->add('image_2', FileType::class, [
                 'mapped' => false,
-                'required' => $req_tour_image_2
+                'required' => $req_image_2
             ])
-            ->add('tour_image_3', FileType::class, [
+            ->add('image_3', FileType::class, [
                 'mapped' => false,
-                'required' => $req_tour_image_3
+                'required' => $req_image_3
             ])
         ;
     }

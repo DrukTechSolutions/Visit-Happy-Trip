@@ -35,7 +35,7 @@ class TourPackageType extends AbstractType
                 'prototype_name' => 'tour_image',
                 'entry_options' => [
                     'attr' => [
-                        'tour_package_images' => $options['data']->getImages()
+                        'image' => $options['data']->getImages()
                     ],
                 ],
             ])

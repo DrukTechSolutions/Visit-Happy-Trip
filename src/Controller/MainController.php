@@ -3,12 +3,17 @@
 namespace App\Controller;
 
 use App\Entity\Blog;
+use App\Entity\Bookings;
+use App\Entity\HotelsInBhutan;
 use App\Entity\TopDestination;
 use App\Entity\TourPackage;
+use App\Form\BookingType;
 use App\Form\ContactType;
+use App\Service\ContactValidation;
 use App\Service\SendEmail;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
@@ -23,12 +28,19 @@ class MainController extends AbstractController
     #[Route('/', name: 'app_main')]
     public function index(): Response
     {
+        $tour_packages_category = [];
         $tour_packages = $this->em->getRepository(TourPackage::class)->findTourPackages();
         $top_destinations = $this->em->getRepository(TopDestination::class)->findAll();
+        $tour_packages_all = $this->em->getRepository(TourPackage::class)->findAll();
 
+        foreach ($tour_packages_all  as $package) {
+            $tour_packages_category[$package->getTourCategory()][$package->getId()] = $package;
+        }
+  
         return $this->render('main/index.html.twig', [
             'tour_packages' => $tour_packages,
-            'top_destinations' => $top_destinations
+            'top_destinations' => $top_destinations,
+            'tour_packages_category' => $tour_packages_category
         ]);
     }
 
@@ -110,21 +122,42 @@ class MainController extends AbstractController
         return $this->render('main/getting-into-bhutan.html.twig');
     }
 
-    #[Route('/contact-us', name: 'contact-us')]
-    public function contactUs(Request $request, SendEmail $emailService)
-    {
-        $form = $this->createForm(ContactType::class, null);
-        $form->handleRequest($request);
-        if ($form->isSubmitted() && $form->isValid()) {
-            $emailService->sendEmail($form->getData());
-        }
-        return $this->render('main/contact.html.twig', ['form' => $form]);
-    }
-
     #[Route('/top-destinations', name: 'top-destinations')]
     public function topDestination()
     {
         $topDestinations = $this->em->getRepository(TopDestination::class)->findAll();
         return $this->render('main/top-destinations.html.twig', ['topDestinations' => $topDestinations ]);
+    }
+
+    #[Route('/hotels-in-bhutan', name: 'hotels-in-bhutan-front')]
+    public function hotelsInBhutan()
+    {
+        $hotelsInBhutan = $this->em->getRepository(HotelsInBhutan::class)->findAll();
+        return $this->render('main/hotels-in-bhutan.html.twig',[
+            'hotelsInBhutan' => $hotelsInBhutan
+        ]);
+    }
+
+    #[Route('/hotels/{slug}', name: 'hotel-in-bhutan')]
+    public function hotelInBhutan($slug)
+    {
+        $hotelInBhutan = $this->em->getRepository(HotelsInBhutan::class)->findOneBy(['slug' => $slug]);
+        $hotelsInBhutan = $this->em->getRepository(HotelsInBhutan::class)->findAll();
+        return $this->render('main/hotel-in-bhutan.html.twig',[
+            'hotelInBhutan' => $hotelInBhutan,
+            'hotelsInBhutan' => $hotelsInBhutan
+        ]);
+    }
+
+    #[Route('/contact-us', name: 'contact-us')]
+    public function contactUs(Request $request, SendEmail $emailService, ContactValidation $validation)
+    {
+        $form = $this->createForm(ContactType::class, null);
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            dd($validation->getErrors($form->getData()));
+            //$emailService->sendEmail($form->getData(), 'contact');
+        }
+        return $this->render('main/contact.html.twig', ['form' => $form]);
     }
 }

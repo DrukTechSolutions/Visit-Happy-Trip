@@ -40,8 +40,8 @@
         {% for blog in blogs %}
         <div class="col-md-4">
             <a href="{{ path('view-blog',{'id' : blog.id, 'slug' : blog.blogSlug })}}">
-                <div class="card">
-                    <img src="{{ asset(asset('uploads/images/'~ blog.image.imageName)) }}">
+                <div class="card card-box-shadow mt-2 rounded-0">
+                    <img src="{{ asset(asset('uploads/images/'~ blog.image.imageName)|imagine_filter('thumbnail_blog')) }}">
                     <div class="card-body">
                         <b>{{ blog.blogTitle}}</b>
                     </div>

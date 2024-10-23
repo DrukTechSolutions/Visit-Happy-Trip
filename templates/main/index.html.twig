@@ -76,7 +76,7 @@
                             Come and experience the magic of Bhutan, a country that will leave you enchanted and
                             inspired!</p>
                         <a class="btn-orange text-white rounded-2 pt-3 pb-3 ps-5 pe-5 " data-mdb-ripple-init
-                            href="https://mdbootstrap.com/docs/standard/" target="_blank" role="button">EXPLORE MORE</a>
+                            href="{{ path('about-us')}}" role="button">EXPLORE MORE</a>
                     </div>
                 </div>
             </div>
@@ -93,7 +93,7 @@
                             Come and experience the magic of Bhutan, a country that will leave you enchanted and
                             inspired!</p>
                         <a class="btn-orange text-white rounded-2 pt-3 pb-3 ps-5 pe-5 " data-mdb-ripple-init
-                            href="https://mdbootstrap.com/docs/standard/" target="_blank" role="button">ABOUT BHUTAN</a>
+                            href="{{ path('about-bhutan')}}" role="button">ABOUT BHUTAN</a>
                     </div>
                 </div>
             </div>
@@ -110,7 +110,7 @@
                             Come and experience the magic of Bhutan, a country that will leave you enchanted and
                             inspired!</p>
                         <a class="btn-orange text-white rounded-2 pt-3 pb-3 ps-5 pe-5" data-mdb-ripple-init
-                            href="https://mdbootstrap.com/docs/standard/" target="_blank" role="button">INQUIRY NOW</a>
+                            href="{{ path('contact-us')}}" role="button">INQUIRY NOW</a>
                     </div>
                 </div>
             </div>
@@ -137,13 +137,13 @@
         <div class="row">
             {% for tour_package in tour_packages %}
             <div class="col-md-3">
-                <div class="card border border-dark rounded-0">
+                <div class="card border card-box-shadow rounded-0">
                     <img src="{{ asset('uploads/images/'~ tour_package.images[0].imageName )|imagine_filter('thumbnail')}}"
                         class="card-img-top rounded-0" alt="Fissure in Sandstone" />
                     <div class="card-body">
                         <h5 class="card-title">{{ tour_package.tourCategory|tour_category }}</h5>
                         <p class="card-text text-orange">12 days/ 12 nights</p>
-                        <p class="font-roboto font-size-22"><strong>From : {{ tour_package.price}}</strong></p>
+                        <p class="font-roboto font-size-22"><strong>From : $ {{ tour_package.price}}</strong></p>
                         <a href="{{ path('view-tours',{'id': tour_package.id })}}"
                             class="btn-orange ps-3 pe-3 pt-2 pb-2 nav-link text-white text-center"
                             data-mdb-ripple-init>Explore more <i class="fa-solid fa-caret-right"></i></a>
@@ -160,7 +160,7 @@
             <h4 class="text-center">WHY YOU CHOOSE US?</h4>
             <div class="row mt-5">
                 <div class="col-md-6">
-                    <div class="card rounded-0 h-100 bg-bhutan-gradient text-white">
+                    <div class="card rounded-0 h-100 bg-orange text-white" style="border: 1px solid white;">
                         <div class="card-body text-center">
                             <i class="fa-solid fa-dharmachakra fa-3x"></i>
                             <div class="mt-4">
@@ -172,7 +172,7 @@
                     </div>
                 </div>
                 <div class="col-md-6">
-                    <div class="card rounded-0 h-100 bg-bhutan-gradient text-white">
+                    <div class="card rounded-0 h-100 bg-orange text-white" style="border: 1px solid white;">
                         <div class="card-body text-center">
                             <i class="fa-solid fa-users fa-3x"></i>
                             <div class="mt-4">
@@ -184,7 +184,7 @@
                     </div>
                 </div>
                 <div class="col-md-6 mt-4">
-                    <div class="card rounded-0 h-100 bg-bhutan-gradient text-white">
+                    <div class="card rounded-0 h-100 bg-orange text-white" style="border: 1px solid white;">
                         <div class="card-body text-center">
                             <i class="fa-brands fa-servicestack fa-3x"></i>
                             <div class="mt-4">
@@ -196,7 +196,7 @@
                     </div>
                 </div>
                 <div class="col-md-6 mt-4">
-                    <div class="card rounded-0 h-100 bg-bhutan-gradient text-white">
+                    <div class="card rounded-0 h-100 bg-orange text-white" style="border: 1px solid white;">
                         <div class="card-body text-center">
                             <i class="fa-solid fa-signs-post fa-3x"></i>
                             <div class="mt-4">
@@ -216,54 +216,62 @@
     <h4 class="font-weight-bold">OUR BEST SELLING PACKAGES</h4>
     <div class="row mt-5">
         <div class="col-md-3">
-            <div class="card rounded-0 border border-dark h-100">
+            <div class="card rounded-0 card-box-shadow h-100">
                 <img src="{{ asset('images/image-static/culture.jpg')}}" class="card-img-top rounded-0"
                     alt="Visit Happy Trip Cultural" />
                 <div class="card-body">
                     <h4>CULTURAL TOURS</h4>
                     <p>Cultural tours offer a unique opportunity to immerse oneself in the rich tapestry of
                         Bhutanese heritage and culture.</p>
-                    <p><i class="fa-solid fa-map-location-dot"></i> 3 Tours</p>
-                    <a class="btn btn-outline-danger">EXPLORE NOW <i class="fa-solid fa-caret-right"></i></a>
+                </div>
+                <div class="card-footer">
+                    <p><i class="fa-solid fa-map-location-dot"></i> {{ tour_packages_category['cultural-tour']|length}} Tours</p>
+                    <a href="{{ path('tour-package',{'slug':'cultural-tour'})}}" class="btn btn-outline-danger">EXPLORE NOW <i class="fa-solid fa-caret-right"></i></a>
                 </div>
             </div>
         </div>
         <div class="col-md-3">
-            <div class="card rounded-0 border border-dark h-100">
+            <div class="card rounded-0 card-box-shadow h-100">
                 <img src="{{ asset('images/image-static/dance.jpg')}}" class="card-img-top rounded-0"
                     alt="Visit Happy Trip Festival" />
                 <div class="card-body">
                     <h4>FESTIVAL TOURS</h4>
                     <p>Tshechus are lively festivals that pay tribute to Guru Rinpoche, who brought Buddhism to Bhutan
                         in the 8th century.</p>
-                    <p><i class="fa-solid fa-map-location-dot"></i> 3 Tours</p>
-                    <a class="btn btn-outline-danger">EXPLORE NOW <i class="fa-solid fa-caret-right"></i></a>
+                </div>
+                <div class="card-footer">
+                    <p><i class="fa-solid fa-map-location-dot"></i> {{ tour_packages_category['festival-tour']|length}} Tours</p>
+                    <a href="{{ path('tour-package',{'slug':'festival-tour'})}}" class="btn btn-outline-danger">EXPLORE NOW <i class="fa-solid fa-caret-right"></i></a>
                 </div>
             </div>
         </div>
         <div class="col-md-3">
-            <div class="card rounded-0 border border-dark h-100">
+            <div class="card rounded-0 card-box-shadow h-100">
                 <img src="{{ asset('images/image-static/rafting.jpg')}}" class="card-img-top rounded-0"
                     alt="Visit Happy Trip Adventure" />
                 <div class="card-body">
                     <h4>ADVENTURE TOURS</h4>
                     <p>River rafting in Bhutan provides an exciting opportunity to navigate its stunning landscapes and
                         crystal-clear rivers, offering a variety of experiences.</p>
-                    <p><i class="fa-solid fa-map-location-dot"></i> 3 Tours</p>
-                    <a class="btn btn-outline-danger">EXPLORE NOW <i class="fa-solid fa-caret-right"></i></a>
+                </div>
+                <div class="card-footer">
+                    <p><i class="fa-solid fa-map-location-dot"></i> {{ tour_packages_category['adventure-tour']|length}} Tours</p>
+                    <a href="{{ path('tour-package',{'slug':'adventure-tour'})}}" class="btn btn-outline-danger">EXPLORE NOW <i class="fa-solid fa-caret-right"></i></a>
                 </div>
             </div>
         </div>
         <div class="col-md-3">
-            <div class="card rounded-0 border border-dark h-100">
+            <div class="card rounded-0 card-box-shadow h-100">
                 <img src="{{ asset('images/image-static/trekking.png')}}" class="card-img-top rounded-0"
                     alt="Visit Happy Trip Trekking" />
                 <div class="card-body">
                     <h4>TREKKING TOURS</h4>
                     <p>Trekking in Bhutan is an experience like no other. It’s a mix of physical challenge, spiritual
                         awakening, and an immersion in untouched natural beauty.</p>
-                    <p><i class="fa-solid fa-map-location-dot"></i> 3 Tours</p>
-                    <a class="btn btn-outline-danger">EXPLORE NOW <i class="fa-solid fa-caret-right"></i></a>
+                </div>
+                <div class="card-footer">
+                    <p><i class="fa-solid fa-map-location-dot"></i> {{ tour_packages_category['trekking-tour']|length}} Tours</p>
+                    <a href="{{ path('tour-package',{'slug':'trekking-tour'})}}" class="btn btn-outline-danger">EXPLORE NOW <i class="fa-solid fa-caret-right"></i></a>
                 </div>
             </div>
         </div>
@@ -298,11 +306,11 @@
                 {% for top_destination in top_destinations %}
                 <li>
                     <div class="card border-0">
-                        <div class="ratio ratio-1x1">
-                            <img src="{{ asset('uploads/images/'~ top_destination.image.imageName )}}" class="card-img-top"
-                                loading="lazy" alt="...">
+                        <div class="">
+                            <img src="{{ asset('uploads/images/'~ top_destination.image.imageName)|imagine_filter('thumbnail_top_destination')}}"
+                                class="card-img-top" loading="lazy" alt="...">
                         </div>
-                        <div class="card-body p-0 pt-4">
+                        <div class="card-body p-2 pt-4">
                             <p><b>{{ top_destination.destinationTitle }}</b></p>
                             <a href="{{ path('top-destinations')}}" class="nav-link text-orange">Read more..</a>
                         </div>
@@ -326,7 +334,8 @@
                     5-star hotels, ensuring an exceptional stay experience marked by outstanding hospitality and
                     tailored to
                     meet individual needs.</p>
-                <a href="" class="btn-orange ps-3 pe-3 pt-1 pb-1 text-white rounded-pill">Explore More <i
+                <a href="{{ path('hotels-in-bhutan-front')}}"
+                    class="btn-orange ps-3 pe-3 pt-1 pb-1 text-white rounded-pill">Explore More <i
                         class="fa-solid fa-caret-right"></i></a>
             </div>
             <div class="col-md-6">

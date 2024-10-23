@@ -3,10 +3,12 @@
 namespace App\Controller;
 
 use App\Entity\Blog;
+use App\Entity\HotelsInBhutan;
 use App\Entity\Images;
 use App\Entity\TopDestination;
 use App\Entity\TourPackage;
 use App\Form\BlogType;
+use App\Form\HotelsInBhutanType;
 use App\Form\TopDestinationType;
 use App\Form\TourPackageType;
 use App\Service\UploadImage;
@@ -49,10 +51,9 @@ class AdminController extends AbstractController
         $form = $this->createForm(TourPackageType::class, $tourPackage);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
-            dd($request->files->get('tour_package'));
-            $tourPackageImage1 = $request->files->get('tour_package')['images']['tour_image']['tour_image_1'];
-            $tourPackageImage2 = $request->files->get('tour_package')['images']['tour_image']['tour_image_2'];
-            $tourPackageImage3 = $request->files->get('tour_package')['images']['tour_image']['tour_image_3'];
+            $tourPackageImage1 = $request->files->get('tour_package')['images']['tour_image']['image_1'];
+            $tourPackageImage2 = $request->files->get('tour_package')['images']['tour_image']['image_2'];
+            $tourPackageImage3 = $request->files->get('tour_package')['images']['tour_image']['image_3'];
 
             $tour_images = [$tourPackageImage1, $tourPackageImage2, $tourPackageImage3];
             foreach ($tour_images as $image) {
@@ -89,9 +90,9 @@ class AdminController extends AbstractController
         }
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $tourPackageImage1 = $request->files->get('tour_package')['images']['tour_image']['tour_image_1'];
-            $tourPackageImage2 = $request->files->get('tour_package')['images']['tour_image']['tour_image_2'];
-            $tourPackageImage3 = $request->files->get('tour_package')['images']['tour_image']['tour_image_3'];
+            $tourPackageImage1 = $request->files->get('tour_package')['images']['tour_image']['image_1'];
+            $tourPackageImage2 = $request->files->get('tour_package')['images']['tour_image']['image_2'];
+            $tourPackageImage3 = $request->files->get('tour_package')['images']['tour_image']['image_3'];
             $tour_images = [$tourPackageImage1, $tourPackageImage2, $tourPackageImage3];
 
             foreach ($tour_images as $key => $image) {
@@ -245,6 +246,46 @@ class AdminController extends AbstractController
             'form' => $form,
             'form_status' => 'Update',
             'image_name' => $topDestination->getImage()->getImageName()
+        ]);
+    }
+    
+    #[Route('/admin/hotels-in-bhutan', name: 'hotels-in-bhutan')]
+    public function hotelsInBhutan() 
+    {
+        $hotelsInBhutan = $this->em->getRepository(HotelsInBhutan::class)->findAll();
+        return $this->render('admin/hotels-in-bhutan.html.twig',[
+            'hotelsInBhutan' => $hotelsInBhutan
+        ]);
+    }
+
+    #[Route('/admin/add-hotels-in-bhutan', name: 'add-hotels-in-bhutan')]
+    public function addHotelsInBhutan(Request $request, UploadImage $uploadImage, SluggerInterface $slug) {
+        $hotelsInBhutan = new HotelsInBhutan();
+        $form = $this->createForm(HotelsInBhutanType::class, $hotelsInBhutan);
+        $form->handleRequest($request);
+        if($form->isSubmitted() && $form->isValid()){
+            $hotelImage1 = $request->files->get('hotels_in_bhutan')['images']['hotels_image']['image_1'];
+            $hotelImage2 = $request->files->get('hotels_in_bhutan')['images']['hotels_image']['image_2'];
+            $hotelImage3 = $request->files->get('hotels_in_bhutan')['images']['hotels_image']['image_3'];
+
+            $hotel_images = [$hotelImage1, $hotelImage2, $hotelImage3];
+            foreach ($hotel_images as $image) {
+                $images = new Images();
+                $images->setImageName($uploadImage->uploadImage($image));
+                $hotelsInBhutan->addImage($images);
+            }
+            $hotelsInBhutan->setSlug($slug->slug($hotelsInBhutan->getHotelName()));
+            $this->em->persist($hotelsInBhutan);
+            $this->em->flush();
+
+            $this->addFlash('notice', 'Added successfully.');
+
+            return $this->redirectToRoute('hotels-in-bhutan');
+        }
+
+        return $this->render('admin/add-hotels-in-bhutan.html.twig',[
+            'form' => $form,
+            'form_status' => 'Add'
         ]);
     }
 }

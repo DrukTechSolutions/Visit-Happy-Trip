@@ -2,4 +2,4 @@ tinymce:
     skin: "appstack"
     content_css: "appstack"
     plugins: "advlist autolink link image media  lists"
-    toolbar: "bold italic underline | bullist numlist | blocks align"
+    toolbar: "bold italic underline | bullist numlist | blocks align link"

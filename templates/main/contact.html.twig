@@ -22,6 +22,9 @@
     #contact-header div div h2 {
         color: white;
     }
+    .mapswrapper {
+        z-index: 0;
+    }
 </style>
 {% endblock %}
 {% block body %}
@@ -34,6 +37,7 @@
         </div>
     </div>
 </div>
+<div class="mapswrapper"><iframe class="w-100" height="400" loading="lazy" allowfullscreen src="https://www.google.com/maps/embed/v1/place?key=AIzaSyBFw0Qbyq9zTFTd-tUY6dZWTgaQzuU17R8&q=Visit%20happy%20trip%20Thimphu%20Bhutan&zoom=14&maptype=roadmap"></iframe><a href="https://www.taxuni.com/west-virginia-state-income-tax/">West Virginia State Income Tax</a><style>.mapswrapper{background:#fff;position:relative}.mapswrapper iframe{border:0;position:relative;z-index:2}.mapswrapper a{color:rgba(0,0,0,0);position:absolute;left:0;top:0;z-index:0}</style></div>
 <div class="container mt-5">
     <div class="row">
         <div class="col-md-6">
@@ -59,7 +63,7 @@
                 {{ form_widget(form.message,{'attr':{'class': 'ht-input', 'rows': '8'}})}}
             </div>
             <div class="mt-2">
-                <button type="submit" class="btn btn-primary w-100">Send Message</button>
+                <button type="submit" class="btn-orange w-100 p-2 border-0 text-white">Send Message</button>
             </div>
             {{ form_end(form) }}
         </div>

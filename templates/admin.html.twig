@@ -30,7 +30,7 @@
 <body>
     <nav class="navbar navbar-expand-lg fixed-top bg-white" style="margin-bottom: 105px; z-index: 1;">
         <div class="container-xxl">
-            <a class="navbar-brand" href="/">
+            <a class="navbar-brand" href="{{ path('app_admin')}}">
                 ADMIN
             </a>
             <button class="navbar-toggler" type="button" data-mdb-toggle="collapse"
@@ -54,7 +54,7 @@
                     <div class="card-body">
                         <ul class="list-group list-group-light">
                             <li class="list-group-item border-0">
-                                <a href="" class="nav-link"><i class="fa-solid fa-house me-3 text-center"
+                                <a href="{{ path('app_admin')}}" class="nav-link"><i class="fa-solid fa-house me-3 text-center"
                                         style="width: 20px;"></i> Home</a>
                             </li>
                             <li class="list-group-item border-0">
@@ -66,7 +66,7 @@
                                         style="width: 20px;"></i> Top Destinations</a>
                             </li>
                             <li class="list-group-item border-0">
-                                <a href="" class="nav-link"><i class="fa-solid fa-hotel me-3 text-center"
+                                <a href="{{ path('hotels-in-bhutan')}}" class="nav-link"><i class="fa-solid fa-hotel me-3 text-center"
                                         style="width: 20px;"></i> Hotels</a>
                             </li>
                             <li class="list-group-item border-0">
@@ -82,6 +82,8 @@
             </div>
         </div>
     </div>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+    integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
     {% block javascripts %}
     {% endblock %}
     <script src="{{ asset('/js/mdb.umd.min.js')}}"></script>

@@ -1,0 +1,63 @@
+{% extends "base.html.twig" %}
+{% block stylesheets %}
+<link href="{{ asset('/css/swiffy-slider.min.css')}}" rel="stylesheet" />
+<style>
+    #hotels-in-bhutan-img {
+        background-image: url('{{ asset("/images/image-static/hotel.jpg")}}');
+        height: 450px;
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+        background-attachment: fixed;
+        width: 100%;
+        position: relative;
+    }
+
+    #hotels-in-bhutan-header {
+        position: absolute;
+        background-color: rgba(0, 0, 0, 0.5);
+        height: 100%;
+        width: 100%;
+    }
+
+    #hotels-in-bhutan-header div div h2 {
+        color: white;
+    }
+</style>
+{% endblock %}
+{% block body %}
+<div id="hotels-in-bhutan-img">
+    <div id="hotels-in-bhutan-header">
+        <div class="d-flex align-items-center  h-100">
+            <div class="container">
+                <h2 class="d-inline-flex bg-black text-warning p-2">HOTELS IN BHUTAN</h2>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container mt-5">
+    <div class="row">
+        {% for hotel in hotelsInBhutan %}
+        <div class="col-md-4 mt-3">
+            <a href="{{ path('hotel-in-bhutan',{'slug' : hotel.slug })}}">
+                <div class="card card-box-shadow p-2">
+                    <img src="{{ asset(asset('uploads/images/'~ hotel.images[0].imageName))|imagine_filter('thumbnail_hotel') }}" class="card-img">
+                    <div class="p-2 mt-2">
+                        <div>
+                            <span><i class="fa-solid fa-star text-orange"></i> {{
+                                hotel.ratings}} STARS</span>
+                        </div>
+                        <div class="mt-2">
+                            <b>{{ hotel.hotelName}}</b>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
+
+{% block javascripts %}
+{% endblock %}

@@ -1,0 +1,49 @@
+<div class="text-white">
+    <h5 class="bg-white p-2 text-orange"><b>INCLUSION</b></h5>
+    <ul>
+        <li>Bhutan visa fee</li>
+        <li>Government royalty & taxes</li>
+        <li>Dedicated English speaking tour guide</li>
+        <li>Dedicated tour vehicle and driver</li>
+        <li>3-star accommodation (twin sharing)</li>
+        <li>Daily 3 meals (B/L/D)</li>
+        <li>Airport transfers</li>
+        <li>Bottled water</li>
+    </ul>
+    <h5 class="bg-white p-2 text-orange"><b>Exclusion</b></h5> 
+    <ul>
+        <li>Flights to and from Bhutan</li>
+        <li>Personal expense/shopping</li>
+        <li>Alcoholic Beverages</li>
+        <li>4 or 5 star accommodation (extra charges will apply)</li>
+        <li>Travel insurance</li>
+        <li>Entry fees to parks and monuments</li>
+        <li>Tips for guide and driver</li>
+    </ul>
+</div>
+<h5 class="text-yellow"><b class="inquiry-text">For Futher inquiry text us</b></h5>
+{{ form_start(form) }}
+<div class="mt-1">
+    <span class="text-white">{{ form_label(form.name)}}</span>
+    {{ form_widget(form.name,{'attr':{'class': 'book-now-input'}})}}
+    <span class="mt-1 text-purple" id="name-error"></span>
+</div>
+<div class="mt-1">
+    <span class="text-white">{{ form_label(form.email)}}</span>
+    {{ form_widget(form.email,{'attr':{'class': 'book-now-input'}})}}
+    <span class="mt-1 text-purple" id="email-error"></span>
+</div>
+<div class="mt-1">
+    <span class="text-white">{{ form_label(form.subject)}}</span>
+    {{ form_widget(form.subject,{'attr':{'class': 'book-now-input'}})}}
+    <span class="mt-1 text-purple" id="subject-error"></span>
+</div>
+<div class="mt-1">
+    <span class="text-white">{{ form_label(form.message)}}</span>
+    {{ form_widget(form.message,{'attr':{'class': 'book-now-input', 'rows': '8'}})}}
+    <span class="mt-1 text-purple" id="msg-error"></span>
+</div>
+<div class="mt-1">
+    <button type="button" class="btn-white w-100 book-now-btn">Send Message</button>
+</div>
+{{ form_end(form) }}

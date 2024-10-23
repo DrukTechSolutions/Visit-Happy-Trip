@@ -1,0 +1,147 @@
+{% extends "base.html.twig" %}
+{% block stylesheets %}
+<link href="{{ asset('/css/swiffy-slider.min.css')}}" rel="stylesheet" />
+<style>
+    #hotel-in-bhutan-img {
+        background-image: url('{{ asset("/uploads/images/"~ hotelInBhutan.images[0].imageName )}}');
+        height: 450px;
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+        background-attachment: fixed;
+        width: 100%;
+        position: relative;
+    }
+
+    #hotel-in-bhutan-header {
+        position: absolute;
+        background-color: rgba(0, 0, 0, 0.5);
+        height: 100%;
+        width: 100%;
+    }
+
+    #hotel-in-bhutan-header div div h2 {
+        color: white;
+    }
+</style>
+{% endblock %}
+{% block body %}
+<div id="hotel-in-bhutan-img">
+    <div id="hotel-in-bhutan-header">
+        <div class="d-flex align-items-center  h-100">
+            <div class="container">
+                <h2 class="d-inline-flex bg-black text-warning p-2">{{ hotelInBhutan.hotelName|upper }}</h2>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-9">
+            <div class="swiffy-slider slider-item-reveal slider-nav-round slider-item-ratio slider-item-ratio-21x9"
+                id="slider1">
+                <ul class="slider-container">
+                    {% for image in hotelInBhutan.images %}
+                    <li><img src="{{ asset('uploads/images/'~ image.imageName )}}" loading="lazy" alt="..."></li>
+                    {% endfor %}
+                </ul>
+
+                <button type="button" class="slider-nav" aria-label="Go left"></button>
+                <button type="button" class="slider-nav slider-nav-next" aria-label="Go left"></button>
+
+                <div class="slider-indicators slider-indicators-square d-none d-md-flex">
+                    <button class="" aria-label="Go to slide"></button>
+                    <button aria-label="Go to slide" class=""></button>
+                    <button aria-label="Go to slide" class="active"></button>
+                </div>
+
+                <div
+                    class="slider-indicators slider-indicators-sm slider-indicators-dark slider-indicators-round d-md-none slider-indicators-highlight">
+                    <button class="" aria-label="Go to slide"></button>
+                    <button aria-label="Go to slide" class=""></button>
+                    <button aria-label="Go to slide" class="active"></button>
+                </div>
+            </div>
+            <div class="mt-5">
+                <h4><b>OVERVIEW OF <span class="text-orange">{{ hotelInBhutan.hotelName|upper }}</span></b></h4>
+                {% for star in 1 .. hotelInBhutan.ratings %}
+                <span class="text-warning"><i class="fa-solid fa-star"></i></span>
+                {% endfor %}
+                <p>{{ hotelInBhutan.roomDetails|raw }}</p>
+
+                <ul class="nav nav-tabs nav-fill mb-3 mt-3" id="ex1" role="tablist">
+                    <li class="nav-item" role="presentation">
+                        <a data-mdb-tab-init class="nav-link active" id="ex2-tab-1" href="#ex2-tabs-1" role="tab"
+                            aria-controls="ex2-tabs-1" aria-selected="true"><i class="fa-solid fa-bed"></i> Room
+                            Details</a>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <a data-mdb-tab-init class="nav-link" id="ex2-tab-2" href="#ex2-tabs-2" role="tab"
+                            aria-controls="ex2-tabs-2" aria-selected="false"><i class="fa-solid fa-clipboard-list"></i> Amenities</a>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <a data-mdb-tab-init class="nav-link" id="ex2-tab-3" href="#ex2-tabs-3" role="tab"
+                            aria-controls="ex2-tabs-3" aria-selected="false"><i class="fa-regular fa-id-card"></i>
+                            Contact Details</a>
+                    </li>
+                </ul>
+
+                <div class="tab-content" id="ex2-content">
+                    <div class="tab-pane fade show active" id="ex2-tabs-1" role="tabpanel" aria-labelledby="ex2-tab-1">
+                        <p><b>Total Rooms:</b> {{ hotelInBhutan.noOfRooms }}</p>
+                        <p><b>Room Types:</b> {{ hotelInBhutan.roomType }}</p>
+                    </div>
+                    <div class="tab-pane fade" id="ex2-tabs-2" role="tabpanel" aria-labelledby="ex2-tab-2">
+                        <p>{{ hotelInBhutan.ammenities|raw}}</p>
+                    </div>
+                    <div class="tab-pane fade" id="ex2-tabs-3" role="tabpanel" aria-labelledby="ex2-tab-3">
+                        <p><b>Phone No:</b> {{ hotelInBhutan.phoneNo }}</p>
+                        <p><b>Email:</b> {{ hotelInBhutan.email }}</p>
+                        <p><b>Website:</b> {{ hotelInBhutan.website }}</p>
+                        <p><b>Address:</b> {{ hotelInBhutan.address }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="bg-orange p-2">
+                {{ render(controller(
+                    'App\\Controller\\SendmailController::contact'
+                )) }}
+            </div>
+        </div>
+    </div>
+    <div class="mt-3">
+        <h4><b>SIMILAR HOTELS</b></h4>
+        <div class="swiffy-slider slider-item-show4 slider-nav-autoplay slider-nav-autopaus slider-nav-round slider-nav-page"
+            data-slider-nav-autoplay-interval="2000">
+            <ul class="slider-container">
+                {% for hotel in hotelsInBhutan %}
+                <li>
+                    <div class="card border-0">
+                        <img src="{{ asset('uploads/images/'~ hotel.images[0].imageName)|imagine_filter('thumbnail_square')}}"
+                            class="card-img-top" loading="lazy" alt="...">
+                        <div class="card-body p-1 pt-3">
+                            <div class="d-flex">
+                                <p class="flex-grow-1"><b>{{ hotel.hotelName|upper }}</b></p>
+                                <p class="px-2"><i class="fa-solid fa-star text-orange"></i> {{ hotel.ratings }}
+                                </p>
+                            </div>
+                            <a href="{{ path('hotel-in-bhutan',{'slug' : hotel.slug })}}" class="card-text">View more</a>
+                        </div>
+                    </div>
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block javascripts %}
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"
+    integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+<script src="{{ asset('/js/swiffy-slider.min.js')}}"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="{{ asset('/js/contact.js')}}"></script>
+{% endblock %}
