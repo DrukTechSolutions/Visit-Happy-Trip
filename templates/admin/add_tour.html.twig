@@ -25,6 +25,10 @@
     <div class="card rounded-0">
         <div class="card-header bg-danger text-white rounded-0"><b>Tour Package</b></div>
         <div class="card-body">
+            <div class="mb-4">
+                {{ form_label(form.tour_title )}}
+                {{ form_widget(form.tour_title,{'attr':{'class': 'ht-input'}})}}
+            </div>
             <div class="row mb-4">
                 <label class="mb-1">Upload Images(3 Max)</label>
                 <div class="col-md-4">

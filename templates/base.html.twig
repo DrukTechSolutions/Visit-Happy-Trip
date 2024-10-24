@@ -134,12 +134,6 @@
                 <a href="" class="me-4 text-reset">
                     <i class="fab fa-instagram"></i>
                 </a>
-                <a href="" class="me-4 text-reset">
-                    <i class="fab fa-linkedin"></i>
-                </a>
-                <a href="" class="me-4 text-reset">
-                    <i class="fab fa-github"></i>
-                </a>
             </div>
             <!-- Right -->
         </section>
@@ -170,22 +164,25 @@
                             Quick Links
                         </h6>
                         <p>
-                            <a href="#!" class="text-reset"><i class="fa-solid fa-caret-right"></i> Home</a>
+                            <a href="/" class="text-reset"><i class="fa-solid fa-caret-right"></i> Home</a>
                         </p>
                         <p>
-                            <a href="#!" class="text-reset"><i class="fa-solid fa-caret-right"></i> About us</a>
+                            <a href="/about-us" class="text-reset"><i class="fa-solid fa-caret-right"></i> About us</a>
                         </p>
                         <p>
-                            <a href="#!" class="text-reset"><i class="fa-solid fa-caret-right"></i> About Bhutan</a>
+                            <a href="/about-bhutan" class="text-reset"><i class="fa-solid fa-caret-right"></i> About
+                                Bhutan</a>
                         </p>
-                        <p>
+                        {# <p>
                             <a href="#!" class="text-reset"><i class="fa-solid fa-caret-right"></i> Tour Packages</a>
+                        </p> #}
+                        <p>
+                            <a href="/trip-planner" class="text-reset"><i class="fa-solid fa-caret-right"></i> Trip
+                                Planner</a>
                         </p>
                         <p>
-                            <a href="#!" class="text-reset"><i class="fa-solid fa-caret-right"></i> Trip Planner</a>
-                        </p>
-                        <p>
-                            <a href="#!" class="text-reset"><i class="fa-solid fa-caret-right"></i> Contact us</a>
+                            <a href="/contact-us" class="text-reset"><i class="fa-solid fa-caret-right"></i> Contact
+                                us</a>
                         </p>
                     </div>
                     <!-- Grid column -->
@@ -226,7 +223,8 @@
                         <h6 class="text-uppercase fw-bold mb-4 mt-4">
                             Tentative Festival Dates
                         </h6>
-                        <a href="{{ asset('files/pdf/festival-date-final-2024.pdf')}}" target="_blank" class="p-2 btn-orange text-white rounded-1">Tentative Festival Date 2024 <i
+                        <a href="{{ asset('files/pdf/festival-date-final-2024.pdf')}}" target="_blank"
+                            class="p-2 btn-orange text-white rounded-1">Tentative Festival Date 2024 <i
                                 class="fa-solid fa-caret-right"></i></a>
                     </div>
                     <!-- Grid column -->
@@ -238,8 +236,8 @@
 
         <!-- Copyright -->
         <div class="text-center p-4 border-top" style="background-color: rgba(0, 0, 0, 0.05);">
-            © Copyright 2024. Visit Happy Trip All Rights Reserved. | Website Designed and Developed by Druk Tech
-            Solutions
+            © Copyright {{ "now"|date("Y") }}. Visit Happy Trip All Rights Reserved. | Website Designed and Developed by <a
+                href="https://www.druktechsolutions.com/" target="_blank" class="text-orange">Druk Tech Solutions</a>
         </div>
         <!-- Copyright -->
     </footer>

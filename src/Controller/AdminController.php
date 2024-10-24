@@ -45,7 +45,7 @@ class AdminController extends AbstractController
     }
 
     #[Route('/admin/add-tour', name: 'add-tour')]
-    public function addTour(Request $request, UploadImage $uploadImage): Response
+    public function addTour(Request $request, UploadImage $uploadImage, SluggerInterface $slug): Response
     {
         $tourPackage = new TourPackage();
         $form = $this->createForm(TourPackageType::class, $tourPackage);
@@ -61,6 +61,8 @@ class AdminController extends AbstractController
                 $images->setImageName($uploadImage->uploadImage($image));
                 $tourPackage->addImage($images);
             }
+            $titleSlug = $tourPackage->getTourTitle();
+            $tourPackage->setTourTitleSlug($slug->slug(strtolower($titleSlug)));
             $this->em->persist($tourPackage);
             $this->em->flush();
 
@@ -76,7 +78,7 @@ class AdminController extends AbstractController
 
 
     #[Route('/admin/update-tour-package/{id}', name: 'update-tour-package')]
-    public function updateTourPackage(Request $request, UploadImage $uploadImage, $id): Response
+    public function updateTourPackage(Request $request, UploadImage $uploadImage, $id,  SluggerInterface $slug): Response
     {
         $tourPackageImages = [];
         $tourPackageImagesId = [];
@@ -102,7 +104,8 @@ class AdminController extends AbstractController
                     $tourPackage->addImage($imageObj);
                 }
             }
-
+            $titleSlug = $tourPackage->getTourTitle();
+            $tourPackage->setTourTitleSlug($slug->slug(strtolower($titleSlug)));
             $this->em->persist($tourPackage);
             $this->em->flush();
 
@@ -127,7 +130,8 @@ class AdminController extends AbstractController
             $blog_image_file = $request->files->get('blog')['blog_image'];
             $image = new Images();
             $image->setImageName($uploadImage->uploadImage($blog_image_file));
-            $blog->setBlogSlug($slug->slug($blog->getBlogTitle()));
+            $blogSlug = $blog->getBlogTitle();
+            $blog->setBlogSlug($slug->slug(strtolower($blogSlug)));
             $blog->setImage($image);
             $this->em->persist($blog);
             $this->em->flush();
@@ -155,7 +159,8 @@ class AdminController extends AbstractController
                 $image->setImageName($uploadImage->uploadImage($blog_image_file));
                 $blog->setImage($image);
             }
-            $blog->setBlogSlug($slug->slug($blog->getBlogTitle()));
+            $blogSlug = $blog->getBlogTitle();
+            $blog->setBlogSlug($slug->slug(strtolower($blogSlug)));
             $this->em->persist($blog);
             $this->em->flush();
 
@@ -274,7 +279,8 @@ class AdminController extends AbstractController
                 $images->setImageName($uploadImage->uploadImage($image));
                 $hotelsInBhutan->addImage($images);
             }
-            $hotelsInBhutan->setSlug($slug->slug($hotelsInBhutan->getHotelName()));
+            $hotelNameSlug = $hotelsInBhutan->getHotelName();
+            $hotelsInBhutan->setSlug($slug->slug(strtolower($hotelNameSlug)));
             $this->em->persist($hotelsInBhutan);
             $this->em->flush();
 
@@ -286,6 +292,49 @@ class AdminController extends AbstractController
         return $this->render('admin/add-hotels-in-bhutan.html.twig',[
             'form' => $form,
             'form_status' => 'Add'
+        ]);
+    }
+
+    #[Route('/admin/update-hotels-in-bhutan/{id}', name: 'update-hotels-in-bhutan')]
+    public function updateHotelsInBhutan(Request $request, UploadImage $uploadImage, SluggerInterface $slug, $id) {
+        $hotelsInBhutanImages = [];
+        $hotelsInBhutanImagesId = [];
+        $hotelsInBhutan = $this->em->getRepository(HotelsInBhutan::class)->find($id);
+        foreach ($hotelsInBhutan->getImages() as $key => $image) {
+            $hotelsInBhutanImagesId[$key] = $image->getId();
+            $hotelsInBhutanImages[$key] = $image->getImageName();
+        }
+        
+        $form = $this->createForm(HotelsInBhutanType::class, $hotelsInBhutan);
+        $form->handleRequest($request);
+        if($form->isSubmitted() && $form->isValid()){
+ 
+            $hotelImage1 = $request->files->get('hotels_in_bhutan')['images']['hotels_image']['image_1'];
+            $hotelImage2 = $request->files->get('hotels_in_bhutan')['images']['hotels_image']['image_2'];
+            $hotelImage3 = $request->files->get('hotels_in_bhutan')['images']['hotels_image']['image_3'];
+
+            $hotel_images = [$hotelImage1, $hotelImage2, $hotelImage3];
+            foreach ($hotel_images as $key => $image) {
+                if($image) {
+                    $imageObj = array_key_exists($key, $hotelsInBhutanImagesId) ? $this->em->getRepository(Images::class)->find($hotelsInBhutanImagesId[$key]) : new Images();
+                    $imageObj->setImageName($uploadImage->uploadImage($image));
+                    $hotelsInBhutan->addImage($imageObj);
+                }
+            }
+            $hotelNameSlug = $hotelsInBhutan->getHotelName();
+            $hotelsInBhutan->setSlug($slug->slug(strtolower($hotelNameSlug)));
+            $this->em->persist($hotelsInBhutan);
+            $this->em->flush();
+
+            $this->addFlash('notice', 'Updated successfully.');
+
+            return $this->redirectToRoute('hotels-in-bhutan');
+        }
+
+        return $this->render('admin/add-hotels-in-bhutan.html.twig',[
+            'form' => $form,
+            'form_status' => 'Update',
+            'hotelsInBhutanImages' => $hotelsInBhutanImages
         ]);
     }
 }

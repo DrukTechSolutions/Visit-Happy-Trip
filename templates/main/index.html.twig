@@ -141,10 +141,10 @@
                     <img src="{{ asset('uploads/images/'~ tour_package.images[0].imageName )|imagine_filter('thumbnail')}}"
                         class="card-img-top rounded-0" alt="Fissure in Sandstone" />
                     <div class="card-body">
-                        <h5 class="card-title">{{ tour_package.tourCategory|tour_category }}</h5>
-                        <p class="card-text text-orange">12 days/ 12 nights</p>
-                        <p class="font-roboto font-size-22"><strong>From : $ {{ tour_package.price}}</strong></p>
-                        <a href="{{ path('view-tours',{'id': tour_package.id })}}"
+                        <h5 class="card-title">{{ tour_package.tourTitle }}</h5>
+                        <p class="card-text text-orange">{{ tour_package.itinerary|length }} days/ {{ tour_package.itinerary|length - 1}} nights</p>
+                        <p class="">From<strong class="text-orange font-size-22"> ${{ tour_package.price}}</strong></p>
+                        <a href="{{ path('view-tours',{'id': tour_package.id, 'slug' : tour_package.tourTitleSlug })}}"
                             class="btn-orange ps-3 pe-3 pt-2 pb-2 nav-link text-white text-center"
                             data-mdb-ripple-init>Explore more <i class="fa-solid fa-caret-right"></i></a>
                     </div>

@@ -30,7 +30,7 @@
     <div id="tour-view-header">
         <div class="d-flex align-items-center  h-100">
             <div class="container">
-                <h2 class="d-inline-flex bg-black text-warning p-2">{{ tour_packages.tourCategory|tour_category }}</h2>
+                <h2 class="d-inline-flex bg-black text-warning p-2">{{ tour_packages.tourTitle|upper }}</h2>
             </div>
         </div>
     </div>
@@ -50,23 +50,23 @@
             <div class="row mt-3">
                 <div class="col-md-4 pe-0">
                     <div class="bg-tour-over-view">
-                        <i class="fa-regular fa-eye"></i> Tour Overview
+                        <span id="tour_overview"><i class="fa-regular fa-eye"></i> Tour Overview</span>
                     </div>
                 </div>
                 <div class="col-md-4 ps-0 pe-0">
                     <div class="bg-tour-over-view">
-                        <i class="fa-solid fa-route"></i> Itinerary
+                        <span id="itinerary"><i class="fa-solid fa-route"></i> Itinerary</span>
                     </div>
                 </div>
                 <div class="col-md-4 ps-0">
                     <div class="bg-tour-over-view">
-                        <i class="fa-solid fa-circle-info"></i> Payment & Cancellation Policy
+                        <span id="policy"><i class="fa-solid fa-circle-info"></i> Payment & Cancellation Policy</span>
                     </div>
                 </div>
             </div>
-            <div class="mt-5">
+            <div class="mt-5" id="tour_overview_wrapper">
                 {{ tour_packages.tourOverview | raw }}
-                <div class="accordion" id="accordionExample">
+                <div class="accordion" id="itinerary_wrapper">
                     {% for item in tour_packages.itinerary %}
                     <div class="accordion-item rounded-0">
                         <h2 class="accordion-header" id="heading_{{loop.index}}">
@@ -77,7 +77,7 @@
                             </button>
                         </h2>
                         <div id="itinerary_{{loop.index}}" class="accordion-collapse collapse"
-                            aria-labelledby="heading_{{loop.index}}" data-mdb-parent="#accordionExample">
+                            aria-labelledby="heading_{{loop.index}}" data-mdb-parent="#itinerary_wrapper">
                             <div class="accordion-body">
                                 {{ item.itineraryDescription|raw }}
                             </div>
@@ -86,7 +86,7 @@
                     {% endfor %}
                 </div>
             </div>
-            <div class="mt-3">
+            <div class="mt-3" id="policy_wrapper">
                 <h4 class="text-orange"><b>Payment & Cancellation Policy</b></h4>
                 <h5><b>Payment Terms</b></h5>
                 <ul>
@@ -132,4 +132,7 @@
 <script src="https://code.jquery.com/jquery-3.7.1.min.js"
     integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
 <script src="{{ asset('/js/swiffy-slider.min.js')}}"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="{{ asset('/js/contact.js')}}"></script>
+<script src="{{ asset('/js/view-tours-scroll.js')}}"></script>
 {% endblock %}

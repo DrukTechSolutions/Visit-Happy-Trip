@@ -1,5 +1,5 @@
 $(document).ready(function () {
-    $('.book-now-btn').on('click', function () {
+    $('.send-msg-btn').on('click', function () {
         let contact = {
             'name': $('#contact_name').val(),
             'email': $('#contact_email').val(),
@@ -27,6 +27,8 @@ $(document).ready(function () {
                     Toast.fire({
                         icon: "success",
                         title: "Message sent."
+                    }).then(function() {
+                        location.reload();
                     });
                 }
             }

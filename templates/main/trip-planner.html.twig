@@ -1,0 +1,167 @@
+{% extends "base.html.twig" %}
+{% block stylesheets %}
+<style>
+    #trip-planner-img {
+        background-image: url('{{ asset("/images/image-static/dragon-nest.jpg")}}');
+        height: 450px;
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+        background-attachment: fixed;
+        width: 100%;
+        position: relative;
+    }
+
+    #trip-planner-header {
+        position: absolute;
+        background-color: rgba(0, 0, 0, 0.5);
+        height: 100%;
+        width: 100%;
+    }
+
+    #trip-planner-header div div h2 {
+        color: white;
+    }
+</style>
+{% endblock %}
+{% block body %}
+<div id="trip-planner-img">
+    <div id="trip-planner-header">
+        <div class="d-flex align-items-center h-100">
+            <div class="container">
+                <h2 class="d-inline-flex bg-black text-warning p-2">TRIP PLANNER</h2>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container mt-5">
+    <div class="row mt-5">
+        <div class="col-md-6">
+            <div class="card h-100 rounded-0 border border-dark trip-planner-card">
+                <div class="card-body">
+                    <h4 class="text-orange">BHUTAN VISA</h4>
+                    <p>A visa is required for most travelers to enter Bhutan. Your visa can be processed us. The process
+                        is
+                        straightforward. Submit a copy of your passport’s photo page (valid for at least 6 months) we ll
+                        handle the visa application on your behalf, typically processing it within 3 working days. For
+                        citizens of India, Bangladesh, and the Maldives enjoy visa-free entry. Simply present your valid
+                        passport (at least 6 months validity) or a voter ID card (Indian nationals only) at the port of
+                        entry to obtain a free permit. Once approved, you’ll receive a visa clearance letter via email.
+                        Upon
+                        arrival in Bhutan, present this letter to immigration officials. Your Bhutan visa will be
+                        directly
+                        stamped into your passport, with validity based on your itinerary.</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="card h-100 rounded-0 border border-dark trip-planner-card">
+                <div class="card-body">
+                    <h4 class="text-orange">ACCOMMODATION</h4>
+                    <b> We offer a variety of accommodation options:</b>
+                    <p><b>Hotels:</b> Choose from government-approved hotels ranging from cozy 3-star options to
+                        luxurious
+                        5-star havens like Amankora or Taj Tashi. Expect amenities like TVs, room service, and Wi-Fi in
+                        most hotels. (Note: a supplement may apply for luxury hotels).
+                    </p>
+                    <p><b>Farm Stays:</b> Immerse yourself in rural life by staying in a farmhouse. These family-run
+                        accommodations offer a taste of traditional Bhutanese farming practices alongside delicious
+                        home-cooked meals and warm hospitality.
+                    </p>
+                    <p>
+                        <b>Camping:</b> For when you are on multi-days hikes and treks. Your guide and support team will
+                        ensure
+                        a
+                        comfortable experience, complete with cooks and packhorses to handle logistics.
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 mt-3">
+            <div class="card h-100 rounded-0 border border-dark trip-planner-card">
+                <div class="card-body">
+                    <h4 class="text-orange">FOOD</h4>
+                    <p>Bhutan’s cuisine tantalizes taste buds with its fiery character. Chilies are popular, starring in
+                        most dishes. Be prepared to adjust the spice level to your preference – just let your server
+                        know!</p>
+                    <p>Some popular dishes in Bhutan include: Ema Datshi, the national dish, features fiery chilies
+                        balanced by savory cheese; Kewa Datshi offers a creamy mixture of cheese and potatoes; and Shamu
+                        Datshi comes with fleshy mushrooms simmered in rich cheese sauce.</p>
+                    <p>Don’t miss the signature local rice with lentil stew (Dhal).</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 mt-3">
+            <div class="card h-100 rounded-0 border border-dark trip-planner-card">
+                <div class="card-body">
+                    <h4 class="text-orange">DRESS CODE</h4>
+                    <p>The national dress, Gho for men and Kira for women, is mandatory for Bhutanese in official
+                        settings. Tourists have more flexibility and can choose to wear anything within decorum:</p>
+                    <ul>
+                        <li>When exploring towns, feel free to wear comfortable clothing. However, remember modesty is
+                            key when visiting Dzongs (fortresses), monasteries, and temples.</li>
+                        <li>Opt for long pants and collared shirts with sleeves for both men and women. Shoulders and
+                            legs should be covered.</li>
+                        <li> Hats and shoes are considered disrespectful inside religious sites. Remove them before
+                            entering. Feel free to carry a jacket for cooler areas.</li>
+                    </ul>
+                    <p>Consider purchasing a Gho or Kira to experience Bhutanese attire first-hand. Locals will
+                        appreciate the gesture and may even assist you in wearing it properly.</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 mt-3">
+            <div class="card h-100 rounded-0 border border-dark trip-planner-card">
+                <div class="card-body">
+                    <h4 class="text-orange">RELIGION</h4>
+                    <p>Bhutan has two main faiths: Buddhism and Hinduism. Notably, Bhutan champions Mahayana Buddhism,
+                        the only nation to do so. In the south, Hinduism thrives. Religious freedom and tolerance exist
+                        in Bhutan, allowing visitors to have their own religious affiliations.</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 mt-3">
+            <div class="card h-100 rounded-0 border border-dark trip-planner-card">
+                <div class="card-body">
+                    <h4 class="text-orange">COMMUNICATION</h4>
+                    <p>Bhutan offers a robust telecom network. Wi-Fi is available in most hotels and cafes. Global
+                        roaming might be an option, but it is highly recommended to purchase a local SIM from Thimphu or
+                        Paro, as it is the most cost-effective way to stay connected</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 mt-3">
+            <div class="card h-100 rounded-0 border border-dark trip-planner-card">
+                <div class="card-body">
+                    <h4 class="text-orange">PRECAUTIONS</h4>
+                    <p>Bhutan is a very safe country to visit, but a few general precautions to ensure a smooth visit:
+                    </p>
+                    <ul>
+                        <li>Secure Your Belongings: Keep your passport, camera, wallet, and purse close at hand,
+                            especially while sightseeing. Avoid leaving them unattended in vehicles.</li>
+                        <li>Hydrate Safely: Stick to bottled water, as most tap water is untreated. Bottled water is
+                            readily available and affordable.</li>
+                        <li>Respect the Law: Bhutan strictly enforces regulations on drugs and tobacco. Cooperate with
+                            any inspections and avoid exceeding the tobacco limit.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 mt-3">
+            <div class="card h-100 rounded-0 border border-dark trip-planner-card">
+                <div class="card-body">
+                    <h4 class="text-orange">CURRENCY</h4>
+                    <p>Bhutan’s official currency is the Ngultrum (Nu.). Indian Rupees are also widely accepted in the
+                        country. For convenience, bring US Dollars and exchange them for Nu. upon arrival at the airport
+                        ATM. ATMs dispensing Nu. are also available in major towns, accepting Visa and Mastercard. While
+                        credit cards are an option in high-end hotels and handicraft stores, having cash is always
+                        handy.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block javascripts %}
+{% endblock %}

@@ -15,6 +15,7 @@ class TourPackageType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
+            ->add('tour_title')
             ->add('tour_category', ChoiceType::class, [
                 'choices' => [
                     'Cultural Tour' => 'cultural-tour',

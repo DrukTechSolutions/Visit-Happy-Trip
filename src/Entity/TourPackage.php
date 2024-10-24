@@ -37,6 +37,12 @@ class TourPackage
     #[ORM\OneToMany(targetEntity: Itinerary::class, mappedBy: 'tourPackage', cascade : ['persist','remove'], orphanRemoval : true)]
     private Collection $itinerary;
 
+    #[ORM\Column(length: 255)]
+    private ?string $tour_title = null;
+
+    #[ORM\Column(length: 255)]
+    private ?string $tour_title_slug = null;
+
     public function __construct()
     {
         $this->images = new ArrayCollection();
@@ -140,6 +146,30 @@ class TourPackage
                 $itinerary->setTourPackage(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getTourTitle(): ?string
+    {
+        return $this->tour_title;
+    }
+
+    public function setTourTitle(string $tour_title): static
+    {
+        $this->tour_title = $tour_title;
+
+        return $this;
+    }
+
+    public function getTourTitleSlug(): ?string
+    {
+        return $this->tour_title_slug;
+    }
+
+    public function setTourTitleSlug(string $tour_title_slug): static
+    {
+        $this->tour_title_slug = $tour_title_slug;
 
         return $this;
     }

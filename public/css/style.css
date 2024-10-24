@@ -92,6 +92,12 @@ body {
 
 /* End Tour over view */
 
+/* Trip planner */
+.trip-planner-card p {
+  text-align: justify;
+}
+/* End trip planner*/
+
 /* Contact */
 
 /* .book-now-btn:hover {

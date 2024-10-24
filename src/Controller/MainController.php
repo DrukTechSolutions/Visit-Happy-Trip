@@ -63,7 +63,7 @@ class MainController extends AbstractController
         ]);
     }
 
-    #[Route('/tour/view-tours/{id}', name: 'view-tours')]
+    #[Route('/tour/{id}/{slug}', name: 'view-tours')]
     public function viewTours($id): Response
     {
         $tour_package = $this->em->getRepository(TourPackage::class)->find($id);
@@ -159,5 +159,11 @@ class MainController extends AbstractController
             //$emailService->sendEmail($form->getData(), 'contact');
         }
         return $this->render('main/contact.html.twig', ['form' => $form]);
+    }
+
+    #[Route('/trip-planner', name: 'trip-planner')]
+    public function tripPlanner()
+    {
+        return $this->render('main/trip-planner.html.twig');
     }
 }
