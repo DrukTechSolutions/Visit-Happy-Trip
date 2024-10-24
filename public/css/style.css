@@ -49,6 +49,9 @@ body {
 .home-menu-link:hover {
   color: #f85907 !important;
 }
+.home-menu-link{
+  font-weight: 600 !important;
+}
 .bhutan-gradient {
   background: linear-gradient(yellow, red);
   -webkit-background-clip: text;
