@@ -7,7 +7,7 @@
     <title>{% block title %}Visit Happy Trip &#8211; Happiness Matters{% endblock %}</title>
     <link rel="icon" href="{{ asset('images/favicon/favicon.jpg')}}">
     <!-- Font Awesome -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" rel="stylesheet" />
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -42,34 +42,34 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
-                        <a class="nav-link home-menu-link active" aria-current="page" href="/">Home</a>
+                        <a class="nav-link home-menu-link" aria-current="page" href="/">Home</a>
                     </li>
-                    <li class="nav-item">
+                    <li class="nav-item ms-2">
                         <a class="nav-link home-menu-link" href="/about-us">About us</a>
                     </li>
-                    <li class="nav-item">
+                    <li class="nav-item ms-2">
                         <a class="nav-link home-menu-link" href="/about-bhutan">About Bhutan</a>
                     </li>
-                    <li class="nav-item menu-dropdown">
+                    <li class="nav-item menu-dropdown ms-2">
                         <a class="nav-link home-menu-link">Tour Packages <i class="fa-solid fa-caret-down"></i></a>
                         <div class="dropdown-content">
                             {{ include('main/_includes/_packages.html.twig') }}
                         </div>
                     </li>
-                    <li class="nav-item menu-dropdown">
+                    <li class="nav-item menu-dropdown ms-2">
                         <a class="nav-link home-menu-link">Travel Info <i class="fa-solid fa-caret-down"></i></a>
                         <div class="dropdown-content">
                             <a href="/travel-and-visa" class="nav-link">Travel & Visa</a>
                             <a href="/faqs-and-raqs" class="nav-link">Faq's/Raq's</a>
                         </div>
                     </li>
-                    <li class="nav-item">
+                    <li class="nav-item ms-2">
                         <a class="nav-link home-menu-link" href="/blog">Blog</a>
                     </li>
-                    <li class="nav-item">
+                    <li class="nav-item ms-2">
                         <a class="nav-link home-menu-link" href="/contact-us">Contact us</a>
                     </li>
-                    <li class="nav-item">
+                    <li class="nav-item ms-2">
                         <a href="/book-now" target="_blank"
                             class="nav-link rounded-2 btn-orange text-white pt-2 pb-2 ps-3 pe-3">Book Now</a>
                     </li>

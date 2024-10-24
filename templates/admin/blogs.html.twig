@@ -32,10 +32,10 @@
                 <td>
                    <a type="button" href="{{ path('update-blog',{'id': blog.id })}}" class="btn btn-primary btn-sm btn-rounded">
                         Update
-                    </a> {# 
-                    <a type="button" href="{{ path('update-tour-package',{'id': blog.id })}}" class="btn btn-danger btn-sm btn-rounded">
+                    </a> 
+                    <a type="button" href="{{ path('delete-blog',{'id': blog.id })}}" class="btn btn-danger btn-sm btn-rounded">
                         Delete
-                    </a> #}
+                    </a>
                 </td>
             </tr>
             {% endfor %}

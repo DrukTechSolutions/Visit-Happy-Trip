@@ -4,7 +4,7 @@
 <nav aria-label="breadcrumb">
     <ol class="breadcrumb">
         <li class="breadcrumb-item"><a href="/admin">Home</a></li>
-        <li class="breadcrumb-item active" aria-current="page">Tour Packages</li>
+        <li class="breadcrumb-item active" aria-current="page">Hotels in Bhutan</li>
     </ol>
 </nav>
 <div>
@@ -33,7 +33,7 @@
                     <a type="button" href="{{ path('update-hotels-in-bhutan',{'id': hotel.id })}}" class="btn btn-primary btn-sm btn-rounded">
                         Update
                     </a>
-                    <a type="button" href="{{ path('update-tour-package',{'id': hotel.id })}}" class="btn btn-danger btn-sm btn-rounded">
+                    <a type="button" href="{{ path('delete-hotel-in-bhutan',{'id': hotel.id })}}" class="btn btn-danger btn-sm btn-rounded">
                         Delete
                     </a>
                 </td>

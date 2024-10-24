@@ -30,10 +30,15 @@ class AdminController extends AbstractController
     public function index(): Response
     {
         $tours_packages = $this->em->getRepository(TourPackage::class)->findAll();
+        $top_destinations = $this->em->getRepository(TopDestination::class)->findAll();
+        $hotels_in_bhutan = $this->em->getRepository(HotelsInBhutan::class)->findAll();
         $blogs = $this->em->getRepository(Blog::class)->findAll();
 
         return $this->render('admin/index.html.twig', [
-            'controller_name' => 'AdminController',
+            'total_tours_packages' => count($tours_packages),
+            'total_top_destinations' => count($top_destinations),
+            'total_hotels_in_bhutan' => count($hotels_in_bhutan),
+            'total_blogs' => count($blogs),
         ]);
     }
 
@@ -120,6 +125,19 @@ class AdminController extends AbstractController
         ]);
     }
 
+    #[Route('/admin/{id}/delete-tour-package' , name: 'delete-tour-package')]
+    public function deleteTourPackage($id) 
+    {
+        $tourPackage = $this->em->getRepository(TourPackage::class)->find($id);
+
+        $this->em->remove($tourPackage);
+        $this->em->flush();
+
+        $this->addFlash('notice', 'Deleted successfully.');
+
+        return $this->redirectToRoute('tour-packages');
+    }
+
     #[Route('/admin/add-blog', name: 'add-blog')]
     public function addBlog(Request $request, UploadImage $uploadImage, SluggerInterface $slug): Response
     {
@@ -173,6 +191,19 @@ class AdminController extends AbstractController
             'form_status' => 'Update',
             'image_name' => $blog->getImage()->getImageName()
         ]);
+    }
+
+    #[Route('/admin/{id}/delete-blog' , name: 'delete-blog')]
+    public function deleteBlog($id) 
+    {
+        $blog = $this->em->getRepository(Blog::class)->find($id);
+
+        $this->em->remove($blog);
+        $this->em->flush();
+
+        $this->addFlash('notice', 'Deleted successfully.');
+
+        return $this->redirectToRoute('blogs');
     }
 
     #[Route('/admin/blogs', name: 'blogs')]
@@ -253,6 +284,18 @@ class AdminController extends AbstractController
             'image_name' => $topDestination->getImage()->getImageName()
         ]);
     }
+
+    #[Route('/admin/{id}/delete-top-destination' , name: 'delete-top-destination')]
+    public function deleteTopDestinations($id)
+    {
+        $topDestination = $this->em->getRepository(TopDestination::class)->find($id);
+        $this->em->remove($topDestination);
+        $this->em->flush();
+
+        $this->addFlash('notice', 'Deleted successfully.');
+
+        return $this->redirectToRoute('top-destinations-all');
+    }
     
     #[Route('/admin/hotels-in-bhutan', name: 'hotels-in-bhutan')]
     public function hotelsInBhutan() 
@@ -295,7 +338,7 @@ class AdminController extends AbstractController
         ]);
     }
 
-    #[Route('/admin/update-hotels-in-bhutan/{id}', name: 'update-hotels-in-bhutan')]
+    #[Route('/admin/{id}/update-hotels-in-bhutan', name: 'update-hotels-in-bhutan')]
     public function updateHotelsInBhutan(Request $request, UploadImage $uploadImage, SluggerInterface $slug, $id) {
         $hotelsInBhutanImages = [];
         $hotelsInBhutanImagesId = [];
@@ -336,5 +379,18 @@ class AdminController extends AbstractController
             'form_status' => 'Update',
             'hotelsInBhutanImages' => $hotelsInBhutanImages
         ]);
+    }
+
+    #[Route('admin/{id}/delete-hotel-in-bhutan', name: 'delete-hotel-in-bhutan')]
+    public function deleteHotelInBhutan($id)
+    {
+        $hotelInBhutan = $this->em->getRepository(HotelsInBhutan::class)->find($id);
+
+        $this->em->remove($hotelInBhutan);
+        $this->em->flush();
+
+        $this->addFlash('notice', 'Deleted successfully.');
+
+        return $this->redirectToRoute('hotels-in-bhutan');
     }
 }

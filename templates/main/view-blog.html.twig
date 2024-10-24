@@ -36,6 +36,9 @@
     </div>
 </div>
 <div class="container mt-5">
+    <div class="mb-3 mt-3">
+        {{ include('main/pages/_social_sharer.html.twig',) }}
+    </div>
     {{ blog.blogDescription|raw}}
 </div>
 {% endblock %}
