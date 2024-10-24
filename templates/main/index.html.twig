@@ -55,7 +55,7 @@
 
 
 <!-- Carousel wrapper -->
-<div id="introCarousel" class="carousel slide" data-mdb-ride="carousel" data-mdb-carousel-init>
+<div id="introCarousel" class="carousel slide" data-mdb-ride="carousel" data-mdb-carousel-init style="z-index: 0;">
     <!-- Indicators -->
     <div class="carousel-indicators">
         <li data-mdb-target="#introCarousel" data-mdb-slide-to="0" class="active"></li>
@@ -133,10 +133,10 @@
         <p class="text-orange">OUR BEST TOUR PACKAGES</p>
         <h4 class="font-weight-bold">OUR BEST SELLING PACKAGES</h4>
     </div>
-    <div class="container mt-5">
+    <div class="container mt-2">
         <div class="row">
             {% for tour_package in tour_packages %}
-            <div class="col-md-3">
+            <div class="col-md-3 mt-3">
                 <div class="card border card-box-shadow rounded-0">
                     <img src="{{ asset('uploads/images/'~ tour_package.images[0].imageName )|imagine_filter('thumbnail')}}"
                         class="card-img-top rounded-0" alt="Fissure in Sandstone" />
@@ -158,8 +158,8 @@
     <div style="background-color: rgba(0, 0, 0, 0.6);">
         <div class="container text-white pt-5 pb-5" style="z-index: 1;">
             <h4 class="text-center">WHY YOU CHOOSE US?</h4>
-            <div class="row mt-5">
-                <div class="col-md-6">
+            <div class="row mt-2">
+                <div class="col-md-6 mt-4">
                     <div class="card rounded-0 h-100 bg-orange text-white" style="border: 1px solid white;">
                         <div class="card-body text-center">
                             <i class="fa-solid fa-dharmachakra fa-3x"></i>
@@ -171,7 +171,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-6 mt-4">
                     <div class="card rounded-0 h-100 bg-orange text-white" style="border: 1px solid white;">
                         <div class="card-body text-center">
                             <i class="fa-solid fa-users fa-3x"></i>
@@ -214,8 +214,8 @@
 <div class="container text-center mt-5">
     <p class="text-orange">WHAT WE PROVIDE</p>
     <h4 class="font-weight-bold">OUR BEST SELLING PACKAGES</h4>
-    <div class="row mt-5">
-        <div class="col-md-3">
+    <div class="row mt-2">
+        <div class="col-md-3 mt-3">
             <div class="card rounded-0 card-box-shadow h-100">
                 <img src="{{ asset('images/image-static/culture.jpg')}}" class="card-img-top rounded-0"
                     alt="Visit Happy Trip Cultural" />
@@ -230,7 +230,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-md-3">
+        <div class="col-md-3 mt-3">
             <div class="card rounded-0 card-box-shadow h-100">
                 <img src="{{ asset('images/image-static/dance.jpg')}}" class="card-img-top rounded-0"
                     alt="Visit Happy Trip Festival" />
@@ -245,7 +245,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-md-3">
+        <div class="col-md-3 mt-3">
             <div class="card rounded-0 card-box-shadow h-100">
                 <img src="{{ asset('images/image-static/rafting.jpg')}}" class="card-img-top rounded-0"
                     alt="Visit Happy Trip Adventure" />
@@ -260,7 +260,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-md-3">
+        <div class="col-md-3 mt-3">
             <div class="card rounded-0 card-box-shadow h-100">
                 <img src="{{ asset('images/image-static/trekking.png')}}" class="card-img-top rounded-0"
                     alt="Visit Happy Trip Trekking" />
@@ -277,9 +277,9 @@
         </div>
     </div>
 </div>
-<div class="container text-center mt-5">
+<div class="container text-center mt-2">
     <div class="row">
-        <div class="col-md-6">
+        <div class="col-md-6 mt-3">
             <img src="{{ asset('images/image-static/plane.gif')}}" height="100" />
             <h4 class="text-orange">GETTING INTO BHUTAN</h4>
             <p>Despite once being largely cut off from the world due to its challenging geography and limited access
@@ -289,7 +289,7 @@
             <a href="/getting-into-bhutan" class="btn-orange text-white pt-2 pb-2 ps-3 pe-3 rounded-4">READ MORE <i
                     class="fa-solid fa-caret-right"></i></a>
         </div>
-        <div class="col-md-6">
+        <div class="col-md-6 mt-3">
             <img src="{{ asset('images/image-static/paro-airport-bhutan-interior.jpg')}}" class="img-fluid">
         </div>
     </div>
@@ -324,10 +324,10 @@
     </div>
 </div>
 
-<div class="mt-5 bg-secondary bg-opacity-10 p-5">
+<div class="mt-2 bg-secondary bg-opacity-10 p-5">
     <div class="container">
         <div class="row">
-            <div class="col-md-6">
+            <div class="col-md-6 mt-3">
                 <h4 class="text-orange">Explore Hotels in Bhutan</h4>
                 <p class="text-justify">We offer customized accommodation solutions, catering to diverse customer
                     preferences, ranging from 3-star to
@@ -338,7 +338,7 @@
                     class="btn-orange ps-3 pe-3 pt-1 pb-1 text-white rounded-pill">Explore More <i
                         class="fa-solid fa-caret-right"></i></a>
             </div>
-            <div class="col-md-6">
+            <div class="col-md-6 mt-3">
                 <div
                     class="swiffy-slider slider-item-show3 slider-nav-sm slider-nav-page slider-item-snapstart slider-item-nogap slider-nav-chevron slider-indicators-sm slider-indicators-outside  slider-indicators-dark slider-nav-animation slider-nav-animation-slideup ">
                     <div class="slider-container">
