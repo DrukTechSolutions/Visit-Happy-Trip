@@ -25,11 +25,6 @@
     <link href="{{ asset('/css/style.css')}}" rel="stylesheet" />
     {% block stylesheets %}
     {% endblock %}
-
-    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
-        integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
-    {% block javascripts %}
-    {% endblock %}
 </head>
 
 <body>
@@ -214,8 +209,12 @@
             <a href="https://www.druktechsolutions.com/" target="_blank" class="text-orange">Druk Tech Solutions</a>
         </div>
     </footer>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+        integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
     <script src="{{ asset('/js/mdb.umd.min.js')}}"></script>
     <script src="{{ asset('/js/main.js')}}"></script>
+    {% block javascripts %}
+    {% endblock %}
 </body>
 
 </html>
