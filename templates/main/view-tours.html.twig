@@ -47,25 +47,27 @@
                     {% endfor %}
                 </div>
             </div>
-            <div class="row mt-3">
-                <div class="col-md-4 pe-0">
+            <div class="row">
+                <div class="col-md-4 mt-3">
                     <div class="bg-tour-over-view">
                         <span id="tour_overview"><i class="fa-regular fa-eye"></i> Tour Overview</span>
                     </div>
                 </div>
-                <div class="col-md-4 ps-0 pe-0">
+                <div class="col-md-4 mt-3">
                     <div class="bg-tour-over-view">
                         <span id="itinerary"><i class="fa-solid fa-route"></i> Itinerary</span>
                     </div>
                 </div>
-                <div class="col-md-4 ps-0">
+                <div class="col-md-4 mt-3">
                     <div class="bg-tour-over-view">
                         <span id="policy"><i class="fa-solid fa-circle-info"></i> Payment & Cancellation Policy</span>
                     </div>
                 </div>
             </div>
-            <div class="mt-5" id="tour_overview_wrapper">
-                {{ tour_packages.tourOverview | raw }}
+            <div class="mt-5">
+                <div id="tour_overview_wrapper">
+                    {{ tour_packages.tourOverview | raw }}
+                </div>
                 <div class="accordion" id="itinerary_wrapper">
                     {% for item in tour_packages.itinerary %}
                     <div class="accordion-item rounded-0">
@@ -116,7 +118,9 @@
             <div class="bg-orange ps-2 pe-2 pt-3 pb-3">
                 <div class="text-center text-white">
                     <h5>STARTING FROM</h5>
-                    <b><h2>$  {{ tour_packages.price}}</h2></b>
+                    <b>
+                        <h2>$ {{ tour_packages.price}}</h2>
+                    </b>
                     <h5>PER PERSON</h5>
                 </div>
                 {{ render(controller(
