@@ -37,7 +37,7 @@ class SendmailController extends AbstractController
         } 
         
         if(!$validationExists) {
-            //$sendEmail->sendEmail($contact);
+            $sendEmail->sendEmail($contact);
         }
 
         return new JsonResponse($validationErrors);
