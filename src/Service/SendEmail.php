@@ -14,8 +14,8 @@ class SendEmail
     {
         $email = new TemplatedEmail();
         $email->subject('this is some random subject');
-        $email->from('iamdemigod123@gmail.com');
-        $email->to('stevenzong321@gmail.com');
+        $email->from($form['email']);
+        $email->to('visithappytrip24@gmail.com');
         $email->htmlTemplate('main/email/contact-email.html.twig');
         $email->context([
             'name' => $form['name'],
@@ -30,8 +30,8 @@ class SendEmail
 
         $email = new TemplatedEmail();
         $email->subject('Booking inquiry');
-        $email->from('iamdemigod123@gmail.com');
-        $email->to('stevenzong321@gmail.com');
+        $email->from($data->getEmail());
+        $email->to('visithappytrip24@gmail.com');
         $email->htmlTemplate('main/email/booking-email.html.twig');
         $email->context([
                 'name' => $data->getName(),
