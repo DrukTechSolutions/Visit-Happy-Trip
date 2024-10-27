@@ -83,7 +83,7 @@ class MainController extends AbstractController
         ]);
     }
 
-    #[Route('/blog/{id}/{slug}', name: 'view-blog')]
+    #[Route('/blog/{id}-{slug}', name: 'view-blog')]
     public function viewblog($id): Response
     {
         $blog = $this->em->getRepository(Blog::class)->find($id);

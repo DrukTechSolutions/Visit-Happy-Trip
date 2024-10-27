@@ -18,6 +18,7 @@
         <thead class="bg-light">
             <tr>
                 <th>Sl. No</th>
+                <th>Tour Title</th>
                 <th>Tour Category</th>
                 <th>Price</th>
                 <th>Actions</th>
@@ -27,6 +28,7 @@
             {% for tours_package in tours_packages %}
             <tr>
                 <td>{{ loop.index }}</td>
+                <td>{{ tours_package.tourTitle }}</td>
                 <td>{{ tours_package.tourCategory|tour_category }}</td>
                 <td>$ {{ tours_package.price }}</td>
                 <td>
@@ -41,5 +43,8 @@
             {% endfor %}
         </tbody>
     </table>
+    <div class="navigation">
+        {{ knp_pagination_render(tours_packages) }}
+    </div>
 </div>
 {% endblock %}

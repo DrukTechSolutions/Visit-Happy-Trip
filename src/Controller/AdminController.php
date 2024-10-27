@@ -43,10 +43,15 @@ class AdminController extends AbstractController
     }
 
     #[Route('/admin/tour-packages', name: 'tour-packages')]
-    public function tourPackages(): Response
+    public function tourPackages(PaginatorInterface $paginator, Request $request): Response
     {
         $tours_packages = $this->em->getRepository(TourPackage::class)->findAll();
-        return $this->render('admin/tour_packages.html.twig', ['tours_packages' => $tours_packages]);
+        $pagination = $paginator->paginate(
+            $tours_packages, /* query NOT result */
+            $request->query->getInt('page', 1), /* page number */
+            5 /* limit per page */
+        );
+        return $this->render('admin/tour_packages.html.twig', ['tours_packages' => $pagination]);
     }
 
     #[Route('/admin/add-tour', name: 'add-tour')]

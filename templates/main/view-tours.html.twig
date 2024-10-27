@@ -79,7 +79,9 @@
                             </button>
                         </h2>
                         <div id="itinerary_{{loop.index}}" class="accordion-collapse collapse"
-                            aria-labelledby="heading_{{loop.index}}" data-mdb-parent="#itinerary_wrapper">
+                            aria-labelledby="heading_{{loop.index}}" data-mdb-parent="#itinerary_wrapper"
+                            style="z-index: 0;"
+                            >
                             <div class="accordion-body">
                                 {{ item.itineraryDescription|raw }}
                             </div>
@@ -114,7 +116,7 @@
                 </ul>
             </div>
         </div>
-        <div class="col-md-3 booking-contact-container">
+        <div class="col-md-3">
             <div class="bg-orange ps-2 pe-2 pt-3 pb-3">
                 <div class="text-center text-white">
                     <h5>STARTING FROM</h5>

@@ -13,7 +13,7 @@ class SendEmail
     public function sendEmail($form)
     {
         $email = new TemplatedEmail();
-        $email->subject('this is some random subject');
+        $email->subject($form['subject']);
         $email->from($form['email']);
         $email->to('visithappytrip24@gmail.com');
         $email->htmlTemplate('main/email/contact-email.html.twig');

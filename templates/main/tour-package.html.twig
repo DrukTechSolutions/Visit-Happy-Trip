@@ -35,15 +35,15 @@
         </div>
     </div>
 </div>
-<div class="container mt-5">
+<div class="container mt-2">
     <div class="row">
         {% for tour_package in tours %}
-        <div class="col-md-3">
+        <div class="col-md-3 mt-3">
             <div class="card border card-box-shadow  rounded-0">
                 <img src="{{ asset('uploads/images/'~ tour_package.images[0].imageName )|imagine_filter('thumbnail')}}"
                     class="card-img-top rounded-0" alt="Fissure in Sandstone" />
                 <div class="card-body">
-                    <h5 class="card-title">{{ tour_package.tourCategory|tour_category }}</h5>
+                    <h5 class="card-title">{{ tour_package.tourTitle }}</h5>
                     <p class="card-text text-orange">{{ tour_package.itinerary|length }} days/ {{ tour_package.itinerary|length - 1 }} nights</p>
                     <p class="">From<strong class="text-orange font-size-22"> ${{ tour_package.price}}</strong></p>
                     <a href="{{ path('view-tours',{'id': tour_package.id, 'slug' : tour_package.tourTitleSlug })}}"
