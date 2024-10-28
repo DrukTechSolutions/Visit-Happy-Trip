@@ -87,7 +87,7 @@ class MainController extends AbstractController
     public function viewblog($id): Response
     {
         $blog = $this->em->getRepository(Blog::class)->find($id);
-        $blog_url = $_SERVER['HTTP_HOST'].'/blog/'.$id.'/'.$blog->getBlogSlug();
+        $blog_url = 'https://www.'.$_SERVER['HTTP_HOST'].'/blog/'.$id.'-'.$blog->getBlogSlug();
         return $this->render('main/view-blog.html.twig', [
             'blog' => $blog,
             'blog_url' => $blog_url
