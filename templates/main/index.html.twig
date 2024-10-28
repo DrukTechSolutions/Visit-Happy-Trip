@@ -41,12 +41,13 @@
         background-repeat: no-repeat;
         background-size: cover;
     }
-
-    /* Height for devices larger than 576px */
-    @media (min-width: 992px) {
-        /* #introCarousel {
-            margin-top: -58.59px;
-        } */
+    @media (max-width: 414px) {
+        #introCarousel,
+        .carousel-inner,
+        .carousel-item,
+        .carousel-item.active {
+            height: 70vh;
+        }
     }
 </style>
 {% endblock %}
@@ -142,7 +143,8 @@
                         class="card-img-top rounded-0" alt="Fissure in Sandstone" />
                     <div class="card-body">
                         <h5 class="card-title">{{ tour_package.tourTitle }}</h5>
-                        <p class="card-text text-orange">{{ tour_package.itinerary|length }} days/ {{ tour_package.itinerary|length - 1}} nights</p>
+                        <p class="card-text text-orange">{{ tour_package.itinerary|length }} days/ {{
+                            tour_package.itinerary|length - 1}} nights</p>
                         <p class="">From<strong class="text-orange font-size-22"> ${{ tour_package.price}}</strong></p>
                         <a href="{{ path('view-tours',{'id': tour_package.id, 'slug' : tour_package.tourTitleSlug })}}"
                             class="btn-orange ps-3 pe-3 pt-2 pb-2 nav-link text-white text-center"
@@ -225,8 +227,10 @@
                         Bhutanese heritage and culture.</p>
                 </div>
                 <div class="card-footer">
-                    <p><i class="fa-solid fa-map-location-dot"></i> {{ tour_packages_category['cultural-tour']|length}} Tours</p>
-                    <a href="{{ path('tour-package',{'slug':'cultural-tour'})}}" class="btn btn-outline-danger">EXPLORE NOW <i class="fa-solid fa-caret-right"></i></a>
+                    <p><i class="fa-solid fa-map-location-dot"></i> {{ tour_packages_category['cultural-tour']|length}}
+                        Tours</p>
+                    <a href="{{ path('tour-package',{'slug':'cultural-tour'})}}" class="btn btn-outline-danger">EXPLORE
+                        NOW <i class="fa-solid fa-caret-right"></i></a>
                 </div>
             </div>
         </div>
@@ -240,8 +244,10 @@
                         in the 8th century.</p>
                 </div>
                 <div class="card-footer">
-                    <p><i class="fa-solid fa-map-location-dot"></i> {{ tour_packages_category['festival-tour']|length}} Tours</p>
-                    <a href="{{ path('tour-package',{'slug':'festival-tour'})}}" class="btn btn-outline-danger">EXPLORE NOW <i class="fa-solid fa-caret-right"></i></a>
+                    <p><i class="fa-solid fa-map-location-dot"></i> {{ tour_packages_category['festival-tour']|length}}
+                        Tours</p>
+                    <a href="{{ path('tour-package',{'slug':'festival-tour'})}}" class="btn btn-outline-danger">EXPLORE
+                        NOW <i class="fa-solid fa-caret-right"></i></a>
                 </div>
             </div>
         </div>
@@ -255,8 +261,10 @@
                         crystal-clear rivers, offering a variety of experiences.</p>
                 </div>
                 <div class="card-footer">
-                    <p><i class="fa-solid fa-map-location-dot"></i> {{ tour_packages_category['adventure-tour']|length}} Tours</p>
-                    <a href="{{ path('tour-package',{'slug':'adventure-tour'})}}" class="btn btn-outline-danger">EXPLORE NOW <i class="fa-solid fa-caret-right"></i></a>
+                    <p><i class="fa-solid fa-map-location-dot"></i> {{ tour_packages_category['adventure-tour']|length}}
+                        Tours</p>
+                    <a href="{{ path('tour-package',{'slug':'adventure-tour'})}}" class="btn btn-outline-danger">EXPLORE
+                        NOW <i class="fa-solid fa-caret-right"></i></a>
                 </div>
             </div>
         </div>
@@ -270,8 +278,10 @@
                         awakening, and an immersion in untouched natural beauty.</p>
                 </div>
                 <div class="card-footer">
-                    <p><i class="fa-solid fa-map-location-dot"></i> {{ tour_packages_category['trekking-tour']|length}} Tours</p>
-                    <a href="{{ path('tour-package',{'slug':'trekking-tour'})}}" class="btn btn-outline-danger">EXPLORE NOW <i class="fa-solid fa-caret-right"></i></a>
+                    <p><i class="fa-solid fa-map-location-dot"></i> {{ tour_packages_category['trekking-tour']|length}}
+                        Tours</p>
+                    <a href="{{ path('tour-package',{'slug':'trekking-tour'})}}" class="btn btn-outline-danger">EXPLORE
+                        NOW <i class="fa-solid fa-caret-right"></i></a>
                 </div>
             </div>
         </div>

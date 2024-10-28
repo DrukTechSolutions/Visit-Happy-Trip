@@ -183,8 +183,11 @@ body {
 .text-yellow {
   color: #ffff00;
 }
-.inquiry-text {
+.text-shadow-white {
   text-shadow: #ffffff 2px 0 10px;
+}
+.text-shadow-orange {
+  text-shadow: #f85907 2px 0 10px;
 }
 .flash-success {
   color: #155724;
