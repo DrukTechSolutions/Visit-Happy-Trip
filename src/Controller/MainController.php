@@ -84,13 +84,15 @@ class MainController extends AbstractController
     }
 
     #[Route('/blog/{id}-{slug}', name: 'view-blog')]
-    public function viewblog($id): Response
+    public function viewblog(Blog $blog, $id): Response
     {
-        $blog = $this->em->getRepository(Blog::class)->find($id);
+        $limit = 10;
+        $blogs = $this->em->getRepository(Blog::class)->findBlogs($limit);
         $blog_url = 'https://www.'.$_SERVER['HTTP_HOST'].'/blog/'.$id.'-'.$blog->getBlogSlug();
         return $this->render('main/view-blog.html.twig', [
             'blog' => $blog,
-            'blog_url' => $blog_url
+            'blog_url' => $blog_url,
+            'blogs' => $blogs
         ]);
     }
 

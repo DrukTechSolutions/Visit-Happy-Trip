@@ -23,7 +23,7 @@
     #blog-view-header div div h2 {
         color: white;
     }
-    
+
     @media (max-width: 414px) {
         #blog-view-img {
             height: 150px;
@@ -42,10 +42,31 @@
     </div>
 </div>
 <div class="container mt-5">
-    <div class="mb-3 mt-3">
-        {{ include('main/pages/_social_sharer.html.twig',) }}
+    <div class="row">
+        <div class="col-md-9">
+            <div class="mb-3 mt-3">
+                {{ include('main/pages/_social_sharer.html.twig',) }}
+            </div>
+            {{ blog.blogDescription|raw}}
+        </div>
+        <div class="col-md-3">
+            <div class="bg-orange p-2">
+                <b class="text-white">LATEST BLOG</b>
+            </div>
+            {% for blog in blogs %}
+            <div class="blog-card-box-shadow mt-2">
+                <a href="{{ path('view-blog',{'id' : blog.id, 'slug' : blog.blogSlug })}}" class="nav-link">
+                    <div class="d-flex">
+                        <div class="p-2 flex-shrink-1">
+                            <img src="{{ asset("/uploads/images/"~ blog.image.imageName)}}" class="img-fluid" width="100">
+                        </div>
+                        <div class="p-2 w-100 font-size-12">{{ blog.blogTitle}}</div>
+                    </div>
+                </a>
+            </div>
+            {% endfor %}
+        </div>
     </div>
-    {{ blog.blogDescription|raw}}
 </div>
 {% endblock %}
 
