@@ -83,7 +83,7 @@
                 </div>
                 <div class="accordion" id="itinerary_wrapper">
                     {% for item in tour_packages.itinerary %}
-                    <div class="accordion-item rounded-0">
+                    <div class="accordion-item rounded-0" style="z-index: 0;">
                         <h2 class="accordion-header" id="heading_{{loop.index}}">
                             <button data-mdb-collapse-init class="accordion-button" type="button"
                                 data-mdb-target="#itinerary_{{loop.index}}" aria-expanded="false"
