@@ -81,7 +81,7 @@ class MainController extends AbstractController
         $pagination = $paginator->paginate(
             $blogs, /* query NOT result */
             $request->query->getInt('page', 1), /* page number */
-            5 /* limit per page */
+            6 /* limit per page */
         );
         return $this->render('main/blogs.html.twig', [
             'blogs' => $pagination

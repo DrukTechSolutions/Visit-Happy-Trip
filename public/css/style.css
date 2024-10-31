@@ -218,5 +218,7 @@ body {
 /* End Global */
 
 @media (max-width: 414px) {
-  
+  .associated-logo a img {
+    height: 50px !important;
+  }
 }

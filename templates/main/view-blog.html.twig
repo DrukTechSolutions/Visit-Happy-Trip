@@ -29,16 +29,44 @@
             height: 150px;
         }
     }
+
+    /* Container for vertical marquee */
+    .marquee-vertical {
+        overflow: hidden;
+        height: 200px; /* Set the height to show a few items at a time */
+        width: 100%; /* Adjust as needed */
+        position: relative;
+    }
+
+    .marquee-content {
+        display: flex;
+        flex-direction: column;
+        animation: marqueeUp 15s linear infinite;
+    }
+
+    .item {
+        display: flex;
+    }
+
+    /* Keyframes for vertical marquee effect */
+    @keyframes marqueeUp {
+        0% {
+            transform: translateY(0);
+        }
+        100% {
+            transform: translateY(-50%);
+        }
+    }
 </style>
 {% endblock %}
 {% block meta_property %}
-    <!-- Facebook -->
-    <meta property="og:title" content="{{ blog.blogTitle }}" />
-    <meta property="og:image" content="{{base_url}}{{ asset("/uploads/images/"~ blog.image.imageName)}}" />
-    <meta property="og:url" content="{{ blog_url }}" />
-    <meta property="og:site_name" content="{{ base_url }}" />
-    <meta property="og:type" content="article" />
-{% endblock %}   
+<!-- Facebook -->
+<meta property="og:title" content="{{ blog.blogTitle }}" />
+<meta property="og:image" content="{{base_url}}{{ asset("/uploads/images/"~ blog.image.imageName)}}" />
+<meta property="og:url" content="{{ blog_url }}" />
+<meta property="og:site_name" content="{{ base_url }}" />
+<meta property="og:type" content="article" />
+{% endblock %}
 {% block body %}
 <div id="blog-view-img">
     <div id="blog-view-header">
@@ -61,18 +89,23 @@
             <div class="bg-orange p-2">
                 <b class="text-white">LATEST BLOG</b>
             </div>
-            {% for blog in blogs %}
-            <div class="blog-card-box-shadow mt-2">
-                <a href="{{ path('view-blog',{'id' : blog.id, 'slug' : blog.blogSlug })}}" class="nav-link">
-                    <div class="d-flex">
-                        <div class="p-2 flex-shrink-1">
-                            <img src="{{ asset("/uploads/images/"~ blog.image.imageName)}}" class="img-fluid" width="100">
-                        </div>
-                        <div class="p-2 w-100 font-size-12">{{ blog.blogTitle}}</div>
+            <div class="marquee-vertical">
+                <div class="marquee-content">
+                    {% for blog in blogs %}
+                    <div class="blog-card-box-shadow mt-2">
+                        <a href="{{ path('view-blog',{'id' : blog.id, 'slug' : blog.blogSlug })}}" class="nav-link">
+                            <div class="d-flex item">
+                                <div class="p-2 flex-shrink-1">
+                                    <img src="{{ asset("/uploads/images/"~ blog.image.imageName)}}" class="img-fluid"
+                                        width="100">
+                                </div>
+                                <div class="p-2 w-100 font-size-12">{{ blog.blogTitle}}</div>
+                            </div>
+                        </a>
                     </div>
-                </a>
+                    {% endfor %}
+                </div>
             </div>
-            {% endfor %}
         </div>
     </div>
 </div>

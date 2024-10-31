@@ -50,7 +50,7 @@
 <div class="container mt-5">
     <div class="row">
         {% for blog in blogs %}
-        <div class="col-md-4 mt-3">
+        <div class="col-md-4 mt-3 mb-3">
             <a href="{{ path('view-blog',{'id' : blog.id, 'slug' : blog.blogSlug })}}">
                 <div class="card card-box-shadow rounded-0">
                     <img src="{{ asset(asset('uploads/images/'~ blog.image.imageName)|imagine_filter('thumbnail_blog')) }}">
