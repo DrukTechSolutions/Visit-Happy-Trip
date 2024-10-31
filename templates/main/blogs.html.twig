@@ -50,9 +50,9 @@
 <div class="container mt-5">
     <div class="row">
         {% for blog in blogs %}
-        <div class="col-md-4">
+        <div class="col-md-4 mt-3">
             <a href="{{ path('view-blog',{'id' : blog.id, 'slug' : blog.blogSlug })}}">
-                <div class="card card-box-shadow mt-2 rounded-0">
+                <div class="card card-box-shadow rounded-0">
                     <img src="{{ asset(asset('uploads/images/'~ blog.image.imageName)|imagine_filter('thumbnail_blog')) }}">
                     <div class="card-body">
                         <b>{{ blog.blogTitle}}</b>
@@ -61,6 +61,9 @@
             </a>
         </div>
         {% endfor %}
+        <div class="navigation">
+            {{ knp_pagination_render(blogs) }}
+        </div>
     </div>
 </div>
 {% endblock %}

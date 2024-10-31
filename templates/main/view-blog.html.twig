@@ -31,6 +31,14 @@
     }
 </style>
 {% endblock %}
+{% block meta_property %}
+    <!-- Facebook -->
+    <meta property="og:title" content="{{ blog.blogTitle }}" />
+    <meta property="og:image" content="{{base_url}}{{ asset("/uploads/images/"~ blog.image.imageName)}}" />
+    <meta property="og:url" content="{{ blog_url }}" />
+    <meta property="og:site_name" content="{{ base_url }}" />
+    <meta property="og:type" content="article" />
+{% endblock %}   
 {% block body %}
 <div id="blog-view-img">
     <div id="blog-view-header">

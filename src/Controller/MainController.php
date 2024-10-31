@@ -17,6 +17,7 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
+use Knp\Component\Pager\PaginatorInterface;
 
 class MainController extends AbstractController
 {
@@ -74,12 +75,16 @@ class MainController extends AbstractController
     }
 
     #[Route('/blog', name: 'blog')]
-    public function blog(): Response
+    public function blog(PaginatorInterface $paginator, Request $request): Response
     {
-        $blogs = $this->em->getRepository(Blog::class)->findAll();
-
+        $blogs = $this->em->getRepository(Blog::class)->findAll();        
+        $pagination = $paginator->paginate(
+            $blogs, /* query NOT result */
+            $request->query->getInt('page', 1), /* page number */
+            5 /* limit per page */
+        );
         return $this->render('main/blogs.html.twig', [
-            'blogs' => $blogs
+            'blogs' => $pagination
         ]);
     }
 
@@ -88,11 +93,13 @@ class MainController extends AbstractController
     {
         $limit = 10;
         $blogs = $this->em->getRepository(Blog::class)->findBlogs($limit);
-        $blog_url = 'https://www.'.$_SERVER['HTTP_HOST'].'/blog/'.$id.'-'.$blog->getBlogSlug();
+        $base_url = 'https://www.'.$_SERVER['HTTP_HOST'];
+        $blog_url = $base_url.'/blog/'.$id.'-'.$blog->getBlogSlug();
         return $this->render('main/view-blog.html.twig', [
             'blog' => $blog,
             'blog_url' => $blog_url,
-            'blogs' => $blogs
+            'blogs' => $blogs,
+            'base_url' => $base_url
         ]);
     }
 
