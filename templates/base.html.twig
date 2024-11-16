@@ -54,7 +54,7 @@
                     <li class="nav-item menu-dropdown ms-2">
                         <a class="nav-link home-menu-link">Tour Packages <i class="fa-solid fa-caret-down"></i></a>
                         <div class="dropdown-content">
-                            {{ include('main/_includes/_packages.html.twig') }}
+                            {{ render(controller('App\\Controller\\MainController::_tourCategories'))}}
                         </div>
                     </li>
                     <li class="nav-item menu-dropdown ms-2">

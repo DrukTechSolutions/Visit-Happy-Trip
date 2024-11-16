@@ -7,7 +7,10 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
+#[UniqueEntity(fields: ['tour_title'], message : 'This tour title already exists in the database!')]
 #[ORM\Entity(repositoryClass: TourPackageRepository::class)]
 class TourPackage
 {
@@ -16,8 +19,8 @@ class TourPackage
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\Column(length: 255)]
-    private ?string $tour_category = null;
+    // #[ORM\Column(length: 255)]
+    // private ?string $tour_category = null;
 
     #[ORM\Column(length: 255)]
     private ?string $price = null;
@@ -43,6 +46,9 @@ class TourPackage
     #[ORM\Column(length: 255)]
     private ?string $tour_title_slug = null;
 
+    #[ORM\ManyToOne(inversedBy: 'tour_package')]
+    private ?TourCategory $tourCategory = null;
+
     public function __construct()
     {
         $this->images = new ArrayCollection();
@@ -54,17 +60,17 @@ class TourPackage
         return $this->id;
     }
 
-    public function getTourCategory(): ?string
-    {
-        return $this->tour_category;
-    }
+    // public function getTourCategory(): ?string
+    // {
+    //     return $this->tour_category;
+    // }
 
-    public function setTourCategory(string $tour_category): static
-    {
-        $this->tour_category = $tour_category;
+    // public function setTourCategory(string $tour_category): static
+    // {
+    //     $this->tour_category = $tour_category;
 
-        return $this;
-    }
+    //     return $this;
+    // }
 
     public function getPrice(): ?string
     {
@@ -171,6 +177,18 @@ class TourPackage
     {
         $this->tour_title_slug = $tour_title_slug;
 
+        return $this;
+    }
+
+    public function getTourCategory(): ?TourCategory
+    {
+        return $this->tourCategory;
+    }
+    
+    public function setTourCategory(?TourCategory $tourCategory): static
+    {
+        $this->tourCategory = $tourCategory;
+    
         return $this;
     }
 }

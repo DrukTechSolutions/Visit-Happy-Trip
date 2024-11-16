@@ -6,9 +6,11 @@ use App\Entity\Blog;
 use App\Entity\Bookings;
 use App\Entity\HotelsInBhutan;
 use App\Entity\TopDestination;
+use App\Entity\TourCategory;
 use App\Entity\TourPackage;
 use App\Form\BookingType;
 use App\Form\ContactType;
+use App\Service\CategoryService;
 use App\Service\ContactValidation;
 use App\Service\SendEmail;
 use Doctrine\ORM\EntityManagerInterface;
@@ -27,50 +29,54 @@ class MainController extends AbstractController
     }
 
     #[Route('/', name: 'app_main')]
-    public function index(): Response
+    public function index(CategoryService $categoryService): Response
     {
-        $tour_packages_category = [];
         $tour_packages = $this->em->getRepository(TourPackage::class)->findTourPackages();
         $top_destinations = $this->em->getRepository(TopDestination::class)->findAll();
         $tour_packages_all = $this->em->getRepository(TourPackage::class)->findAll();
-
-        foreach ($tour_packages_all  as $package) {
-            $tour_packages_category[$package->getTourCategory()][$package->getId()] = $package;
-        }
-  
+        $categories = $this->em->getRepository(TourCategory::class)->findAll();
         return $this->render('main/index.html.twig', [
             'tour_packages' => $tour_packages,
             'top_destinations' => $top_destinations,
-            'tour_packages_category' => $tour_packages_category
+            'tour_packages_all' => $tour_packages_all,
+            'best_selling_packages' => $categoryService->parentCategoryTours($categories)
         ]);
     }
 
     #[Route('/tour/{slug}', name: 'tour-package')]
     public function tourPackage($slug)
     {
-        $tours = $this->em->getRepository(TourPackage::class)->findBy(['tour_category' => $slug]);
-
-        $image_name  = [
-            'cultural-tour' => 'culture.jpg',
-            'festival-tour' => 'dance.jpg',
-            'adventure-tour' => 'rafting.jpg',
-            'trekking-tour' => 'trekking.png',
-        ];
-
+        $tours = [];
+        $image_name = '';
+        $category = $this->em->getRepository(TourCategory::class)->findBy(['slug' => $slug]);
+        
+        foreach ($category[0]->getTourCategories() as $tourCategories) {
+            if($tourCategories) {
+                foreach($tourCategories->getTourPackage() as $package) {
+                    $tours[$package->getId()] = $package;
+                    foreach($package->getImages() as $image) {
+                        if($image) {
+                            $image_name = $image->getImageName();
+                        }
+                    }
+                }
+            }
+        }
         return $this->render('main/tour-package.html.twig', [
             'tours' => $tours,
-            'tour_category' => $slug,
-            'image_name' => $image_name[$slug]
+            'tour_category' => $category[0]->getCategory(),
+            'tour_category_slug' => $slug,
+            'image_name' => $image_name
         ]);
     }
 
-    #[Route('/tour/{id}/{slug}', name: 'view-tours')]
-    public function viewTours($id): Response
+    #[Route('/tour/{category}/{slug}', name: 'view-tours')]
+    public function viewTours($slug): Response
     {
-        $tour_package = $this->em->getRepository(TourPackage::class)->find($id);
-
+        $tour_package = $this->em->getRepository(TourPackage::class)->findBy(['tour_title_slug' => $slug]);
+        
         return $this->render('main/view-tours.html.twig', [
-            'tour_packages' => $tour_package
+            'tour_packages' => $tour_package[0]
         ]);
     }
 
@@ -176,5 +182,17 @@ class MainController extends AbstractController
     public function tripPlanner()
     {
         return $this->render('main/trip-planner.html.twig');
+    }
+
+    public function _tourCategories() {
+        $mainCategory = [];
+        $tourCategories = $this->em->getRepository(TourCategory::class)->findAll();
+        foreach ($tourCategories as $tourCategory) {
+            if($tourCategory->getSubCategory() == null) {
+                $mainCategory[$tourCategory->getId()]['category'] = $tourCategory->getCategory();
+                $mainCategory[$tourCategory->getId()]['slug'] = $tourCategory->getSlug();
+            }
+        }
+        return $this->render('main/pages/_packages.html.twig',['categories' => $mainCategory]);
     }
 }

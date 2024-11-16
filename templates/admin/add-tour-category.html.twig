@@ -1,0 +1,60 @@
+{% extends "admin.html.twig" %}
+
+{% block body %}
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/admin">Home</a></li>
+        <li class="breadcrumb-item">Categories</li>
+        <li class="breadcrumb-item active" aria-current="page">{{ form_status }} Category</li>
+    </ol>
+</nav>
+<div class="row mt-2">
+    <div class="col-md-6">
+        {{ form_start(form, {'attr':{'novalidate': 'novalidate'}})}}
+        <div class="card rounded-0">
+            <div class="card-header bg-danger text-white rounded-0"><b>{{ form_status}} Category</b></div>
+            <div class="card-body">
+                <div class="mt-2">
+                    {{ form_label(form.parent_category)}}
+                    {{ form_widget(form.parent_category,{'attr':{'class': 'ht-input'}})}}
+                </div>
+                <div class="mt-2">
+                    {{ form_label(form.category)}}
+                    {{ form_widget(form.category,{'attr':{'class': 'ht-input'}})}}
+                    <span class="text-danger">{{ form_errors(form.category)}}</span>
+                </div>
+                <div class="mt-2">
+                    <button type="submit" class="btn btn-danger">{{ form_status}}</button>
+                </div>
+            </div>
+        </div>
+        {{ form_end(form)}}
+    </div>
+    <div class="col-md-6">
+        <div class="card rounded-0">
+            <div class="card-header bg-danger text-white rounded-0"><b>Category and Sub category</b></div>
+            <div class="card-body">
+                <ul>
+                    {% if categories|length > 0 %}
+                    {% for category in categories['tour_categories'] %}
+                    <li>{{ category['category'] }}<a
+                            href="{{ path('update-tour-category',{'id' : category['category_id'] })}}"
+                            class="badge badge-primary ms-1">EDIT</a>
+                        {% if category|length > 0 %}
+                        <ul>
+                            {% for sub_category in category['sub_categories'] %}
+                            <li>{{ sub_category['sub_category'] }}<a
+                                    href="{{ path('update-tour-category',{'id' : sub_category['sub_category_id'] })}}"
+                                    class="badge badge-primary ms-1">EDIT</a>
+                                {% endfor %}
+                        </ul>
+                        {% endif %}
+                    </li>
+                    {% endfor %}
+                    {% endif %}
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

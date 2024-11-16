@@ -6,11 +6,14 @@ use App\Entity\Blog;
 use App\Entity\HotelsInBhutan;
 use App\Entity\Images;
 use App\Entity\TopDestination;
+use App\Entity\TourCategory;
 use App\Entity\TourPackage;
 use App\Form\BlogType;
 use App\Form\HotelsInBhutanType;
 use App\Form\TopDestinationType;
+use App\Form\TourCategoryType;
 use App\Form\TourPackageType;
+use App\Service\CategoryService;
 use App\Service\UploadImage;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -18,6 +21,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 use Doctrine\ORM\EntityManagerInterface;
 use Knp\Component\Pager\PaginatorInterface;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\String\Slugger\SluggerInterface;
 
 class AdminController extends AbstractController
@@ -79,13 +83,27 @@ class AdminController extends AbstractController
             $this->addFlash('notice', 'Added successfully.');
 
             return $this->redirectToRoute('tour-packages');
-        }
+        } 
         return $this->render('admin/add_tour.html.twig', [
             'form' => $form,
             'form_status' => 'Save'
         ]);
     }
 
+    #[Route('/admin/sub-category-select', name: 'sub-category-select')]
+    public function subCategory(Request $request)
+    {
+        $categories = [];
+        $categoryId = $request->request->get('category_id');
+        if($categoryId) {
+            $subCategories = $this->em->getRepository(TourCategory::class)->findBy(['sub_category' => $categoryId ]);
+        
+            foreach ($subCategories as $subCategory) {
+                $categories[$subCategory->getId()] = $subCategory->getCategory();
+            }
+        }
+        return $this->json($categories);
+    }
 
     #[Route('/admin/update-tour-package/{id}', name: 'update-tour-package')]
     public function updateTourPackage(Request $request, UploadImage $uploadImage, $id,  SluggerInterface $slug): Response
@@ -397,5 +415,66 @@ class AdminController extends AbstractController
         $this->addFlash('notice', 'Deleted successfully.');
 
         return $this->redirectToRoute('hotels-in-bhutan');
+    }
+
+    #[Route('admin/add-tour-category', name: 'add-tour-category')]
+    public function addTourCategory(Request $request, CategoryService $categoryService, SluggerInterface $slug)
+    {
+        $tourCategory = new TourCategory();
+        $categories = $this->em->getRepository(TourCategory::class)->findAll();
+        $form = $this->createForm(TourCategoryType::class, $tourCategory);
+        $form->handleRequest($request);
+        
+        if($form->isSubmitted() && $form->isValid()) {
+            dd($tourCategory);
+            if($parentCategoryId = $request->get('tour_category')['parent_category']) {
+                $parentCategory = $this->em->getRepository(TourCategory::class)->find($parentCategoryId);
+                $tourCategory->setSubCategory($parentCategory );
+            }
+
+            $category = strtolower($tourCategory->getCategory());
+            $tourCategory->setSlug($slug->slug($category));
+            $this->em->persist($tourCategory);
+            $this->em->flush();
+
+            return $this->redirectToRoute('add-tour-category');
+        }
+
+        return $this->render('admin/add-tour-category.html.twig',[
+            'form' => $form,
+            'form_status' => 'Add',
+            'categories' => $categoryService->categoryAndSubCategory($categories)
+        ]);
+    }
+
+    #[Route('admin/{id}/update-tour-category', name: 'update-tour-category')]
+    public function updateTourCategory(Request $request, CategoryService $categoryService, SluggerInterface $slug, $id)
+    {
+ 
+        $categories = $this->em->getRepository(TourCategory::class)->findAll();
+        $tourCategory = $this->em->getRepository(TourCategory::class)->find($id);
+        $form = $this->createForm(TourCategoryType::class, $tourCategory);
+        $form->handleRequest($request);
+        
+        if($form->isSubmitted() && $form->isValid()) {
+        
+            if($parentCategoryId = $request->get('tour_category')['parent_category']) {
+                $parentCategory = $this->em->getRepository(TourCategory::class)->find($parentCategoryId);
+                $tourCategory->setSubCategory($parentCategory );
+            }
+
+            $category = strtolower($tourCategory->getCategory());
+            $tourCategory->setSlug($slug->slug($category));
+            $this->em->persist($tourCategory);
+            $this->em->flush();
+
+            return $this->redirectToRoute('add-tour-category');
+        }
+
+        return $this->render('admin/add-tour-category.html.twig',[
+            'form' => $form,
+            'form_status' => 'Update',
+            'categories' => $categoryService->categoryAndSubCategory($categories)
+        ]);
     }
 }

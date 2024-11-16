@@ -41,7 +41,9 @@
         background-repeat: no-repeat;
         background-size: cover;
     }
+
     @media (max-width: 414px) {
+
         #introCarousel,
         .carousel-inner,
         .carousel-item,
@@ -144,7 +146,7 @@
                         <p class="card-text text-orange">{{ tour_package.itinerary|length }} days/ {{
                             tour_package.itinerary|length - 1}} nights</p>
                         <p class="">From<strong class="text-orange font-size-22"> ${{ tour_package.price}}</strong></p>
-                        <a href="{{ path('view-tours',{'id': tour_package.id, 'slug' : tour_package.tourTitleSlug })}}"
+                        <a href="{{ path('view-tours',{'category': tour_package.tourCategory.subCategory.slug, 'slug' : tour_package.tourTitleSlug })}}"
                             class="btn-orange ps-3 pe-3 pt-2 pb-2 nav-link text-white text-center"
                             data-mdb-ripple-init>Explore more <i class="fa-solid fa-caret-right"></i></a>
                     </div>
@@ -215,74 +217,27 @@
     <p class="text-orange">WHAT WE PROVIDE</p>
     <h4 class="font-weight-bold">OUR BEST SELLING PACKAGES</h4>
     <div class="row mt-2">
+        {% for best_selling_package in best_selling_packages['tour_categories'] %}
+        {% if best_selling_package['total_tours'] > 0 %}
         <div class="col-md-3 mt-3">
             <div class="card rounded-0 card-box-shadow h-100">
-                <img src="{{ asset('images/image-static/culture.jpg')}}" class="card-img-top rounded-0"
-                    alt="Visit Happy Trip Cultural" />
-                <div class="card-body">
-                    <h4>CULTURAL TOURS</h4>
-                    <p>Cultural tours offer a unique opportunity to immerse oneself in the rich tapestry of
-                        Bhutanese heritage and culture.</p>
-                </div>
-                <div class="card-footer">
-                    <p><i class="fa-solid fa-map-location-dot"></i> {{ tour_packages_category['cultural-tour']|length}}
-                        Tours</p>
-                    <a href="{{ path('tour-package',{'slug':'cultural-tour'})}}" class="btn btn-outline-danger">EXPLORE
-                        NOW <i class="fa-solid fa-caret-right"></i></a>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-3 mt-3">
-            <div class="card rounded-0 card-box-shadow h-100">
-                <img src="{{ asset('images/image-static/dance.jpg')}}" class="card-img-top rounded-0"
-                    alt="Visit Happy Trip Festival" />
-                <div class="card-body">
-                    <h4>FESTIVAL TOURS</h4>
-                    <p>Tshechus are lively festivals that pay tribute to Guru Rinpoche, who brought Buddhism to Bhutan
-                        in the 8th century.</p>
-                </div>
-                <div class="card-footer">
-                    <p><i class="fa-solid fa-map-location-dot"></i> {{ tour_packages_category['festival-tour']|length}}
-                        Tours</p>
-                    <a href="{{ path('tour-package',{'slug':'festival-tour'})}}" class="btn btn-outline-danger">EXPLORE
-                        NOW <i class="fa-solid fa-caret-right"></i></a>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-3 mt-3">
-            <div class="card rounded-0 card-box-shadow h-100">
-                <img src="{{ asset('images/image-static/rafting.jpg')}}" class="card-img-top rounded-0"
-                    alt="Visit Happy Trip Adventure" />
-                <div class="card-body">
-                    <h4>ADVENTURE TOURS</h4>
-                    <p>River rafting in Bhutan provides an exciting opportunity to navigate its stunning landscapes and
-                        crystal-clear rivers, offering a variety of experiences.</p>
-                </div>
-                <div class="card-footer">
-                    <p><i class="fa-solid fa-map-location-dot"></i> {{ tour_packages_category['adventure-tour']|length}}
-                        Tours</p>
-                    <a href="{{ path('tour-package',{'slug':'adventure-tour'})}}" class="btn btn-outline-danger">EXPLORE
-                        NOW <i class="fa-solid fa-caret-right"></i></a>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-3 mt-3">
-            <div class="card rounded-0 card-box-shadow h-100">
-                <img src="{{ asset('images/image-static/trekking.png')}}" class="card-img-top rounded-0"
+                <img src="{{ asset('/uploads/images/'~ best_selling_package['image'])|imagine_filter('thumbnail_tour_view')}}" class="card-img-top rounded-0"
                     alt="Visit Happy Trip Trekking" />
                 <div class="card-body">
-                    <h4>TREKKING TOURS</h4>
-                    <p>Trekking in Bhutan is an experience like no other. It’s a mix of physical challenge, spiritual
-                        awakening, and an immersion in untouched natural beauty.</p>
+                    <h4>{{ best_selling_package['category']}}</h4>
                 </div>
                 <div class="card-footer">
-                    <p><i class="fa-solid fa-map-location-dot"></i> {{ tour_packages_category['trekking-tour']|length}}
+                    <p><i class="fa-solid fa-map-location-dot"></i> {{
+                        best_selling_package['total_tours']}}
                         Tours</p>
-                    <a href="{{ path('tour-package',{'slug':'trekking-tour'})}}" class="btn btn-outline-danger">EXPLORE
+                    <a href="{{ path('tour-package',{'slug':best_selling_package['category_slug']})}}"
+                        class="btn btn-outline-danger">EXPLORE
                         NOW <i class="fa-solid fa-caret-right"></i></a>
                 </div>
             </div>
         </div>
+        {% endif %}
+        {% endfor %}
     </div>
 </div>
 <div class="container text-center mt-2">

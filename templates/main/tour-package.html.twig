@@ -1,9 +1,10 @@
 {% extends "base.html.twig" %}
 
 {% block stylesheets %}
+{% set image_path = image_name ? "/uploads/images/"~ image_name : '/images/image-static/dragon-nest.jpg' %}
 <style>
     #tour-view-img {
-        background-image: url('{{ asset("/images/image-static/"~ image_name)}}');
+        background-image: url('{{ asset(image_path)}}');
         height: 450px;
         background-repeat: no-repeat;
         background-size: cover;
@@ -23,11 +24,11 @@
     #tour-view-header div div h2 {
         color: white;
     }
-    
+
     @media (max-width: 414px) {
         #tour-view-img {
             height: 150px;
-            background-attachment:scroll;
+            background-attachment: scroll;
         }
     }
 </style>
@@ -37,11 +38,11 @@
     <div id="tour-view-header">
         <div class="d-flex align-items-center  h-100">
             <div class="container">
-                <h2 class="d-inline-flex text-white text-shadow-orange"><b>{{ tour_category|tour_category|upper }}</b></h2>
+                <h2 class="d-inline-flex text-white text-shadow-orange"><b>{{ tour_category|upper }}</b></h2>
                 <nav aria-label="breadcrumb" class="mt-3">
                     <ol class="breadcrumb bg-orange d-inline-flex ps-1 pe-3">
                         <li class="breadcrumb-item"><a href="/" class="text-white">Home</a></li>
-                        <li class="breadcrumb-item"><a class="text-white">{{ tour_category|tour_category }}</a></li>
+                        <li class="breadcrumb-item"><a class="text-white">{{ tour_category }}</a></li>
                     </ol>
                 </nav>
             </div>
@@ -50,16 +51,18 @@
 </div>
 <div class="container mt-2">
     <div class="row">
+        {% if tours %}
         {% for tour_package in tours %}
         <div class="col-md-3 mt-3">
-            <div class="card border card-box-shadow  rounded-0">
+            <div class="card border card-box-shadow rounded-0">
                 <img src="{{ asset('uploads/images/'~ tour_package.images[0].imageName )|imagine_filter('thumbnail')}}"
-                    class="card-img-top rounded-0" alt="Fissure in Sandstone" />
+                    class="card-img-top rounded-0" alt="" />
                 <div class="card-body">
                     <h5 class="card-title">{{ tour_package.tourTitle }}</h5>
-                    <p class="card-text text-orange">{{ tour_package.itinerary|length }} days/ {{ tour_package.itinerary|length - 1 }} nights</p>
+                    <p class="card-text text-orange">{{ tour_package.itinerary|length }} days/ {{
+                        tour_package.itinerary|length - 1 }} nights</p>
                     <p class="">From<strong class="text-orange font-size-22"> ${{ tour_package.price}}</strong></p>
-                    <a href="{{ path('view-tours',{'id': tour_package.id, 'slug' : tour_package.tourTitleSlug })}}"
+                    <a href="{{ path('view-tours',{'category': tour_category_slug,'slug' : tour_package.tourTitleSlug })}}"
                         class="btn-orange ps-3 pe-3 pt-2 pb-2 nav-link text-white text-center"
                         data-mdb-ripple-init>Explore
                         more <i class="fa-solid fa-caret-right"></i></a>
@@ -67,6 +70,13 @@
             </div>
         </div>
         {% endfor %}
+        {% else %}
+        <div class="col-md-6 offset-md-3 text-center">
+            <p>
+                {{ tour_category }} doesn't have any tour.
+            </p>
+        </div>
+        {% endif %}
     </div>
 </div>
 {% endblock %}

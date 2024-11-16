@@ -22,12 +22,27 @@
 <div class="mt-2">
     {% set img_thumbnail = 'images/image-static/img_preview.jpg' %}
     {{ form_start(form)}}
-    <div class="card rounded-0">
+    <div class="card rounded-0" id="tour-package-form" data-select-sub-category-url = {{ path('sub-category-select') }}>
         <div class="card-header bg-danger text-white rounded-0"><b>Tour Package</b></div>
         <div class="card-body">
             <div class="mb-4">
                 {{ form_label(form.tour_title )}}
                 {{ form_widget(form.tour_title,{'attr':{'class': 'ht-input'}})}}
+                <span class="text-danger">{{ form_errors(form.tour_title )}}</span>
+            </div>
+            <div class="row mb-4">
+                <div class="col-md-4">
+                    {{ form_label(form.tour_parent_category )}}
+                    {{ form_widget(form.tour_parent_category,{'attr':{'class': 'ht-input main-tour-category' }})}}
+                </div>
+                <div class="col-md-4">
+                    {{ form_label(form.tourCategory )}}
+                    {{ form_widget(form.tourCategory,{'attr':{'class': 'ht-input'}})}}
+                </div>
+                <div class="col-md-4">
+                    {{ form_label(form.price)}}
+                    {{ form_widget(form.price,{'attr':{'class':'ht-input'}})}}
+                </div>
             </div>
             <div class="row mb-4">
                 <label class="mb-1">Upload Images(3 Max)</label>
@@ -62,16 +77,6 @@
                     </div>
                 </div>
             </div>
-            <div class="row mb-4">
-                <div class="col">
-                    {{ form_label(form.tour_category)}}
-                    {{ form_widget(form.tour_category,{'attr':{'class':'ht-select'}})}}
-                </div>
-                <div class="col">
-                    {{ form_label(form.price)}}
-                    {{ form_widget(form.price,{'attr':{'class':'ht-input'}})}}
-                </div>
-            </div>
             <div>
                 {{ form_label(form.tour_overview)}}
                 {{ form_widget(form.tour_overview)}}
@@ -96,7 +101,7 @@
     <div class="mt-3">
         <button class="btn btn-danger">{{ form_status }} Tour Package</button>
     </div>
-    {{ form_end(form)}}
+    {{ form_end(form, {'render_rest': false}) }}
 </div>
 
 {% endblock %}
@@ -105,5 +110,5 @@
 <script src="{{ asset('js/itinerary.js')}}"></script>
 <script src="{{ asset('js/img-preview.js')}}"></script>
 <script src="{{ asset('js/tour-images.js')}}"></script>
-</script>
+<script src="{{ asset('js/tour-sub-category.js')}}"></script>
 {% endblock %}

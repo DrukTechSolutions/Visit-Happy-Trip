@@ -19,7 +19,6 @@
             <tr>
                 <th>Sl. No</th>
                 <th>Tour Title</th>
-                <th>Tour Category</th>
                 <th>Price</th>
                 <th>Actions</th>
             </tr>
@@ -29,7 +28,6 @@
             <tr>
                 <td>{{ loop.index }}</td>
                 <td>{{ tours_package.tourTitle }}</td>
-                <td>{{ tours_package.tourCategory|tour_category }}</td>
                 <td>$ {{ tours_package.price }}</td>
                 <td>
                     <a type="button" href="{{ path('update-tour-package',{'id': tours_package.id })}}" class="btn btn-primary btn-sm btn-rounded">
