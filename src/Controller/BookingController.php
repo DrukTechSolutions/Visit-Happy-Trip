@@ -12,14 +12,17 @@ use Symfony\Component\Routing\Attribute\Route;
 
 class BookingController extends AbstractController
 {
-    public function __construct(private EntityManagerInterface $em) {}
+    public function __construct(private EntityManagerInterface $em)
+    {
+    }
 
     #[Route('/book-now', name: 'book-now')]
-    public function bookNow(Request $request, SendEmail $emailService) {
+    public function bookNow(Request $request, SendEmail $emailService)
+    {
         $booking = new Bookings();
         $form = $this->createForm(BookingType::class, $booking);
         $form->handleRequest($request);
-        if($form->isSubmitted() && $form->isValid()) {
+        if ($form->isSubmitted() && $form->isValid()) {
             $emailService->sendBookingEmail($booking);
             // $this->em->persist($booking);
             // $this->em->flush();

@@ -22,7 +22,7 @@ class TourPackageType extends AbstractType
 {
     public function __construct(private EntityManagerInterface $em)
     {
-        
+
     }
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
@@ -33,18 +33,18 @@ class TourPackageType extends AbstractType
             ->add('tour_title', TextType::class, [
                 'label' => 'Tour Title'
             ])
-            ->add('tour_parent_category', EntityType::class,[
+            ->add('tour_parent_category', EntityType::class, [
                 'label' => 'Tour Parent Category',
                 'mapped' => false,
                 'required' => false,
                 'class' => TourCategory::class,
                 'choice_label' => 'category',
                 'placeholder' => 'Select Parent Category',
-                'query_builder' =>  function(EntityRepository $er) {
+                'query_builder' =>  function (EntityRepository $er) {
                     $query = $er->createQueryBuilder('c')
                             ->where('c.sub_category IS NULL')
-                            ;
-                    return $query;          
+                    ;
+                    return $query;
                 },
                 'choice_value' => 'id',
                 'data' => $mainCategory
@@ -54,7 +54,7 @@ class TourPackageType extends AbstractType
                 'class' => TourCategory::class,
                 'placeholder' => 'Select Sub Category',
                 'choices' =>  $subCategories,
-                'choice_label' => 'category', 
+                'choice_label' => 'category',
                 'data' => $subCategory
             ])
             ->add('price')
@@ -85,7 +85,7 @@ class TourPackageType extends AbstractType
             ])
         ;
 
-        $addSubCategory = function(FormInterface $form, ?TourCategory $tourCategory) {
+        $addSubCategory = function (FormInterface $form, ?TourCategory $tourCategory) {
             $subCategories = $tourCategory === null ? [] : $tourCategory->getTourCategories();
             $form->add('tourCategory', EntityType::class, [
                 'label' => 'Tour Sub Category',
@@ -95,17 +95,17 @@ class TourPackageType extends AbstractType
                 'choice_label' => 'category'
             ]);
         };
-       
-        if($options['data']->getId() === null || $subCategory === null) {
-            $builder->addEventListener(FormEvents::PRE_SET_DATA, function(FormEvent $event) use ($addSubCategory){
+
+        if ($options['data']->getId() === null || $subCategory === null) {
+            $builder->addEventListener(FormEvents::PRE_SET_DATA, function (FormEvent $event) use ($addSubCategory) {
                 $data = $event->getData();
                 $addSubCategory($event->getForm(), $data->getTourCategory());
             });
         }
-       
+
         $builder->get('tour_parent_category')->addEventListener(
             FormEvents::POST_SUBMIT,
-            function(FormEvent $event) use($addSubCategory){
+            function (FormEvent $event) use ($addSubCategory) {
                 $category = $event->getForm()->getData();
                 $addSubCategory($event->getForm()->getParent(), $category);
             }

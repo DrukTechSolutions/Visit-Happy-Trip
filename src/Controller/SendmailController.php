@@ -17,7 +17,7 @@ class SendmailController extends AbstractController
         $form = $this->createForm(ContactType::class, null);
         $form->handleRequest($request);
 
-        return $this->render('main/pages/_contact.html.twig',[
+        return $this->render('main/pages/_contact.html.twig', [
             'form' => $form
         ]);
     }
@@ -27,16 +27,16 @@ class SendmailController extends AbstractController
     {
         $contact = $request->get('contact');
         $validationErrors = $validator->getErrors($contact);
-        
+
         $validationExists = false;
-        foreach($validationErrors as $errorMsgs) {
-            if(!empty($errorMsgs)) {
+        foreach ($validationErrors as $errorMsgs) {
+            if (!empty($errorMsgs)) {
                 $validationExists = true;
                 break;
             }
-        } 
-        
-        if(!$validationExists) {
+        }
+
+        if (!$validationExists) {
             $sendEmail->sendEmail($contact);
         }
 
@@ -48,12 +48,12 @@ class SendmailController extends AbstractController
     {
         $arr = array('a' => '', 'b' => '','c' => '','d' => '','e' => '');
         $validationExists = false;
-        foreach($arr as $val) {
-            if(!empty($val)) {
-            	$validationExists = true;
+        foreach ($arr as $val) {
+            if (!empty($val)) {
+                $validationExists = true;
             }
         }
 
-       return new JsonResponse($validationExists);
+        return new JsonResponse($validationExists);
     }
 }

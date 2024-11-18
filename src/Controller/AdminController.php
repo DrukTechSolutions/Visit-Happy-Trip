@@ -87,7 +87,7 @@ class AdminController extends AbstractController
             $this->addFlash('notice', 'Added successfully.');
 
             return $this->redirectToRoute('tour-packages');
-        } 
+        }
         return $this->render('admin/add_tour.html.twig', [
             'form' => $form,
             'form_status' => 'Save'
@@ -99,9 +99,9 @@ class AdminController extends AbstractController
     {
         $categories = [];
         $categoryId = $request->request->get('category_id');
-        if($categoryId) {
+        if ($categoryId) {
             $subCategories = $this->em->getRepository(TourCategory::class)->findBy(['sub_category' => $categoryId ]);
-        
+
             foreach ($subCategories as $subCategory) {
                 $categories[$subCategory->getId()] = $subCategory->getCategory();
             }
@@ -110,7 +110,7 @@ class AdminController extends AbstractController
     }
 
     #[Route('/admin/update-tour-package/{id}', name: 'update-tour-package')]
-    public function updateTourPackage(Request $request, UploadImage $uploadImage, $id,  SluggerInterface $slug): Response
+    public function updateTourPackage(Request $request, UploadImage $uploadImage, $id, SluggerInterface $slug): Response
     {
         $tourPackageImages = [];
         $tourPackageImagesId = [];
@@ -152,8 +152,8 @@ class AdminController extends AbstractController
         ]);
     }
 
-    #[Route('/admin/{id}/delete-tour-package' , name: 'delete-tour-package')]
-    public function deleteTourPackage($id) 
+    #[Route('/admin/{id}/delete-tour-package', name: 'delete-tour-package')]
+    public function deleteTourPackage($id)
     {
         $tourPackage = $this->em->getRepository(TourPackage::class)->find($id);
 
@@ -220,8 +220,8 @@ class AdminController extends AbstractController
         ]);
     }
 
-    #[Route('/admin/{id}/delete-blog' , name: 'delete-blog')]
-    public function deleteBlog($id) 
+    #[Route('/admin/{id}/delete-blog', name: 'delete-blog')]
+    public function deleteBlog($id)
     {
         $blog = $this->em->getRepository(Blog::class)->find($id);
 
@@ -312,7 +312,7 @@ class AdminController extends AbstractController
         ]);
     }
 
-    #[Route('/admin/{id}/delete-top-destination' , name: 'delete-top-destination')]
+    #[Route('/admin/{id}/delete-top-destination', name: 'delete-top-destination')]
     public function deleteTopDestinations($id)
     {
         $topDestination = $this->em->getRepository(TopDestination::class)->find($id);
@@ -323,22 +323,23 @@ class AdminController extends AbstractController
 
         return $this->redirectToRoute('top-destinations-all');
     }
-    
+
     #[Route('/admin/hotels-in-bhutan', name: 'hotels-in-bhutan')]
-    public function hotelsInBhutan() 
+    public function hotelsInBhutan()
     {
         $hotelsInBhutan = $this->em->getRepository(HotelsInBhutan::class)->findAll();
-        return $this->render('admin/hotels-in-bhutan.html.twig',[
+        return $this->render('admin/hotels-in-bhutan.html.twig', [
             'hotelsInBhutan' => $hotelsInBhutan
         ]);
     }
 
     #[Route('/admin/add-hotels-in-bhutan', name: 'add-hotels-in-bhutan')]
-    public function addHotelsInBhutan(Request $request, UploadImage $uploadImage, SluggerInterface $slug) {
+    public function addHotelsInBhutan(Request $request, UploadImage $uploadImage, SluggerInterface $slug)
+    {
         $hotelsInBhutan = new HotelsInBhutan();
         $form = $this->createForm(HotelsInBhutanType::class, $hotelsInBhutan);
         $form->handleRequest($request);
-        if($form->isSubmitted() && $form->isValid()){
+        if ($form->isSubmitted() && $form->isValid()) {
             $hotelImage1 = $request->files->get('hotels_in_bhutan')['images']['hotels_image']['image_1'];
             $hotelImage2 = $request->files->get('hotels_in_bhutan')['images']['hotels_image']['image_2'];
             $hotelImage3 = $request->files->get('hotels_in_bhutan')['images']['hotels_image']['image_3'];
@@ -359,14 +360,15 @@ class AdminController extends AbstractController
             return $this->redirectToRoute('hotels-in-bhutan');
         }
 
-        return $this->render('admin/add-hotels-in-bhutan.html.twig',[
+        return $this->render('admin/add-hotels-in-bhutan.html.twig', [
             'form' => $form,
             'form_status' => 'Add'
         ]);
     }
 
     #[Route('/admin/{id}/update-hotels-in-bhutan', name: 'update-hotels-in-bhutan')]
-    public function updateHotelsInBhutan(Request $request, UploadImage $uploadImage, SluggerInterface $slug, $id) {
+    public function updateHotelsInBhutan(Request $request, UploadImage $uploadImage, SluggerInterface $slug, $id)
+    {
         $hotelsInBhutanImages = [];
         $hotelsInBhutanImagesId = [];
         $hotelsInBhutan = $this->em->getRepository(HotelsInBhutan::class)->find($id);
@@ -374,18 +376,18 @@ class AdminController extends AbstractController
             $hotelsInBhutanImagesId[$key] = $image->getId();
             $hotelsInBhutanImages[$key] = $image->getImageName();
         }
-        
+
         $form = $this->createForm(HotelsInBhutanType::class, $hotelsInBhutan);
         $form->handleRequest($request);
-        if($form->isSubmitted() && $form->isValid()){
- 
+        if ($form->isSubmitted() && $form->isValid()) {
+
             $hotelImage1 = $request->files->get('hotels_in_bhutan')['images']['hotels_image']['image_1'];
             $hotelImage2 = $request->files->get('hotels_in_bhutan')['images']['hotels_image']['image_2'];
             $hotelImage3 = $request->files->get('hotels_in_bhutan')['images']['hotels_image']['image_3'];
 
             $hotel_images = [$hotelImage1, $hotelImage2, $hotelImage3];
             foreach ($hotel_images as $key => $image) {
-                if($image) {
+                if ($image) {
                     $imageObj = array_key_exists($key, $hotelsInBhutanImagesId) ? $this->em->getRepository(Images::class)->find($hotelsInBhutanImagesId[$key]) : new Images();
                     $imageObj->setImageName($uploadImage->uploadImage($image));
                     $hotelsInBhutan->addImage($imageObj);
@@ -401,7 +403,7 @@ class AdminController extends AbstractController
             return $this->redirectToRoute('hotels-in-bhutan');
         }
 
-        return $this->render('admin/add-hotels-in-bhutan.html.twig',[
+        return $this->render('admin/add-hotels-in-bhutan.html.twig', [
             'form' => $form,
             'form_status' => 'Update',
             'hotelsInBhutanImages' => $hotelsInBhutanImages
@@ -428,12 +430,12 @@ class AdminController extends AbstractController
         $categories = $this->em->getRepository(TourCategory::class)->findAll();
         $form = $this->createForm(TourCategoryType::class, $tourCategory);
         $form->handleRequest($request);
-        
-        if($form->isSubmitted() && $form->isValid()) {
 
-            if($parentCategoryId = $request->get('tour_category')['parent_category']) {
+        if ($form->isSubmitted() && $form->isValid()) {
+
+            if ($parentCategoryId = $request->get('tour_category')['parent_category']) {
                 $parentCategory = $this->em->getRepository(TourCategory::class)->find($parentCategoryId);
-                $tourCategory->setSubCategory($parentCategory );
+                $tourCategory->setSubCategory($parentCategory);
             }
 
             $category = strtolower($tourCategory->getCategory());
@@ -444,7 +446,7 @@ class AdminController extends AbstractController
             return $this->redirectToRoute('add-tour-category');
         }
 
-        return $this->render('admin/add-tour-category.html.twig',[
+        return $this->render('admin/add-tour-category.html.twig', [
             'form' => $form,
             'form_status' => 'Add',
             'categories' => $categoryService->categoryAndSubCategory($categories)
@@ -454,17 +456,17 @@ class AdminController extends AbstractController
     #[Route('admin/{id}/update-tour-category', name: 'update-tour-category')]
     public function updateTourCategory(Request $request, CategoryService $categoryService, SluggerInterface $slug, $id)
     {
- 
+
         $categories = $this->em->getRepository(TourCategory::class)->findAll();
         $tourCategory = $this->em->getRepository(TourCategory::class)->find($id);
         $form = $this->createForm(TourCategoryType::class, $tourCategory);
         $form->handleRequest($request);
-        
-        if($form->isSubmitted() && $form->isValid()) {
-        
-            if($parentCategoryId = $request->get('tour_category')['parent_category']) {
+
+        if ($form->isSubmitted() && $form->isValid()) {
+
+            if ($parentCategoryId = $request->get('tour_category')['parent_category']) {
                 $parentCategory = $this->em->getRepository(TourCategory::class)->find($parentCategoryId);
-                $tourCategory->setSubCategory($parentCategory );
+                $tourCategory->setSubCategory($parentCategory);
             }
 
             $category = strtolower($tourCategory->getCategory());
@@ -475,7 +477,7 @@ class AdminController extends AbstractController
             return $this->redirectToRoute('add-tour-category');
         }
 
-        return $this->render('admin/add-tour-category.html.twig',[
+        return $this->render('admin/add-tour-category.html.twig', [
             'form' => $form,
             'form_status' => 'Update',
             'categories' => $categoryService->categoryAndSubCategory($categories)
@@ -483,12 +485,13 @@ class AdminController extends AbstractController
     }
 
     #[Route('admin/add-faqs-and-raqs', name: 'add-faqs-and-raqs')]
-    public function addFaqsAndRaqs(Request $request) {
-        
+    public function addFaqsAndRaqs(Request $request)
+    {
+
         $travelInfo = new TravelInfo();
         $form = $this->createForm(TravelInfoType::class, $travelInfo);
         $form->handleRequest($request);
-        if($form->isSubmitted() && $form->isValid()) {
+        if ($form->isSubmitted() && $form->isValid()) {
 
         }
         return $this->render('admin/add-travel-info.html.twig', [
@@ -498,12 +501,13 @@ class AdminController extends AbstractController
     }
 
     #[Route('admin/add-travel-and-visa', name: 'add-travel-and-visa')]
-    public function addTravelAndVisa(Request $request) {
+    public function addTravelAndVisa(Request $request)
+    {
         $travelInfo = new TravelInfo();
         $form = $this->createForm(TravelInfoType::class, $travelInfo);
         $form->handleRequest($request);
-        if($form->isSubmitted() && $form->isValid()) {
-            
+        if ($form->isSubmitted() && $form->isValid()) {
+
         }
         return $this->render('admin/add-travel-info.html.twig', [
             'form' => $form,
@@ -512,12 +516,13 @@ class AdminController extends AbstractController
     }
 
     #[Route('admin/faqs-and-raqs', name: 'all-faqs-and-raqs')]
-    public function faqsAndRaqs(Request $request) {
+    public function faqsAndRaqs(Request $request)
+    {
         $travelInfo = new TravelInfo();
         $faqsRaqsCategory = $this->em->getRepository(TravelInfoCategory::class)->findOneBy(['travel_info_category_name' => TravelInfoEnum::FAQS_AND_RAQS->value]);
         $form = $this->createForm(TravelInfoType::class, $travelInfo);
         $form->handleRequest($request);
-        if($form->isSubmitted() && $form->isValid()) {
+        if ($form->isSubmitted() && $form->isValid()) {
             $travelInfo->setTravelInfoCategory($faqsRaqsCategory);
             $this->em->persist($travelInfo);
             $this->em->flush();
@@ -526,23 +531,24 @@ class AdminController extends AbstractController
 
             return $this->redirectToRoute('all-faqs-and-raqs');
         }
-        return $this->render('admin/faqs-and-raqs.html.twig',[
+        return $this->render('admin/faqs-and-raqs.html.twig', [
             'form' => $form,
             'faqsRaqs' => $faqsRaqsCategory->getTravelInfo()
         ]);
     }
 
     #[Route('admin/edit-faqs-and-raqs/{id?}', name: 'edit-faqs-and-raqs')]
-    public function editFaqsAndRaqs(Request $request, $id) {
+    public function editFaqsAndRaqs(Request $request, $id)
+    {
         $faqsRaqsCategory = $this->em->getRepository(TravelInfoCategory::class)->findOneBy(['travel_info_category_name' => TravelInfoEnum::FAQS_AND_RAQS->value]);
         $travelInfoId = !empty($request->request->get('id')) ? $request->request->get('id') : $id;
         $faqRaq = $this->em->getRepository(TravelInfo::class)->find($travelInfoId);
         $form = $this->createForm(TravelInfoType::class, $faqRaq, [
-            'action' => $this->generateUrl('edit-faqs-and-raqs',['id' => $travelInfoId]),
+            'action' => $this->generateUrl('edit-faqs-and-raqs', ['id' => $travelInfoId]),
             'method' => 'POST'
         ]);
         $form->handleRequest($request);
-        if($form->isSubmitted() && $form->isValid()) {
+        if ($form->isSubmitted() && $form->isValid()) {
             $faqRaq->setTravelInfoCategory($faqsRaqsCategory);
             $this->em->persist($faqRaq);
             $this->em->flush();
@@ -557,12 +563,13 @@ class AdminController extends AbstractController
     }
 
     #[Route('admin/travel-and-visa', name: 'all-travel-and-visa')]
-    public function travelAndVisa(Request $request) {
+    public function travelAndVisa(Request $request)
+    {
         $travelInfo = new TravelInfo();
         $travelVisaCategory = $this->em->getRepository(TravelInfoCategory::class)->findOneBy(['travel_info_category_name' => TravelInfoEnum::TRAVEL_AND_VISA->value]);
         $form = $this->createForm(TravelInfoType::class, $travelInfo);
         $form->handleRequest($request);
-        if($form->isSubmitted() && $form->isValid()) {
+        if ($form->isSubmitted() && $form->isValid()) {
             $travelInfo->setTravelInfoCategory($travelVisaCategory);
             $this->em->persist($travelInfo);
             $this->em->flush();
@@ -571,23 +578,24 @@ class AdminController extends AbstractController
 
             return $this->redirectToRoute('all-travel-and-visa');
         }
-        return $this->render('admin/travel-and-visa.html.twig',[
+        return $this->render('admin/travel-and-visa.html.twig', [
             'form' => $form,
             'travelVisas' => $travelVisaCategory->getTravelInfo()
         ]);
     }
 
     #[Route('admin/edit-travel-and-visa/{id?}', name: 'edit-travel-and-visa')]
-    public function editTravelAndVisa(Request $request, $id) {
+    public function editTravelAndVisa(Request $request, $id)
+    {
         $travelVisaCategory = $this->em->getRepository(TravelInfoCategory::class)->findOneBy(['travel_info_category_name' => TravelInfoEnum::TRAVEL_AND_VISA->value]);
         $travelInfoId = !empty($request->request->get('id')) ? $request->request->get('id') : $id;
         $travelandVisa = $this->em->getRepository(TravelInfo::class)->find($travelInfoId);
         $form = $this->createForm(TravelInfoType::class, $travelandVisa, [
-            'action' => $this->generateUrl('edit-travel-and-visa',['id' => $travelInfoId]),
+            'action' => $this->generateUrl('edit-travel-and-visa', ['id' => $travelInfoId]),
             'method' => 'POST'
         ]);
         $form->handleRequest($request);
-        if($form->isSubmitted() && $form->isValid()) {
+        if ($form->isSubmitted() && $form->isValid()) {
             $travelandVisa->setTravelInfoCategory($travelVisaCategory);
             $this->em->persist($travelandVisa);
             $this->em->flush();
@@ -602,7 +610,8 @@ class AdminController extends AbstractController
     }
 
     #[Route('admin/delete-faqs-raqs/{id}', name: 'delete-faqs-raqs')]
-    public function deleteFaqsRaqs($id) {
+    public function deleteFaqsRaqs($id)
+    {
         $faqRaq = $this->em->getRepository(TravelInfo::class)->find($id);
         $this->em->remove($faqRaq);
         $this->em->flush($faqRaq);
@@ -611,7 +620,8 @@ class AdminController extends AbstractController
     }
 
     #[Route('admin/delete-travel-visa/{id}', name: 'delete-travel-visa')]
-    public function deleteTravelVisa($id) {
+    public function deleteTravelVisa($id)
+    {
         $travelVisa = $this->em->getRepository(TravelInfo::class)->find($id);
         $this->em->remove($travelVisa);
         $this->em->flush($travelVisa);

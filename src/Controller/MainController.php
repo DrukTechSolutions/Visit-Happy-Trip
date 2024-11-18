@@ -49,13 +49,13 @@ class MainController extends AbstractController
         $tours = [];
         $image_name = '';
         $category = $this->em->getRepository(TourCategory::class)->findBy(['slug' => $slug]);
-        
+
         foreach ($category[0]->getTourCategories() as $tourCategories) {
-            if($tourCategories) {
-                foreach($tourCategories->getTourPackage() as $package) {
+            if ($tourCategories) {
+                foreach ($tourCategories->getTourPackage() as $package) {
                     $tours[$package->getId()] = $package;
-                    foreach($package->getImages() as $image) {
-                        if($image) {
+                    foreach ($package->getImages() as $image) {
+                        if ($image) {
                             $image_name = $image->getImageName();
                         }
                     }
@@ -74,7 +74,7 @@ class MainController extends AbstractController
     public function viewTours($slug): Response
     {
         $tour_package = $this->em->getRepository(TourPackage::class)->findBy(['tour_title_slug' => $slug]);
-        
+
         return $this->render('main/view-tours.html.twig', [
             'tour_packages' => $tour_package[0]
         ]);
@@ -83,7 +83,7 @@ class MainController extends AbstractController
     #[Route('/blog', name: 'blog')]
     public function blog(PaginatorInterface $paginator, Request $request): Response
     {
-        $blogs = $this->em->getRepository(Blog::class)->findAll();        
+        $blogs = $this->em->getRepository(Blog::class)->findAll();
         $pagination = $paginator->paginate(
             $blogs, /* query NOT result */
             $request->query->getInt('page', 1), /* page number */
@@ -150,7 +150,7 @@ class MainController extends AbstractController
     public function hotelsInBhutan()
     {
         $hotelsInBhutan = $this->em->getRepository(HotelsInBhutan::class)->findAll();
-        return $this->render('main/hotels-in-bhutan.html.twig',[
+        return $this->render('main/hotels-in-bhutan.html.twig', [
             'hotelsInBhutan' => $hotelsInBhutan
         ]);
     }
@@ -160,7 +160,7 @@ class MainController extends AbstractController
     {
         $hotelInBhutan = $this->em->getRepository(HotelsInBhutan::class)->findOneBy(['slug' => $slug]);
         $hotelsInBhutan = $this->em->getRepository(HotelsInBhutan::class)->findAll();
-        return $this->render('main/hotel-in-bhutan.html.twig',[
+        return $this->render('main/hotel-in-bhutan.html.twig', [
             'hotelInBhutan' => $hotelInBhutan,
             'hotelsInBhutan' => $hotelsInBhutan
         ]);
@@ -184,15 +184,16 @@ class MainController extends AbstractController
         return $this->render('main/trip-planner.html.twig');
     }
 
-    public function _tourCategories() {
+    public function _tourCategories()
+    {
         $mainCategory = [];
         $tourCategories = $this->em->getRepository(TourCategory::class)->findAll();
         foreach ($tourCategories as $tourCategory) {
-            if($tourCategory->getSubCategory() == null) {
+            if ($tourCategory->getSubCategory() == null) {
                 $mainCategory[$tourCategory->getId()]['category'] = $tourCategory->getCategory();
                 $mainCategory[$tourCategory->getId()]['slug'] = $tourCategory->getSlug();
             }
         }
-        return $this->render('main/pages/_packages.html.twig',['categories' => $mainCategory]);
+        return $this->render('main/pages/_packages.html.twig', ['categories' => $mainCategory]);
     }
 }

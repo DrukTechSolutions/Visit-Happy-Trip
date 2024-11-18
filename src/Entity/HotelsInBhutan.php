@@ -31,7 +31,7 @@ class HotelsInBhutan
     /**
      * @var Collection<int, Images>
      */
-    #[ORM\OneToMany(targetEntity: Images::class, mappedBy: 'hotelsInBhutan', cascade : ['persist','remove'] )]
+    #[ORM\OneToMany(targetEntity: Images::class, mappedBy: 'hotelsInBhutan', cascade : ['persist','remove'])]
     private Collection $images;
 
     #[ORM\Column(type: Types::TEXT)]

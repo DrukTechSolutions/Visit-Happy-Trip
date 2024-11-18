@@ -21,10 +21,10 @@ class TourCategoryType extends AbstractType
                 'class' => TourCategory::class,
                 'choice_label' => 'category',
                 'placeholder' => 'No parent',
-                'query_builder' =>  function(EntityRepository $er) {
+                'query_builder' =>  function (EntityRepository $er) {
                     return $er->createQueryBuilder('c')
                             ->where('c.sub_category IS NULL')
-                            ;  
+                    ;
                 }
             ])
             ->add('category', TextType::class)

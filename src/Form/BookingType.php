@@ -22,7 +22,7 @@ class BookingType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('name', TextType::class,[
+            ->add('name', TextType::class, [
                 'constraints' => [
                     new NotBlank(['message' => 'Name field should not be blank.'])
                 ]
@@ -59,7 +59,7 @@ class BookingType extends AbstractType
                     'value' => '0'
                 ]
             ])
-            ->add('tour_type', ChoiceType::class , [
+            ->add('tour_type', ChoiceType::class, [
                 'choices' => [
                     'Solo' => 'solo',
                     'Family' => 'family',

@@ -184,11 +184,11 @@ class TourPackage
     {
         return $this->tourCategory;
     }
-    
+
     public function setTourCategory(?TourCategory $tourCategory): static
     {
         $this->tourCategory = $tourCategory;
-    
+
         return $this;
     }
 }

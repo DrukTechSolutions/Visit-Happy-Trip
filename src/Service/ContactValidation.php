@@ -9,9 +9,12 @@ use Symfony\Component\Validator\Validator\ValidatorInterface;
 
 class ContactValidation
 {
-    public function __construct(private ValidatorInterface $validator){}
+    public function __construct(private ValidatorInterface $validator)
+    {
+    }
 
-    public function getErrors($data) {
+    public function getErrors($data)
+    {
 
         $name = $data['name'];
         $email = $data['email'];
@@ -26,7 +29,7 @@ class ContactValidation
             $name,
             $nameConstraint,
         );
-        
+
         $emailConstraint = [
             new Assert\NotBlank(['message' => 'Email cannot be empty.']),
             new Assert\Email(['message' => 'Invalid email address.'])

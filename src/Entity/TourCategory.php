@@ -17,7 +17,7 @@ class TourCategory
     #[ORM\GeneratedValue]
     #[ORM\Column]
     private ?int $id = null;
-    
+
     #[ORM\Column(length: 255)]
     #[Assert\NotBlank]
     private ?string $category = null;
@@ -37,7 +37,7 @@ class TourCategory
     /**
      * @var Collection<int, TourPackage>
      */
-    #[ORM\OneToMany(targetEntity: TourPackage::class, mappedBy: 'tourCategory',  fetch: 'EAGER')]
+    #[ORM\OneToMany(targetEntity: TourPackage::class, mappedBy: 'tourCategory', fetch: 'EAGER')]
     private Collection $tour_package;
 
     public function __construct()

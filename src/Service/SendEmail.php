@@ -8,7 +8,9 @@ use Symfony\Component\Intl\Countries;
 
 class SendEmail
 {
-    public function __construct(private MailerInterface $mailer) {}
+    public function __construct(private MailerInterface $mailer)
+    {
+    }
 
     public function sendEmail($form)
     {
@@ -26,7 +28,8 @@ class SendEmail
         $this->mailer->send($email);
     }
 
-    public function sendBookingEmail($data) {
+    public function sendBookingEmail($data)
+    {
 
         $email = new TemplatedEmail();
         $email->subject('Booking inquiry');

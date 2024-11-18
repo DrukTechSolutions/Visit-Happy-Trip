@@ -16,13 +16,14 @@ class BlogRepository extends ServiceEntityRepository
         parent::__construct($registry, Blog::class);
     }
 
-    public function findBlogs($limit){
+    public function findBlogs($limit)
+    {
 
         return $this->createQueryBuilder('b')
             ->setMaxResults($limit)
             ->getQuery()
             ->getResult()
-            ;
+        ;
     }
 
     //    /**
