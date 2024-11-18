@@ -1,0 +1,84 @@
+{% extends 'admin.html.twig' %}
+
+{% block body %}
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/admin">Home</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Travel Info</li>
+    </ol>
+</nav>
+<div>
+    <!-- Button trigger modal -->
+    <button type="button" id="travel-visa-modal-btn" class="btn btn-primary" data-mdb-ripple-init data-mdb-modal-init
+        data-mdb-target="#travelVisaModal">
+        <i class="fa-solid fa-plus"></i> Add Travel & Visa
+    </button>
+
+    <!-- Modal -->
+    <div class="modal fade" id="travelVisaModal" tabindex="-1" aria-labelledby="travelVisasModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="travelVisasModalLabel">Travel & Visa</h5>
+                    <button type="button" class="btn-close" data-mdb-ripple-init data-mdb-dismiss="modal"
+                        aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div id="travelVisaFormWrapper">
+                        {{ include('admin/includes/_travel_info.html.twig')}}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% for message in app.flashes('notice') %}
+    <div class="flash-success mt-3">
+        {{ message }}
+    </div>
+    {% endfor %}
+    <div class="mt-3">
+        {% for travelVisa in travelVisas %}
+        <div class="accordion" id="travel-visa-{{ loop.index }}">
+            <div class="accordion-item rounded-0">
+                <h2 class="accordion-header" id="heading-{{ loop.index }}">
+                    <button data-mdb-collapse-init class="accordion-button" type="button"
+                        data-mdb-target="#collapse-{{ loop.index }}" aria-expanded="true"
+                        aria-controls="collapse-{{ loop.index }}">
+                        {{ travelVisa.travelInfoTitle }}
+                    </button>
+                </h2>
+                <div id="collapse-{{ loop.index }}" class="accordion-collapse collapse"
+                    aria-labelledby="heading-{{ loop.index }}" data-mdb-parent="#travel_visa">
+                    <div class="accordion-body">
+                        {{ travelVisa.travelInfoDescription|raw }}
+                        <div class="mt-2">
+                            <button id="travel-visa-edit-{{ loop.index }}" class="btn btn-success travel-visa-edit" data-id={{
+                                travelVisa.id }}>Edit</button>
+                            <a href="{{ path('delete-travel-visa',{'id' : travelVisa.id })}}"  id="travel-visa-delete-{{ loop.index }}" class="btn btn-danger">Delete</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
+
+{% block javascripts %}
+<script>
+    $('.travel-visa-edit').on('click', function () {
+        let travel_visa_edit_id = $(this).attr('id');
+        let travel_visa_id = $(this).data('id');
+        $.ajax({
+            url: '{{ path("edit-travel-and-visa")}}',
+            method: 'POST',
+            data: { id: travel_visa_id },
+            success: function (res) {
+                $('#travelVisaFormWrapper').html(res.html);
+                $('#travel-visa-modal-btn').trigger('click');
+            }
+        });
+    });
+</script>
+{% endblock %}

@@ -1,0 +1,84 @@
+{% extends 'admin.html.twig' %}
+
+{% block body %}
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/admin">Home</a></li>
+        <li class="breadcrumb-item active" aria-current="page">FAQs & RAQs</li>
+    </ol>
+</nav>
+<div>
+    <!-- Button trigger modal -->
+    <button type="button" id="faq-raq-modal-btn" class="btn btn-primary" data-mdb-ripple-init data-mdb-modal-init
+        data-mdb-target="#faqRaqModal">
+        <i class="fa-solid fa-plus"></i> Add FAQs & RAQs
+    </button>
+
+    <!-- Modal -->
+    <div class="modal fade" id="faqRaqModal" tabindex="-1" aria-labelledby="faqsRaqsModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="faqsRaqsModalLabel">FAQs & RAQs</h5>
+                    <button type="button" class="btn-close" data-mdb-ripple-init data-mdb-dismiss="modal"
+                        aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div id="faqsRaqsFormWrapper">
+                        {{ include('admin/includes/_travel_info.html.twig')}}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% for message in app.flashes('notice') %}
+    <div class="flash-success mt-3">
+        {{ message }}
+    </div>
+    {% endfor %}
+    <div class="mt-3">
+        {% for faqRaq in faqsRaqs %}
+        <div class="accordion" id="faq-raq-{{ loop.index }}">
+            <div class="accordion-item rounded-0">
+                <h2 class="accordion-header" id="heading-{{ loop.index }}">
+                    <button data-mdb-collapse-init class="accordion-button" type="button"
+                        data-mdb-target="#collapse-{{ loop.index }}" aria-expanded="true"
+                        aria-controls="collapse-{{ loop.index }}">
+                        {{ faqRaq.travelInfoTitle }}
+                    </button>
+                </h2>
+                <div id="collapse-{{ loop.index }}" class="accordion-collapse collapse"
+                    aria-labelledby="heading-{{ loop.index }}" data-mdb-parent="#faq_raq">
+                    <div class="accordion-body">
+                        {{ faqRaq.travelInfoDescription|raw }}
+                        <div class="mt-2">
+                            <button id="faq-raq-edit-{{ loop.index }}" class="btn btn-success faq-raq-edit" data-id={{
+                                faqRaq.id }}>Edit</button>
+                            <a href="{{ path('delete-faqs-raqs',{'id' : faqRaq.id })}}" id="faq-raq-delete-{{ loop.index }}" class="btn btn-danger">Delete</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
+
+{% block javascripts %}
+<script>
+    $('.faq-raq-edit').on('click', function () {
+        let faq_raq_edit_id = $(this).attr('id');
+        let faq_raq_id = $(this).data('id');
+        $.ajax({
+            url: '{{ path("edit-faqs-and-raqs")}}',
+            method: 'POST',
+            data: { id: faq_raq_id },
+            success: function (res) {
+                $('#faqsRaqsFormWrapper').html(res.html);
+                $('#faq-raq-modal-btn').trigger('click');
+            }
+        });
+    });
+</script>
+{% endblock %}

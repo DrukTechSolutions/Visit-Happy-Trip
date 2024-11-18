@@ -8,13 +8,17 @@ use App\Entity\Images;
 use App\Entity\TopDestination;
 use App\Entity\TourCategory;
 use App\Entity\TourPackage;
+use App\Entity\TravelInfo;
+use App\Entity\TravelInfoCategory;
 use App\Form\BlogType;
 use App\Form\HotelsInBhutanType;
 use App\Form\TopDestinationType;
 use App\Form\TourCategoryType;
 use App\Form\TourPackageType;
+use App\Form\TravelInfoType;
 use App\Service\CategoryService;
 use App\Service\UploadImage;
+use App\Enum\TravelInfoEnum;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -426,7 +430,7 @@ class AdminController extends AbstractController
         $form->handleRequest($request);
         
         if($form->isSubmitted() && $form->isValid()) {
-            dd($tourCategory);
+
             if($parentCategoryId = $request->get('tour_category')['parent_category']) {
                 $parentCategory = $this->em->getRepository(TourCategory::class)->find($parentCategoryId);
                 $tourCategory->setSubCategory($parentCategory );
@@ -476,5 +480,142 @@ class AdminController extends AbstractController
             'form_status' => 'Update',
             'categories' => $categoryService->categoryAndSubCategory($categories)
         ]);
+    }
+
+    #[Route('admin/add-faqs-and-raqs', name: 'add-faqs-and-raqs')]
+    public function addFaqsAndRaqs(Request $request) {
+        
+        $travelInfo = new TravelInfo();
+        $form = $this->createForm(TravelInfoType::class, $travelInfo);
+        $form->handleRequest($request);
+        if($form->isSubmitted() && $form->isValid()) {
+
+        }
+        return $this->render('admin/add-travel-info.html.twig', [
+            'form' => $form,
+            'travel_info' => 'FAQs & RAQs'
+        ]);
+    }
+
+    #[Route('admin/add-travel-and-visa', name: 'add-travel-and-visa')]
+    public function addTravelAndVisa(Request $request) {
+        $travelInfo = new TravelInfo();
+        $form = $this->createForm(TravelInfoType::class, $travelInfo);
+        $form->handleRequest($request);
+        if($form->isSubmitted() && $form->isValid()) {
+            
+        }
+        return $this->render('admin/add-travel-info.html.twig', [
+            'form' => $form,
+            'travel_info' => 'Travel & Visa'
+        ]);
+    }
+
+    #[Route('admin/faqs-and-raqs', name: 'all-faqs-and-raqs')]
+    public function faqsAndRaqs(Request $request) {
+        $travelInfo = new TravelInfo();
+        $faqsRaqsCategory = $this->em->getRepository(TravelInfoCategory::class)->findOneBy(['travel_info_category_name' => TravelInfoEnum::FAQS_AND_RAQS->value]);
+        $form = $this->createForm(TravelInfoType::class, $travelInfo);
+        $form->handleRequest($request);
+        if($form->isSubmitted() && $form->isValid()) {
+            $travelInfo->setTravelInfoCategory($faqsRaqsCategory);
+            $this->em->persist($travelInfo);
+            $this->em->flush();
+
+            $this->addFlash('notice', 'FAQs & RAQs saved!');
+
+            return $this->redirectToRoute('all-faqs-and-raqs');
+        }
+        return $this->render('admin/faqs-and-raqs.html.twig',[
+            'form' => $form,
+            'faqsRaqs' => $faqsRaqsCategory->getTravelInfo()
+        ]);
+    }
+
+    #[Route('admin/edit-faqs-and-raqs/{id?}', name: 'edit-faqs-and-raqs')]
+    public function editFaqsAndRaqs(Request $request, $id) {
+        $faqsRaqsCategory = $this->em->getRepository(TravelInfoCategory::class)->findOneBy(['travel_info_category_name' => TravelInfoEnum::FAQS_AND_RAQS->value]);
+        $travelInfoId = !empty($request->request->get('id')) ? $request->request->get('id') : $id;
+        $faqRaq = $this->em->getRepository(TravelInfo::class)->find($travelInfoId);
+        $form = $this->createForm(TravelInfoType::class, $faqRaq, [
+            'action' => $this->generateUrl('edit-faqs-and-raqs',['id' => $travelInfoId]),
+            'method' => 'POST'
+        ]);
+        $form->handleRequest($request);
+        if($form->isSubmitted() && $form->isValid()) {
+            $faqRaq->setTravelInfoCategory($faqsRaqsCategory);
+            $this->em->persist($faqRaq);
+            $this->em->flush();
+            $this->addFlash('notice', 'FAQs & RAQs updated!');
+            return $this->redirectToRoute('all-faqs-and-raqs');
+        }
+        $html = $this->renderView('admin/includes/_travel_info.html.twig', [
+            'form' => $form->createView()
+        ]);
+
+        return $this->json(['html' => $html]);
+    }
+
+    #[Route('admin/travel-and-visa', name: 'all-travel-and-visa')]
+    public function travelAndVisa(Request $request) {
+        $travelInfo = new TravelInfo();
+        $travelVisaCategory = $this->em->getRepository(TravelInfoCategory::class)->findOneBy(['travel_info_category_name' => TravelInfoEnum::TRAVEL_AND_VISA->value]);
+        $form = $this->createForm(TravelInfoType::class, $travelInfo);
+        $form->handleRequest($request);
+        if($form->isSubmitted() && $form->isValid()) {
+            $travelInfo->setTravelInfoCategory($travelVisaCategory);
+            $this->em->persist($travelInfo);
+            $this->em->flush();
+
+            $this->addFlash('notice', 'Travel & Visa saved!');
+
+            return $this->redirectToRoute('all-travel-and-visa');
+        }
+        return $this->render('admin/travel-and-visa.html.twig',[
+            'form' => $form,
+            'travelVisas' => $travelVisaCategory->getTravelInfo()
+        ]);
+    }
+
+    #[Route('admin/edit-travel-and-visa/{id?}', name: 'edit-travel-and-visa')]
+    public function editTravelAndVisa(Request $request, $id) {
+        $travelVisaCategory = $this->em->getRepository(TravelInfoCategory::class)->findOneBy(['travel_info_category_name' => TravelInfoEnum::TRAVEL_AND_VISA->value]);
+        $travelInfoId = !empty($request->request->get('id')) ? $request->request->get('id') : $id;
+        $travelandVisa = $this->em->getRepository(TravelInfo::class)->find($travelInfoId);
+        $form = $this->createForm(TravelInfoType::class, $travelandVisa, [
+            'action' => $this->generateUrl('edit-travel-and-visa',['id' => $travelInfoId]),
+            'method' => 'POST'
+        ]);
+        $form->handleRequest($request);
+        if($form->isSubmitted() && $form->isValid()) {
+            $travelandVisa->setTravelInfoCategory($travelVisaCategory);
+            $this->em->persist($travelandVisa);
+            $this->em->flush();
+            $this->addFlash('notice', 'Travel & Visa updated!');
+            return $this->redirectToRoute('all-travel-and-visa');
+        }
+        $html = $this->renderView('admin/includes/_travel_info.html.twig', [
+            'form' => $form->createView()
+        ]);
+
+        return $this->json(['html' => $html]);
+    }
+
+    #[Route('admin/delete-faqs-raqs/{id}', name: 'delete-faqs-raqs')]
+    public function deleteFaqsRaqs($id) {
+        $faqRaq = $this->em->getRepository(TravelInfo::class)->find($id);
+        $this->em->remove($faqRaq);
+        $this->em->flush($faqRaq);
+        $this->addFlash('notice', 'FAQs & RAQs deleted!');
+        return $this->redirectToRoute('all-faqs-and-raqs');
+    }
+
+    #[Route('admin/delete-travel-visa/{id}', name: 'delete-travel-visa')]
+    public function deleteTravelVisa($id) {
+        $travelVisa = $this->em->getRepository(TravelInfo::class)->find($id);
+        $this->em->remove($travelVisa);
+        $this->em->flush($travelVisa);
+        $this->addFlash('notice', 'Travel & Visa deleted!');
+        return $this->redirectToRoute('all-travel-and-visa');
     }
 }

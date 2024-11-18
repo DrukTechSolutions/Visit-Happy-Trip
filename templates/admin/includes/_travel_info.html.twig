@@ -1,0 +1,15 @@
+{{ form_start(form)}}
+<div class="card-body">
+    <div class="mt-2">
+        {{ form_label(form.travel_info_title)}}
+        {{ form_widget(form.travel_info_title,{'attr':{'class': 'ht-input'}})}}
+    </div>
+    <div class="mt-2">
+        {{ form_label(form.travel_info_description)}}
+        {{ form_widget(form.travel_info_description)}}
+    </div>
+</div>
+<div class="mt-2">
+    <button type="submit" class="btn btn-danger">Save</button>
+</div>
+{{ form_end(form)}}
