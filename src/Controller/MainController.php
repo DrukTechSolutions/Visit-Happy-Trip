@@ -8,6 +8,9 @@ use App\Entity\HotelsInBhutan;
 use App\Entity\TopDestination;
 use App\Entity\TourCategory;
 use App\Entity\TourPackage;
+use App\Entity\TravelInfo;
+use App\Entity\TravelInfoCategory;
+use App\Enum\TravelInfoEnum;
 use App\Form\BookingType;
 use App\Form\ContactType;
 use App\Service\CategoryService;
@@ -118,13 +121,19 @@ class MainController extends AbstractController
     #[Route('/travel-and-visa', name: 'travel-and-visa')]
     public function travelAndVisa(): Response
     {
-        return $this->render('main/travel_and_visa.html.twig');
+        $travelVisaCategory = $this->em->getRepository(TravelInfoCategory::class)->findOneBy(['travel_info_category_name' => TravelInfoEnum::TRAVEL_AND_VISA->value]);
+        return $this->render('main/travel_and_visa.html.twig',[
+            'travelVisas' => $travelVisaCategory->getTravelInfo()
+        ]);
     }
 
     #[Route('/faqs-and-raqs', name: 'faqs-and-raqs')]
     public function faqsAndRaqs(): Response
     {
-        return $this->render('main/faqs.html.twig');
+        $faqsRaqsCategory = $this->em->getRepository(TravelInfoCategory::class)->findOneBy(['travel_info_category_name' => TravelInfoEnum::FAQS_AND_RAQS->value]);
+        return $this->render('main/faqs.html.twig',[
+            'faqsRaqs' => $faqsRaqsCategory->getTravelInfo()
+        ]);
     }
 
     #[Route('/about-bhutan', name: 'about-bhutan')]

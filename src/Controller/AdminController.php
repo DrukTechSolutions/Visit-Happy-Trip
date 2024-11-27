@@ -484,37 +484,6 @@ class AdminController extends AbstractController
         ]);
     }
 
-    #[Route('admin/add-faqs-and-raqs', name: 'add-faqs-and-raqs')]
-    public function addFaqsAndRaqs(Request $request)
-    {
-
-        $travelInfo = new TravelInfo();
-        $form = $this->createForm(TravelInfoType::class, $travelInfo);
-        $form->handleRequest($request);
-        if ($form->isSubmitted() && $form->isValid()) {
-
-        }
-        return $this->render('admin/add-travel-info.html.twig', [
-            'form' => $form,
-            'travel_info' => 'FAQs & RAQs'
-        ]);
-    }
-
-    #[Route('admin/add-travel-and-visa', name: 'add-travel-and-visa')]
-    public function addTravelAndVisa(Request $request)
-    {
-        $travelInfo = new TravelInfo();
-        $form = $this->createForm(TravelInfoType::class, $travelInfo);
-        $form->handleRequest($request);
-        if ($form->isSubmitted() && $form->isValid()) {
-
-        }
-        return $this->render('admin/add-travel-info.html.twig', [
-            'form' => $form,
-            'travel_info' => 'Travel & Visa'
-        ]);
-    }
-
     #[Route('admin/faqs-and-raqs', name: 'all-faqs-and-raqs')]
     public function faqsAndRaqs(Request $request)
     {
