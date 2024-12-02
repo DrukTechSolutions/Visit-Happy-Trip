@@ -137,6 +137,7 @@
     <div class="container mt-2">
         <div class="row">
             {% for tour_package in tour_packages %}
+            {% if tour_package.tourCategory %}
             <div class="col-md-3 mt-3">
                 <div class="card border card-box-shadow rounded-0">
                     <img src="{{ asset('uploads/images/'~ tour_package.images[0].imageName )|imagine_filter('thumbnail')}}"
@@ -152,6 +153,7 @@
                     </div>
                 </div>
             </div>
+            {% endif %}
             {% endfor %}
         </div>
     </div>
