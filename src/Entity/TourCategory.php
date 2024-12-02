@@ -22,13 +22,13 @@ class TourCategory
     #[Assert\NotBlank]
     private ?string $category = null;
 
-    #[ORM\ManyToOne(targetEntity: self::class, inversedBy: 'tourCategories')]
+    #[ORM\ManyToOne(targetEntity: self::class, inversedBy: 'tourCategories', cascade: ['persist', 'remove'])]
     private ?self $sub_category = null;
 
     /**
      * @var Collection<int, self>
      */
-    #[ORM\OneToMany(targetEntity: self::class, mappedBy: 'sub_category')]
+    #[ORM\OneToMany(targetEntity: self::class, mappedBy: 'sub_category', cascade: ['persist', 'remove'])]
     private Collection $tour_categories;
 
     #[ORM\Column(length: 255)]

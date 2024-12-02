@@ -453,6 +453,16 @@ class AdminController extends AbstractController
         ]);
     }
 
+    #[Route('admin/{id}/delete-tour-category' , name: 'delete-tour-category')]
+    public function deleteTourCategory($id)
+    {
+        $tourCategory = $this->em->getRepository(TourCategory::class)->find($id);
+        $this->em->remove($tourCategory);
+        $this->em->flush();
+
+        return $this->redirectToRoute('add-tour-category');
+    }
+
     #[Route('admin/{id}/update-tour-category', name: 'update-tour-category')]
     public function updateTourCategory(Request $request, CategoryService $categoryService, SluggerInterface $slug, $id)
     {

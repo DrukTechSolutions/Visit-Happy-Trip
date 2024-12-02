@@ -40,12 +40,16 @@
                     <li>{{ category['category'] }}<a
                             href="{{ path('update-tour-category',{'id' : category['category_id'] })}}"
                             class="badge badge-primary ms-1">EDIT</a>
+                        {# <a href="{{ path('delete-tour-category',{'id' : category['category_id'] })}}"
+                            class="badge badge-danger ms-1">DELETE</a> #}
                         {% if category|length > 0 %}
                         <ul>
                             {% for sub_category in category['sub_categories'] %}
                             <li>{{ sub_category['sub_category'] }}<a
                                     href="{{ path('update-tour-category',{'id' : sub_category['sub_category_id'] })}}"
                                     class="badge badge-primary ms-1">EDIT</a>
+                                {# <a href="{{ path('delete-tour-category',{'id' : category['category_id'] })}}"
+                                    class="badge badge-danger ms-1">DELETE</a> #}
                                 {% endfor %}
                         </ul>
                         {% endif %}
