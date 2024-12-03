@@ -148,11 +148,11 @@ class MainController extends AbstractController
         return $this->render('main/getting-into-bhutan.html.twig');
     }
 
-    #[Route('/top-destinations', name: 'top-destinations')]
-    public function topDestination()
+    #[Route('/top-destination/{slug}', name: 'top-destination')]
+    public function topDestination($slug)
     {
-        $topDestinations = $this->em->getRepository(TopDestination::class)->findAll();
-        return $this->render('main/top-destinations.html.twig', ['topDestinations' => $topDestinations ]);
+        $topDestination = $this->em->getRepository(TopDestination::class)->findOneBy(['slug' => $slug]);
+        return $this->render('main/top-destinations.html.twig', ['topDestination' => $topDestination ]);
     }
 
     #[Route('/hotels-in-bhutan', name: 'hotels-in-bhutan-front')]

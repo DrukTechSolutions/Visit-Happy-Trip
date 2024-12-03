@@ -260,7 +260,7 @@ class AdminController extends AbstractController
     }
 
     #[Route('/admin/add-top-destination', name: 'add-top-destination')]
-    public function addTopDestination(Request $request, UploadImage $uploadImage)
+    public function addTopDestination(Request $request, UploadImage $uploadImage, SluggerInterface $slug)
     {
         $topDestination = new TopDestination();
         $form = $this->createForm(TopDestinationType::class, $topDestination);
@@ -271,6 +271,9 @@ class AdminController extends AbstractController
             $image = new Images();
             $image->setImageName($uploadImage->uploadImage($destinationImage));
             $topDestination->setImage($image);
+
+            $titleSlug = $slug->slug(strtolower($topDestination->getDestinationTitle())); 
+            $topDestination->setSlug($titleSlug);
             $this->em->persist($topDestination);
             $this->em->flush();
 
@@ -285,7 +288,7 @@ class AdminController extends AbstractController
     }
 
     #[Route('/admin/{id}/update-top-destination/', name: 'update-top-destination')]
-    public function updateTopDestination(Request $request, $id, UploadImage $uploadImage)
+    public function updateTopDestination(Request $request, $id, UploadImage $uploadImage, SluggerInterface $slug)
     {
         $topDestination = $this->em->getRepository(TopDestination::class)->find($id);
         $form = $this->createForm(TopDestinationType::class, $topDestination);
@@ -298,6 +301,8 @@ class AdminController extends AbstractController
                 $image->setImageName($uploadImage->uploadImage($destinationImage));
                 $topDestination->setImage($image);
             }
+            $titleSlug = $slug->slug(strtolower($topDestination->getDestinationTitle())); 
+            $topDestination->setSlug($titleSlug);
             $this->em->persist($topDestination);
             $this->em->flush();
 

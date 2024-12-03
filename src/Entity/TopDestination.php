@@ -23,6 +23,9 @@ class TopDestination
     #[ORM\OneToOne(cascade: ['persist', 'remove'])]
     private ?Images $image = null;
 
+    #[ORM\Column(length: 255)]
+    private ?string $slug = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -60,6 +63,18 @@ class TopDestination
     public function setImage(?Images $image): static
     {
         $this->image = $image;
+
+        return $this;
+    }
+
+    public function getSlug(): ?string
+    {
+        return $this->slug;
+    }
+
+    public function setSlug(string $slug): static
+    {
+        $this->slug = $slug;
 
         return $this;
     }

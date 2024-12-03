@@ -277,7 +277,7 @@
                         </div>
                         <div class="card-body p-2 pt-4">
                             <p><b>{{ top_destination.destinationTitle }}</b></p>
-                            <a href="{{ path('top-destinations')}}" class="nav-link text-orange">Read more..</a>
+                            <a href="{{ path('top-destination',{'slug' : top_destination.slug  })}}" class="nav-link text-orange">Read more..</a>
                         </div>
                     </div>
                 </li>

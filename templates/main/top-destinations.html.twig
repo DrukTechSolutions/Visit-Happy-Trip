@@ -48,8 +48,8 @@
     </div>
 </div>
 <div class="container mt-5">
-    {% for topDestination in topDestinations %}
-    <div class="row border border-dark pt-2 pb-2 mt-3">
+    {# {% for topDestination in topDestinations %} #}
+    <div class="row pt-2 pb-2 mt-3" id="{{ topDestination.destinationTitle|lower|slug }}">
         <div class="col-md-4">
             <img src="{{ asset('uploads/images/'~ topDestination.image.imageName )}}" class="img-fluid">
         </div>
@@ -60,7 +60,7 @@
             </div>
         </div>
     </div>
-    {% endfor %}
+    {# {% endfor %} #}
 </div>
 {% endblock %}
 
