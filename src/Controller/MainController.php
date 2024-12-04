@@ -24,8 +24,11 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 use Knp\Component\Pager\PaginatorInterface;
 
+ini_set('memory_limit', '256M');
+
 class MainController extends AbstractController
 {
+    
     public function __construct(private EntityManagerInterface $em)
     {
 
