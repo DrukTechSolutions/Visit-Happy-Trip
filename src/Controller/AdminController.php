@@ -19,12 +19,14 @@ use App\Form\TravelInfoType;
 use App\Service\CategoryService;
 use App\Service\UploadImage;
 use App\Enum\TravelInfoEnum;
+use App\Event\DeleteCategoryEvent;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 use Doctrine\ORM\EntityManagerInterface;
 use Knp\Component\Pager\PaginatorInterface;
+use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\String\Slugger\SluggerInterface;
 
@@ -459,9 +461,16 @@ class AdminController extends AbstractController
     }
 
     #[Route('admin/{id}/delete-tour-category' , name: 'delete-tour-category')]
-    public function deleteTourCategory($id)
+    public function deleteTourCategory($id, EventDispatcherInterface $eventDispatcherInterface)
     {
         $tourCategory = $this->em->getRepository(TourCategory::class)->find($id);
+        $tours = $this->em->getRepository(TourPackage::class)->findOneBy(['tourCategory' => $tourCategory]);
+        
+        if($tours) {
+            $event = new DeleteCategoryEvent($tours);
+            $eventDispatcherInterface->dispatch($event);
+        }
+
         $this->em->remove($tourCategory);
         $this->em->flush();
 
