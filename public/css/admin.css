@@ -22,3 +22,23 @@
 .hide-menu-name {
   display: none;
 }
+.menu-list-wrapper {
+  padding-left: 20px;
+}
+@media (min-width: 1024px) and (max-width: 1320px) {
+  .dashboard-card-header b {
+    font-size: 14px;
+  }
+}
+@media (max-width: 1023px) {
+  .dashboard-card-header b {
+    font-size: 12px;
+  }
+}
+.menu-list-item {
+  padding: 20px 30px 20px 30px !important;
+}
+.menu-list-item:hover {
+  background-color: #f85907;
+  color: white;
+}
