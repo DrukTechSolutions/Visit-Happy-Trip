@@ -21,7 +21,7 @@
 </nav>
 <div class="mt-2">
     {% set img_thumbnail = 'images/image-static/img_preview.jpg' %}
-    {{ form_start(form)}}
+    {{ form_start(form,{'attr':{'novalidate': 'novaldaite'}})}}
     <div class="card rounded-0" id="tour-package-form" data-select-sub-category-url = {{ path('sub-category-select') }}>
         <div class="card-header bg-danger text-white rounded-0"><b>Tour Package</b></div>
         <div class="card-body">
@@ -34,14 +34,17 @@
                 <div class="col-md-4">
                     {{ form_label(form.tour_parent_category )}}
                     {{ form_widget(form.tour_parent_category,{'attr':{'class': 'ht-input main-tour-category' }})}}
+                    <span class="text-danger">{{ form_errors(form.tour_parent_category )}}</span>
                 </div>
                 <div class="col-md-4">
                     {{ form_label(form.tourCategory )}}
                     {{ form_widget(form.tourCategory,{'attr':{'class': 'ht-input'}})}}
+                    <span class="text-danger">{{ form_errors(form.tourCategory )}}</span>
                 </div>
                 <div class="col-md-4">
                     {{ form_label(form.price)}}
                     {{ form_widget(form.price,{'attr':{'class':'ht-input'}})}}
+                    <span class="text-danger">{{ form_errors(form.price )}}</span>
                 </div>
             </div>
             <div class="row mb-4">
@@ -49,37 +52,41 @@
                 <div class="col-md-4">
                     <div class="image-upload-file-wrapper">
                         {{
-                        form_widget(form.images.vars.prototype.image_1,{'attr':{'class':'image-upload-file form-control'}})
+                        form_widget(form.images.image_1,{'attr':{'class':'image-upload-file form-control'}})
                         }}
                         <div class="mt-2 img-preview-wrapper">
                             <img src="{{ asset(tourPackageImages[0] is defined ? 'uploads/images/'~ tourPackageImages[0] : img_thumbnail)| imagine_filter('thumbnail_admin_tour')}}" class="img-fluid img-preview">
                         </div>
+                        <span class="text-danger">{{ form_errors(form.images.image_1 )}}</span>
                     </div>
                 </div>
                 <div class="col-md-4">
                     <div class="image-upload-file-wrapper">
                         {{
-                        form_widget(form.images.vars.prototype.image_2,{'attr':{'class':'image-upload-file form-control'}})
+                        form_widget(form.images.image_2,{'attr':{'class':'image-upload-file form-control'}})
                         }}
                         <div class="mt-2 img-preview-wrapper">
                             <img src="{{ asset(tourPackageImages[1] is defined ? 'uploads/images/'~ tourPackageImages[1] : img_thumbnail)| imagine_filter('thumbnail_admin_tour')}}" class="img-fluid img-preview">
                         </div>
+                        <span class="text-danger">{{ form_errors(form.images.image_2 )}}</span>
                     </div>
                 </div>
                 <div class="col-md-4">
                     <div class="image-upload-file-wrapper">
                         {{
-                        form_widget(form.images.vars.prototype.image_3,{'attr':{'class':'image-upload-file form-control'}})
+                        form_widget(form.images.image_3,{'attr':{'class':'image-upload-file form-control'}})
                         }}
                         <div class="mt-2 img-preview-wrapper">
                             <img src="{{ asset(tourPackageImages[2] is defined ? 'uploads/images/'~ tourPackageImages[2] : img_thumbnail)| imagine_filter('thumbnail_admin_tour')}}" class="img-fluid img-preview">
                         </div>
+                        <span class="text-danger">{{ form_errors(form.images.image_3 )}}</span>
                     </div>
                 </div>
             </div>
             <div>
                 {{ form_label(form.tour_overview)}}
                 {{ form_widget(form.tour_overview)}}
+                <span class="text-danger">{{ form_errors(form.tour_overview )}}</span>
             </div>
         </div>
     </div>
