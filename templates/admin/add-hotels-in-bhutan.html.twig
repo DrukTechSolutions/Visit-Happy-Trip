@@ -9,7 +9,7 @@
     </ol>
 </nav>
 <div class="mt-2">
-    {{ form_start(form)}}
+    {{ form_start(form, {'attr' : {'novalidate' : 'novalidate'}})}}
     {% set img_thumbnail = 'images/image-static/img_preview.jpg' %}
     <div class="card rounded-0">
         <div class="card-header bg-danger text-white rounded-0"><b>Hotel in Bhutan</b></div>
@@ -19,37 +19,40 @@
                 <div class="col-md-4">
                     <div class="image-upload-file-wrapper">
                         {{
-                        form_widget(form.images.vars.prototype.image_1,{'attr':{'class':'image-upload-file
+                        form_widget(form.images.image_1,{'attr':{'class':'image-upload-file
                         form-control'}})
                         }}
                         <div class="mt-2 img-preview-wrapper">
                             <img src="{{ asset(hotelsInBhutanImages[0] is defined ? 'uploads/images/'~ hotelsInBhutanImages[0] : img_thumbnail)| imagine_filter('thumbnail_admin_tour')}}"
                                 class="img-fluid img-preview">
                         </div>
+                        <span class="text-danger">{{ form_errors(form.images.image_1 )}}</span>
                     </div>
                 </div>
                 <div class="col-md-4">
                     <div class="image-upload-file-wrapper">
                         {{
-                        form_widget(form.images.vars.prototype.image_2,{'attr':{'class':'image-upload-file
+                        form_widget(form.images.image_2,{'attr':{'class':'image-upload-file
                         form-control'}})
                         }}
                         <div class="mt-2 img-preview-wrapper">
                             <img src="{{ asset(hotelsInBhutanImages[1] is defined ? 'uploads/images/'~ hotelsInBhutanImages[1] : img_thumbnail)| imagine_filter('thumbnail_admin_tour')}}"
                                 class="img-fluid img-preview">
                         </div>
+                        <span class="text-danger">{{ form_errors(form.images.image_2 )}}</span>
                     </div>
                 </div>
                 <div class="col-md-4">
                     <div class="image-upload-file-wrapper">
                         {{
-                        form_widget(form.images.vars.prototype.image_3,{'attr':{'class':'image-upload-file
+                        form_widget(form.images.image_3,{'attr':{'class':'image-upload-file
                         form-control'}})
                         }}
                         <div class="mt-2 img-preview-wrapper">
                             <img src="{{ asset(hotelsInBhutanImages[2] is defined ? 'uploads/images/'~ hotelsInBhutanImages[2] : img_thumbnail)| imagine_filter('thumbnail_admin_tour')}}"
                                 class="img-fluid img-preview">
                         </div>
+                        <span class="text-danger">{{ form_errors(form.images.image_3 )}}</span>
                     </div>
                 </div>
             </div>
@@ -57,6 +60,7 @@
                 <div class="col-md-6">
                     {{ form_label(form.hotel_name)}}
                     {{ form_widget(form.hotel_name,{'attr':{'class':'ht-select'}})}}
+                    <span class="text-danger">{{ form_errors(form.hotel_name)}}</span>
                 </div>
                 <div class="col-md-3">
                     {{ form_label(form.ratings)}}
@@ -65,44 +69,53 @@
                 <div class="col-md-3">
                     {{ form_label(form.no_of_rooms)}}
                     {{ form_widget(form.no_of_rooms,{'attr':{'class':'ht-input'}})}}
+                    <span class="text-danger">{{ form_errors(form.no_of_rooms)}}</span>
                 </div>
             </div>
             <div class="mb-4">
                 {{ form_label(form.room_details)}}
                 {{ form_widget(form.room_details)}}
+                <span class="text-danger">{{ form_errors(form.room_details)}}</span>
             </div>
             <div class="mb-4">
                 {{ form_label(form.room_type)}}
                 {{ form_widget(form.room_type,{'attr':{'class':'ht-input'}})}}
+                <span class="text-danger">{{ form_errors(form.room_type)}}</span>
             </div>
             <div class="mb-4">
                 {{ form_label(form.ammenities)}}
                 {{ form_widget(form.ammenities)}}
+                <span class="text-danger">{{ form_errors(form.ammenities)}}</span>
             </div>
             <div class="row mb-4">
                 <div class="col-md-4">
                     {{ form_label(form.phone_no)}}
                     {{ form_widget(form.phone_no,{'attr':{'class':'ht-input'}})}}
+                    <span class="text-danger">{{ form_errors(form.phone_no)}}</span>
                 </div>
                 <div class="col-md-4">
                     {{ form_label(form.email)}}
                     {{ form_widget(form.email,{'attr':{'class':'ht-input'}})}}
+                    <span class="text-danger">{{ form_errors(form.email)}}</span>
                 </div>
                 <div class="col-md-4">
                     {{ form_label(form.website)}}
                     {{ form_widget(form.website,{'attr':{'class':'ht-input'}})}}
+                    <span class="text-danger">{{ form_errors(form.website)}}</span>
                 </div>
             </div>
+            {{ form_widget(form._token) }}
             <div class="mb-4">
                 {{ form_label(form.address)}}
                 {{ form_widget(form.address,{'attr':{'class':'ht-input'}})}}
+                <span class="text-danger">{{ form_errors(form.address)}}</span>
             </div>
             <div class="mt-3">
                 <button class="btn btn-danger">{{ form_status }} Hotel</button>
             </div>
         </div>
     </div>
-    {{ form_end(form)}}
+    {{ form_end(form, {'render_rest': false}) }}
 </div>
 {% endblock %}
 

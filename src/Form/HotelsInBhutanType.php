@@ -7,16 +7,25 @@ use Eckinox\TinymceBundle\Form\Type\TinymceType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
+use Symfony\Component\Form\Extension\Core\Type\EmailType;
+use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Validator\Constraints\Email;
+use Symfony\Component\Validator\Constraints\NotBlank;
 
 class HotelsInBhutanType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('hotel_name')
+            ->add('hotel_name', TextType::class, [
+                'constraints' => [
+                    new NotBlank(['message' => 'Hotel name cannot be blank.'])
+                ]
+            ])
             ->add('ratings', ChoiceType::class, [
                 'choices' => [
                     '1' => '1',
@@ -26,26 +35,50 @@ class HotelsInBhutanType extends AbstractType
                     '5' => '5'
                 ]
             ])
-            ->add('room_type')
-            ->add('no_of_rooms')
-            ->add('room_details', TinymceType::class)
-            ->add('ammenities', TinymceType::class)
-            ->add('phone_no')
-            ->add('email')
-            ->add('website')
-            ->add('address', TextareaType::class)
-            ->add('images', CollectionType::class, [
-                'entry_type' => ImageType::class,
-                'mapped' => false,
-                'allow_add' => true,
-                'prototype' => true,
-                'label' => false,
-                'by_reference' => false,
-                'prototype_name' => 'hotels_image',
-                'entry_options' => [
-                    'attr' => [
-                        'image' => $options['data']->getImages()
-                    ],
+            ->add('room_type', TextType::class, [
+                'constraints' => [
+                    new NotBlank(['message' => 'Room type cannot be blank.'])
+                ]
+            ])
+            ->add('no_of_rooms', NumberType::class, [
+                'constraints' => [
+                    new NotBlank(['message' => 'No of rooms cannot be blank.'])
+                ]
+            ])
+            ->add('room_details', TinymceType::class, [
+                'constraints' => [
+                    new NotBlank(['message' => 'Room details cannot be blank.'])
+                ]
+            ])
+            ->add('ammenities', TinymceType::class, [
+                'constraints' => [
+                    new NotBlank(['message' => 'Ammenities cannot be blank.'])
+                ]
+            ])
+            ->add('phone_no', NumberType::class, [
+                'constraints' => [
+                    new NotBlank(['message' => 'Phone no cannot be blank.'])
+                ]
+            ])
+            ->add('email', EmailType::class , [
+                'constraints' => [
+                    new Email(['message' => 'Please provide valid email.']),
+                    new NotBlank(['message' => 'Email cannot be blank.'])
+                ]
+            ])
+            ->add('website', TextType::class,[
+                'constraints' => [
+                    new NotBlank(['message' => 'URL cannot be blank.'])
+                ]
+            ])
+            ->add('address', TextareaType::class, [
+                'constraints' => [
+                    new NotBlank(['message' => 'Address cannot be blank.'])
+                ]
+            ])
+            ->add('images', ImageType::class, [
+                'attr' => [
+                    'images' => $options['data']->getImages()
                 ],
             ])
         ;
