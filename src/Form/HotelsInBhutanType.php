@@ -78,7 +78,7 @@ class HotelsInBhutanType extends AbstractType
             ])
             ->add('images', ImageType::class, [
                 'attr' => [
-                    'image' => $options['data']->getImages()
+                    'images' => $options['data']->getImages()
                 ],
             ])
         ;

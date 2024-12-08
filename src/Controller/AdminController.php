@@ -332,11 +332,16 @@ class AdminController extends AbstractController
     }
 
     #[Route('/admin/hotels-in-bhutan', name: 'hotels-in-bhutan')]
-    public function hotelsInBhutan()
+    public function hotelsInBhutan(PaginatorInterface $paginator, Request $request)
     {
         $hotelsInBhutan = $this->em->getRepository(HotelsInBhutan::class)->findAll();
+        $pagination = $paginator->paginate(
+            $hotelsInBhutan, /* query NOT result */
+            $request->query->getInt('page', 1), /* page number */
+            5 /* limit per page */
+        );
         return $this->render('admin/hotels-in-bhutan.html.twig', [
-            'hotelsInBhutan' => $hotelsInBhutan
+            'hotelsInBhutan' => $pagination
         ]);
     }
 
@@ -347,11 +352,8 @@ class AdminController extends AbstractController
         $form = $this->createForm(HotelsInBhutanType::class, $hotelsInBhutan);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
-            $hotelImage1 = $request->files->get('hotels_in_bhutan')['images']['hotels_image']['image_1'];
-            $hotelImage2 = $request->files->get('hotels_in_bhutan')['images']['hotels_image']['image_2'];
-            $hotelImage3 = $request->files->get('hotels_in_bhutan')['images']['hotels_image']['image_3'];
-
-            $hotel_images = [$hotelImage1, $hotelImage2, $hotelImage3];
+            
+            $hotel_images = $request->files->get('hotels_in_bhutan')['images'];
             foreach ($hotel_images as $image) {
                 $images = new Images();
                 $images->setImageName($uploadImage->uploadImage($image));
@@ -388,9 +390,9 @@ class AdminController extends AbstractController
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
 
-            $hotelImage1 = $request->files->get('hotels_in_bhutan')['images']['hotels_image']['image_1'];
-            $hotelImage2 = $request->files->get('hotels_in_bhutan')['images']['hotels_image']['image_2'];
-            $hotelImage3 = $request->files->get('hotels_in_bhutan')['images']['hotels_image']['image_3'];
+            $hotelImage1 = $request->files->get('hotels_in_bhutan')['images']['image_1'];
+            $hotelImage2 = $request->files->get('hotels_in_bhutan')['images']['image_2'];
+            $hotelImage3 = $request->files->get('hotels_in_bhutan')['images']['image_3'];
 
             $hotel_images = [$hotelImage1, $hotelImage2, $hotelImage3];
             foreach ($hotel_images as $key => $image) {
