@@ -11,4 +11,15 @@ $(document).ready(function () {
             $('#' + imageNameId).text(shortenedFilename);
         });
     });
+
+
+    $('#close-btn').on('click', function() {
+        $('#left-menu-wrapper').toggleClass('col-md-3 col-md-1');
+        $('#close-btn i').toggleClass('fa-xmark fa-plus');
+        $('.menu-name').toggleClass('hide-menu-name');
+        $('#right-content-wrapper').toggleClass('col-md-9 col-md-11');
+        $('#expand-close-btn').toggleClass('text-end text-center');
+        $('#menu-list-card-body').toggleClass('text-center');
+        $('.nav-link i').toggleClass('me-3');
+    });
 });

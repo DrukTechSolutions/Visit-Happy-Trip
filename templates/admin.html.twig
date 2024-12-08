@@ -21,7 +21,8 @@
     {% endblock %}
     <style>
         body {
-            font-family: 'Jost', sans-serif;
+            font-family: "Roboto", sans-serif;
+            font-weight: 500;
             background-color: #e4e4e4;
         }
     </style>
@@ -49,47 +50,50 @@
     </nav>
     <div class="container-xxl" style="margin-top: 100px; margin-bottom: 100px;">
         <div class="row">
-            <div class="col-md-2">
+            <div class="col-md-3" id="left-menu-wrapper">
                 <div class="card">
-                    <div class="card-body">
+                    <div class="p-1 text-end" id="expand-close-btn">
+                        <button class="btn btn-danger" id="close-btn"><i class="fa-solid fa-xmark"></i></button>
+                    </div>
+                    <div class="card-body" id="menu-list-card-body">
                         <ul class="list-group list-group-light">
                             <li class="list-group-item border-0">
                                 <a href="{{ path('app_admin')}}" class="nav-link"><i class="fa-solid fa-house me-3 text-center"
-                                        style="width: 20px;"></i> Home</a>
+                                        style="width: 20px;"></i> <span class="menu-name">Home</span></a>
                             </li>
                             <li class="list-group-item border-0">
                                 <a href="{{ path('tour-packages')}}" class="nav-link"><i class="fa-solid fa-umbrella-beach me-3 text-center"
-                                        style="width: 20px;"></i> Tours Packages</a>
+                                        style="width: 20px;"></i> <span class="menu-name">Tours Packages</span></a>
                             </li>
                             <li class="list-group-item border-0">
                                 <a href="{{ path('top-destinations-all')}}" class="nav-link"><i class="fa-solid fa-location-dot me-3 text-center"
-                                        style="width: 20px;"></i> Top Destinations</a>
+                                        style="width: 20px;"></i> <span class="menu-name">Top Destinations</span></a>
                             </li>
                             <li class="list-group-item border-0">
                                 <a href="{{ path('hotels-in-bhutan')}}" class="nav-link"><i class="fa-solid fa-hotel me-3 text-center"
-                                        style="width: 20px;"></i> Hotels</a>
+                                        style="width: 20px;"></i> <span class="menu-name">Hotels</span></a>
                             </li>
                             <li class="list-group-item border-0">
                                 <a href="{{ path('blogs')}}" class="nav-link"><i class="fa-regular fa-newspaper me-3 text-center"
-                                        style="width: 20px;"></i> Blog</a>
+                                        style="width: 20px;"></i> <span class="menu-name">Blog</span></a>
                             </li>
                             <li class="list-group-item border-0">
                                 <a href="{{ path('add-tour-category')}}" class="nav-link"><i class="fa-solid fa-list me-3 text-center"
-                                        style="width: 20px;"></i> Categroy</a>
+                                        style="width: 20px;"></i> <span class="menu-name">Categroy</span></a>
                             </li>
                             <li class="list-group-item border-0">
                                 <a href="{{ path('all-faqs-and-raqs')}}" class="nav-link"><i class="fa-solid fa-question me-3 text-center"
-                                        style="width: 20px;"></i> FAQs & RAQs</a> 
+                                        style="width: 20px;"></i> <span class="menu-name">FAQs & RAQs</span></a> 
                             </li>
                             <li class="list-group-item border-0">
                                 <a href="{{ path('all-travel-and-visa')}}" class="nav-link"><i class="fa-solid fa-plane me-3 text-center"
-                                        style="width: 20px;"></i> Travel & Visa</a> 
+                                        style="width: 20px;"></i> <span class="menu-name">Travel & Visa</span></a> 
                             </li>
                         </ul>
                     </div>
                 </div>
             </div>
-            <div class="col-md-10">
+            <div class="col-md-9" id="right-content-wrapper">
                 {% block body %}{% endblock %}
             </div>
         </div>

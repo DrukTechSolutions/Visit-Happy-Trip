@@ -19,3 +19,6 @@
   height: 196px;
   overflow: hidden;
 }
+.hide-menu-name {
+  display: none;
+}
