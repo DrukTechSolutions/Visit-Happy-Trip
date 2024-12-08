@@ -22,13 +22,13 @@ class TourCategory
     #[Assert\NotBlank]
     private ?string $category = null;
 
-    #[ORM\ManyToOne(targetEntity: self::class, inversedBy: 'tourCategories', cascade: ['persist', 'remove'])]
+    #[ORM\ManyToOne(targetEntity: self::class, inversedBy: 'tourCategories', cascade: ['persist'])]
     private ?self $sub_category = null;
 
     /**
      * @var Collection<int, self>
      */
-    #[ORM\OneToMany(targetEntity: self::class, mappedBy: 'sub_category', cascade: ['persist', 'remove'])]
+    #[ORM\OneToMany(targetEntity: self::class, mappedBy: 'sub_category', cascade: ['persist'])]
     private Collection $tour_categories;
 
     #[ORM\Column(length: 255)]
@@ -37,7 +37,7 @@ class TourCategory
     /**
      * @var Collection<int, TourPackage>
      */
-    #[ORM\OneToMany(targetEntity: TourPackage::class, mappedBy: 'tourCategory', fetch: 'EAGER')]
+    #[ORM\OneToMany(targetEntity: TourPackage::class, mappedBy: 'tourCategory', fetch: 'EAGER', cascade: ['persist'])]
     private Collection $tour_package;
 
     public function __construct()
