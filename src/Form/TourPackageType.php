@@ -11,12 +11,13 @@ use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
+use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormEvent;
 use Symfony\Component\Form\FormEvents;
 use Symfony\Component\Form\FormInterface;
+use Symfony\Component\Validator\Constraints\NotBlank;
 
 class TourPackageType extends AbstractType
 {
@@ -31,7 +32,10 @@ class TourPackageType extends AbstractType
         $subCategories = $mainCategory === null ? null : $this->em->getRepository(TourCategory::class)->findBy(['sub_category' => $mainCategory->getId() ]);
         $builder
             ->add('tour_title', TextType::class, [
-                'label' => 'Tour Title'
+                'label' => 'Tour Title',
+                'constraints' => [
+                    new NotBlank(['message' => 'Tour title cannot be blank.'])
+                ]
             ])
             ->add('tour_parent_category', EntityType::class, [
                 'label' => 'Tour Parent Category',
@@ -47,7 +51,10 @@ class TourPackageType extends AbstractType
                     return $query;
                 },
                 'choice_value' => 'id',
-                'data' => $mainCategory
+                'data' => $mainCategory,
+                'constraints' => [
+                    new NotBlank(['message' => 'Parent category cannot be blank.'])
+                ]
             ])
             ->add('tourCategory', EntityType::class, [
                 'label' => 'Tour Sub Category',
@@ -57,23 +64,36 @@ class TourPackageType extends AbstractType
                 'choice_label' => 'category',
                 'data' => $subCategory
             ])
-            ->add('price')
+            ->add('price', NumberType::class,[
+                'constraints' => [
+                    new NotBlank(['message' => 'Price cannot be blank.'])
+                ]
+            ])
             ->add('tour_overview', TinymceType::class, [
                 'label' => 'Tour Overview',
+                'constraints' => [
+                    new NotBlank(['message' => 'Tour overview cannot be blank.'])
+                ]
             ])
-            ->add('images', CollectionType::class, [
-                'entry_type' => ImageType::class,
-                'mapped' => false,
-                'allow_add' => true,
-                'prototype' => true,
-                'label' => false,
-                'by_reference' => false,
-                'prototype_name' => 'tour_image',
-                'entry_options' => [
-                    'attr' => [
-                        'image' => $options['data']->getImages()
-                    ],
-                ],
+            // ->add('images', CollectionType::class, [
+            //     'entry_type' => ImageType::class,
+            //     'mapped' => false,
+            //     'allow_add' => true,
+            //     'prototype' => true,
+            //     'label' => false,
+            //     'by_reference' => false,
+            //     'prototype_name' => 'tour_image',
+            //     'entry_options' => [
+            //         'attr' => [
+            //             'image' => $options['data']->getImages()
+            //         ],
+            //     ],
+            // ])
+            ->add('images', ImageType::class,[
+                'label' => 'Images',
+                'attr' => [
+                    'images' => $options['data']->getImages()
+                ]
             ])
             ->add('itinerary', CollectionType::class, [
                 'entry_type' => ItineraryType::class,
@@ -92,7 +112,10 @@ class TourPackageType extends AbstractType
                 'class' => TourCategory::class,
                 'placeholder' => 'Select Sub Category',
                 'choices' => $subCategories,
-                'choice_label' => 'category'
+                'choice_label' => 'category',
+                'constraints' => [
+                    new NotBlank(['message' => 'Sub-category cannot be blank.'])
+                ]
             ]);
         };
 

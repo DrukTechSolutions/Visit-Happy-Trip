@@ -27,6 +27,7 @@ use Symfony\Component\Routing\Attribute\Route;
 use Doctrine\ORM\EntityManagerInterface;
 use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\String\Slugger\SluggerInterface;
 
@@ -71,16 +72,17 @@ class AdminController extends AbstractController
         $form = $this->createForm(TourPackageType::class, $tourPackage);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
-            $tourPackageImage1 = $request->files->get('tour_package')['images']['tour_image']['image_1'];
-            $tourPackageImage2 = $request->files->get('tour_package')['images']['tour_image']['image_2'];
-            $tourPackageImage3 = $request->files->get('tour_package')['images']['tour_image']['image_3'];
+            
+            $tour_images = $request->files->get('tour_package')['images'];
 
-            $tour_images = [$tourPackageImage1, $tourPackageImage2, $tourPackageImage3];
             foreach ($tour_images as $image) {
-                $images = new Images();
-                $images->setImageName($uploadImage->uploadImage($image));
-                $tourPackage->addImage($images);
+                if($image instanceof UploadedFile) {
+                    $images = new Images();
+                    $images->setImageName($uploadImage->uploadImage($image));
+                    $tourPackage->addImage($images);
+                }
             }
+            
             $titleSlug = $tourPackage->getTourTitle();
             $tourPackage->setTourTitleSlug($slug->slug(strtolower($titleSlug)));
             $this->em->persist($tourPackage);
@@ -126,9 +128,9 @@ class AdminController extends AbstractController
         }
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $tourPackageImage1 = $request->files->get('tour_package')['images']['tour_image']['image_1'];
-            $tourPackageImage2 = $request->files->get('tour_package')['images']['tour_image']['image_2'];
-            $tourPackageImage3 = $request->files->get('tour_package')['images']['tour_image']['image_3'];
+            $tourPackageImage1 = $request->files->get('tour_package')['images']['image_1'];
+            $tourPackageImage2 = $request->files->get('tour_package')['images']['image_2'];
+            $tourPackageImage3 = $request->files->get('tour_package')['images']['image_3'];
             $tour_images = [$tourPackageImage1, $tourPackageImage2, $tourPackageImage3];
 
             foreach ($tour_images as $key => $image) {
