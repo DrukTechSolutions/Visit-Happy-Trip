@@ -14,10 +14,12 @@
             <div class="mb-3">
                 {{ form_label(form.title)}}
                 {{ form_widget(form.title,{'attr':{'class':'ht-input mt-1'}})}}
+                <span class="text-danger">{{ form_errors(form.title )}}</span>
             </div>
             <div>
                 {{ form_label(form.itinerary_description)}}
                 {{ form_widget(form.itinerary_description,{'attr':{'class':'mt-1'}})}}
+                <span class="text-danger">{{ form_errors(form.itinerary_description )}}</span>
             </div>
         </div>
     </div>
