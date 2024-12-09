@@ -49,6 +49,22 @@ class MainController extends AbstractController
         ]);
     }
 
+    #[Route('/tour-packages/{page}', name: 'tour-packages',  requirements: ['page' => '\d+'], defaults: ['page' => 1])]
+    public function tourPackages(CategoryService $categoryService, PaginatorInterface $paginator, $page)
+    {
+        $categories = $this->em->getRepository(TourCategory::class)->findAll();
+        $bestSellingPackages = $categoryService->parentCategoryTours($categories);
+        
+        $pagination = $paginator->paginate(
+            $bestSellingPackages['tour_categories'], /* query NOT result */
+            $page, /* page number */ 
+            9 /* limit per page */
+        );
+        return $this->render('main/tour-packages.html.twig', [
+            'best_selling_packages' => $pagination
+        ]);
+    }
+
     #[Route('/tour/{slug}', name: 'tour-package')]
     public function tourPackage($slug)
     {
@@ -86,13 +102,13 @@ class MainController extends AbstractController
         ]);
     }
 
-    #[Route('/blog', name: 'blog')]
-    public function blog(PaginatorInterface $paginator, Request $request): Response
+    #[Route('/blogs/{page}', name: 'blog', requirements: ['page' => '\d+'], defaults: ['page' => 1])]
+    public function blog(PaginatorInterface $paginator, $page): Response
     {
         $blogs = $this->em->getRepository(Blog::class)->findAll();
         $pagination = $paginator->paginate(
             $blogs, /* query NOT result */
-            $request->query->getInt('page', 1), /* page number */
+            $page, /* page number */
             6 /* limit per page */
         );
         return $this->render('main/blogs.html.twig', [
