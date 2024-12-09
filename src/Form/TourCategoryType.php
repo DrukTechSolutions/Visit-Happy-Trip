@@ -15,16 +15,16 @@ class TourCategoryType extends AbstractType
 {
     public function __construct(private EntityManagerInterface $em)
     {
-        
+
     }
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $mainCategory = '';
         $subCategory = $options['data'];
-        if($subCategory->getSubCategory() != null){
+        if ($subCategory->getSubCategory() != null) {
             $mainCategory = $this->em->getRepository(TourCategory::class)->find($subCategory->getSubCategory()->getId());
         }
-        
+
         $builder
             ->add('parent_category', EntityType::class, [
                 'mapped' => false,

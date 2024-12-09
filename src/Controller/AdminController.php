@@ -70,17 +70,17 @@ class AdminController extends AbstractController
         $form = $this->createForm(TourPackageType::class, $tourPackage);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
-            
+
             $tour_images = $request->files->get('tour_package')['images'];
 
             foreach ($tour_images as $image) {
-                if($image instanceof UploadedFile) {
+                if ($image instanceof UploadedFile) {
                     $images = new Images();
                     $images->setImageName($uploadImage->uploadImage($image));
                     $tourPackage->addImage($images);
                 }
             }
-            
+
             $titleSlug = $tourPackage->getTourTitle();
             $tourPackage->setTourTitleSlug($slug->slug(strtolower($titleSlug)));
             $this->em->persist($tourPackage);
@@ -274,7 +274,7 @@ class AdminController extends AbstractController
             $image->setImageName($uploadImage->uploadImage($destinationImage));
             $topDestination->setImage($image);
 
-            $titleSlug = $slug->slug(strtolower($topDestination->getDestinationTitle())); 
+            $titleSlug = $slug->slug(strtolower($topDestination->getDestinationTitle()));
             $topDestination->setSlug($titleSlug);
             $this->em->persist($topDestination);
             $this->em->flush();
@@ -303,7 +303,7 @@ class AdminController extends AbstractController
                 $image->setImageName($uploadImage->uploadImage($destinationImage));
                 $topDestination->setImage($image);
             }
-            $titleSlug = $slug->slug(strtolower($topDestination->getDestinationTitle())); 
+            $titleSlug = $slug->slug(strtolower($topDestination->getDestinationTitle()));
             $topDestination->setSlug($titleSlug);
             $this->em->persist($topDestination);
             $this->em->flush();
@@ -352,7 +352,7 @@ class AdminController extends AbstractController
         $form = $this->createForm(HotelsInBhutanType::class, $hotelsInBhutan);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
-            
+
             $hotel_images = $request->files->get('hotels_in_bhutan')['images'];
             foreach ($hotel_images as $image) {
                 $images = new Images();
@@ -462,7 +462,7 @@ class AdminController extends AbstractController
         ]);
     }
 
-    #[Route('admin/{id}/delete-tour-category' , name: 'delete-tour-category')]
+    #[Route('admin/{id}/delete-tour-category', name: 'delete-tour-category')]
     public function deleteTourCategory($id)
     {
         $tourCategory = $this->em->getRepository(TourCategory::class)->find($id);

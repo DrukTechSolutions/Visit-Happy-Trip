@@ -13,7 +13,7 @@ class UploadImage
     }
     public function uploadImage(UploadedFile $image): string
     {
- 
+
         $originalImageName = pathinfo($image->getClientOriginalName(), PATHINFO_FILENAME);
         $slugImageName = $this->slug->slug($originalImageName);
         $imageName = $slugImageName.'-'.uniqid().'.'.$image->guessExtension();

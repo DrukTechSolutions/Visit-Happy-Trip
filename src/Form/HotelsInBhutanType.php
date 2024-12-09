@@ -60,13 +60,13 @@ class HotelsInBhutanType extends AbstractType
                     new NotBlank(['message' => 'Phone no cannot be blank.'])
                 ]
             ])
-            ->add('email', EmailType::class , [
+            ->add('email', EmailType::class, [
                 'constraints' => [
                     new Email(['message' => 'Please provide valid email.']),
                     new NotBlank(['message' => 'Email cannot be blank.'])
                 ]
             ])
-            ->add('website', TextType::class,[
+            ->add('website', TextType::class, [
                 'constraints' => [
                     new NotBlank(['message' => 'URL cannot be blank.'])
                 ]

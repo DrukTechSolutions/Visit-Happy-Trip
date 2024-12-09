@@ -28,7 +28,6 @@ ini_set('memory_limit', '256M');
 
 class MainController extends AbstractController
 {
-    
     public function __construct(private EntityManagerInterface $em)
     {
 
@@ -49,15 +48,15 @@ class MainController extends AbstractController
         ]);
     }
 
-    #[Route('/tour-packages/{page}', name: 'tour-packages',  requirements: ['page' => '\d+'], defaults: ['page' => 1])]
+    #[Route('/tour-packages/{page}', name: 'tour-packages', requirements: ['page' => '\d+'], defaults: ['page' => 1])]
     public function tourPackages(CategoryService $categoryService, PaginatorInterface $paginator, $page)
     {
         $categories = $this->em->getRepository(TourCategory::class)->findAll();
         $bestSellingPackages = $categoryService->parentCategoryTours($categories);
-        
+
         $pagination = $paginator->paginate(
             $bestSellingPackages['tour_categories'], /* query NOT result */
-            $page, /* page number */ 
+            $page, /* page number */
             9 /* limit per page */
         );
         return $this->render('main/tour-packages.html.twig', [
@@ -141,7 +140,7 @@ class MainController extends AbstractController
     public function travelAndVisa(): Response
     {
         $travelVisaCategory = $this->em->getRepository(TravelInfoCategory::class)->findOneBy(['travel_info_category_name' => TravelInfoEnum::TRAVEL_AND_VISA->value]);
-        return $this->render('main/travel_and_visa.html.twig',[
+        return $this->render('main/travel_and_visa.html.twig', [
             'travelVisas' => $travelVisaCategory->getTravelInfo()
         ]);
     }
@@ -150,7 +149,7 @@ class MainController extends AbstractController
     public function faqsAndRaqs(): Response
     {
         $faqsRaqsCategory = $this->em->getRepository(TravelInfoCategory::class)->findOneBy(['travel_info_category_name' => TravelInfoEnum::FAQS_AND_RAQS->value]);
-        return $this->render('main/faqs.html.twig',[
+        return $this->render('main/faqs.html.twig', [
             'faqsRaqs' => $faqsRaqsCategory->getTravelInfo()
         ]);
     }
