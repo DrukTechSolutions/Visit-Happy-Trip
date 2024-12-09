@@ -10,20 +10,12 @@ class AppExtension extends AbstractExtension
     public function getFilters()
     {
         return [
-            new TwigFilter('tour_category', [$this, 'tourCategory']),
+            new TwigFilter('is_active_route', [$this, 'isActiveRoute']),
         ];
     }
 
-    public function tourCategory($category)
+    public function isActiveRoute($routes)
     {
-
-        $tour_categories = [
-            'cultural-tour' => 'Cultural Tour',
-            'festival-tour' => 'Festival Tour',
-            'adventure-tour' => 'Adventure Tour',
-            'trekking-tour' => 'Trekking Tour',
-        ];
-
-        return $tour_categories[$category];
+        dump($routes);
     }
 }
