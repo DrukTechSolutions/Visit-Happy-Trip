@@ -51,7 +51,7 @@ class AdminController extends AbstractController
         ]);
     }
 
-    #[Route('/admin/tour-packages', name: 'tour-packages')]
+    #[Route('/admin/tour-packages', name: 'admin-tour-packages')]
     public function tourPackages(PaginatorInterface $paginator, Request $request): Response
     {
         $tours_packages = $this->em->getRepository(TourPackage::class)->findAll();
