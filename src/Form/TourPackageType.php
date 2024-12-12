@@ -64,7 +64,7 @@ class TourPackageType extends AbstractType
                 'choice_label' => 'category',
                 'data' => $subCategory
             ])
-            ->add('price', NumberType::class,[
+            ->add('price', NumberType::class, [
                 'constraints' => [
                     new NotBlank(['message' => 'Price cannot be blank.'])
                 ]
@@ -89,7 +89,7 @@ class TourPackageType extends AbstractType
             //         ],
             //     ],
             // ])
-            ->add('images', ImageType::class,[
+            ->add('images', ImageType::class, [
                 'label' => 'Images',
                 'attr' => [
                     'images' => $options['data']->getImages()

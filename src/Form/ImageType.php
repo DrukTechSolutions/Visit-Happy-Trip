@@ -13,14 +13,14 @@ class ImageType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $constraints = [];
-        
-        if ($options['attr']['images'][0] == null ) {
+
+        if ($options['attr']['images'][0] == null) {
             $constraints = [ new NotBlank(['message' => 'Image 1 cannot be blank.']) ];
         }
-        if ($options['attr']['images'][1] == null ) {
+        if ($options['attr']['images'][1] == null) {
             $constraints = [ new NotBlank(['message' => 'Image 2 cannot be blank.']) ];
         }
-        if ($options['attr']['images'][2] == null ) {
+        if ($options['attr']['images'][2] == null) {
             $constraints = [ new NotBlank(['message' => 'Image 3 cannot be blank.']) ];
         }
 

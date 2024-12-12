@@ -29,6 +29,13 @@
 </head>
 
 <body>
+
+    {% set blogs_routes = ['blogs','add-blog', 'update-blog'] %}
+    {% set category_routes = ['add-tour-category', 'update-tour-category'] %}
+    {% set hotels_routes = ['hotels-in-bhutan', 'add-hotels-in-bhutan', 'update-hotels-in-bhutan'] %}
+    {% set top_destinations_routes = ['top-destinations-all', 'add-top-destination', 'update-top-destination'] %}
+    {% set tour_package_routes = ['tour-packages', 'add-tour', 'update-tour-package'] %}
+
     <nav class="navbar navbar-expand-lg fixed-top bg-white" style="margin-bottom: 105px; z-index: 1;">
         <div class="container-xxl">
             <a class="navbar-brand" href="{{ path('app_admin')}}">
@@ -55,39 +62,48 @@
                     <div class="p-1 text-end" id="expand-close-btn">
                         <button class="btn btn-danger" id="close-btn"><i class="fa-solid fa-xmark"></i></button>
                     </div>
-                    <div class="card-body" id="menu-list-card-body">
-                        <ul class="list-group list-group-light">
-                            <li class="list-group-item border-0">
-                                <a href="{{ path('app_admin')}}" class="nav-link"><i class="fa-solid fa-house me-3 text-center"
-                                        style="width: 20px;"></i> <span class="menu-name">Home</span></a>
+                    <div id="menu-list-card-body">
+                        <ul class="list-group list-group-light rounded-0">
+                            <li
+                                class="list-group-item border-0 menu-list-item {% if (app.request.get('_route') == 'app_admin') %}active-menu{% endif %}">
+                                <a href="{{ path('app_admin')}}" class="nav-link"><i
+                                        class="fa-solid fa-house me-3 text-center" style="width: 20px;"></i> <span
+                                        class="menu-name">Home</span></a>
                             </li>
-                            <li class="list-group-item border-0">
-                                <a href="{{ path('tour-packages')}}" class="nav-link"><i class="fa-solid fa-umbrella-beach me-3 text-center"
-                                        style="width: 20px;"></i> <span class="menu-name">Tours Packages</span></a>
+                            <li class="list-group-item border-0 menu-list-item {% if app.request.get('_route') in tour_package_routes %}active-menu{% endif %}">
+                                <a href="{{ path('admin-tour-packages')}}" class="nav-link"><i
+                                        class="fa-solid fa-umbrella-beach me-3 text-center" style="width: 20px;"></i>
+                                    <span class="menu-name">Tours Packages</span></a>
                             </li>
-                            <li class="list-group-item border-0">
-                                <a href="{{ path('top-destinations-all')}}" class="nav-link"><i class="fa-solid fa-location-dot me-3 text-center"
-                                        style="width: 20px;"></i> <span class="menu-name">Top Destinations</span></a>
+                            <li class="list-group-item border-0 menu-list-item {% if app.request.get('_route') in top_destinations_routes %}active-menu{% endif %}">
+                                <a href="{{ path('top-destinations-all')}}" class="nav-link"><i
+                                        class="fa-solid fa-location-dot me-3 text-center" style="width: 20px;"></i>
+                                    <span class="menu-name">Top Destinations</span></a>
                             </li>
-                            <li class="list-group-item border-0">
-                                <a href="{{ path('hotels-in-bhutan')}}" class="nav-link"><i class="fa-solid fa-hotel me-3 text-center"
-                                        style="width: 20px;"></i> <span class="menu-name">Hotels</span></a>
+                            <li class="list-group-item border-0 menu-list-item {% if app.request.get('_route') in hotels_routes %}active-menu{% endif %}">
+                                <a href="{{ path('hotels-in-bhutan')}}" class="nav-link"><i
+                                        class="fa-solid fa-hotel me-3 text-center" style="width: 20px;"></i> <span
+                                        class="menu-name">Hotels</span></a>
                             </li>
-                            <li class="list-group-item border-0">
-                                <a href="{{ path('blogs')}}" class="nav-link"><i class="fa-regular fa-newspaper me-3 text-center"
-                                        style="width: 20px;"></i> <span class="menu-name">Blog</span></a>
+                            <li class="list-group-item border-0 menu-list-item {% if app.request.get('_route') in blogs_routes %}active-menu{% endif %}">
+                                <a href="{{ path('blogs')}}" class="nav-link"><i
+                                        class="fa-regular fa-newspaper me-3 text-center" style="width: 20px;"></i> <span
+                                        class="menu-name">Blog</span></a>
                             </li>
-                            <li class="list-group-item border-0">
-                                <a href="{{ path('add-tour-category')}}" class="nav-link"><i class="fa-solid fa-list me-3 text-center"
-                                        style="width: 20px;"></i> <span class="menu-name">Categroy</span></a>
+                            <li class="list-group-item border-0 menu-list-item {% if app.request.get('_route') in category_routes %}active-menu{% endif %}">
+                                <a href="{{ path('add-tour-category')}}" class="nav-link"><i
+                                        class="fa-solid fa-list me-3 text-center" style="width: 20px;"></i> <span
+                                        class="menu-name">Categroy</span></a>
                             </li>
-                            <li class="list-group-item border-0">
-                                <a href="{{ path('all-faqs-and-raqs')}}" class="nav-link"><i class="fa-solid fa-question me-3 text-center"
-                                        style="width: 20px;"></i> <span class="menu-name">FAQs & RAQs</span></a> 
+                            <li class="list-group-item border-0 menu-list-item {% if (app.request.get('_route') == 'all-faqs-and-raqs') %}active-menu{% endif %}">
+                                <a href="{{ path('all-faqs-and-raqs')}}" class="nav-link"><i
+                                        class="fa-solid fa-question me-3 text-center" style="width: 20px;"></i> <span
+                                        class="menu-name">FAQs & RAQs</span></a>
                             </li>
-                            <li class="list-group-item border-0">
-                                <a href="{{ path('all-travel-and-visa')}}" class="nav-link"><i class="fa-solid fa-plane me-3 text-center"
-                                        style="width: 20px;"></i> <span class="menu-name">Travel & Visa</span></a> 
+                            <li class="list-group-item border-0 menu-list-item {% if (app.request.get('_route') == 'all-travel-and-visa') %}active-menu{% endif %}">
+                                <a href="{{ path('all-travel-and-visa')}}" class="nav-link"><i
+                                        class="fa-solid fa-plane me-3 text-center" style="width: 20px;"></i> <span
+                                        class="menu-name">Travel & Visa</span></a>
                             </li>
                         </ul>
                     </div>
@@ -98,8 +114,13 @@
             </div>
         </div>
     </div>
+    <footer>
+        <div class="container">
+            <img src="{{ asset('images/logos/footer-for-login.png')}}" class="img-fluid">
+        </div>
+    </footer>
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"
-    integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+        integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
     {% block javascripts %}
     {% endblock %}
     <script src="{{ asset('/js/mdb.umd.min.js')}}"></script>

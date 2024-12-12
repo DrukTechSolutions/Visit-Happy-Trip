@@ -53,7 +53,7 @@ class AdminController extends AbstractController
         ]);
     }
 
-    #[Route('/admin/tour-packages', name: 'tour-packages')]
+    #[Route('/admin/tour-packages', name: 'admin-tour-packages')]
     public function tourPackages(PaginatorInterface $paginator, Request $request): Response
     {
         $tours_packages = $this->em->getRepository(TourPackage::class)->findAll();
@@ -72,17 +72,17 @@ class AdminController extends AbstractController
         $form = $this->createForm(TourPackageType::class, $tourPackage);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
-            
+
             $tour_images = $request->files->get('tour_package')['images'];
 
             foreach ($tour_images as $image) {
-                if($image instanceof UploadedFile) {
+                if ($image instanceof UploadedFile) {
                     $images = new Images();
                     $images->setImageName($uploadImage->uploadImage($image));
                     $tourPackage->addImage($images);
                 }
             }
-            
+
             $titleSlug = $tourPackage->getTourTitle();
             $tourPackage->setTourTitleSlug($slug->slug(strtolower($titleSlug)));
             $this->em->persist($tourPackage);
@@ -276,7 +276,7 @@ class AdminController extends AbstractController
             $image->setImageName($uploadImage->uploadImage($destinationImage));
             $topDestination->setImage($image);
 
-            $titleSlug = $slug->slug(strtolower($topDestination->getDestinationTitle())); 
+            $titleSlug = $slug->slug(strtolower($topDestination->getDestinationTitle()));
             $topDestination->setSlug($titleSlug);
             $this->em->persist($topDestination);
             $this->em->flush();
@@ -305,7 +305,7 @@ class AdminController extends AbstractController
                 $image->setImageName($uploadImage->uploadImage($destinationImage));
                 $topDestination->setImage($image);
             }
-            $titleSlug = $slug->slug(strtolower($topDestination->getDestinationTitle())); 
+            $titleSlug = $slug->slug(strtolower($topDestination->getDestinationTitle()));
             $topDestination->setSlug($titleSlug);
             $this->em->persist($topDestination);
             $this->em->flush();
@@ -334,11 +334,16 @@ class AdminController extends AbstractController
     }
 
     #[Route('/admin/hotels-in-bhutan', name: 'hotels-in-bhutan')]
-    public function hotelsInBhutan()
+    public function hotelsInBhutan(PaginatorInterface $paginator, Request $request)
     {
         $hotelsInBhutan = $this->em->getRepository(HotelsInBhutan::class)->findAll();
+        $pagination = $paginator->paginate(
+            $hotelsInBhutan, /* query NOT result */
+            $request->query->getInt('page', 1), /* page number */
+            5 /* limit per page */
+        );
         return $this->render('admin/hotels-in-bhutan.html.twig', [
-            'hotelsInBhutan' => $hotelsInBhutan
+            'hotelsInBhutan' => $pagination
         ]);
     }
 
@@ -349,11 +354,8 @@ class AdminController extends AbstractController
         $form = $this->createForm(HotelsInBhutanType::class, $hotelsInBhutan);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
-            $hotelImage1 = $request->files->get('hotels_in_bhutan')['images']['hotels_image']['image_1'];
-            $hotelImage2 = $request->files->get('hotels_in_bhutan')['images']['hotels_image']['image_2'];
-            $hotelImage3 = $request->files->get('hotels_in_bhutan')['images']['hotels_image']['image_3'];
 
-            $hotel_images = [$hotelImage1, $hotelImage2, $hotelImage3];
+            $hotel_images = $request->files->get('hotels_in_bhutan')['images'];
             foreach ($hotel_images as $image) {
                 $images = new Images();
                 $images->setImageName($uploadImage->uploadImage($image));
@@ -390,9 +392,9 @@ class AdminController extends AbstractController
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
 
-            $hotelImage1 = $request->files->get('hotels_in_bhutan')['images']['hotels_image']['image_1'];
-            $hotelImage2 = $request->files->get('hotels_in_bhutan')['images']['hotels_image']['image_2'];
-            $hotelImage3 = $request->files->get('hotels_in_bhutan')['images']['hotels_image']['image_3'];
+            $hotelImage1 = $request->files->get('hotels_in_bhutan')['images']['image_1'];
+            $hotelImage2 = $request->files->get('hotels_in_bhutan')['images']['image_2'];
+            $hotelImage3 = $request->files->get('hotels_in_bhutan')['images']['image_3'];
 
             $hotel_images = [$hotelImage1, $hotelImage2, $hotelImage3];
             foreach ($hotel_images as $key => $image) {
