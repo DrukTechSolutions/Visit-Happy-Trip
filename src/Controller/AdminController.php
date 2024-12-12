@@ -88,7 +88,7 @@ class AdminController extends AbstractController
 
             $this->addFlash('notice', 'Added successfully.');
 
-            return $this->redirectToRoute('tour-packages');
+            return $this->redirectToRoute('admin-tour-packages');
         }
         return $this->render('admin/add_tour.html.twig', [
             'form' => $form,
@@ -145,7 +145,7 @@ class AdminController extends AbstractController
 
             $this->addFlash('notice', 'Updated successfully.');
 
-            return $this->redirectToRoute('tour-packages');
+            return $this->redirectToRoute('admin-tour-packages');
         }
         return $this->render('admin/add_tour.html.twig', [
             'form' => $form,
@@ -164,7 +164,7 @@ class AdminController extends AbstractController
 
         $this->addFlash('notice', 'Deleted successfully.');
 
-        return $this->redirectToRoute('tour-packages');
+        return $this->redirectToRoute('admin-tour-packages');
     }
 
     #[Route('/admin/add-blog', name: 'add-blog')]
