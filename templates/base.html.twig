@@ -58,7 +58,7 @@
                         <a href="/tour-packages" class="nav-link home-menu-link {% if (app.request.get('_route') == 'tour-package')%} home-menu-link-active {% endif %}">Tour Packages <i
                                 class="fa-solid fa-caret-down "></i></a>
                         <div class="dropdown-content">
-                            {{ render(controller('App\\Controller\\MainController::_tourCategories'))}}
+                            {{ render(controller('App\\Controller\\MainController::_tourCategories',{'packages_route': app.request.get('_route_params')['slug']})) }}
                         </div>
                     </li>
                     <li class="nav-item menu-dropdown ms-2">

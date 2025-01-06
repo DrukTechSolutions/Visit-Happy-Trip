@@ -211,16 +211,23 @@ class MainController extends AbstractController
         return $this->render('main/trip-planner.html.twig');
     }
 
-    public function _tourCategories()
+    public function _tourCategories($packages_route)
     {
         $mainCategory = [];
         $tourCategories = $this->em->getRepository(TourCategory::class)->findAll();
+        $currentRoute = false;
         foreach ($tourCategories as $tourCategory) {
+            
+            if($tourCategory->getSlug() == $packages_route) {
+                $mainCategory[$tourCategory->getId()]['is_current_route'] = true;
+            } 
             if ($tourCategory->getSubCategory() == null) {
                 $mainCategory[$tourCategory->getId()]['category'] = $tourCategory->getCategory();
                 $mainCategory[$tourCategory->getId()]['slug'] = $tourCategory->getSlug();
             }
         }
-        return $this->render('main/pages/_packages.html.twig', ['categories' => $mainCategory]);
+        return $this->render('main/pages/_packages.html.twig', [
+            'categories' => $mainCategory,
+        ]);
     }
 }

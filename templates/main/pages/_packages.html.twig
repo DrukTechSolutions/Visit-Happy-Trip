@@ -1,3 +1,5 @@
 {% for category in categories %}
-<a href="{{ path('tour-package',{'slug':category['slug']})}}" class="nav-link home-menu-link">{{ category['category']}}</a>
+<a href="{{ path('tour-package',{'slug':category['slug']})}}"
+    class="nav-link home-menu-link
+    {% if attribute(category, 'is_current_route') is defined and attribute(category, 'is_current_route') %} home-menu-link-active {% endif %}">{{ category['category']}}</a>
 {% endfor %}
