@@ -10,7 +10,7 @@
     <meta name="keywords"
         content="travel, travel agency, flights, hotels, holiday packages, tours, vacation, deals, discounts, booking, online booking">
     {% block meta_property %}
-    {% endblock %}    
+    {% endblock %}
     <link rel="icon" href="{{ asset('images/favicon/favicon.jpg')}}">
     <!-- Font Awesome -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" rel="stylesheet" />
@@ -43,32 +43,40 @@
             <div class="collapse navbar-collapse" id="navbarToggleExternalContent">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item ms-2">
-                        <a class="nav-link home-menu-link" aria-current="page" href="/">Home</a>
+                        <a class="nav-link home-menu-link {% if (app.request.get('_route') == 'app_main')%} home-menu-link-active {% endif %}"
+                            aria-current="page" href="/">Home</a>
                     </li>
                     <li class="nav-item ms-2">
-                        <a class="nav-link home-menu-link" href="/about-us">About us</a>
+                        <a class="nav-link home-menu-link {% if (app.request.get('_route') == 'about-us')%} home-menu-link-active {% endif %}"
+                            href="/about-us">About us</a>
                     </li>
                     <li class="nav-item ms-2">
-                        <a class="nav-link home-menu-link" href="/about-bhutan">About Bhutan</a>
+                        <a class="nav-link home-menu-link {% if (app.request.get('_route') == 'about-bhutan')%} home-menu-link-active {% endif %}"
+                            href="/about-bhutan">About Bhutan</a>
                     </li>
                     <li class="nav-item menu-dropdown ms-2">
-                        <a href="/tour-packages" class="nav-link home-menu-link">Tour Packages <i class="fa-solid fa-caret-down"></i></a>
+                        <a href="/tour-packages" class="nav-link home-menu-link {% if (app.request.get('_route') == 'tour-package')%} home-menu-link-active {% endif %}">Tour Packages <i
+                                class="fa-solid fa-caret-down "></i></a>
                         <div class="dropdown-content">
                             {{ render(controller('App\\Controller\\MainController::_tourCategories'))}}
                         </div>
                     </li>
                     <li class="nav-item menu-dropdown ms-2">
-                        <a class="nav-link home-menu-link">Travel Info <i class="fa-solid fa-caret-down"></i></a>
+                        {% set travel_info_routes = ['faqs-and-raqs', 'travel-and-visa']%}
+                        <a class="nav-link home-menu-link {% if (app.request.get('_route') in travel_info_routes)%} home-menu-link-active {% endif %}">Travel Info <i class="fa-solid fa-caret-down"></i></a>
                         <div class="dropdown-content">
-                            <a href="/travel-and-visa" class="nav-link home-menu-link">Travel & Visa</a>
-                            <a href="/faqs-and-raqs" class="nav-link home-menu-link">Faq's/Raq's</a>
+                            <a href="/travel-and-visa"
+                                class="nav-link home-menu-link {% if (app.request.get('_route') == 'travel-and-visa')%} home-menu-link-active {% endif %}">Travel
+                                & Visa</a>
+                            <a href="/faqs-and-raqs"
+                                class="nav-link home-menu-link {% if (app.request.get('_route') == 'faqs-and-raqs')%} home-menu-link-active {% endif %}">Faq's/Raq's</a>
                         </div>
                     </li>
                     <li class="nav-item ms-2">
-                        <a class="nav-link home-menu-link" href="/blogs">Blog</a>
+                        <a class="nav-link home-menu-link {% if (app.request.get('_route') == 'blog')%} home-menu-link-active {% endif %}" href="/blogs">Blog</a>
                     </li>
                     <li class="nav-item ms-2">
-                        <a class="nav-link home-menu-link" href="/contact-us">Contact us</a>
+                        <a class="nav-link home-menu-link {% if (app.request.get('_route') == 'contact-us')%} home-menu-link-active {% endif %}" href="/contact-us">Contact us</a>
                     </li>
                     <li class="nav-item ms-2">
                         <a href="/book-now" target="_blank"
@@ -86,28 +94,26 @@
             <div class="row justify-content-center mt-4">
                 <div class="col-6 border-top border-dark">
                 </div>
-                    <div class="mt-4 associated-logo">
-                        <a href="">
-                            <img src="{{ asset('/images/logos/ABTO-01.jpg')}}" height="100"
-                                class="associated-brand-logo">
-                        </a>
-                        <a href="">
-                            <img src="{{ asset('/images/logos/Department-of-Tourism-01.jpg')}}" height="100"
-                                class="associated-brand-logo">
-                        </a>
-                        <a href="">
-                            <img src="{{ asset('/images/logos/DrukAir-01.jpg')}}" height="100"
-                                class="associated-brand-logo">
-                        </a>
-                        <a href="">
-                            <img src="{{ asset('/images/logos/GAB-01.jpg')}}" height="100"
-                                class="associated-brand-logo">
-                        </a>
-                        <a href="">
-                            <img src="{{ asset('/images/logos/TashiAir-01.jpg')}}" height="100"
-                                class="associated-brand-logo">
-                        </a>
-                    </div>
+                <div class="mt-4 associated-logo">
+                    <a href="">
+                        <img src="{{ asset('/images/logos/ABTO-01.jpg')}}" height="100" class="associated-brand-logo">
+                    </a>
+                    <a href="">
+                        <img src="{{ asset('/images/logos/Department-of-Tourism-01.jpg')}}" height="100"
+                            class="associated-brand-logo">
+                    </a>
+                    <a href="">
+                        <img src="{{ asset('/images/logos/DrukAir-01.jpg')}}" height="100"
+                            class="associated-brand-logo">
+                    </a>
+                    <a href="">
+                        <img src="{{ asset('/images/logos/GAB-01.jpg')}}" height="100" class="associated-brand-logo">
+                    </a>
+                    <a href="">
+                        <img src="{{ asset('/images/logos/TashiAir-01.jpg')}}" height="100"
+                            class="associated-brand-logo">
+                    </a>
+                </div>
             </div>
         </div>
     </div>
@@ -148,24 +154,29 @@
                             Quick Links
                         </h6>
                         <p>
-                            <a href="/" class="text-reset home-menu-link"><i class="fa-solid fa-caret-right"></i> Home</a>
+                            <a href="/" class="text-reset home-menu-link"><i class="fa-solid fa-caret-right"></i>
+                                Home</a>
                         </p>
                         <p>
-                            <a href="/about-us" class="text-reset home-menu-link"><i class="fa-solid fa-caret-right"></i> About us</a>
+                            <a href="/about-us" class="text-reset home-menu-link"><i
+                                    class="fa-solid fa-caret-right"></i> About us</a>
                         </p>
                         <p>
-                            <a href="/about-bhutan" class="text-reset home-menu-link"><i class="fa-solid fa-caret-right"></i> About
+                            <a href="/about-bhutan" class="text-reset home-menu-link"><i
+                                    class="fa-solid fa-caret-right"></i> About
                                 Bhutan</a>
                         </p>
                         {# <p>
                             <a href="#!" class="text-reset"><i class="fa-solid fa-caret-right"></i> Tour Packages</a>
                         </p> #}
                         <p>
-                            <a href="/trip-planner" class="text-reset home-menu-link"><i class="fa-solid fa-caret-right"></i> Trip
+                            <a href="/trip-planner" class="text-reset home-menu-link"><i
+                                    class="fa-solid fa-caret-right"></i> Trip
                                 Planner</a>
                         </p>
                         <p>
-                            <a href="/contact-us" class="text-reset home-menu-link"><i class="fa-solid fa-caret-right"></i> Contact
+                            <a href="/contact-us" class="text-reset home-menu-link"><i
+                                    class="fa-solid fa-caret-right"></i> Contact
                                 us</a>
                         </p>
                     </div>

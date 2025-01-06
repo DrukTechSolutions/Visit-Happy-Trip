@@ -49,6 +49,9 @@ body {
 .home-menu-link:hover {
   color: #f85907 !important;
 }
+.home-menu-link-active {
+  color: #f85907 !important;
+}
 .home-menu-link{
   font-weight: 600 !important;
 }
@@ -176,26 +179,31 @@ body {
   background-color: #ffffff;
   border: none;
 }
+.top-destinations-img-wrapper img {
+  padding: 10px;
+  transition: 0.3s;
+  border-radius: 10px;
+}
+.top-destinations-img-wrapper img:hover {
+  padding: 0px;
+}
 .card-box-shadow {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  transition: 0.5s;
 }
 .card-box-shadow:hover {
   box-shadow: 0 12px 30px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  transform: translateY(-10px);
 }
-
 .blog-card-box-shadow {
   box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.2), 0 2px 2px 0 rgba(0, 0, 0, 0.19);
 }
-
 .blog-card-box-shadow:hover {
   box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.2), 0 6px 5px 0 rgba(0, 0, 0, 0.19);
 }
-
-
 .colored-toast.swal2-icon-success {
   background-color: #a5dc86 !important;
 }
-
 .text-yellow {
   color: #ffff00;
 }

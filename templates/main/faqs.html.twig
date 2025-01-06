@@ -52,10 +52,10 @@
     <div class="accordion" id="faq-raq-{{ loop.index }}">
         <div class="accordion-item rounded-0">
             <h2 class="accordion-header" id="heading-{{ loop.index }}">
-                <button data-mdb-collapse-init class="accordion-button" type="button"
+                <button data-mdb-collapse-init class="accordion-button text-orange" type="button"
                     data-mdb-target="#collapse-{{ loop.index }}" aria-expanded="true"
                     aria-controls="collapse-{{ loop.index }}">
-                    {{ faqRaq.travelInfoTitle }}
+                    <b>{{ faqRaq.travelInfoTitle }}</b>
                 </button>
             </h2>
             <div id="collapse-{{ loop.index }}" class="accordion-collapse collapse"
