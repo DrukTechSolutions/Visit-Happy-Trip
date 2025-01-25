@@ -25,22 +25,22 @@
 <div id="booking-contact-form">
     {{ form_start(form) }}
     <div class="mt-1">
-        <span class="text-white">{{ form_label(form.name)}}</span>
+        <span class="text-white">{{ form_label(form.name)}} *</span>
         {{ form_widget(form.name,{'attr':{'class': 'book-now-input'}})}}
         <span class="mt-1 text-purple" id="name-error"></span>
     </div>
     <div class="mt-1">
-        <span class="text-white">{{ form_label(form.email)}}</span>
+        <span class="text-white">{{ form_label(form.email)}} *</span>
         {{ form_widget(form.email,{'attr':{'class': 'book-now-input'}})}}
         <span class="mt-1 text-purple" id="email-error"></span>
     </div>
     <div class="mt-1">
-        <span class="text-white">{{ form_label(form.subject)}}</span>
+        <span class="text-white">{{ form_label(form.subject)}} *</span>
         {{ form_widget(form.subject,{'attr':{'class': 'book-now-input'}})}}
         <span class="mt-1 text-purple" id="subject-error"></span>
     </div>
     <div class="mt-1">
-        <span class="text-white">{{ form_label(form.message)}}</span>
+        <span class="text-white">{{ form_label(form.message)}} *</span>
         {{ form_widget(form.message,{'attr':{'class': 'book-now-input', 'rows': '8'}})}}
         <span class="mt-1 text-purple" id="msg-error"></span>
     </div>

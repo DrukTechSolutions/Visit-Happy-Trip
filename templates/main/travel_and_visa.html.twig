@@ -104,26 +104,30 @@
                 must use your complete passport name to process your visa and to book your tickets with Drukair.</p>
         </div>
     </div>
-    <div class="accordion mt-5" id="accordionExample">
-        {% for travelVisa in travelVisas %}
-        <div class="accordion" id="travel-visa-{{ loop.index }}">
-            <div class="accordion-item rounded-0">
-                <h2 class="accordion-header" id="heading-{{ loop.index }}">
-                    <button data-mdb-collapse-init class="accordion-button text-orange" type="button"
-                        data-mdb-target="#collapse-{{ loop.index }}" aria-expanded="true"
-                        aria-controls="collapse-{{ loop.index }}">
-                        <b>{{ travelVisa.travelInfoTitle }}</b>
-                    </button>
-                </h2>
-                <div id="collapse-{{ loop.index }}" class="accordion-collapse collapse"
-                    aria-labelledby="heading-{{ loop.index }}" data-mdb-parent="#travel_visa">
-                    <div class="accordion-body bg-dark text-white">
-                        {{ travelVisa.travelInfoDescription|raw }}
+</div>
+<div class="bg-orange pt-5 pb-5 mt-5">
+    <div class="container">
+        <div class="accordion" id="accordionExample">
+            {% for travelVisa in travelVisas %}
+            <div class="accordion" id="travel-visa-{{ loop.index }}">
+                <div class="accordion-item rounded-0">
+                    <h2 class="accordion-header" id="heading-{{ loop.index }}">
+                        <button data-mdb-collapse-init class="accordion-button text-orange" type="button"
+                            data-mdb-target="#collapse-{{ loop.index }}" aria-expanded="true"
+                            aria-controls="collapse-{{ loop.index }}">
+                            <b>{{ travelVisa.travelInfoTitle }}</b>
+                        </button>
+                    </h2>
+                    <div id="collapse-{{ loop.index }}" class="accordion-collapse collapse"
+                        aria-labelledby="heading-{{ loop.index }}" data-mdb-parent="#travel_visa">
+                        <div class="accordion-body bg-dark text-white">
+                            {{ travelVisa.travelInfoDescription|raw }}
+                        </div>
                     </div>
                 </div>
             </div>
+            {% endfor %}
         </div>
-        {% endfor %}
     </div>
 </div>
 {% endblock %}

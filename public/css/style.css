@@ -111,6 +111,10 @@ body {
   color: white;
 }
 
+.accordion-button:not(.collapsed) {
+  color: #f85907 !important;
+}
+
 /* End Tour over view */
 
 /* Trip planner */
