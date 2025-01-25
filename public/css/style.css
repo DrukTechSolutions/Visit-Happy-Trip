@@ -52,6 +52,9 @@ body {
 .home-menu-link-active {
   color: #f85907 !important;
 }
+.footer-contact-info p:hover {
+  color: #f85907 !important;
+}
 .home-menu-link{
   font-weight: 600 !important;
 }
