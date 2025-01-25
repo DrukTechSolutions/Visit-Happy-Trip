@@ -55,15 +55,19 @@
                             href="/about-bhutan">About Bhutan</a>
                     </li>
                     <li class="nav-item menu-dropdown ms-2">
-                        <a href="/tour-packages" class="nav-link home-menu-link {% if (app.request.get('_route') == 'tour-package')%} home-menu-link-active {% endif %}">Tour Packages <i
-                                class="fa-solid fa-caret-down "></i></a>
+                        <a href="/tour-packages"
+                            class="nav-link home-menu-link {% if (app.request.get('_route') == 'tour-package')%} home-menu-link-active {% endif %}">Tour
+                            Packages <i class="fa-solid fa-caret-down "></i></a>
                         <div class="dropdown-content">
-                            {{ render(controller('App\\Controller\\MainController::_tourCategories',{'packages_route': app.request.get('_route_params')['slug']})) }}
+                            {{ render(controller('App\\Controller\\MainController::_tourCategories',
+                            {'packages_route': app.request.get('_route_params') ? app.request.get('_route_params')['slug'] :''})) }}
                         </div>
                     </li>
                     <li class="nav-item menu-dropdown ms-2">
                         {% set travel_info_routes = ['faqs-and-raqs', 'travel-and-visa']%}
-                        <a class="nav-link home-menu-link {% if (app.request.get('_route') in travel_info_routes)%} home-menu-link-active {% endif %}">Travel Info <i class="fa-solid fa-caret-down"></i></a>
+                        <a
+                            class="nav-link home-menu-link {% if (app.request.get('_route') in travel_info_routes)%} home-menu-link-active {% endif %}">Travel
+                            Info <i class="fa-solid fa-caret-down"></i></a>
                         <div class="dropdown-content">
                             <a href="/travel-and-visa"
                                 class="nav-link home-menu-link {% if (app.request.get('_route') == 'travel-and-visa')%} home-menu-link-active {% endif %}">Travel
@@ -73,10 +77,12 @@
                         </div>
                     </li>
                     <li class="nav-item ms-2">
-                        <a class="nav-link home-menu-link {% if (app.request.get('_route') == 'blog')%} home-menu-link-active {% endif %}" href="/blogs">Blog</a>
+                        <a class="nav-link home-menu-link {% if (app.request.get('_route') == 'blog')%} home-menu-link-active {% endif %}"
+                            href="/blogs">Blog</a>
                     </li>
                     <li class="nav-item ms-2">
-                        <a class="nav-link home-menu-link {% if (app.request.get('_route') == 'contact-us')%} home-menu-link-active {% endif %}" href="/contact-us">Contact us</a>
+                        <a class="nav-link home-menu-link {% if (app.request.get('_route') == 'contact-us')%} home-menu-link-active {% endif %}"
+                            href="/contact-us">Contact us</a>
                     </li>
                     <li class="nav-item ms-2">
                         <a href="/book-now" target="_blank"

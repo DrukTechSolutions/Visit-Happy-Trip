@@ -78,6 +78,17 @@ body {
   text-align: justify !important;
 }
 
+.nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active {
+  color: #f85907;
+  background-color: #dfdede;
+  border-color: transparent;
+  border-bottom: 2px solid #f85907;
+}
+.tab-content .tab-pane.active {
+  background-color: #dfdede;
+  padding: 10px;
+}
+
 /* End Bhutan */
 
 /* Getting into Bhutan */
