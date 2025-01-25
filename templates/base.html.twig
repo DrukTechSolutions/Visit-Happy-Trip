@@ -60,7 +60,7 @@
                             Packages <i class="fa-solid fa-caret-down "></i></a>
                         <div class="dropdown-content">
                             {{ render(controller('App\\Controller\\MainController::_tourCategories',
-                            {'packages_route': app.request.get('_route_params') ? app.request.get('_route_params')['slug'] :''})) }}
+                            {'packages_route': app.request.get('_route_params')  ?? app.request.get('_route_params')['slug'] })) }}
                         </div>
                     </li>
                     <li class="nav-item menu-dropdown ms-2">
@@ -75,6 +75,10 @@
                             <a href="/faqs-and-raqs"
                                 class="nav-link home-menu-link {% if (app.request.get('_route') == 'faqs-and-raqs')%} home-menu-link-active {% endif %}">Faq's/Raq's</a>
                         </div>
+                    </li>
+                    <li class="nav-item ms-2">
+                        <a class="nav-link home-menu-link {% if (app.request.get('_route') == 'hotels-in-bhutan-front')%} home-menu-link-active {% endif %}"
+                            href="/hotels-in-bhutan">Hotels</a>
                     </li>
                     <li class="nav-item ms-2">
                         <a class="nav-link home-menu-link {% if (app.request.get('_route') == 'blog')%} home-menu-link-active {% endif %}"
