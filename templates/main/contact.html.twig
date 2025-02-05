@@ -60,22 +60,22 @@
                 a message below.</p>
             {{ form_start(form) }}
             <div class="mt-2">
-                {{ form_label(form.name)}}
+                {{ form_label(form.name)}} *
                 {{ form_widget(form.name,{'attr':{'class': 'ht-input'}})}}
                 <span class="mt-1 text-purple" id="name-error"></span>
             </div>
             <div class="mt-2">
-                {{ form_label(form.email)}}
+                {{ form_label(form.email)}} *
                 {{ form_widget(form.email,{'attr':{'class': 'ht-input'}})}}
                 <span class="mt-1 text-purple" id="email-error"></span>
             </div>
             <div class="mt-2">
-                {{ form_label(form.subject)}}
+                {{ form_label(form.subject)}} *
                 {{ form_widget(form.subject,{'attr':{'class': 'ht-input'}})}}
                 <span class="mt-1 text-purple" id="subject-error"></span>
             </div>
             <div class="mt-2">
-                {{ form_label(form.message)}}
+                {{ form_label(form.message)}} *
                 {{ form_widget(form.message,{'attr':{'class': 'ht-input', 'rows': '8'}})}}
                 <span class="mt-1 text-purple" id="msg-error"></span>
             </div>
