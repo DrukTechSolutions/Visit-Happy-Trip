@@ -55,7 +55,10 @@ body {
 .footer-contact-info p:hover {
   color: #f85907 !important;
 }
-.home-menu-link{
+.footer-contact-info p a:hover {
+  color: #f85907 !important;
+}
+.home-menu-link {
   font-weight: 600 !important;
 }
 .bhutan-gradient {
@@ -81,7 +84,8 @@ body {
   text-align: justify !important;
 }
 
-.nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active {
+.nav-tabs .nav-item.show .nav-link,
+.nav-tabs .nav-link.active {
   color: #f85907;
   background-color: #dfdede;
   border-color: transparent;
@@ -139,8 +143,11 @@ body {
 /* Global */
 
 .btn-orange {
-  background-color: #DE5307;
+  background-color: #de5307;
   border: none;
+}
+.btn-orange:hover {
+  background-color: black;
 }
 .btn-white {
   background-color: #ffffff;
@@ -149,7 +156,7 @@ body {
   padding-bottom: 8px;
 }
 .bg-orange {
-  background-color: #F28A29;
+  background-color: #f28a29;
 }
 .font-size-12 {
   font-size: 12px !important;
@@ -240,6 +247,38 @@ body {
   border-radius: 4px;
   font-size: 16px;
   font-weight: bold;
+}
+.animated-text-header {
+  color: white;
+  font-size: 40px;
+  font-weight: 500;
+  letter-spacing: 8px;
+  margin-bottom: 20px;
+  position: relative;
+  animation: text 3s 1;
+  background-color: #f85907;
+  padding: 10px;
+}
+
+@keyframes text {
+  0% {
+    color: black;
+    margin-bottom: -40px;
+  }
+
+  30% {
+    letter-spacing: 25px;
+    margin-bottom: -40px;
+  }
+
+  85% {
+    letter-spacing: 8px;
+    margin-bottom: -40px;
+  }
+}
+.social-icon a i:hover {
+  color: #f85907;
+  cursor: pointer;
 }
 /* End Global */
 

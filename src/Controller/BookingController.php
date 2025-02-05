@@ -24,10 +24,10 @@ class BookingController extends AbstractController
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
             $emailService->sendBookingEmail($booking);
-            // $this->em->persist($booking);
-            // $this->em->flush();
-            // $this->addFlash('notice', 'Message sent successfully.');
-            // return $this->redirectToRoute('book-now');
+            $this->em->persist($booking);
+            $this->em->flush();
+            $this->addFlash('notice', 'Booking query sent successfully.');
+            return $this->redirectToRoute('book-now');
         }
         return $this->render('main/book-now.html.twig', ['form' => $form]);
     }

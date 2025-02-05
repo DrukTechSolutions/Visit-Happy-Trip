@@ -78,9 +78,9 @@ class BookingType extends AbstractType
                 'attr' => [
                     'rows' => '5'
                 ],
-                'constraints' => [
-                    new NotBlank(['message' => 'Message field should not be blank.'])
-                ]
+                // 'constraints' => [
+                //     new NotBlank(['message' => 'Message field should not be blank.'])
+                // ]
             ])
         ;
     }
