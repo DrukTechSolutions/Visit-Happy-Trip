@@ -3,6 +3,8 @@
 namespace App\Form;
 
 use App\Entity\Bookings;
+use Doctrine\ORM\EntityManagerInterface;
+use App\Entity\TourCategory;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\CountryType;
@@ -19,6 +21,10 @@ use Symfony\Component\Validator\Constraints\NotBlank;
 
 class BookingType extends AbstractType
 {
+    public function __construct(private EntityManagerInterface $em)
+    {
+        
+    }
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
@@ -67,12 +73,7 @@ class BookingType extends AbstractType
                 ]
             ])
             ->add('tour_packages', ChoiceType::class, [
-                'choices' => [
-                    'Cultural Tour' => 'cultural-tour',
-                    'Festival Tour' => 'festival-tour',
-                    'Adventure Tour' => 'adventure-tour',
-                    'Trekking Tour' => 'trekking-tour',
-                ]
+                'choices' => $this->getPackages(),
             ])
             ->add('message', TextareaType::class, [
                 'attr' => [
@@ -83,6 +84,18 @@ class BookingType extends AbstractType
                 // ]
             ])
         ;
+    }
+
+    public function getPackages() {
+        $mainCategory = [];
+        $categories = $this->em->getRepository(TourCategory::class)->findAll();
+
+        foreach ($categories as $category) {
+            if ($category->getSubCategory() == null) {
+                $mainCategory[ $category->getCategory()] = $category->getSlug();
+            }
+        }
+        return $mainCategory;
     }
 
     public function configureOptions(OptionsResolver $resolver): void
