@@ -78,10 +78,7 @@ class BookingType extends AbstractType
             ->add('message', TextareaType::class, [
                 'attr' => [
                     'rows' => '5'
-                ],
-                // 'constraints' => [
-                //     new NotBlank(['message' => 'Message field should not be blank.'])
-                // ]
+                ]
             ])
         ;
     }
@@ -95,6 +92,7 @@ class BookingType extends AbstractType
                 $mainCategory[ $category->getCategory()] = $category->getSlug();
             }
         }
+
         return $mainCategory;
     }
 
