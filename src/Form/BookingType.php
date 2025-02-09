@@ -46,12 +46,12 @@ class BookingType extends AbstractType
             ])
             ->add('country', CountryType::class)
             ->add('date_of_arrival', DateType::class, [
-                'widget' => 'choice',
-                'data' => new \DateTime()
+                'widget' => 'single_text',
+                //'data' => new \DateTime()
             ])
             ->add('date_of_departure', DateType::class, [
-                'widget' => 'choice',
-                'data' => new \DateTime()
+                'widget' => 'single_text',
+                //'data' => new \DateTime()
             ])
             ->add('no_of_adults', IntegerType::class, [
                 'attr' => [
