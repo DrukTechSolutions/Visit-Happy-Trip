@@ -87,10 +87,12 @@
                 <div class="col-md-6">
                     {{ form_label(form.date_of_arrival)}} *
                     {{ form_widget(form.date_of_arrival,{'attr':{'class': 'form-control'}})}}
+                    <span class="text-danger">{{ form_errors(form.date_of_arrival)}}</span>
                 </div>
                 <div class="col-md-6">
                     {{ form_label(form.date_of_departure)}} *
                     {{ form_widget(form.date_of_departure,{'attr':{'class': 'form-control'}})}}
+                    <span class="text-danger">{{ form_errors(form.date_of_departure)}}</span>
                 </div>
             </div>
             <div class="mb-3 row">
@@ -107,10 +109,12 @@
                 <div class="col-md-6">
                     {{ form_label(form.tour_type)}} *
                     {{ form_widget(form.tour_type,{'attr':{'class': 'ht-select'}})}}
+                    <span class="text-danger">{{ form_errors(form.tour_type)}}</span>
                 </div>
                 <div class="col-md-6">
                     {{ form_label(form.tour_packages)}} *
                     {{ form_widget(form.tour_packages,{'attr':{'class': 'ht-select'}})}}
+                    <span class="text-danger">{{ form_errors(form.tour_packages)}}</span>
                 </div>
             </div>
             <div class="mb-3">

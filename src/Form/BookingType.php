@@ -18,6 +18,7 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Constraints\Email;
 use Symfony\Component\Validator\Constraints\NotBlank;
+use Symfony\Component\Validator\Constraints\NotNull;
 
 class BookingType extends AbstractType
 {
@@ -44,14 +45,26 @@ class BookingType extends AbstractType
                     new NotBlank(['message' => 'Contact no field should not be blank.']),
                 ]
             ])
-            ->add('country', CountryType::class)
+            ->add('country', CountryType::class, [
+                'placeholder' => 'Select your country',
+            ])
             ->add('date_of_arrival', DateType::class, [
                 'widget' => 'single_text',
-                //'data' => new \DateTime()
+                //'data' => new \DateTime(),
+                'empty_data' => null,
+                'constraints' => [
+                    new NotNull(['message' => 'Date of arrival field should not be blank.']),
+                    new NotBlank(['message' => 'Date of arrival field should not be blank.'])
+                ]
             ])
             ->add('date_of_departure', DateType::class, [
                 'widget' => 'single_text',
-                //'data' => new \DateTime()
+                //'data' => new \DateTime(),
+                'empty_data' => null,
+                'constraints' => [
+                    new NotNull(['message' => 'Date of departure field should not be blank.']),
+                    new NotBlank(['message' => 'Date of departure field should not be blank.'])
+                ]
             ])
             ->add('no_of_adults', IntegerType::class, [
                 'attr' => [
@@ -66,14 +79,22 @@ class BookingType extends AbstractType
                 ]
             ])
             ->add('tour_type', ChoiceType::class, [
+                'placeholder' => 'Select tour type',
                 'choices' => [
                     'Solo' => 'solo',
                     'Family' => 'family',
                     'Friend' => 'friend',
+                ],
+                'constraints' => [
+                    new NotBlank(['message' => 'Tour type field should not be blank.'])
                 ]
             ])
             ->add('tour_packages', ChoiceType::class, [
+                'placeholder' => 'Select tour package',
                 'choices' => $this->getPackages(),
+                'constraints' => [
+                    new NotBlank(['message' => 'Tour package field should not be blank.'])
+                ]
             ])
             ->add('message', TextareaType::class, [
                 'attr' => [
