@@ -137,11 +137,10 @@
     <div class="container mt-2">
         <div class="row">
             {% for tour_package in tour_packages %}
-            {% if tour_package.tourCategory %}
             <div class="col-md-3 mt-3">
                 <div class="card border card-box-shadow rounded-0">
                     <img src="{{ asset('uploads/images/'~ tour_package.images[0].imageName )|imagine_filter('thumbnail')}}"
-                        class="card-img-top rounded-0" alt="Fissure in Sandstone" />
+                        class="card-img-top rounded-0" alt="{{ tour_package.tourTitle }}" />
                     <div class="card-body">
                         <h5 class="card-title">{{ tour_package.tourTitle }}</h5>
                         <p class="card-text text-orange">{{ tour_package.itinerary|length }} days/ {{
@@ -153,7 +152,6 @@
                     </div>
                 </div>
             </div>
-            {% endif %}
             {% endfor %}
         </div>
     </div>
