@@ -37,6 +37,7 @@ class MainController extends AbstractController
     public function index(CategoryService $categoryService): Response
     {
         $tour_packages = $this->em->getRepository(TourPackage::class)->findTourPackages();
+
         $top_destinations = $this->em->getRepository(TopDestination::class)->findAll();
         $tour_packages_all = $this->em->getRepository(TourPackage::class)->findAll();
         $categories = $this->em->getRepository(TourCategory::class)->findAll();
